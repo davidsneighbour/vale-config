@@ -1,38 +1,42 @@
 # Version: 0.1.6
 
+[Aa]gents?
+Ananke
+APIs
+Astro
 [Bb]oolean
-[Cc]acheability
-[Ff]rontmatter
-[kK]ollitsch
-[Nn]amespaced
-[Ss]hortcode
-[Ss]hortcodes
-[Tt]eardown
 Boxicons
+[Cc]acheability
+Changa
+CLI
 config
 CORS
 crossorigin
 CSS
 David's Neighbour
 davidsneighbour
+dev
+Exo
 Font Awesome
+[Ff]rontmatter
 GNU
 GoHugo
 Google Fonts
 Iconoir
 JavaScript
-Kurzschnitte
+[kK]ollitsch
+KOLLITSCH.dev*
+[Kk]urzschnitte
 Lineicons
 MIT License
+[Nn]amespaced
 Netlify
 SASS
+[Ss]hortcode
+[Ss]hortcodes
 Tabler
+[Tt]eardown
 VSCode
 WSL
 XFCE
 YouTube
-GoHugo
-Ananke
-Astro
-dev
-CLI
