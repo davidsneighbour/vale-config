@@ -1,0 +1,4 @@
+{
+  "extends": "@dnbhq/tsconfig/cli",
+  "files": []
+}

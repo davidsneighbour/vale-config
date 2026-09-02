@@ -19,7 +19,7 @@ updates:
     pull-request-branch-name:
       separator: /
     labels:
-      - type:dependencies
+      - dependencies
 
   - package-ecosystem: gomod
     directory: /
@@ -37,7 +37,7 @@ updates:
     pull-request-branch-name:
       separator: /
     labels:
-      - type:dependencies
+      - dependencies
 
   - package-ecosystem: github-actions
     directory: /
@@ -55,4 +55,4 @@ updates:
     pull-request-branch-name:
       separator: /
     labels:
-      - type:dependencies
+      - dependencies

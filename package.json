@@ -1,18 +1,31 @@
 {
-  "name": "dnb-vale-config",
+  "name": "@dnbhq/vale-config",
   "description": "This repository contains a custom Vale configuration, styles, and dictionary files for writing and linting text.",
   "version": "0.1.6",
   "license": "MIT",
   "author": "Patrick Kollitsch <patrick@davids-neighbour.com>",
   "keywords": [],
   "devDependencies": {
+    "@biomejs/biome": "2.5.11",
+    "@dnbhq/biome-config": "0.2.3",
+    "@dnbhq/markdownlint-config": "0.2.11",
+    "@dnbhq/tsconfig": "0.1.6",
+    "@types/node": "26.4.1",
     "archiver": "7.0.1",
+    "typescript": "7.0.2",
     "vitest": "3.2.2"
   },
   "scripts": {
+    "check": "npm run lint && npm test",
+    "format": "biome check --write .",
+    "lint": "npm run lint:biome && npm run lint:markdown && npm run typecheck",
+    "lint:biome": "biome check .",
+    "lint:markdown": "markdownlint-cli2 --config ./node_modules/@dnbhq/markdownlint-config/.markdownlint-cli2.jsonc \"*.md\"",
+    "lint:markdown:fix": "markdownlint-cli2 --config ./node_modules/@dnbhq/markdownlint-config/.markdownlint-cli2.jsonc --fix \"*.md\"",
     "preRelease": "node release 1.2.3-test",
     "release": "node release.js",
-    "test": "vitest --run"
+    "test": "vitest --run",
+    "typecheck": "tsc --noEmit"
   },
   "main": "index.js",
   "type": "module"

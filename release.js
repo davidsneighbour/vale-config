@@ -1,8 +1,8 @@
+import archiver from 'archiver';
+import { exec, execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
-import { exec, execSync } from 'child_process';
 import { promisify } from 'util';
-import archiver from 'archiver';
 
 const execPromise = promisify(exec);
 
@@ -12,10 +12,19 @@ let OUTPUT_ZIP = ''; // Will be set dynamically based on the version
 const SECOND_ZIP = path.join(DIST_DIR, 'DNB.zip'); // Static name for the second zip
 const README_PATH = path.resolve('README.md');
 const VALE_INI_PATH = path.join(SRC_DIR, 'DNB/.vale.ini');
-const ACCEPT_PATH = path.join(SRC_DIR, 'DNB/styles/config/vocabularies/DNB/accept.txt');
-const REJECT_PATH = path.join(SRC_DIR, 'DNB/styles/config/vocabularies/DNB/reject.txt');
+const ACCEPT_PATH = path.join(
+  SRC_DIR,
+  'DNB/styles/config/vocabularies/DNB/accept.txt',
+);
+const REJECT_PATH = path.join(
+  SRC_DIR,
+  'DNB/styles/config/vocabularies/DNB/reject.txt',
+);
 const LOG_DIR = path.resolve(process.env.HOME || '~', '.logs');
-const LOG_FILE = path.join(LOG_DIR, `vale-release-${new Date().toISOString().split('T')[0]}.log`);
+const LOG_FILE = path.join(
+  LOG_DIR,
+  `vale-release-${new Date().toISOString().split('T')[0]}.log`,
+);
 
 /**
  * Logs messages to ~/.logs/vale-release-YYYY-MM-DD.log
@@ -36,7 +45,7 @@ function log(message) {
  * @param {string} tagName The tag name of the release.
  */
 async function openReleaseEditPage(tagName) {
-  const releaseEditUrl = `https://github.com/davidsneighbour/dnb-vale-config/releases/edit/${tagName}`;
+  const releaseEditUrl = `https://github.com/dnbhq/vale-config/releases/edit/${tagName}`;
   log(`Opening browser to edit the release: ${releaseEditUrl}`);
   const platform = process.platform;
 
@@ -61,7 +70,10 @@ async function openReleaseEditPage(tagName) {
 function updateVersionInFile(filePath, newVersion) {
   if (fs.existsSync(filePath)) {
     const content = fs.readFileSync(filePath, 'utf-8');
-    const updatedContent = content.replace(/#\s*Version:\s*\d+\.\d+\.\d+(-test)?/, `# Version: ${newVersion}`);
+    const updatedContent = content.replace(
+      /#\s*Version:\s*\d+\.\d+\.\d+(-test)?/,
+      `# Version: ${newVersion}`,
+    );
     fs.writeFileSync(filePath, updatedContent);
     log(`Updated version in ${filePath}`);
   } else {
@@ -120,17 +132,17 @@ async function bumpVersion(bumpType) {
   updateVersionInFile(ACCEPT_PATH, newVersion);
   updateVersionInFile(REJECT_PATH, newVersion);
 
-  // Update README.md to point to config.zip with the correct version
+  // Update README.md to point to DNB.zip with the correct version
   if (fs.existsSync(README_PATH)) {
     const readmeContent = fs.readFileSync(README_PATH, 'utf-8');
     const updatedReadmeContent = readmeContent
       .replace(
-        /https:\/\/github\.com\/davidsneighbour\/dnb-vale-config\/releases\/download\/v\d+\.\d+\.\d+(-test)?\/DNB\.zip/,
-        `https://github.com/davidsneighbour/dnb-vale-config/releases/download/v${newVersion}/DNB.zip`
+        /https:\/\/github\.com\/(?:davidsneighbour\/dnb-vale-config|dnbhq\/vale-config)\/releases\/(?:latest\/download|download\/v\d+\.\d+\.\d+(?:-test)?)\/DNB\.zip/,
+        `https://github.com/dnbhq/vale-config/releases/download/v${newVersion}/DNB.zip`,
       )
       .replace(
-        /Packages = Microsoft,?\s*https:\/\/github\.com\/davidsneighbour\/dnb-vale-config\/releases\/download\/v\d+\.\d+\.\d+(-test)?\/DNB\.zip/,
-        `Packages = Microsoft,\nhttps://github.com/davidsneighbour/dnb-vale-config/releases/download/v${newVersion}/DNB.zip`
+        /Packages = Microsoft,?\s*https:\/\/github\.com\/(?:davidsneighbour\/dnb-vale-config|dnbhq\/vale-config)\/releases\/(?:latest\/download|download\/v\d+\.\d+\.\d+(?:-test)?)\/DNB\.zip/,
+        `Packages = Microsoft,\nhttps://github.com/dnbhq/vale-config/releases/download/v${newVersion}/DNB.zip`,
       );
     fs.writeFileSync(README_PATH, updatedReadmeContent);
     log(`Updated README.md with the new download links.`);
@@ -150,7 +162,9 @@ async function bumpVersion(bumpType) {
 async function ensureCleanGitState() {
   const { stdout } = await execPromise('git status --porcelain');
   if (stdout.trim()) {
-    throw new Error('Repository has uncommitted changes. Commit or stash them before releasing.');
+    throw new Error(
+      'Repository has uncommitted changes. Commit or stash them before releasing.',
+    );
   }
   log('Git state is clean.');
 }

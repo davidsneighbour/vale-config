@@ -1,5 +1,3 @@
 {
-    "recommendations": [
-        "slevesque.vscode-zipexplorer"
-    ]
+  "recommendations": ["slevesque.vscode-zipexplorer"]
 }

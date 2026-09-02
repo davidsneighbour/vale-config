@@ -1,22 +1,35 @@
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
-import fs from 'fs';
-import path from 'path';
-import { execSync } from 'child_process';
+import { execSync } from "child_process";
+import fs from "fs";
+import path from "path";
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
-const DIST_DIR = path.resolve('dist');
-const SRC_DIR = path.resolve('src');
-const README_PATH = path.resolve('README.md');
-const VALE_INI_PATH = path.join(SRC_DIR, '.vale.ini');
-const RELEASE_SCRIPT = path.resolve('release.js');
-const PACKAGE_JSON_PATH = path.resolve('package.json');
-const testVersion = '1.2.3-test';
+const DIST_DIR = path.resolve("dist");
+const SRC_DIR = path.resolve("src");
+const README_PATH = path.resolve("README.md");
+const VALE_INI_PATH = path.join(SRC_DIR, "DNB/.vale.ini");
+const ACCEPT_PATH = path.join(
+  SRC_DIR,
+  "DNB/styles/config/vocabularies/DNB/accept.txt",
+);
+const REJECT_PATH = path.join(
+  SRC_DIR,
+  "DNB/styles/config/vocabularies/DNB/reject.txt",
+);
+const RELEASE_SCRIPT = path.resolve("release.js");
+const PACKAGE_JSON_PATH = path.resolve("package.json");
+const testVersion = "1.2.3-test";
 const versionedZip = path.join(DIST_DIR, `dnb-vale-config-v${testVersion}.zip`);
-const configZip = path.join(DIST_DIR, 'config.zip');
+const configZip = path.join(DIST_DIR, "DNB.zip");
 
 // Helper to clean up generated files after tests
 function cleanup() {
-  console.log('Cleaning up...');
-  execSync(`git restore ${README_PATH} ${VALE_INI_PATH} ${PACKAGE_JSON_PATH}`, { stdio: 'inherit' });
+  console.log("Cleaning up...");
+  execSync(
+    `git restore ${README_PATH} ${VALE_INI_PATH} ${ACCEPT_PATH} ${REJECT_PATH} ${PACKAGE_JSON_PATH}`,
+    {
+      stdio: "inherit",
+    },
+  );
   if (fs.existsSync(versionedZip)) fs.unlinkSync(versionedZip);
   if (fs.existsSync(configZip)) fs.unlinkSync(configZip);
   if (fs.existsSync(DIST_DIR) && fs.readdirSync(DIST_DIR).length === 0) {
@@ -26,56 +39,62 @@ function cleanup() {
 
 // Helper to check for uncommitted changes
 function hasUncommittedChanges() {
-  const status = execSync('git status --porcelain').toString().trim();
+  const status = execSync("git status --porcelain").toString().trim();
   return status.length > 0;
 }
 
-describe('Release Process Tests', () => {
+describe("Release Process Tests", () => {
   beforeAll(() => {
     console.log(`Checking for uncommitted changes...`);
     if (hasUncommittedChanges()) {
-      throw new Error('Repository has uncommitted changes. Commit or stash them before running tests.');
+      throw new Error(
+        "Repository has uncommitted changes. Commit or stash them before running tests.",
+      );
     }
 
     console.log(`Running release.js with version: ${testVersion}`);
-    execSync(`node ${RELEASE_SCRIPT} ${testVersion}`, { stdio: 'inherit' });
+    execSync(`node ${RELEASE_SCRIPT} ${testVersion}`, { stdio: "inherit" });
   });
 
   afterAll(() => {
     cleanup();
   });
 
-  it('README.md contains the correct version', () => {
+  it("README.md contains the correct version", () => {
     expect(fs.existsSync(README_PATH)).toBe(true);
-    const readmeContent = fs.readFileSync(README_PATH, 'utf-8');
-    const expectedUrl = `https://github.com/davidsneighbour/dnb-vale-config/releases/download/v${testVersion}/config.zip`;
+    const readmeContent = fs.readFileSync(README_PATH, "utf-8");
+    const expectedUrl = `https://github.com/dnbhq/vale-config/releases/download/v${testVersion}/DNB.zip`;
     expect(readmeContent).toContain(expectedUrl);
   });
 
-  it('.vale.ini contains the correct version', () => {
+  it(".vale.ini contains the correct version", () => {
     expect(fs.existsSync(VALE_INI_PATH)).toBe(true);
-    const iniContent = fs.readFileSync(VALE_INI_PATH, 'utf-8');
+    const iniContent = fs.readFileSync(VALE_INI_PATH, "utf-8");
     const expectedVersion = `# Version: ${testVersion}`;
     expect(iniContent).toContain(expectedVersion);
   });
 
-  it('Generated zip files exist', () => {
+  it("Generated zip files exist", () => {
     expect(fs.existsSync(versionedZip)).toBe(true);
     expect(fs.existsSync(configZip)).toBe(true);
   });
 
-  it('Required files and directories exist', () => {
+  it("Required files and directories exist", () => {
     expect(fs.existsSync(SRC_DIR)).toBe(true);
     expect(fs.existsSync(DIST_DIR)).toBe(true);
     expect(fs.existsSync(README_PATH)).toBe(true);
     expect(fs.existsSync(VALE_INI_PATH)).toBe(true);
   });
 
-  it('README.md and .vale.ini have consistent versions', () => {
-    const readmeContent = fs.readFileSync(README_PATH, 'utf-8');
-    const iniContent = fs.readFileSync(VALE_INI_PATH, 'utf-8');
-    const readmeVersion = readmeContent.match(/\/v(\d+\.\d+\.\d+(-test)?)\//)?.[1];
-    const iniVersion = iniContent.match(/# Version: (\d+\.\d+\.\d+(-test)?)/)?.[1];
+  it("README.md and .vale.ini have consistent versions", () => {
+    const readmeContent = fs.readFileSync(README_PATH, "utf-8");
+    const iniContent = fs.readFileSync(VALE_INI_PATH, "utf-8");
+    const readmeVersion = readmeContent.match(
+      /\/v(\d+\.\d+\.\d+(-test)?)\//,
+    )?.[1];
+    const iniVersion = iniContent.match(
+      /# Version: (\d+\.\d+\.\d+(-test)?)/,
+    )?.[1];
     expect(readmeVersion).toBe(testVersion);
     expect(iniVersion).toBe(testVersion);
   });
