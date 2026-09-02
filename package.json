@@ -11,9 +11,9 @@
     "@dnbhq/markdownlint-config": "0.2.11",
     "@dnbhq/tsconfig": "0.1.6",
     "@types/node": "26.4.1",
-    "archiver": "7.0.1",
+    "archiver": "8.0.0",
     "typescript": "7.0.2",
-    "vitest": "3.2.2"
+    "vitest": "4.1.11"
   },
   "scripts": {
     "check": "npm run lint && npm test",
