@@ -6,7 +6,7 @@
   "author": "Patrick Kollitsch <patrick@davids-neighbour.com>",
   "keywords": [],
   "devDependencies": {
-    "archiver": "7.0.1",
+    "archiver": "8.0.0",
     "vitest": "3.2.2"
   },
   "scripts": {
