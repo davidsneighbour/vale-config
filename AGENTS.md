@@ -28,6 +28,10 @@ The `src/DNB/` directory is the actual style package. Its contents become the ro
 
 There is no separate lint or build script in `package.json` for the Vale rules themselves. Validate Vale rule correctness by running Vale against sample text with this config, not by running `npm`.
 
+## Documentation references
+
+* Use the official [Vale documentation](https://docs.vale.sh/) as the reference address for Vale configuration, styles, packages, rules, vocabularies, and output templates.
+
 ## Style package layout
 
 * `src/DNB/.vale.ini` is the actual Vale config shipped to consumers. It sets `StylesPath = styles`, layers `Packages = Microsoft, Google, Hugo, alex, proselint, Readability, write-good` as base styles, and then selectively disables specific rules from each package per `[*.{md,txt}]`. When adding or adjusting a rule, edit the `BasedOnStyles` and per-rule overrides here instead of introducing a new top-level config.
