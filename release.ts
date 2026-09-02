@@ -1,10 +1,13 @@
-import archiver from 'archiver';
+import { ZipArchive } from 'archiver';
 import { exec, execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import { promisify } from 'util';
 
 const execPromise = promisify(exec);
+const ALLOWED_BUMPS = ['patch', 'minor', 'major'] as const;
+
+type BumpType = (typeof ALLOWED_BUMPS)[number];
 
 const DIST_DIR = 'dist';
 const SRC_DIR = 'src';
@@ -20,31 +23,32 @@ const REJECT_PATH = path.join(
   SRC_DIR,
   'DNB/styles/config/vocabularies/DNB/reject.txt',
 );
-const LOG_DIR = path.resolve(process.env.HOME || '~', '.logs');
+const LOG_DIR = path.resolve(process.env['HOME'] || '~', '.logs');
 const LOG_FILE = path.join(
   LOG_DIR,
   `vale-release-${new Date().toISOString().split('T')[0]}.log`,
 );
 
-/**
- * Logs messages to ~/.logs/vale-release-YYYY-MM-DD.log
- * @param {string} message Message to log.
- */
-function log(message) {
-  if (!fs.existsSync(LOG_DIR)) {
-    fs.mkdirSync(LOG_DIR, { recursive: true });
-  }
-  const timestamp = new Date().toISOString();
-  const logMessage = `[${timestamp}] ${message}\n`;
-  fs.appendFileSync(LOG_FILE, logMessage);
-  console.log(message); // Also log to console
+function getErrorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
 }
 
-/**
- * Opens a browser window for the release edit page.
- * @param {string} tagName The tag name of the release.
- */
-async function openReleaseEditPage(tagName) {
+function log(message: string): void {
+  const timestamp = new Date().toISOString();
+  const logMessage = `[${timestamp}] ${message}\n`;
+  console.log(message);
+
+  try {
+    if (!fs.existsSync(LOG_DIR)) {
+      fs.mkdirSync(LOG_DIR, { recursive: true });
+    }
+    fs.appendFileSync(LOG_FILE, logMessage);
+  } catch (error) {
+    console.warn(`Could not write release log: ${getErrorMessage(error)}`);
+  }
+}
+
+async function openReleaseEditPage(tagName: string): Promise<void> {
   const releaseEditUrl = `https://github.com/dnbhq/vale-config/releases/edit/${tagName}`;
   log(`Opening browser to edit the release: ${releaseEditUrl}`);
   const platform = process.platform;
@@ -58,16 +62,13 @@ async function openReleaseEditPage(tagName) {
       execSync(`xdg-open ${releaseEditUrl}`);
     }
   } catch (error) {
-    log(`Failed to open browser for release edit page: ${error.message}`);
+    log(
+      `Failed to open browser for release edit page: ${getErrorMessage(error)}`,
+    );
   }
 }
 
-/**
- * Updates version in specified files.
- * @param {string} filePath Path to the file to update.
- * @param {string} newVersion The new version string.
- */
-function updateVersionInFile(filePath, newVersion) {
+function updateVersionInFile(filePath: string, newVersion: string): void {
   if (fs.existsSync(filePath)) {
     const content = fs.readFileSync(filePath, 'utf-8');
     const updatedContent = content.replace(
@@ -81,32 +82,66 @@ function updateVersionInFile(filePath, newVersion) {
   }
 }
 
-/**
- * Reads and parses the package.json file.
- * @returns {object} Parsed package.json content.
- */
-function getPackageJson() {
-  const packagePath = path.resolve('package.json');
-  return JSON.parse(fs.readFileSync(packagePath, 'utf-8'));
+interface PackageJson {
+  version: string;
+  [key: string]: unknown;
 }
 
-/**
- * Updates the version in package.json, src/.vale.ini, and other relevant files.
- * @param {string} bumpType Version bump type or test version (e.g., "patch" or "1.2.3-test").
- */
-async function bumpVersion(bumpType) {
+function getPackageJson(): PackageJson {
+  const packagePath = path.resolve('package.json');
+  return JSON.parse(fs.readFileSync(packagePath, 'utf-8')) as PackageJson;
+}
+
+function isBumpType(value: string | undefined): value is BumpType {
+  return ALLOWED_BUMPS.some((bumpType) => bumpType === value);
+}
+
+function parseVersion(version: string): [number, number, number] {
+  const parts = version.split('.');
+  if (parts.length !== 3) {
+    throw new Error(`Invalid package version: ${version}`);
+  }
+
+  const [majorPart, minorPart, patchPart] = parts;
+  if (
+    majorPart === undefined ||
+    minorPart === undefined ||
+    patchPart === undefined
+  ) {
+    throw new Error(`Invalid package version: ${version}`);
+  }
+
+  const major = Number(majorPart);
+  const minor = Number(minorPart);
+  const patch = Number(patchPart);
+
+  if (
+    !Number.isInteger(major) ||
+    !Number.isInteger(minor) ||
+    !Number.isInteger(patch) ||
+    major < 0 ||
+    minor < 0 ||
+    patch < 0
+  ) {
+    throw new Error(`Invalid package version: ${version}`);
+  }
+
+  return [major, minor, patch];
+}
+
+async function bumpVersion(bumpType: string): Promise<string> {
   log(`Bumping version with: ${bumpType}`);
 
   const packagePath = path.resolve('package.json');
   const packageJson = getPackageJson();
-  let newVersion;
+  let newVersion: string;
 
   if (bumpType.includes('-test')) {
     // Use the test version directly
     newVersion = bumpType;
   } else {
     // Parse and bump version normally
-    const [major, minor, patch] = packageJson.version.split('.').map(Number);
+    const [major, minor, patch] = parseVersion(packageJson.version);
 
     switch (bumpType) {
       case 'major':
@@ -169,17 +204,12 @@ async function ensureCleanGitState() {
   log('Git state is clean.');
 }
 
-/**
- * Creates a zip file from the src/ directory.
- * @param {string} zipPath The path for the zip file to create.
- * @param {string} description Description of the zip file being created (for logging).
- */
-async function createZip(zipPath, description) {
+async function createZip(zipPath: string, description: string): Promise<void> {
   log(`Creating ${description} zip file: ${zipPath}`);
   await fs.promises.mkdir(DIST_DIR, { recursive: true });
 
   const output = fs.createWriteStream(zipPath);
-  const archive = archiver('zip', { zlib: { level: 9 } });
+  const archive = new ZipArchive({ zlib: { level: 9 } });
 
   archive.pipe(output);
 
@@ -190,11 +220,7 @@ async function createZip(zipPath, description) {
   log(`Zip file created at ${zipPath}`);
 }
 
-/**
- * Creates a Git tag and releases on GitHub.
- * @param {string} version The version number for the tag.
- */
-async function createGitTagAndRelease(version) {
+async function createGitTagAndRelease(version: string): Promise<void> {
   const tagName = `v${version}`;
   log(`Creating Git tag: ${tagName}`);
   await execPromise(`git add . && git commit -m "Release ${tagName}"`);
@@ -218,12 +244,11 @@ async function createGitTagAndRelease(version) {
 (async () => {
   try {
     const bumpTypeArg = process.argv[2];
-    let bumpType;
-    if (bumpTypeArg && bumpTypeArg.includes('-test')) {
+    let bumpType: string;
+    if (bumpTypeArg !== undefined && bumpTypeArg.includes('-test')) {
       bumpType = bumpTypeArg; // Use the mock test version directly
     } else {
-      const allowedBumps = ['patch', 'minor', 'major'];
-      bumpType = allowedBumps.includes(bumpTypeArg) ? bumpTypeArg : 'patch'; // Default to patch
+      bumpType = isBumpType(bumpTypeArg) ? bumpTypeArg : 'patch'; // Default to patch
     }
 
     await ensureCleanGitState();
@@ -238,7 +263,7 @@ async function createGitTagAndRelease(version) {
       await createGitTagAndRelease(newVersion);
     }
   } catch (error) {
-    log(`An error occurred: ${error.message}`);
+    log(`An error occurred: ${getErrorMessage(error)}`);
     process.exit(1);
   }
 })();

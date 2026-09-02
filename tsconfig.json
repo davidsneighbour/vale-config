@@ -1,4 +1,4 @@
 {
   "extends": "@dnbhq/tsconfig/cli",
-  "files": []
+  "files": ["release.ts"]
 }

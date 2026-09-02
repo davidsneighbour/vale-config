@@ -10,6 +10,7 @@
     "@dnbhq/biome-config": "0.2.3",
     "@dnbhq/markdownlint-config": "0.2.11",
     "@dnbhq/tsconfig": "0.1.6",
+    "@types/archiver": "8.0.0",
     "@types/node": "26.4.1",
     "archiver": "8.0.0",
     "typescript": "7.0.2",
@@ -22,8 +23,8 @@
     "lint:biome": "biome check .",
     "lint:markdown": "markdownlint-cli2 --config ./node_modules/@dnbhq/markdownlint-config/.markdownlint-cli2.jsonc \"*.md\"",
     "lint:markdown:fix": "markdownlint-cli2 --config ./node_modules/@dnbhq/markdownlint-config/.markdownlint-cli2.jsonc --fix \"*.md\"",
-    "preRelease": "node release 1.2.3-test",
-    "release": "node release.js",
+    "preRelease": "node release.ts 1.2.3-test",
+    "release": "node release.ts",
     "test": "vitest --run",
     "typecheck": "tsc --noEmit"
   },

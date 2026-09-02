@@ -38,7 +38,7 @@ This repository follows **semantic versioning** (`MAJOR.MINOR.PATCH`) for all re
    * Run the release script with the desired bump type:
 
      ```bash
-     node release.js [patch|minor|major]
+     node release.ts [patch|minor|major]
      ```
 
    * Defaults to `patch` if no bump type is specified.
@@ -62,7 +62,7 @@ This repository follows **semantic versioning** (`MAJOR.MINOR.PATCH`) for all re
 ### Example release command
 
 ```bash
-node release.js minor
+node release.ts minor
 ```
 
 This command performs the following:

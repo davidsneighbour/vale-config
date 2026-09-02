@@ -15,7 +15,7 @@ const REJECT_PATH = path.join(
   SRC_DIR,
   "DNB/styles/config/vocabularies/DNB/reject.txt",
 );
-const RELEASE_SCRIPT = path.resolve("release.js");
+const RELEASE_SCRIPT = path.resolve("release.ts");
 const PACKAGE_JSON_PATH = path.resolve("package.json");
 const testVersion = "1.2.3-test";
 const versionedZip = path.join(DIST_DIR, `dnb-vale-config-v${testVersion}.zip`);
@@ -52,7 +52,7 @@ describe("Release Process Tests", () => {
       );
     }
 
-    console.log(`Running release.js with version: ${testVersion}`);
+    console.log(`Running release.ts with version: ${testVersion}`);
     execSync(`node ${RELEASE_SCRIPT} ${testVersion}`, { stdio: "inherit" });
   });
 
