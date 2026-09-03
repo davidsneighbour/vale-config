@@ -9,7 +9,7 @@ The DNB Vale Configuration package is hosted as an externally downloadable `.zip
 
 ```ini
 MinAlertLevel = suggestion # suggestion, warning, error
-Packages = https://github.com/dnbhq/vale-config/releases/download/v0.1.7/DNB.zip
+Packages = https://github.com/davidsneighbour/vale-config/releases/download/v0.1.7/DNB.zip
 ```
 
 ### Understanding vale configuration merging
@@ -20,58 +20,45 @@ For example, consider the following configuration:
 
 ```ini
 Packages = Microsoft,
-https://github.com/dnbhq/vale-config/releases/download/v0.1.7/DNB.zip
+https://github.com/davidsneighbour/vale-config/releases/download/v0.1.7/DNB.zip
 ```
 
 In this setup:
 
 1. **`Microsoft`**: Provides a base set of configurations and rules.
-2. **`dnb-vale-config`**: Our custom package, listed last, **overrides settings** from `Microsoft`.
+2. **`vale-config`**: Our custom package, listed last, **overrides settings** from `Microsoft`.
 
 ## Release process
 
-This repository follows **semantic versioning** (`MAJOR.MINOR.PATCH`) for all releases.
+This repository follows **semantic versioning** (`MAJOR.MINOR.PATCH`) for all releases, driven by [`release-it`](https://github.com/release-it/release-it) via the shared `@dnbhq/release-config`.
 
 ### Steps for creating a release
 
-1. **Bump the Version**:
-   * Run the release script with the desired bump type:
+1. **Run a release script**:
 
-     ```bash
-     node release.ts [patch|minor|major]
-     ```
+   ```bash
+   npm run release        # bump determined by conventional commits
+   npm run release:patch  # or :minor / :major to force a bump
+   npm run release:dry    # dry run, no side effects
+   ```
 
-   * Defaults to `patch` if no bump type is specified.
+2. **Version updates**:
+   * `package.json`'s `version` field.
+   * The `# Version: ...` header in `src/DNB/.vale.ini` and the DNB vocabulary files.
+   * The download link in `README.md`.
+   * `CHANGELOG.md` (conventional changelog) and `CITATION.cff`.
 
-2. **Version Updates**:
-   * The script automatically updates:
-     * The `version` field in `package.json`.
-     * The version number in the source files (if present).
-     * The download link in the `README.md` file to point to the latest release.
+3. **Clean git tree required**: the release process ensures there are no uncommitted changes before it starts.
 
-3. **Check for Uncommitted Changes**:
-   * The release process ensures there are no uncommitted changes in the repository.
+4. **Git tag**: creates a tag in the format `vX.X.X`.
 
-4. **Create a Git Tag**:
-   * The script creates a Git tag in the format `vX.X.X`, where `X.X.X` represents the new semantic version.
+5. **Zip and GitHub release**: builds `dist/DNB.zip` from `src/DNB/.vale.ini`, root `README.md`, root `LICENSE.md`, and `src/DNB/styles/`, then uploads it as part of the GitHub release.
 
-5. **Generate and Upload Zip File**:
-   * The script creates a zip file from the contents of the `src/` folder, which becomes the root of the zip file.
-   * The zip file is uploaded as part of the GitHub release.
+Run `npm test` to exercise the version-bump, packaging, and package-install steps locally without any git/GitHub side effects.
 
-### Example release command
+## Known limitations
 
-```bash
-node release.ts minor
-```
-
-This command performs the following:
-
-* Increments the minor version in `package.json` and `src/DNB/.vale.ini`.
-* Updates the download link in `README.md`.
-* Commits the changes to Git.
-* Creates a Git tag with the updated version.
-* Publishes a release on GitHub with the generated zip file.
+The `DNB.Spelling` rule (a custom `en_GB` dictionary check) does not work once this style is installed as a downloaded package — Vale fails to resolve the custom dictionary in that context, aborting every lint run. This is an upstream Vale limitation, not something fixable from this repository; see `AGENTS.md` for details. General spelling is still covered by `Vale.Spelling`, Vale's built-in check, against the `DNB`/`Tech`/`Thailand` vocabularies.
 
 ## License
 

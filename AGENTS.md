@@ -6,7 +6,9 @@ This file provides instructions for agents that work in this repository.
 
 This repository is the source for the DNB [Vale](https://vale.sh) style package: a set of Vale rules, vocabularies, and a console output template, distributed as a downloadable `.zip` file. It is not an npm package to install.
 
-The `src/DNB/` directory is the actual style package. Its contents become the root of the released zip. The Node tooling in the repository root (`release.ts`, `tests/`) exists only to version, package, and publish that zip. It is not part of the linting product itself.
+The `src/DNB/` directory is the actual style package. Its contents become the root of the released zip. The Node tooling in the repository root (`scripts/`, `.release-it.ts`, `tests/`) exists only to version, package, test, and publish that zip. It is not part of the linting product itself.
+
+This repository follows the same tooling shape as its sibling style packages, [vale-aidetection](https://github.com/davidsneighbour/vale-aidetection) and [vale-millennialisms](https://github.com/davidsneighbour/vale-millennialisms): Biome, markdownlint, TypeScript, vitest, and `release-it` via `@dnbhq/release-config`.
 
 ## Working rules
 
@@ -22,11 +24,17 @@ The `src/DNB/` directory is the actual style package. Its contents become the ro
 
 ## Commands
 
-* `npm test` runs `vitest --run`, which exercises `tests/release.test.js`. This test suite runs the real `release.ts` script end-to-end against a `1.2.3-test` version and asserts on its side effects, including updated `README.md` and `.vale.ini`, and generated zip files. It then restores the repo with `git restore`. Run it against a clean working tree. It throws if there are uncommitted changes, and again if it finds changes when the release script itself checks.
-* `npm run release` or `node release.ts [patch|minor|major]` bumps the version, updates `package.json`, `src/DNB/.vale.ini`, the DNB vocabulary files, and the README download link, builds the release zips, commits, tags, pushes, and creates a GitHub release with `gh`. It requires a clean git tree and an authenticated `gh` CLI. It defaults to `patch` if no bump type is given.
-* `node release.ts x.y.z-test` is the dry-run style invocation used by the test suite. It bumps to an explicit `-test` version and builds zips locally, but skips the git tag, push, and GitHub release step.
+* `npm run check` runs `format:check`, `lint` (Biome + markdownlint), `validate` (`tsc --noEmit`), and `test` in sequence. This is the top-level quality gate.
+* `npm test` (or `npm run test`) runs three things in order:
+  * `test:unit` (`vitest --run`) exercises `tests/scaffold.test.js` (required-files check) and `tests/release.test.js`, which runs `scripts/update-version.ts` and `scripts/build-release-zip.sh` end-to-end against a `1.2.3-test` version and asserts on their side effects (`README.md`, `src/DNB/.vale.ini`, and the generated zip). It then restores the repo with `git restore`. Run it against a clean working tree; it throws if there are uncommitted changes.
+  * `test:vale` (`scripts/test-vale.sh`) runs Vale directly against `tests/fixtures/*.md` using `src/DNB/.vale.ini`, and asserts specific DNB rules do/don't fire via `tests/verify-vale-output.js`. This is the **feature test**: it validates the actual DNB rule content, not just the release plumbing.
+  * `test:package` (`scripts/test-package.sh`) builds `dist/DNB.zip`, installs it into a throwaway Vale project via `Packages = dist/DNB.zip`, and asserts a real rule fires from the packaged zip — this is the "installable via GitHub" guarantee, made concrete. It also recognizes and tolerates the known `DNB.Spelling` packaging bug described below, rather than hard-failing on it.
+* `npm run release`, or a `release:patch`/`release:minor`/`release:major`/`release:force`/`release:dry` variant, runs `release-it` (config in `.release-it.ts`, built on `@dnbhq/release-config`). Its `before:git:release` hook runs `scripts/update-version.ts ${version}` (rewrites the `# Version:` header in `src/DNB/.vale.ini` and the DNB vocabulary files, and the download link in `README.md`), and its `before:github:release` hook runs `scripts/build-release-zip.sh` to build `dist/DNB.zip` before it's attached to the GitHub release. `release-it` handles the conventional changelog, git commit/tag/push, `CITATION.cff` update, and GitHub release creation.
+* `npm run build:zip` (`scripts/build-release-zip.sh`) builds `dist/DNB.zip` on its own, without touching versions or git.
 
-There is no separate lint or build script in `package.json` for the Vale rules themselves. Validate Vale rule correctness by running Vale against sample text with this config, not by running `npm`.
+## Known limitations
+
+* `DNB.Spelling` (the custom `en_GB` Hunspell dictionary rule in `src/DNB/styles/DNB/Spelling.yml`) crashes every Vale lint run once `DNB.zip` is installed as a downloaded package (`Packages = .../DNB.zip`), even with the rule disabled downstream via `DNB.Spelling = NO` — Vale still fails to resolve the dictionary at sync time before any config-level enable/disable is applied. This reproduces with fully isolated Vale cache/data directories, so it isn't local environment contamination. It does **not** reproduce when linting directly from this repo (`vale --config=src/DNB/.vale.ini ...`), only once the style is consumed as a package. This looks like an upstream Vale limitation with custom dictionaries in synced packages, not something fixable from this repo. `Vale.Spelling` (Vale's built-in check, already enabled) still covers general spelling via the `DNB`/`Tech`/`Thailand` vocab lists. `scripts/test-package.sh` recognizes this failure signature (`Code: E201`, `en_GB.dic`) and treats it as a tolerated, expected outcome rather than a hard test failure, so it will flag loudly the moment this changes.
 
 ## Documentation references
 
@@ -36,19 +44,19 @@ There is no separate lint or build script in `package.json` for the Vale rules t
 
 * `src/DNB/.vale.ini` is the actual Vale config shipped to consumers. It sets `StylesPath = styles`, layers `Packages = Microsoft, Google, Hugo, alex, proselint, Readability, write-good` as base styles, and then selectively disables specific rules from each package per `[*.{md,txt}]`. When adding or adjusting a rule, edit the `BasedOnStyles` and per-rule overrides here instead of introducing a new top-level config.
 * `src/DNB/styles/config/templates/dnb.tmpl` is a Vale [output template](https://vale.sh/manual/output/) used for CLI `--output` reporting. It renders a colourised errors, warnings, suggestions table, plus a summary line.
-* `src/DNB/styles/config/vocabularies/<Name>/{accept,reject}.txt` contains Vale vocabulary files. `.vale.ini` currently references `Vocab = DNB, Tech, Thailand`. Each vocabulary is a directory with `accept.txt`, and optionally `reject.txt`, containing regex-style word or phrase patterns. The `DNB` vocabulary files carry a `# Version: x.y.z` header kept in sync with `package.json` by `release.ts`. New vocabulary directories should follow the same directory and file convention.
+* `src/DNB/styles/config/vocabularies/<Name>/{accept,reject}.txt` contains Vale vocabulary files. `.vale.ini` currently references `Vocab = DNB, Tech, Thailand`. Each vocabulary is a directory with `accept.txt`, and optionally `reject.txt`, containing regex-style word or phrase patterns. The `DNB` vocabulary files carry a `# Version: x.y.z` header kept in sync with `package.json` by `scripts/update-version.ts`. New vocabulary directories should follow the same directory and file convention.
 
 ## Release pipeline
 
-`release.ts` is a single self-contained script with no build step. It:
+`release-it` (config in `.release-it.ts`, built on `@dnbhq/release-config`) drives releases:
 
-1. Bumps `package.json` version, or accepts an explicit `-test` version.
-2. Rewrites the `# Version: ...` header in `src/DNB/.vale.ini` and the DNB vocabulary `accept.txt` and `reject.txt` files.
-3. Rewrites the versioned download URL in `README.md`.
-4. Zips the contents of `src/`, not `src/DNB/`, as the archive root into `dist/dnb-vale-config-v<version>.zip` and `dist/DNB.zip`.
-5. For a real, non-`-test` bump, commits, tags `v<version>`, pushes, creates a GitHub release with both zips via `gh release create`, and opens the release-edit page in a browser.
+1. Bumps `package.json` version from conventional commits (or an explicit increment).
+2. `before:git:release` hook runs `node scripts/update-version.ts ${version}`, which rewrites the `# Version: ...` header in `src/DNB/.vale.ini` and the DNB vocabulary `accept.txt`/`reject.txt` files, and the versioned download URL in `README.md`.
+3. Generates a conventional changelog entry in `CHANGELOG.md`, and updates `CITATION.cff` (both handled by `@dnbhq/release-config`).
+4. `before:github:release` hook runs `scripts/build-release-zip.sh`, which zips `src/DNB/.vale.ini`, root `README.md`, root `LICENSE.md`, and `src/DNB/styles/` into `dist/DNB.zip`.
+5. Commits, tags `v<version>`, pushes, and creates a GitHub release with `dist/DNB.zip` attached.
 
-Logs from every run are appended to `~/.logs/vale-release-YYYY-MM-DD.log`.
+`scripts/test-package.sh` (used by `npm test`) exercises steps 2 and 4 directly, without git/GitHub side effects, against an explicit `-test` version.
 
 ## Repository conventions
 

@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this Vale style package, please cite it using this metadata."
+title: "vale-config"
+type: software
+authors:
+  - family-names: Kollitsch
+    given-names: Patrick
+repository-code: "https://github.com/davidsneighbour/vale-config"
+url: "https://github.com/davidsneighbour/vale-config"
+license: MIT
+version: v0.1.7
+date-released: 2026-09-03

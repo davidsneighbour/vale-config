@@ -15,29 +15,31 @@ const REJECT_PATH = path.join(
   SRC_DIR,
   "DNB/styles/config/vocabularies/DNB/reject.txt",
 );
-const RELEASE_SCRIPT = path.resolve("release.ts");
-const PACKAGE_JSON_PATH = path.resolve("package.json");
+const UPDATE_VERSION_SCRIPT = path.resolve("scripts/update-version.ts");
+const BUILD_ZIP_SCRIPT = path.resolve("scripts/build-release-zip.sh");
 const testVersion = "1.2.3-test";
-const versionedZip = path.join(DIST_DIR, `dnb-vale-config-v${testVersion}.zip`);
-const configZip = path.join(DIST_DIR, "DNB.zip");
+const packageZip = path.join(DIST_DIR, "DNB.zip");
 
-// Helper to clean up generated files after tests
+// Only true once beforeAll has actually mutated the working tree - guards
+// afterAll's cleanup() from git-restoring files it never touched (e.g. when
+// the uncommitted-changes check throws before running anything), which would
+// otherwise silently discard unrelated in-progress edits to those files.
+let mutatedWorkingTree = false;
+
 function cleanup() {
+  if (!mutatedWorkingTree) {
+    return;
+  }
   console.log("Cleaning up...");
   execSync(
-    `git restore ${README_PATH} ${VALE_INI_PATH} ${ACCEPT_PATH} ${REJECT_PATH} ${PACKAGE_JSON_PATH}`,
+    `git restore ${README_PATH} ${VALE_INI_PATH} ${ACCEPT_PATH} ${REJECT_PATH}`,
     {
       stdio: "inherit",
     },
   );
-  if (fs.existsSync(versionedZip)) fs.unlinkSync(versionedZip);
-  if (fs.existsSync(configZip)) fs.unlinkSync(configZip);
-  if (fs.existsSync(DIST_DIR) && fs.readdirSync(DIST_DIR).length === 0) {
-    fs.rmdirSync(DIST_DIR);
-  }
+  if (fs.existsSync(packageZip)) fs.unlinkSync(packageZip);
 }
 
-// Helper to check for uncommitted changes
 function hasUncommittedChanges() {
   const status = execSync("git status --porcelain").toString().trim();
   return status.length > 0;
@@ -52,8 +54,15 @@ describe("Release Process Tests", () => {
       );
     }
 
-    console.log(`Running release.ts with version: ${testVersion}`);
-    execSync(`node ${RELEASE_SCRIPT} ${testVersion}`, { stdio: "inherit" });
+    mutatedWorkingTree = true;
+
+    console.log(`Running update-version.ts with version: ${testVersion}`);
+    execSync(`node ${UPDATE_VERSION_SCRIPT} ${testVersion}`, {
+      stdio: "inherit",
+    });
+
+    console.log("Building release zip...");
+    execSync(BUILD_ZIP_SCRIPT, { stdio: "inherit" });
   });
 
   afterAll(() => {
@@ -63,7 +72,7 @@ describe("Release Process Tests", () => {
   it("README.md contains the correct version", () => {
     expect(fs.existsSync(README_PATH)).toBe(true);
     const readmeContent = fs.readFileSync(README_PATH, "utf-8");
-    const expectedUrl = `https://github.com/dnbhq/vale-config/releases/download/v${testVersion}/DNB.zip`;
+    const expectedUrl = `https://github.com/davidsneighbour/vale-config/releases/download/v${testVersion}/DNB.zip`;
     expect(readmeContent).toContain(expectedUrl);
   });
 
@@ -74,9 +83,8 @@ describe("Release Process Tests", () => {
     expect(iniContent).toContain(expectedVersion);
   });
 
-  it("Generated zip files exist", () => {
-    expect(fs.existsSync(versionedZip)).toBe(true);
-    expect(fs.existsSync(configZip)).toBe(true);
+  it("Generated zip file exists", () => {
+    expect(fs.existsSync(packageZip)).toBe(true);
   });
 
   it("Required files and directories exist", () => {
