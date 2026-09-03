@@ -1,5 +1,41 @@
 # Changelog
 
+## [0.3.0](https://github.com/davidsneighbour/vale-config/compare/v0.2.0...v0.3.0) (2026-09-03)
+
+### Feat
+
+* make Vale output locations clickable ([15a695c](https://github.com/davidsneighbour/vale-config/commit/15a695cb3ce92e111c3ccffe7d43e2bf68bd88b2)), references [#26](https://github.com/davidsneighbour/vale-config/issues/26)
+
+### Fix
+
+* sync DNB vocab/ini version headers with the v0.2.0 release ([90192fe](https://github.com/davidsneighbour/vale-config/commit/90192fe8b64ee0541d2411510259f816ea883c70))
+
+### Refactor
+
+* flatten src/DNB/ into .vale.ini + styles/ at repo root ([fd2e59b](https://github.com/davidsneighbour/vale-config/commit/fd2e59bd116945572954e52ad86f821bb8b5efda))
+* merge Vale style packages ([4a4cdc7](https://github.com/davidsneighbour/vale-config/commit/4a4cdc7f4956acee934f6692583dcf07b4a8170f)), references [#26](https://github.com/davidsneighbour/vale-config/issues/26)
+
+### Docs
+
+* install via releases/latest instead of a pinned version ([5cb2a47](https://github.com/davidsneighbour/vale-config/commit/5cb2a47984c68ebf42a0321dbb3c6c7c576927c7))
+
+### Style
+
+* format .vscode/settings.json ([b6d85e5](https://github.com/davidsneighbour/vale-config/commit/b6d85e55be31407e678f1883466495bdb169f9da))
+
+### Build
+
+* **fix:** update renovate config to new path ([5939b31](https://github.com/davidsneighbour/vale-config/commit/5939b316b5ec38ab52a9ea23c969263899f7a215))
+
+### Chore
+
+* pin release-it version ([cc6cdb2](https://github.com/davidsneighbour/vale-config/commit/cc6cdb20aa1f75f3bfe53159a848c5780e19168a)), references [#26](https://github.com/davidsneighbour/vale-config/issues/26)
+* refresh package manifest tooling ([6ef1811](https://github.com/davidsneighbour/vale-config/commit/6ef1811c6b8543c74e4a7887fb724bda8dc3caff)), references [#26](https://github.com/davidsneighbour/vale-config/issues/26)
+* remove local VS Code workspace ([fb8107d](https://github.com/davidsneighbour/vale-config/commit/fb8107d76914f929d2c41438940045ac6aa2b2bd)), references [#26](https://github.com/davidsneighbour/vale-config/issues/26)
+* run biome migrate --write on postinstall ([7f15cfc](https://github.com/davidsneighbour/vale-config/commit/7f15cfc9cb558ac3275bba5a8d99d1e087f61bf1))
+* simplify .gitignore and dependabot.yml, refresh VS Code settings ([f1aa8f7](https://github.com/davidsneighbour/vale-config/commit/f1aa8f749823770ce54a970eb1748079320a2343))
+* sync Vale styles after install ([3a13217](https://github.com/davidsneighbour/vale-config/commit/3a13217daefd542e67813c02d3a38e04cf0bd969)), references [#26](https://github.com/davidsneighbour/vale-config/issues/26)
+
 ## [0.2.0](https://github.com/davidsneighbour/vale-config/compare/v0.1.6...v0.2.0) (2026-09-03)
 
 ### Feat
