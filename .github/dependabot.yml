@@ -10,45 +10,9 @@ updates:
       day: friday
       time: "22:00"
       timezone: Asia/Bangkok
+    cooldown:
+      default-days: 7
     assignees:
-      - davidsneighbour
-    reviewers:
-      - davidsneighbour
-    target-branch: main
-    open-pull-requests-limit: 999
-    pull-request-branch-name:
-      separator: /
-    labels:
-      - dependencies
-
-  - package-ecosystem: gomod
-    directory: /
-    schedule:
-      interval: monthly
-      day: friday
-      time: "22:00"
-      timezone: Asia/Bangkok
-    assignees:
-      - davidsneighbour
-    reviewers:
-      - davidsneighbour
-    target-branch: main
-    open-pull-requests-limit: 999
-    pull-request-branch-name:
-      separator: /
-    labels:
-      - dependencies
-
-  - package-ecosystem: github-actions
-    directory: /
-    schedule:
-      interval: monthly
-      day: friday
-      time: "22:00"
-      timezone: Asia/Bangkok
-    assignees:
-      - davidsneighbour
-    reviewers:
       - davidsneighbour
     target-branch: main
     open-pull-requests-limit: 999
