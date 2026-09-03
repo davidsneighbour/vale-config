@@ -37,11 +37,11 @@ function updateReadmeDownloadLink(newVersion: string): void {
   const content = fs.readFileSync(README_PATH, "utf-8");
   const updated = content
     .replace(
-      /https:\/\/github\.com\/(?:davidsneighbour\/dnb-vale-config|dnbhq\/vale-config)\/releases\/(?:latest\/download|download\/v\d+\.\d+\.\d+(?:-test)?)\/DNB\.zip/,
+      /https:\/\/github\.com\/(?:davidsneighbour\/(?:dnb-vale-config|vale-config)|dnbhq\/vale-config)\/releases\/(?:latest\/download|download\/v\d+\.\d+\.\d+(?:-test)?)\/DNB\.zip/,
       `https://github.com/davidsneighbour/vale-config/releases/download/v${newVersion}/DNB.zip`,
     )
     .replace(
-      /Packages = Microsoft,?\s*https:\/\/github\.com\/(?:davidsneighbour\/dnb-vale-config|dnbhq\/vale-config)\/releases\/(?:latest\/download|download\/v\d+\.\d+\.\d+(?:-test)?)\/DNB\.zip/,
+      /Packages = Microsoft,?\s*https:\/\/github\.com\/(?:davidsneighbour\/(?:dnb-vale-config|vale-config)|dnbhq\/vale-config)\/releases\/(?:latest\/download|download\/v\d+\.\d+\.\d+(?:-test)?)\/DNB\.zip/,
       `Packages = Microsoft,\nhttps://github.com/davidsneighbour/vale-config/releases/download/v${newVersion}/DNB.zip`,
     );
   fs.writeFileSync(README_PATH, updated);
