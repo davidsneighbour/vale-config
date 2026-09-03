@@ -1,0 +1,5 @@
+extends: script
+message: 'AI-associated vocabulary appears repeatedly; review whether the wording is too generic.'
+level: warning
+scope: raw
+script: vocabulary-density-warning.tengo

@@ -1,0 +1,16 @@
+extends: existence
+message: 'Found chatbot artefact "%s"; remove pasted AI interface metadata or boilerplate.'
+level: error
+ignorecase: true
+scope: raw
+tokens:
+  - '\bas an AI (?:language )?model\b'
+  - '\bas of my last (?:update|training)\b'
+  - '\bknowledge cutoff\b'
+  - '\bI (?:cannot|can''t) browse the internet\b'
+  - '\bI (?:do not|don''t) access real-time\b'
+  - '\bcontentReference\b'
+  - '\boaicite\b'
+  - '\bturn[0-9]+(?:search|news|image)[0-9]+\b'
+  - '\battributableIndex\b'
+  - '\butm_source='

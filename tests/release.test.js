@@ -12,7 +12,7 @@ const REJECT_PATH = path.resolve("styles/config/vocabularies/DNB/reject.txt");
 const UPDATE_VERSION_SCRIPT = path.resolve("scripts/update-version.ts");
 const BUILD_ZIP_SCRIPT = path.resolve("scripts/build-release-zip.sh");
 const testVersion = "1.2.3-test";
-const packageZip = path.join(DIST_DIR, "DNB.zip");
+const packageZip = path.join(DIST_DIR, "config.zip");
 
 // Only true once beforeAll has actually mutated the working tree - guards
 // afterAll's cleanup() from git-restoring files it never touched (e.g. when
@@ -81,7 +81,7 @@ describe("Release Process Tests", () => {
   it("README.md points at the latest release, not a pinned version", () => {
     const readmeContent = fs.readFileSync(README_PATH, "utf-8");
     expect(readmeContent).toContain(
-      "https://github.com/davidsneighbour/vale-config/releases/latest/download/DNB.zip",
+      "https://github.com/davidsneighbour/vale-config/releases/latest/download/config.zip",
     );
   });
 });

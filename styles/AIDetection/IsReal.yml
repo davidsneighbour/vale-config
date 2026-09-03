@@ -1,0 +1,8 @@
+extends: existence
+message: '"%s" is a rhetorical AI-associated writing pattern; consider concrete evidence instead.'
+level: suggestion
+ignorecase: true
+scope: ~blockquote
+tokens:
+  - '\b(?:improvement|demand|work|risk|problem|shift|pressure|momentum)\s+is\s+real(?:,\s*(?:and|but)\s+(?:it''s\s+)?(?:not subtle|growing|accelerating|hard to ignore))?\b'
+  - '\bthis\s+is\s+the\s+real\s+work\b'

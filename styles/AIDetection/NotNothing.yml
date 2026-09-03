@@ -1,0 +1,7 @@
+extends: existence
+message: '"%s" is a stock understatement; consider naming the concrete significance.'
+level: suggestion
+ignorecase: true
+scope: ~blockquote
+tokens:
+  - '\b(?:that''s|that is|this is|it is|which is)\s+not\s+nothing\b'

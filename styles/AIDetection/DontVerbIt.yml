@@ -1,0 +1,5 @@
+extends: script
+message: 'Repeated negated verb construction; consider whether the contrast can be stated more directly.'
+level: warning
+scope: text
+script: dont-verb-it.tengo

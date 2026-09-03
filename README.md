@@ -1,5 +1,5 @@
 <!-- markdownlint-disable MD041 -->
-This repository contains a custom Vale configuration, styles, and dictionary files for writing and linting text.
+This repository contains a custom Vale configuration, style rules, and dictionary files for writing and linting text.
 
 ## Usage
 
@@ -9,15 +9,26 @@ The DNB Vale Configuration package is hosted as an externally downloadable `.zip
 
 ```ini
 MinAlertLevel = suggestion # suggestion, warning, error
-Packages = https://github.com/davidsneighbour/vale-config/releases/latest/download/DNB.zip
+Packages = https://github.com/davidsneighbour/vale-config/releases/latest/download/config.zip
+
+[*.{md,txt}]
+BasedOnStyles = DNB, AIDetection, Millennialisms
 ```
+
+The package ships three rule namespaces:
+
+* `DNB` for the core writing, readability, inclusive language, and spelling rules.
+* `AIDetection` for observable AI-writing signals.
+* `Millennialisms` for millennial-style slang, meme phrasing, and emotional hyperbole.
+
+Enable only the rule sets you need in `BasedOnStyles`. For example, use `BasedOnStyles = DNB` for the core rules only, or `BasedOnStyles = AIDetection, Millennialisms` for the two optional rule sets without the core DNB rules.
 
 ### Pinning a version (optional)
 
 If you need reproducible builds, replace `latest` with a version tag:
 
 ```ini
-Packages = https://github.com/davidsneighbour/vale-config/releases/download/v0.1.0/DNB.zip
+Packages = https://github.com/davidsneighbour/vale-config/releases/download/v0.1.0/config.zip
 ```
 
 Replace `v0.1.0` with the desired version. This example is illustrative only and isn't kept in sync with the current release - check the [releases page](https://github.com/davidsneighbour/vale-config/releases) for available versions.
@@ -30,7 +41,7 @@ For example, consider the following configuration:
 
 ```ini
 Packages = Microsoft,
-https://github.com/davidsneighbour/vale-config/releases/latest/download/DNB.zip
+https://github.com/davidsneighbour/vale-config/releases/latest/download/config.zip
 ```
 
 In this setup:
@@ -63,13 +74,13 @@ This repository follows **semantic versioning** (`MAJOR.MINOR.PATCH`) for all re
 
 4. **Git tag**: creates a tag in the format `vX.X.X`.
 
-5. **Zip and GitHub release**: builds `dist/DNB.zip` from `.vale.ini`, `README.md`, `LICENSE.md`, and `styles/`, then uploads it as part of the GitHub release.
+5. **Zip and GitHub release**: builds `dist/config.zip` from `.vale.ini`, `README.md`, `LICENSE.md`, and `styles/`, then uploads it as part of the GitHub release.
 
 Run `npm test` to exercise the version-bump, packaging, and package-install steps locally without any git/GitHub side effects.
 
-## Known limitations
+## Spelling dictionary
 
-The `DNB.Spelling` rule (a custom `en_GB` dictionary check) does not work once this style is installed as a downloaded package — Vale fails to resolve the custom dictionary in that context, aborting every lint run. This is an upstream Vale limitation, not something fixable from this repository; see `AGENTS.md` for details. General spelling is still covered by `Vale.Spelling`, Vale's built-in check, against the `DNB`/`Tech`/`Thailand` vocabularies.
+The package includes the `en_GB` Hunspell dictionary files used by `DNB.Spelling`. The package test installs `config.zip` into a throwaway Vale project and verifies that the spelling rule works from the downloaded package layout.
 
 ## License
 

@@ -9,10 +9,10 @@ Usage: $(basename "$0") [--help]
 Build the distributable Vale package zip for releases.
 
 Creates:
-  dist/DNB.zip
+  dist/config.zip
 
 Archive layout:
-  DNB/
+  config/
     .vale.ini
     styles/
     README.md
@@ -44,6 +44,16 @@ require_dir() {
   fi
 }
 
+write_package_config() {
+  local target="$1"
+
+  sed \
+    -e 's/^StylesPath = styles$/StylesPath = ../' \
+    -e '/^Packages = /d' \
+    -e 's/^BasedOnStyles = Vale, Microsoft, Google, alex, proselint, Readability, write-good, DNB, AIDetection, Millennialisms$/BasedOnStyles = Vale, DNB, AIDetection, Millennialisms/' \
+    ".vale.ini" > "${target}"
+}
+
 main() {
   if [[ "${1:-}" == "--help" ]]; then
     print_help
@@ -55,8 +65,8 @@ main() {
   local output_file
 
   project_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-  package_root="DNB"
-  output_file="dist/DNB.zip"
+  package_root="config"
+  output_file="dist/config.zip"
 
   cd "${project_root}"
 
@@ -72,15 +82,17 @@ main() {
 
   mkdir -p "${TEMP_DIR}/${package_root}"
 
-  cp ".vale.ini" "${TEMP_DIR}/${package_root}/.vale.ini"
+  write_package_config "${TEMP_DIR}/${package_root}/.vale.ini"
   cp "README.md" "${TEMP_DIR}/${package_root}/README.md"
   cp "LICENSE.md" "${TEMP_DIR}/${package_root}/LICENSE.md"
 
-  # Only DNB/ and config/ are hand-authored; styles/ may also hold base
-  # packages synced locally via `vale sync` (Packages = Microsoft, Google,
-  # ... in .vale.ini) that must not end up bundled inside the DNB zip.
+  # Only these local styles and config/ are hand-authored; styles/ may also hold
+  # base packages synced locally via `vale sync` (Packages = Microsoft, Google,
+  # ... in .vale.ini) that must not end up bundled inside the release zip.
   mkdir -p "${TEMP_DIR}/${package_root}/styles"
   cp -R "styles/DNB" "${TEMP_DIR}/${package_root}/styles/DNB"
+  cp -R "styles/AIDetection" "${TEMP_DIR}/${package_root}/styles/AIDetection"
+  cp -R "styles/Millennialisms" "${TEMP_DIR}/${package_root}/styles/Millennialisms"
   cp -R "styles/config" "${TEMP_DIR}/${package_root}/styles/config"
 
   rm -f "${output_file}"

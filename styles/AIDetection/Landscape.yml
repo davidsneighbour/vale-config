@@ -1,0 +1,8 @@
+extends: existence
+message: '"%s" is AI-associated scene-setting boilerplate; consider naming the specific context.'
+level: warning
+ignorecase: true
+scope: ~blockquote
+tokens:
+  - '\b(?:ever-evolving|evolving|changing|shifting)\s+landscape\b'
+  - '\bin today''s\s+(?:fast-paced|ever-changing|ever-evolving|digital|modern|competitive)\s+world\b'

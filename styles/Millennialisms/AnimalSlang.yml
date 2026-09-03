@@ -1,0 +1,61 @@
+extends: substitution
+message: Millennialism, this can be worded less millennial.
+level: warning
+ignorecase: false
+scope: ~blockquote
+action:
+  name: replace
+swap:
+  (?i)\bpupper\b: puppy
+  (?i)\bdoggo\b: dog
+  (?i)\bsmol\b: small
+  (?i)\bboi\b: boy
+  (?i)\bbirb\b: bird
+  (?i)\bchonk\b: overweight pet
+  (?i)\bchonky\b: chunky
+  (?i)\bsnek\b: snake
+  (?i)\bfloof\b: fluff
+  (?i)\bfloofball\b: fluffy animal
+  (?i)\bblep\b: tongue out
+  (?i)\bmlem\b: lick
+  (?i)\bboop\b: tap
+  (?i)\bsnoot\b: snout
+  (?i)\bhenlo\b: hello
+  (?i)\bhooman\b: human
+  (?i)\bfren\b: friend
+  (?i)\bfriendo\b: friend
+  (?i)\bfur\s+baby\b: pet
+  (?i)\bfur\s+babies\b: pets
+  (?i)\bdoggo\s+did\s+a\s+heckin\b: dog
+  (?i)\bheckin\s+heck\b: '[rewrite plainly]'
+  (?i)\boh\s+heck\b: '[rewrite plainly]'
+  (?i)\bdanger\s+noodle\b: snake
+  (?i)\btrash\s+panda\b: raccoon
+  (?i)\bsea\s+flap\s+flap\b: '[rewrite plainly]'
+  (?i)\bmurder\s+mittens\b: cat claws
+  (?i)\btoe\s+beans\b: paw pads
+  (?i)\bsploot\b: lie stretched out
+  (?i)\btippy\s+taps\b: excited steps
+  (?i)\bzoomies\b: sudden burst of energy
+  (?i)\bgrabbies\b: '[rewrite plainly]'
+  (?i)\bchömk\b: '[rewrite plainly]'
+  (?i)\babsolute\s+unit\b: very large example
+  (?i)\bin\s+awe\s+of\s+the\s+size\s+of\s+this\s+lad\b: '[rewrite plainly]'
+  (?i)\blong\s+boi\b: long animal
+  (?i)\bthicc\s+boi\b: large animal
+  (?i)\bgoodest\b: very good
+  (?i)\bbestest\b: best
+  (?i)\bgoodest\s+boi\b: '[rewrite plainly]'
+  (?i)\bdoing\s+me\s+a\s+concern\b: '[rewrite plainly]'
+  (?i)\bdoing\s+me\s+a\s+frighten\b: '[rewrite plainly]'
+  (?i)\bdoin\s+a\s+blep\b: '[rewrite plainly]'
+  (?i)\bbork\b: bark
+  (?i)\bbig\s+bork\b: '[rewrite plainly]'
+  (?i)\bsmol\s+bork\b: '[rewrite plainly]'
+  (?i)\bwoofer\b: dog
+  (?i)\bsub\s+woofer\b: small dog
+  (?i)\byapper\b: talkative person
+  (?i)\bpupperino\b: puppy
+  (?i)\bfloofer\b: fluffy animal
+  (?i)\bcloud\b: '[rewrite plainly]'
+  (?i)\bwalking\s+cloud\b: '[rewrite plainly]'

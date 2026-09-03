@@ -1,0 +1,78 @@
+extends: substitution
+message: Millennialism, this can be worded less millennial.
+level: warning
+ignorecase: false
+scope: ~blockquote
+action:
+  name: replace
+swap:
+  (?i)\bcan't\s+even\b: can't deal with this
+  (?i)\bI'm\s+dead\b: that's very funny
+  (?i)\bliterally\s+dead\b: overwhelmed
+  (?i)\ball\s+the\s+feels\b: strong emotions
+  (?i)\bthe\s+feels\b: emotion
+  (?i)\bright\s+in\s+the\s+feels\b: emotionally affecting
+  (?i)\bbig\s+mood\b: relatable
+  (?i)\bI'm\s+obsessed\b: '[rewrite plainly]'
+  (?i)\bepic\s+fail\b: failure
+  (?i)\bwinning\b: '[rewrite plainly]'
+  (?i)\bnailed\s+it\b: '[rewrite plainly]'
+  (?i)\bcrushed\s+it\b: '[rewrite plainly]'
+  (?i)\bkilled\s+it\b: '[rewrite plainly]'
+  (?i)\ball\s+the\s+things\b: '[rewrite plainly]'
+  (?i)\bgive\s+me\s+all\s+the\s+things\b: '[rewrite plainly]'
+  (?i)\bshut\s+up\s+and\s+take\s+my\s+money\b: '[rewrite plainly]'
+  (?i)\bmust\s+protect\s+at\s+all\s+costs\b: '[rewrite plainly]'
+  (?i)\bwe\s+don't\s+deserve\s+dogs\b: '[rewrite plainly]'
+  (?i)\bthe\s+struggle\s+is\s+real\b: '[rewrite plainly]'
+  (?i)\btruth\s+bomb\b: frank point
+  (?i)\bmic\s+drop\b: final point
+  (?i)\bboom\b: '[rewrite plainly]'
+  (?i)\bthis\s+is\s+everything\b: '[rewrite plainly]'
+  (?i)\bI'm\s+not\s+crying\s+you're\s+crying\b: '[rewrite plainly]'
+  (?i)\bwho's\s+cutting\s+onions\b: '[rewrite plainly]'
+  (?i)\bninja\s+onions\b: '[rewrite plainly]'
+  (?i)\bthe\s+audacity\b: '[rewrite plainly]'
+  (?i)\bwhole\s+entire\s+mood\b: very relatable
+  (?i)\bgood\s+vibes\s+only\b: '[rewrite plainly]'
+  (?i)\bpositive\s+vibes\b: '[rewrite plainly]'
+  (?i)\bno\s+bad\s+vibes\b: '[rewrite plainly]'
+  (?i)\bsending\s+good\s+vibes\b: '[rewrite plainly]'
+  (?i)\bspeaking\s+it\s+into\s+existence\b: '[rewrite plainly]'
+  (?i)\bbig\s+energy\b: '[rewrite plainly]'
+  (?i)\bchaotic\s+energy\b: '[rewrite plainly]'
+  (?i)\bprotect\s+your\s+energy\b: '[rewrite plainly]'
+  (?i)\bmatch\s+my\s+energy\b: '[rewrite plainly]'
+  (?i)\bglow\s+up\b: '[rewrite plainly]'
+  (?i)\blevel\s+up\b: '[rewrite plainly]'
+  (?i)\bso\s+brave\b: '[rewrite plainly]'
+  (?i)\bso\s+blessed\b: '[rewrite plainly]'
+  (?i)\bunapologetically\s+me\b: '[rewrite plainly]'
+  (?i)\bslay\s+queen\b: excellent work
+  (?i)\bbrunch\s+is\s+life\b: '[rewrite plainly]'
+  (?i)\brosé\s+all\s+day\b: drinking rosé
+  (?i)\bwine\s+not\b: '[rewrite plainly]'
+  (?i)\bwill\s+run\s+for\s+wine\b: '[rewrite plainly]'
+  (?i)\bneed\s+wine\b: '[rewrite plainly]'
+  (?i)\bhappy\s+hour\s+vibes\b: '[rewrite plainly]'
+  (?i)\bso\s+much\s+same\b: '[rewrite plainly]'
+  (?i)\ball\s+of\s+this\b: I agree
+  (?i)\bsay\s+it\s+louder\b: '[rewrite plainly]'
+  (?i)\bpreach\b: exactly
+  (?i)\bhard\s+facts\b: facts
+  (?i)\bhard\s+truth\b: '[rewrite plainly]'
+  (?i)\bI\s+literally\s+can't\b: I can't handle this
+  (?i)\bI'm\s+literally\s+dead\b: '[rewrite plainly]'
+  (?i)\bI'm\s+screaming\b: '[rewrite plainly]'
+  (?i)\bugly\s+crying\b: crying
+  (?i)\bhappy\s+tears\b: '[rewrite plainly]'
+  (?i)\bthe\s+ugly\s+cry\b: '[rewrite plainly]'
+  (?i)\bfull\s+on\s+sobbing\b: '[rewrite plainly]'
+  (?i)\bI'm\s+broken\b: '[rewrite plainly]'
+  (?i)\bput\s+me\s+back\s+together\b: '[rewrite plainly]'
+  (?i)\bglue\s+me\s+back\s+together\b: '[rewrite plainly]'
+  (?i)\bsend\s+help\b: I need help
+  (?i)\bbig\s+oof\b: unfortunate
+  (?i)\bbig\s+yikes\b: concerning
+  (?i)\blouder\s+for\s+the\s+people\s+in\s+the\s+back\b: '[rewrite plainly]'
+  (?i)\bthat\s+energy\b: '[rewrite plainly]'

@@ -1,0 +1,5 @@
+extends: script
+message: 'Repeated "did not ..." construction; review whether the chain is intentional.'
+level: warning
+scope: text
+script: did-not-chain.tengo

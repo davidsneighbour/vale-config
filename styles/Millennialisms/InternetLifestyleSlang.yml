@@ -1,0 +1,183 @@
+extends: substitution
+message: Millennialism, this can be worded less millennial.
+level: warning
+ignorecase: false
+scope: ~blockquote
+action:
+  name: replace
+swap:
+  (?i)\badulting\b: handling adult responsibilities
+  (?i)\bpeopling\b: socialising
+  (?i)\bhumaning\b: acting like an adult
+  (?i)\bhubby\b: husband
+  (?i)\bwifey\b: wife
+  (?i)\bpreggo\b: pregnant
+  (?i)\bpreggers\b: pregnant
+  (?i)\bkiddo\b: child
+  (?i)\blittles\b: children
+  (?i)\bplant\s+baby\b: '[rewrite plainly]'
+  (?i)\bplant\s+mom\b: plant owner
+  (?i)\bplant\s+dad\b: plant owner
+  (?i)\bwine\s+mom\b: '[rewrite plainly]'
+  (?i)\bboy\s+mom\b: '[rewrite plainly]'
+  (?i)\bmama\s+bear\b: '[rewrite plainly]'
+  (?i)\bshe\-shed\b: '[rewrite plainly]'
+  (?i)\bhubster\b: '[rewrite plainly]'
+  (?i)\bbae\b: partner
+  (?i)\bsquad\b: group
+  (?i)\btribe\b: group
+  (?i)\byaas\b: 'yes'
+  (?i)\byaaas\s+queen\b: '[rewrite plainly]'
+  (?i)\bit\s+me\b: this is me
+  (?i)\bliving\s+my\s+best\s+life\b: '[rewrite plainly]'
+  (?i)\btotes\b: totally
+  (?i)\badorbs\b: adorable
+  (?i)\bamaze\b: '[rewrite plainly]'
+  (?i)\bamazeballs\b: excellent
+  (?i)\bcray\s+cray\b: ridiculous
+  (?i)\bdeets\b: details
+  (?i)\bwhatevs\b: whatever
+  (?i)\bnoms\b: food
+  (?i)\bnom\s+nom\b: eating
+  (?i)\bsammie\b: sandwich
+  (?i)\bsammich\b: sandwich
+  (?i)\bveggies\b: vegetables
+  (?i)\bnuggies\b: nuggets
+  (?i)\bchicky\s+nuggies\b: chicken nuggets
+  (?i)\bbreaky\b: breakfast
+  (?i)\bdin\s+din\b: dinner
+  (?i)\byummy\b: tasty
+  (?i)\byummo\b: tasty
+  (?i)\ble\s+sigh\b: sigh
+  (?i)\ble\s+tired\b: '[rewrite plainly]'
+  (?i)\bdoing\s+the\s+thing\b: '[rewrite plainly]'
+  (?i)\bbecause\s+science\b: '[rewrite plainly]'
+  (?i)\bbecause\s+reasons\b: for unclear reasons
+  (?i)\bjust\s+saying\b: to be clear
+  (?i)\bsorry\s+not\s+sorry\b: not sorry
+  (?i)\bamirite\b: am I right
+  (?i)\basking\s+for\s+a\s+friend\b: asking indirectly
+  (?i)\bbut\s+first\s+coffee\b: '[rewrite plainly]'
+  (?i)\bcoffee\s+is\s+life\b: '[rewrite plainly]'
+  (?i)\bwine\s+o'clock\b: '[rewrite plainly]'
+  (?i)\bit's\s+wine\s+thirty\b: '[rewrite plainly]'
+  (?i)\bretail\s+therapy\b: shopping
+  (?i)\bself\s+care\b: self-care
+  (?i)\btreat\s+yo\s+self\b: treat yourself
+  (?i)\bsmol\s+bean\b: small and endearing person
+  (?i)\bcinnamon\s+roll\b: kind person
+  (?i)\bI\s+did\s+a\s+thing\b: '[rewrite plainly]'
+  (?i)\blife\s+hack\b: '[rewrite plainly]'
+  (?i)\bwanderlust\b: love of travel
+  (?i)\bfoodie\b: food enthusiast
+  (?i)\bbromance\b: '[rewrite plainly]'
+  (?i)\bmancrush\b: '[rewrite plainly]'
+  (?i)\bladycrush\b: '[rewrite plainly]'
+  (?i)\bbrekkie\b: breakfast
+  (?i)\bpresh\b: '[rewrite plainly]'
+  (?i)\bridic\b: '[rewrite plainly]'
+  (?i)\bobvi\b: obviously
+  (?i)\bperf\b: '[rewrite plainly]'
+  (?i)\bgorge\b: '[rewrite plainly]'
+  (?i)\bdelish\b: '[rewrite plainly]'
+  (?i)\bvacay\b: holiday
+  (?i)\bstaycay\b: staycation
+  (?i)\bsesh\b: '[rewrite plainly]'
+  (?i)\bfeels\s+trip\b: '[rewrite plainly]'
+  (?i)\bthat\s+happened\b: that happened
+  (?i)\bsetting\s+boundaries\b: '[rewrite plainly]'
+  (?i)\bintentionality\b: '[rewrite plainly]'
+  (?i)\bthat\s+aesthetic\b: '[rewrite plainly]'
+  (?i)\bso\s+aesthetic\b: '[rewrite plainly]'
+  (?i)\bwhat\s+a\s+vibe\b: '[rewrite plainly]'
+  (?i)\bcozy\s+vibes\b: '[rewrite plainly]'
+  (?i)\bcozy\s+season\b: '[rewrite plainly]'
+  (?i)\bnesting\b: '[rewrite plainly]'
+  (?i)\bself\-partnered\b: '[rewrite plainly]'
+  (?i)\bconscious\s+uncoupling\b: '[rewrite plainly]'
+  (?i)\bmy\s+journey\b: '[rewrite plainly]'
+  (?i)\bhealing\s+journey\b: '[rewrite plainly]'
+  (?i)\bshow\s+up\s+for\s+yourself\b: '[rewrite plainly]'
+  (?i)\bgrowth\s+mindset\b: '[rewrite plainly]'
+  (?i)\bbeing\s+vulnerable\b: '[rewrite plainly]'
+  (?i)\bcentering\s+myself\b: '[rewrite plainly]'
+  (?i)\bgiving\s+thanks\b: '[rewrite plainly]'
+  (?i)\bpassion\s+project\b: '[rewrite plainly]'
+  (?i)\bside\s+hustle\b: '[rewrite plainly]'
+  (?i)\bgirlboss\b: business owner
+  (?i)\bboss\s+babe\b: business owner
+  (?i)\bmompreneur\b: entrepreneur
+  (?i)\bsolopreneur\b: solo business owner
+  (?i)\bI'm\s+a\s+creative\b: '[rewrite plainly]'
+  (?i)\bmaker\s+space\b: '[rewrite plainly]'
+  (?i)\bfound\s+family\b: '[rewrite plainly]'
+  (?i)\bchosen\s+family\b: '[rewrite plainly]'
+  (?i)\bmy\s+truth\b: '[rewrite plainly]'
+  (?i)\bspeaking\s+my\s+truth\b: '[rewrite plainly]'
+  (?i)\blive\s+your\s+truth\b: '[rewrite plainly]'
+  (?i)\bunapologetically\b: '[rewrite plainly]'
+  (?i)\bown\s+it\b: '[rewrite plainly]'
+  (?i)\bkween\b: queen
+  (?i)\byas\s+kween\b: '[rewrite plainly]'
+  (?i)\bwerk\b: work
+  (?i)\bhunty\b: '[rewrite plainly]'
+  (?i)\bbish\b: person
+  (?i)\bpumpkin\s+spice\b: '[rewrite plainly]'
+  (?i)\bPSL\b: pumpkin spice latte
+  (?i)\bavo\s+toast\b: avocado toast
+  (?i)\bavocado\s+toast\b: '[rewrite plainly]'
+  (?i)\bbrunch\b: '[rewrite plainly]'
+  (?i)\brosé\s+season\b: '[rewrite plainly]'
+  (?i)\bmommy\s+juice\b: '[rewrite plainly]'
+  (?i)\bsippy\s+sippy\b: '[rewrite plainly]'
+  (?i)\bdrinky\b: '[rewrite plainly]'
+  (?i)\bcocktail\s+o'clock\b: '[rewrite plainly]'
+  (?i)\bcheers\s+to\s+that\b: '[rewrite plainly]'
+  (?i)\bfiguratively\s+literally\b: '[rewrite plainly]'
+  (?i)\bdeceased\b: exhausted or overcome
+  (?i)\bsob\b: '[rewrite plainly]'
+  (?i)\bwrecked\b: '[rewrite plainly]'
+  (?i)\bgutted\b: '[rewrite plainly]'
+  (?i)\bshattered\b: '[rewrite plainly]'
+  (?i)\bbroken\b: '[rewrite plainly]'
+  (?i)\bJesus\s+take\s+the\s+wheel\b: someone else take over
+  (?i)\bhalp\b: help
+  (?i)\bplz\b: please
+  (?i)\bpls\b: please
+  (?i)\bkthxbye\b: thanks, goodbye
+  (?i)\bbai\b: bye
+  (?i)\bokurrr\b: '[rewrite plainly]'
+  (?i)\boof\b: '[rewrite plainly]'
+  (?i)\byikes\b: '[rewrite plainly]'
+  (?i)\bcringe\b: '[rewrite plainly]'
+  (?i)\bsecondhand\s+cringe\b: '[rewrite plainly]'
+  (?i)\beww\b: unpleasant
+  (?i)\bick\b: disgust
+  (?i)\bthat's\s+the\s+ick\b: '[rewrite plainly]'
+  (?i)\bwelp\b: well
+  (?i)\bmeh\b: indifferent
+  (?i)\bwhatevs\s+forever\b: '[rewrite plainly]'
+  (?i)\bzero\s+cares\s+given\b: '[rewrite plainly]'
+  (?i)\bzero\s+effs\b: no concern
+  (?i)\badulting\s+is\s+hard\b: adult responsibilities are difficult
+  (?i)\bwhy\s+is\s+adulting\b: why is adulthood
+  (?i)\bcan\s+I\s+just\s+not\b: I don't want to do this
+  (?i)\bI\s+just\s+can't\s+today\b: '[rewrite plainly]'
+  (?i)\btoday\s+is\s+a\s+lot\b: today feels overwhelming
+  (?i)\bthat's\s+a\s+lot\b: that's substantial
+  (?i)\bit's\s+a\s+lot\b: it's substantial
+  (?i)\bspoons\b: energy
+  (?i)\bno\s+spoons\s+left\b: no energy left
+  (?i)\bso\s+burnt\s+out\b: '[rewrite plainly]'
+  (?i)\bneed\s+a\s+nap\b: I need rest
+  (?i)\bnap\s+queen\b: '[rewrite plainly]'
+  (?i)\bnap\s+life\b: '[rewrite plainly]'
+  (?i)\bsleep\s+is\s+life\b: '[rewrite plainly]'
+  (?i)\bbed\s+is\s+life\b: '[rewrite plainly]'
+  (?i)\bintrovert\s+problems\b: '[rewrite plainly]'
+  (?i)\bintrovert\s+life\b: '[rewrite plainly]'
+  (?i)\bsocial\s+battery\b: social energy
+  (?i)\bpeopled\s+out\b: socially drained
+  (?i)\bbamboozle\b: '[rewrite plainly]'
+  (?i)\bbamboozled\b: '[rewrite plainly]'
+  (?i)\bwhole\s+entire\s+man\b: '[rewrite plainly]'

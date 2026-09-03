@@ -1,0 +1,7 @@
+extends: existence
+message: '"%s" is a stock reveal phrase; consider stating the conclusion directly.'
+level: suggestion
+ignorecase: true
+scope: ~blockquote
+tokens:
+  - '\bthe\s+punchline\s+(?:is|:|\?)'

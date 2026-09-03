@@ -1,0 +1,5 @@
+extends: script
+message: 'A sentence opener appears repeatedly; vary the structure if the repetition is accidental.'
+level: warning
+scope: raw
+script: repeated-sentence-opener.tengo

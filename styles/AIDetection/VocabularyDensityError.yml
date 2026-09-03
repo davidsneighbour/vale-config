@@ -1,0 +1,5 @@
+extends: script
+message: 'AI-associated vocabulary density is high; review the passage for generic or templated wording.'
+level: error
+scope: raw
+script: vocabulary-density-error.tengo

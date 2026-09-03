@@ -1,0 +1,7 @@
+extends: existence
+message: '"%s" is an AI-writing cliche; name the role more specifically.'
+level: warning
+ignorecase: true
+scope: ~blockquote
+tokens:
+  - '\bplay(?:s|ed|ing)?\s+a\s+(?:crucial|pivotal|vital|key|significant|central|critical|important)\s+role\b'

@@ -1,0 +1,21 @@
+extends: existence
+message: '"%s" is AI-associated vocabulary; consider whether a more precise word fits.'
+level: suggestion
+ignorecase: true
+scope: ~blockquote
+tokens:
+  - '\bdelv(?:e|es|ed|ing)\b'
+  - '\btapestr(?:y|ies)\b'
+  - '\bmeticulous(?:ly)?\b'
+  - '\bpivotal\b'
+  - '\bintricat(?:e|ely|acies)\b'
+  - '\binterplay\b'
+  - '\bunderscor(?:e|es|ed|ing)\b'
+  - '\bgarner(?:s|ed|ing)?\b'
+  - '\bbolster(?:s|ed|ing)?\b'
+  - '\bvibrant\b'
+  - '\bbustling\b'
+  - '\bmultifaceted\b'
+  - '\bseamless(?:ly)?\b'
+  - '\bcommendable\b'
+  - '\bever-evolving\b'

@@ -9,7 +9,7 @@ const config: Config = createReleaseConfig({
       commitArgs: ['--signoff', '--no-verify'],
     },
     github: {
-      assets: ['dist/DNB.zip'],
+      assets: ['dist/config.zip'],
     },
     hooks: {
       'before:git:release': ['node scripts/update-version.ts ${version}'],

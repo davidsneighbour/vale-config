@@ -1,0 +1,8 @@
+extends: existence
+message: '"%s" is inflated significance phrasing; consider naming the evidence directly.'
+level: warning
+ignorecase: true
+scope: ~blockquote
+tokens:
+  - '\b(?:stands|serves)\s+as\s+a\s+(?:testament|reminder)\b'
+  - '\b(?:is|remains)\s+a\s+testament\s+to\b'

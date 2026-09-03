@@ -1,0 +1,7 @@
+extends: existence
+message: '"%s" is reflective AI-associated phrasing; consider a more precise instruction.'
+level: suggestion
+ignorecase: true
+scope: ~blockquote
+tokens:
+  - '\bsit\s+with\s+(?:that|this|it(?:\s+for\s+a\s+moment)?|the\s+(?:discomfort|tension|weight|uncertainty|ambiguity|grief|silence|unease)|your\s+feelings)\b'

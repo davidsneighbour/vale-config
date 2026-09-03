@@ -1,0 +1,14 @@
+extends: existence
+message: '"%s" is promotional boilerplate; consider replacing it with specific detail.'
+level: warning
+ignorecase: true
+scope: ~blockquote
+tokens:
+  - '\bnestled\s+(?:in|on|among|between|along)\b'
+  - '\bin\s+the\s+heart\s+of\b'
+  - '\brich\s+(?:heritage|history|tapestry|cultural heritage|historical heritage)\b'
+  - '\bhidden\s+gem\b'
+  - '\bmust-(?:visit|see|try)\b'
+  - '\bbreathtaking\b'
+  - '\bboasts\s+(?:a|an|the)\b'
+  - '\bstunning\s+(?:view|views|scenery|architecture|backdrop)\b'

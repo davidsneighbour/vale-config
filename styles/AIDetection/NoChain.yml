@@ -1,0 +1,5 @@
+extends: script
+message: 'Repeated "no ..." construction; review whether the chain is doing real work.'
+level: warning
+scope: text
+script: no-chain.tengo

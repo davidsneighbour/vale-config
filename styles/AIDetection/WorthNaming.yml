@@ -1,0 +1,8 @@
+extends: existence
+message: '"%s" is reflective AI-associated phrasing; consider naming the point plainly.'
+level: suggestion
+ignorecase: true
+scope: ~blockquote
+tokens:
+  - '\b(?:it''s|it is)\s+worth\s+naming\s+that\b'
+  - '\b(?:worth\s+naming:|(?:grief|anger|tension|risk|pattern)\s+(?:here\s+)?(?:is|feels)\s+worth\s+naming)\b'

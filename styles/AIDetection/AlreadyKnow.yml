@@ -1,0 +1,7 @@
+extends: existence
+message: '"%s" is an AI-associated reflective writing pattern; consider making the claim more concrete.'
+level: suggestion
+ignorecase: true
+scope: ~blockquote
+tokens:
+  - '(?:^|[.!?]\s+)(?:deep down,\s*)?you already know(?:\s+(?:the answer|what to do|why))?\b'

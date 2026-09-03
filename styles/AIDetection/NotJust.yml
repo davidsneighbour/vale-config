@@ -1,0 +1,8 @@
+extends: existence
+message: '"%s" is a familiar rhetorical contrast; consider stating the contrast directly.'
+level: suggestion
+ignorecase: true
+scope: ~blockquote
+tokens:
+  - '\bnot\s+(?:just|only|merely|simply)\b.{1,120}\bbut(?:\s+also)?\b'
+  - '\b(?:it''s|it is|this is|that is|that''s)\s+not\b.{1,80}(?:—|-|;)\s*(?:it''s|it is|this is|that is|that''s)\b'

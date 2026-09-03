@@ -1,0 +1,9 @@
+extends: existence
+message: '"%s" is didactic hedging; consider making the point directly.'
+level: warning
+ignorecase: true
+scope: ~blockquote
+tokens:
+  - '\bit\s+(?:is|''s)\s+(?:important|crucial|essential|vital)\s+to\s+(?:note|remember|understand|recognize|mention)\b'
+  - '\bit\s+(?:is|''s)\s+worth\s+noting\b'
+  - '\bit\s+should\s+be\s+noted\b'

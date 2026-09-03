@@ -6,6 +6,8 @@ dist/*.zip
 # Google, Hugo, alex, proselint, Readability, write-good in .vale.ini)
 styles/*
 !styles/DNB/
+!styles/AIDetection/
+!styles/Millennialisms/
 !styles/config/
 
 # agent related project files

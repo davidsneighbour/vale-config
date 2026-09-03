@@ -1,0 +1,5 @@
+extends: script
+message: 'A phrase appears repeatedly; review whether the prose sounds templated.'
+level: warning
+scope: raw
+script: repeated-phrase.tengo

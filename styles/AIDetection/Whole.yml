@@ -1,0 +1,7 @@
+extends: existence
+message: '"%s" is a broad rhetorical claim; consider naming the specific point.'
+level: suggestion
+ignorecase: true
+scope: ~blockquote
+tokens:
+  - '\b(?:that''s|that is|this is|that was|this was)\s+the\s+whole\s+(?:point|game|pitch)\b'

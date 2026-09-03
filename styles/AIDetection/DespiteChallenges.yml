@@ -1,0 +1,10 @@
+extends: existence
+message: '"%s" is generic challenges/outlook boilerplate; consider adding specific context.'
+level: warning
+ignorecase: true
+scope: ~blockquote
+tokens:
+  - '\bdespite\s+(?:these|such|significant)\s+challenges\b'
+  - '\bfaces\s+(?:several|numerous|many|significant|various|a number of)\s+challenges\b'
+  - '\bchallenges\s+remain\b'
+  - '\bremains\s+to\s+be\s+seen\b'

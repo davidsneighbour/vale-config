@@ -1,0 +1,8 @@
+extends: existence
+message: '"%s" is a broad rhetorical construction; consider a more specific claim.'
+level: suggestion
+ignorecase: true
+scope: ~blockquote
+tokens:
+  - '\b(?:is|was|''s)\s+the\s+entire\s+(?:game|business model|point|pitch|exercise)\b'
+  - '\bthe\s+entire\s+(?:point|business model|exercise|pitch)\s+(?:is|was)\b'

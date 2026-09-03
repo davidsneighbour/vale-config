@@ -1,0 +1,7 @@
+extends: existence
+message: '"%s" is a formulaic participle tail; consider explaining the relationship more directly.'
+level: warning
+ignorecase: true
+scope: ~blockquote
+tokens:
+  - ',\s+(?:highlighting|underscoring|emphasizing|showcasing|reflecting|demonstrating|illustrating|signaling|solidifying|cementing|reinforcing|underlining)\s+(?:its|his|her|their|our|the|a|an|how|that|what|both)\b'

@@ -1,0 +1,13 @@
+extends: existence
+message: '"%s" uses unnamed authority; name the source or make the attribution specific.'
+level: warning
+ignorecase: true
+scope: ~blockquote
+tokens:
+  - '\b(?:some\s+)?experts\s+(?:argue|claim|suggest|believe|note)\b'
+  - '\bcritics\s+(?:have\s+)?noted\b'
+  - '\bobservers\s+suggest\b'
+  - '\bscholars\s+believe\b'
+  - '\banalysts\s+claim\b'
+  - '\bcommentators\s+point\s+out\b'
+  - '\bindustry\s+reports\s+(?:indicate|suggest|show)\b'
