@@ -10,9 +10,20 @@
 {{- /* Range over the linted files */ -}}
 
 {{- range .Files}}
-{{$table := newTable true}}
-
 {{- $f = add1 $f -}}
+{{- $path := .Path -}}
+{{- $lineWidth := 1 -}}
+{{- $spanWidth := 1 -}}
+{{- range .Alerts -}}
+    {{- $lineText := printf "%d" .Line -}}
+    {{- $spanText := printf "%d" (index .Span 0) -}}
+    {{- if gt (len $lineText) $lineWidth -}}
+        {{- $lineWidth = len $lineText -}}
+    {{- end -}}
+    {{- if gt (len $spanText) $spanWidth -}}
+        {{- $spanWidth = len $spanText -}}
+    {{- end -}}
+{{- end -}}
 {{- .Path | underline | indent 1 -}}
 
 {{- /* Range over the file's alerts */ -}}
@@ -21,22 +32,20 @@
 
 {{- $error := "" -}}
 {{- if eq .Severity "error" -}}
-    {{- $error = .Severity | red -}}
+    {{- $error = "fail" | red -}}
     {{- $e = add1 $e  -}}
 {{- else if eq .Severity "warning" -}}
-    {{- $error = .Severity | yellow -}}
+    {{- $error = "warn" | yellow -}}
     {{- $w = add1 $w -}}
 {{- else -}}
-    {{- $error = .Severity | blue -}}
+    {{- $error = "note" | blue -}}
     {{- $s = add1 $s -}}
 {{- end}}
 
-{{- $loc := printf "%d:%d" .Line (index .Span 0) -}}
-{{- $row := list $loc $error .Message .Check | toStrings -}}
-
-{{- $table = addRow $table $row -}}
+{{- $loc := printf "%*d:%-*d" $lineWidth .Line $spanWidth (index .Span 0) -}}
+{{- $target := printf "vscode://file/%s/%s:%d:%d" (env "PWD") $path .Line (index .Span 0) -}}
+{{- $linkedLoc := printf "\x1b]8;;%s\x1b\\%s\x1b]8;;\x1b\\" $target $loc -}}
+{{ printf "%s %s %s: %s\n" $error $linkedLoc .Check .Message -}}
 {{end -}}
-
-{{- $table = renderTable $table -}}
 {{end}}
 {{- $e}} {{"errors" | red}}, {{$w}} {{"warnings" | yellow}} and {{$s}} {{"suggestions" | blue}} in {{$f}} {{$f | int | plural "file" "files"}}.
