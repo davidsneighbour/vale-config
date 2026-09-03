@@ -13,8 +13,8 @@ describe("repository scaffold", () => {
       "scripts/test-vale.sh",
       "scripts/test-package.sh",
       "scripts/update-version.ts",
-      "src/DNB/.vale.ini",
-      "src/DNB/styles/config/vocabularies/DNB/accept.txt",
+      ".vale.ini",
+      "styles/config/vocabularies/DNB/accept.txt",
       "tests/verify-vale-output.js",
     ]) {
       expect(fs.existsSync(path), `${path} should exist`).toBe(true);

@@ -60,10 +60,10 @@ main() {
 
   cd "${project_root}"
 
-  require_file "src/DNB/.vale.ini"
+  require_file ".vale.ini"
   require_file "README.md"
   require_file "LICENSE.md"
-  require_dir "src/DNB/styles"
+  require_dir "styles"
 
   mkdir -p dist
 
@@ -72,10 +72,16 @@ main() {
 
   mkdir -p "${TEMP_DIR}/${package_root}"
 
-  cp "src/DNB/.vale.ini" "${TEMP_DIR}/${package_root}/.vale.ini"
+  cp ".vale.ini" "${TEMP_DIR}/${package_root}/.vale.ini"
   cp "README.md" "${TEMP_DIR}/${package_root}/README.md"
   cp "LICENSE.md" "${TEMP_DIR}/${package_root}/LICENSE.md"
-  cp -R "src/DNB/styles" "${TEMP_DIR}/${package_root}/styles"
+
+  # Only DNB/ and config/ are hand-authored; styles/ may also hold base
+  # packages synced locally via `vale sync` (Packages = Microsoft, Google,
+  # ... in .vale.ini) that must not end up bundled inside the DNB zip.
+  mkdir -p "${TEMP_DIR}/${package_root}/styles"
+  cp -R "styles/DNB" "${TEMP_DIR}/${package_root}/styles/DNB"
+  cp -R "styles/config" "${TEMP_DIR}/${package_root}/styles/config"
 
   rm -f "${output_file}"
 

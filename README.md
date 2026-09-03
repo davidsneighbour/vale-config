@@ -54,7 +54,7 @@ This repository follows **semantic versioning** (`MAJOR.MINOR.PATCH`) for all re
 
 2. **Version updates**:
    * `package.json`'s `version` field.
-   * The `# Version: ...` header in `src/DNB/.vale.ini` and the DNB vocabulary files.
+   * The `# Version: ...` header in `.vale.ini` and the DNB vocabulary files.
    * `CHANGELOG.md` (conventional changelog) and `CITATION.cff`.
 
    `README.md`'s install instructions point at `releases/latest`, so they aren't rewritten on release - see [Pinning a version](#pinning-a-version-optional) above for the one static, illustrative version example.
@@ -63,7 +63,7 @@ This repository follows **semantic versioning** (`MAJOR.MINOR.PATCH`) for all re
 
 4. **Git tag**: creates a tag in the format `vX.X.X`.
 
-5. **Zip and GitHub release**: builds `dist/DNB.zip` from `src/DNB/.vale.ini`, root `README.md`, root `LICENSE.md`, and `src/DNB/styles/`, then uploads it as part of the GitHub release.
+5. **Zip and GitHub release**: builds `dist/DNB.zip` from `.vale.ini`, `README.md`, `LICENSE.md`, and `styles/`, then uploads it as part of the GitHub release.
 
 Run `npm test` to exercise the version-bump, packaging, and package-install steps locally without any git/GitHub side effects.
 

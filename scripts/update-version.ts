@@ -1,16 +1,8 @@
 import fs from "fs";
-import path from "path";
 
-const SRC_DIR = "src";
-const VALE_INI_PATH = path.join(SRC_DIR, "DNB/.vale.ini");
-const ACCEPT_PATH = path.join(
-  SRC_DIR,
-  "DNB/styles/config/vocabularies/DNB/accept.txt",
-);
-const REJECT_PATH = path.join(
-  SRC_DIR,
-  "DNB/styles/config/vocabularies/DNB/reject.txt",
-);
+const VALE_INI_PATH = ".vale.ini";
+const ACCEPT_PATH = "styles/config/vocabularies/DNB/accept.txt";
+const REJECT_PATH = "styles/config/vocabularies/DNB/reject.txt";
 
 function updateVersionHeader(filePath: string, newVersion: string): void {
   if (!fs.existsSync(filePath)) {

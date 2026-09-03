@@ -1,10 +1,13 @@
 {
   "folders": [
     {
-      "path": "../.."
+      "path": "."
     },
     {
-      "path": "../../../../davidsneighbour/dnb-vale-aidetection"
+      "path": "../vale-aidetection"
+    },
+    {
+      "path": "../vale-millennialisms"
     }
   ],
   "settings": {

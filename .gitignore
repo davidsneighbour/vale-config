@@ -2,6 +2,12 @@ node_modules/
 dist/*.zip
 .vale/
 
+# Base packages synced into styles/ via `vale sync` (Packages = Microsoft,
+# Google, Hugo, alex, proselint, Readability, write-good in .vale.ini)
+styles/*
+!styles/DNB/
+!styles/config/
+
 # agent related project files
 /RESUME.md
 /TODO.md

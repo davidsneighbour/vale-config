@@ -4,17 +4,11 @@ import path from "path";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
 const DIST_DIR = path.resolve("dist");
-const SRC_DIR = path.resolve("src");
+const STYLES_DIR = path.resolve("styles");
 const README_PATH = path.resolve("README.md");
-const VALE_INI_PATH = path.join(SRC_DIR, "DNB/.vale.ini");
-const ACCEPT_PATH = path.join(
-  SRC_DIR,
-  "DNB/styles/config/vocabularies/DNB/accept.txt",
-);
-const REJECT_PATH = path.join(
-  SRC_DIR,
-  "DNB/styles/config/vocabularies/DNB/reject.txt",
-);
+const VALE_INI_PATH = path.resolve(".vale.ini");
+const ACCEPT_PATH = path.resolve("styles/config/vocabularies/DNB/accept.txt");
+const REJECT_PATH = path.resolve("styles/config/vocabularies/DNB/reject.txt");
 const UPDATE_VERSION_SCRIPT = path.resolve("scripts/update-version.ts");
 const BUILD_ZIP_SCRIPT = path.resolve("scripts/build-release-zip.sh");
 const testVersion = "1.2.3-test";
@@ -78,7 +72,7 @@ describe("Release Process Tests", () => {
   });
 
   it("Required files and directories exist", () => {
-    expect(fs.existsSync(SRC_DIR)).toBe(true);
+    expect(fs.existsSync(STYLES_DIR)).toBe(true);
     expect(fs.existsSync(DIST_DIR)).toBe(true);
     expect(fs.existsSync(README_PATH)).toBe(true);
     expect(fs.existsSync(VALE_INI_PATH)).toBe(true);
