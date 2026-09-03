@@ -9,8 +9,18 @@ The DNB Vale Configuration package is hosted as an externally downloadable `.zip
 
 ```ini
 MinAlertLevel = suggestion # suggestion, warning, error
-Packages = https://github.com/davidsneighbour/vale-config/releases/download/v0.1.7/DNB.zip
+Packages = https://github.com/davidsneighbour/vale-config/releases/latest/download/DNB.zip
 ```
+
+### Pinning a version (optional)
+
+If you need reproducible builds, replace `latest` with a version tag:
+
+```ini
+Packages = https://github.com/davidsneighbour/vale-config/releases/download/v0.1.0/DNB.zip
+```
+
+Replace `v0.1.0` with the desired version. This example is illustrative only and isn't kept in sync with the current release - check the [releases page](https://github.com/davidsneighbour/vale-config/releases) for available versions.
 
 ### Understanding vale configuration merging
 
@@ -20,7 +30,7 @@ For example, consider the following configuration:
 
 ```ini
 Packages = Microsoft,
-https://github.com/davidsneighbour/vale-config/releases/download/v0.1.7/DNB.zip
+https://github.com/davidsneighbour/vale-config/releases/latest/download/DNB.zip
 ```
 
 In this setup:
@@ -45,8 +55,9 @@ This repository follows **semantic versioning** (`MAJOR.MINOR.PATCH`) for all re
 2. **Version updates**:
    * `package.json`'s `version` field.
    * The `# Version: ...` header in `src/DNB/.vale.ini` and the DNB vocabulary files.
-   * The download link in `README.md`.
    * `CHANGELOG.md` (conventional changelog) and `CITATION.cff`.
+
+   `README.md`'s install instructions point at `releases/latest`, so they aren't rewritten on release - see [Pinning a version](#pinning-a-version-optional) above for the one static, illustrative version example.
 
 3. **Clean git tree required**: the release process ensures there are no uncommitted changes before it starts.
 

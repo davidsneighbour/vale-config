@@ -31,12 +31,9 @@ function cleanup() {
     return;
   }
   console.log("Cleaning up...");
-  execSync(
-    `git restore ${README_PATH} ${VALE_INI_PATH} ${ACCEPT_PATH} ${REJECT_PATH}`,
-    {
-      stdio: "inherit",
-    },
-  );
+  execSync(`git restore ${VALE_INI_PATH} ${ACCEPT_PATH} ${REJECT_PATH}`, {
+    stdio: "inherit",
+  });
   if (fs.existsSync(packageZip)) fs.unlinkSync(packageZip);
 }
 
@@ -69,13 +66,6 @@ describe("Release Process Tests", () => {
     cleanup();
   });
 
-  it("README.md contains the correct version", () => {
-    expect(fs.existsSync(README_PATH)).toBe(true);
-    const readmeContent = fs.readFileSync(README_PATH, "utf-8");
-    const expectedUrl = `https://github.com/davidsneighbour/vale-config/releases/download/v${testVersion}/DNB.zip`;
-    expect(readmeContent).toContain(expectedUrl);
-  });
-
   it(".vale.ini contains the correct version", () => {
     expect(fs.existsSync(VALE_INI_PATH)).toBe(true);
     const iniContent = fs.readFileSync(VALE_INI_PATH, "utf-8");
@@ -94,16 +84,10 @@ describe("Release Process Tests", () => {
     expect(fs.existsSync(VALE_INI_PATH)).toBe(true);
   });
 
-  it("README.md and .vale.ini have consistent versions", () => {
+  it("README.md points at the latest release, not a pinned version", () => {
     const readmeContent = fs.readFileSync(README_PATH, "utf-8");
-    const iniContent = fs.readFileSync(VALE_INI_PATH, "utf-8");
-    const readmeVersion = readmeContent.match(
-      /\/v(\d+\.\d+\.\d+(-test)?)\//,
-    )?.[1];
-    const iniVersion = iniContent.match(
-      /# Version: (\d+\.\d+\.\d+(-test)?)/,
-    )?.[1];
-    expect(readmeVersion).toBe(testVersion);
-    expect(iniVersion).toBe(testVersion);
+    expect(readmeContent).toContain(
+      "https://github.com/davidsneighbour/vale-config/releases/latest/download/DNB.zip",
+    );
   });
 });

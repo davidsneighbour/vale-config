@@ -26,10 +26,10 @@ This repository follows the same tooling shape as its sibling style packages, [v
 
 * `npm run check` runs `format:check`, `lint` (Biome + markdownlint), `validate` (`tsc --noEmit`), and `test` in sequence. This is the top-level quality gate.
 * `npm test` (or `npm run test`) runs three things in order:
-  * `test:unit` (`vitest --run`) exercises `tests/scaffold.test.js` (required-files check) and `tests/release.test.js`, which runs `scripts/update-version.ts` and `scripts/build-release-zip.sh` end-to-end against a `1.2.3-test` version and asserts on their side effects (`README.md`, `src/DNB/.vale.ini`, and the generated zip). It then restores the repo with `git restore`. Run it against a clean working tree; it throws if there are uncommitted changes.
+  * `test:unit` (`vitest --run`) exercises `tests/scaffold.test.js` (required-files check) and `tests/release.test.js`, which runs `scripts/update-version.ts` and `scripts/build-release-zip.sh` end-to-end against a `1.2.3-test` version and asserts on their side effects (`src/DNB/.vale.ini` and the generated zip), plus a check that `README.md` still points at `releases/latest` rather than a pinned version. It then restores the repo with `git restore`. Run it against a clean working tree; it throws if there are uncommitted changes.
   * `test:vale` (`scripts/test-vale.sh`) runs Vale directly against `tests/fixtures/*.md` using `src/DNB/.vale.ini`, and asserts specific DNB rules do/don't fire via `tests/verify-vale-output.js`. This is the **feature test**: it validates the actual DNB rule content, not just the release plumbing.
   * `test:package` (`scripts/test-package.sh`) builds `dist/DNB.zip`, installs it into a throwaway Vale project via `Packages = dist/DNB.zip`, and asserts a real rule fires from the packaged zip — this is the "installable via GitHub" guarantee, made concrete. It also recognizes and tolerates the known `DNB.Spelling` packaging bug described below, rather than hard-failing on it.
-* `npm run release`, or a `release:patch`/`release:minor`/`release:major`/`release:force`/`release:dry` variant, runs `release-it` (config in `.release-it.ts`, built on `@dnbhq/release-config`). Its `before:git:release` hook runs `scripts/update-version.ts ${version}` (rewrites the `# Version:` header in `src/DNB/.vale.ini` and the DNB vocabulary files, and the download link in `README.md`), and its `before:github:release` hook runs `scripts/build-release-zip.sh` to build `dist/DNB.zip` before it's attached to the GitHub release. `release-it` handles the conventional changelog, git commit/tag/push, `CITATION.cff` update, and GitHub release creation.
+* `npm run release`, or a `release:patch`/`release:minor`/`release:major`/`release:force`/`release:dry` variant, runs `release-it` (config in `.release-it.ts`, built on `@dnbhq/release-config`). Its `before:git:release` hook runs `scripts/update-version.ts ${version}` (rewrites the `# Version:` header in `src/DNB/.vale.ini` and the DNB vocabulary files), and its `before:github:release` hook runs `scripts/build-release-zip.sh` to build `dist/DNB.zip` before it's attached to the GitHub release. `release-it` handles the conventional changelog, git commit/tag/push, `CITATION.cff` update, and GitHub release creation. `README.md`'s install instructions point at `releases/latest` and are never rewritten by a release; its one pinned-version example is static and illustrative only.
 * `npm run build:zip` (`scripts/build-release-zip.sh`) builds `dist/DNB.zip` on its own, without touching versions or git.
 
 ## Known limitations
@@ -51,7 +51,7 @@ This repository follows the same tooling shape as its sibling style packages, [v
 `release-it` (config in `.release-it.ts`, built on `@dnbhq/release-config`) drives releases:
 
 1. Bumps `package.json` version from conventional commits (or an explicit increment).
-2. `before:git:release` hook runs `node scripts/update-version.ts ${version}`, which rewrites the `# Version: ...` header in `src/DNB/.vale.ini` and the DNB vocabulary `accept.txt`/`reject.txt` files, and the versioned download URL in `README.md`.
+2. `before:git:release` hook runs `node scripts/update-version.ts ${version}`, which rewrites the `# Version: ...` header in `src/DNB/.vale.ini` and the DNB vocabulary `accept.txt`/`reject.txt` files. `README.md` is not touched - its install instructions point at `releases/latest`.
 3. Generates a conventional changelog entry in `CHANGELOG.md`, and updates `CITATION.cff` (both handled by `@dnbhq/release-config`).
 4. `before:github:release` hook runs `scripts/build-release-zip.sh`, which zips `src/DNB/.vale.ini`, root `README.md`, root `LICENSE.md`, and `src/DNB/styles/` into `dist/DNB.zip`.
 5. Commits, tags `v<version>`, pushes, and creates a GitHub release with `dist/DNB.zip` attached.
@@ -62,4 +62,4 @@ This repository follows the same tooling shape as its sibling style packages, [v
 
 * Prefer TypeScript for repository tooling scripts and other maintainable automation.
 * Renovate config (`.github/renovate.json5`) extends `github>dnbhq/renovate-config`.
-* Dependabot (`.github/dependabot.yml`) is configured for npm, gomod, and GitHub Actions, monthly on Fridays.
+* Dependabot (`.github/dependabot.yml`) is configured for npm, monthly on Fridays.
