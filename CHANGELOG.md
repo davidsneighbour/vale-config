@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.3.1](https://github.com/davidsneighbour/vale-config/compare/v0.3.0...v0.3.1) (2026-11-24)
+
+### Fix
+
+* align package version headers with v0.3.0 ([c7a1384](https://github.com/davidsneighbour/vale-config/commit/c7a1384813bac9931916735073e6a41cf865c228)), references [#46](https://github.com/davidsneighbour/vale-config/issues/46)
+* ignore compact Hugo shortcodes ([e26cecb](https://github.com/davidsneighbour/vale-config/commit/e26cecb30924f5f39b4d9651fecff55bf9ee04f9)), references [#46](https://github.com/davidsneighbour/vale-config/issues/46)
+* refine hedging phrases and reduce false positives ([3d7a3e3](https://github.com/davidsneighbour/vale-config/commit/3d7a3e39b291c38bc9b604f83a60c917a19bda57)), references [#46](https://github.com/davidsneighbour/vale-config/issues/46)
+* support checks with the current Vale runtime ([5992759](https://github.com/davidsneighbour/vale-config/commit/59927592726557fecd0e11851b19ea878625ba54)), closes [#47](https://github.com/davidsneighbour/vale-config/issues/47)
+* **tooling:** resolve Biome configuration diagnostics ([3e5fb43](https://github.com/davidsneighbour/vale-config/commit/3e5fb43c4a2ed843a3e0c0d2987d2257e87e1b88)), references [#47](https://github.com/davidsneighbour/vale-config/issues/47)
+
+### Style
+
+* format Vale rules with the updated Biome ([4f5ac33](https://github.com/davidsneighbour/vale-config/commit/4f5ac3365252e615ff50fc18e8094e292fd4e8e1)), references [#47](https://github.com/davidsneighbour/vale-config/issues/47)
+
+### Build
+
+* **deps:** refresh tooling and dependency overrides ([a478d52](https://github.com/davidsneighbour/vale-config/commit/a478d52894e3f95d2d40b95c13bdc373977c85f1)), references [#46](https://github.com/davidsneighbour/vale-config/issues/46)
+
+### Chore
+
+* **vscode:** complete workspace colour settings ([6b2ce6e](https://github.com/davidsneighbour/vale-config/commit/6b2ce6e3b4d1cdaa09e7cbc3d331aa3148f3041d)), closes [#46](https://github.com/davidsneighbour/vale-config/issues/46)
+
 ## [0.3.0](https://github.com/davidsneighbour/vale-config/compare/v0.2.0...v0.3.0) (2026-09-03)
 
 ### Feat
