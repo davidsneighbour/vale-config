@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.3.2-test.1](https://github.com/davidsneighbour/vale-config/compare/v0.3.1...v0.3.2-test.1) (2026-11-24)
+
+### Fix
+
+* **release:** commit Vale version headers before tagging ([f4b962a](https://github.com/davidsneighbour/vale-config/commit/f4b962adb04dd0e063961e10c1354dfd1eb3bd87)), closes [#50](https://github.com/davidsneighbour/vale-config/issues/50)
+
+### Docs
+
+* recommend Homebrew for Vale installation ([17a0e9f](https://github.com/davidsneighbour/vale-config/commit/17a0e9f656ae3094450d452051fc55a72be001fd)), closes [#48](https://github.com/davidsneighbour/vale-config/issues/48)
+
 ## [0.3.1](https://github.com/davidsneighbour/vale-config/compare/v0.3.0...v0.3.1) (2026-11-24)
 
 ### Fix

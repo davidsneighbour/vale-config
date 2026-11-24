@@ -1,7 +1,7 @@
 {
   "name": "@davidsneighbour/vale-config",
   "description": "This repository contains a custom Vale configuration, styles, and dictionary files for writing and linting text the @davidsneighbour way.",
-  "version": "0.3.1",
+  "version": "0.3.2-test.1",
   "license": "MIT",
   "repository": {
     "type": "git",
