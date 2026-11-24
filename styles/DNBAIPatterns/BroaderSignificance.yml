@@ -1,0 +1,10 @@
+# Observable writing pattern, not a claim of AI authorship.
+# Source variants are covered by native Vale regression cases.
+extends: existence
+message: '"%s" is inflated significance phrasing; consider naming the concrete effect.'
+level: warning
+ignorecase: true
+scope: ~blockquote
+tokens:
+  - \b(?:a|an|the)\s+(?:crucial|pivotal|vital|significant|defining)\s+moment\b|\bindelible\s+mark\b|\bset(?:s|ting)?\s+the\s+stage\s+for\b|\breflect(?:s|ed|ing)?\s+(?:the\s+|a\s+)?broader\s+(?:trends?|shifts?|changes?|patterns?|themes?|movements?|context|concerns?|debates?|societal|cultural|social|historical)\b|\b(?:represent|mark)(?:s|ed|ing)?\s+a\s+(?:(?:significant|major|notable|fundamental|broader|decisive)\s+)?shift\b|\bforms?\s+part\s+of\s+the\s+wider\b|\b(?:has|have|had)\s+shaped\s+(?:the\s+)?(?:conversations?|discussions?|debates?)\b|\bdistinction\s+(?:matters|is\s+important)\s+because\b
+nonword: true

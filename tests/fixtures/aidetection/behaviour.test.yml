@@ -572,6 +572,242 @@
   rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
   input: See turn0search for details.
   contains: DNBAIPatterns.ChatbotLeftovers
+- name: 143 ai-leftovers
+  rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
+  input: "The tool is fast oai_citation."
+  contains: DNBAIPatterns.ChatbotLeftovers
+- name: 144 ai-leftovers
+  rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
+  input: "[span_1](start_span)The tool is fast.[span_1](end_span)"
+  contains: DNBAIPatterns.ChatbotLeftovers
+- name: 145 ai-leftovers
+  rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
+  input: "The tool is fast [cite: 1, 2]."
+  contains: DNBAIPatterns.ChatbotLeftovers
+- name: 146 ai-leftovers
+  rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
+  input: 'The tool is fast. <grok_card data-id="1"></grok_card>'
+  contains: DNBAIPatterns.ChatbotLeftovers
+- name: 147 ai-leftovers
+  rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
+  input: "The tool is fast grok_render_citation_card_json."
+  contains: DNBAIPatterns.ChatbotLeftovers
+- name: 148 ai-leftovers
+  rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
+  input: "The tool is fast【85†L261-269】."
+  contains: DNBAIPatterns.ChatbotLeftovers
+- name: 149 ai-leftovers
+  rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
+  input: "See https://ppl-ai-file-upload.s3.amazonaws.com/x.pdf for the file."
+  contains: DNBAIPatterns.ChatbotLeftovers
+- name: 150 ai-leftovers
+  rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
+  input: ':::writing{variant="document" id="12345"}'
+  contains: DNBAIPatterns.ChatbotLeftovers
+- name: 151 ai-leftovers
+  rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
+  input: "The tool is fast [attached_file:1]."
+  contains: DNBAIPatterns.ChatbotLeftovers
+- name: 152 ai-leftovers
+  rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
+  input: "The tool is fast [web:1]."
+  contains: DNBAIPatterns.ChatbotLeftovers
+- name: 153 ai-leftovers
+  rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
+  input: "The tool is fast citeturn1file0."
+  contains: DNBAIPatterns.ChatbotLeftovers
+- name: 154 ai-leftovers
+  rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
+  input: "See https://example.com/?referrer=grok.com for details."
+  contains: DNBAIPatterns.ChatbotLeftovers
+- name: 155 ai-leftovers
+  rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
+  input: "See https://example.com/?utm_source=copilot.com for details."
+  contains: DNBAIPatterns.ChatbotLeftovers
+- name: 156 ai-leftovers
+  rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
+  input: "See https://example.com/?utm_source=openai for details."
+  contains: DNBAIPatterns.ChatbotLeftovers
+- name: 157 ai-leftovers
+  rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
+  input: "See https://example.com/?utm_source=newsletter for details."
+  absent: DNBAIPatterns.ChatbotLeftovers
+- name: 158 ai-leftovers
+  rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
+  input: "The writing guide documents each variant."
+  absent: DNBAIPatterns.ChatbotLeftovers
+- name: 159 participle-tail
+  rule: ../../../styles/DNBAIPatterns/ParticipleTail.yml
+  input: "The logo changed colour, symbolising its new direction."
+  contains: DNBAIPatterns.ParticipleTail
+- name: 160 participle-tail
+  rule: ../../../styles/DNBAIPatterns/ParticipleTail.yml
+  input: "The script clears the cache, ensuring that the build stays fast."
+  contains: DNBAIPatterns.ParticipleTail
+- name: 161 participle-tail
+  rule: ../../../styles/DNBAIPatterns/ParticipleTail.yml
+  input: "The team merged the patch, fostering a culture of review."
+  contains: DNBAIPatterns.ParticipleTail
+- name: 162 participle-tail
+  rule: ../../../styles/DNBAIPatterns/ParticipleTail.yml
+  input: "The forum answers questions, cultivating a sense of trust."
+  contains: DNBAIPatterns.ParticipleTail
+- name: 163 participle-tail
+  rule: ../../../styles/DNBAIPatterns/ParticipleTail.yml
+  input: "The theme adds dark mode, enhancing the reading experience."
+  contains: DNBAIPatterns.ParticipleTail
+- name: 164 participle-tail
+  rule: ../../../styles/DNBAIPatterns/ParticipleTail.yml
+  input: "The index covers every page, encompassing the whole site."
+  contains: DNBAIPatterns.ParticipleTail
+- name: 165 participle-tail
+  rule: ../../../styles/DNBAIPatterns/ParticipleTail.yml
+  input: "The volunteers fixed the docs, contributing to the release."
+  contains: DNBAIPatterns.ParticipleTail
+- name: 166 participle-tail
+  rule: ../../../styles/DNBAIPatterns/ParticipleTail.yml
+  input: "Ensuring the cache is warm is the first step."
+  absent: DNBAIPatterns.ParticipleTail
+- name: 167 participle-tail
+  rule: ../../../styles/DNBAIPatterns/ParticipleTail.yml
+  input: "The volunteers fixed the docs, contributing code later."
+  absent: DNBAIPatterns.ParticipleTail
+- name: 168 collaborative
+  rule: ../../../styles/DNBAIPatterns/LegCollaborative.Communication.yml
+  input: "You're absolutely right! The test was wrong."
+  contains: DNBAIPatterns.LegCollaborative
+- name: 169 collaborative
+  rule: ../../../styles/DNBAIPatterns/LegCollaborative.Communication.yml
+  input: "You’re absolutely right about the cache."
+  contains: DNBAIPatterns.LegCollaborative
+- name: 170 collaborative
+  rule: ../../../styles/DNBAIPatterns/LegCollaborative.Communication.yml
+  input: "You are right about the cache size."
+  absent: DNBAIPatterns.LegCollaborative
+- name: 171 hedging-disclaimer
+  rule: ../../../styles/DNBAIPatterns/HedgingDisclaimer.yml
+  input: "While specific details are limited, the tool seems popular."
+  contains: DNBAIPatterns.HedgingDisclaimer
+- name: 172 hedging-disclaimer
+  rule: ../../../styles/DNBAIPatterns/HedgingDisclaimer.yml
+  input: "The release date is not widely documented."
+  contains: DNBAIPatterns.HedgingDisclaimer
+- name: 173 hedging-disclaimer
+  rule: ../../../styles/DNBAIPatterns/HedgingDisclaimer.yml
+  input: "Based on available information, the project started in 2019."
+  contains: DNBAIPatterns.HedgingDisclaimer
+- name: 174 hedging-disclaimer
+  rule: ../../../styles/DNBAIPatterns/HedgingDisclaimer.yml
+  input: "The benchmark does not by itself establish that the cache is faster."
+  contains: DNBAIPatterns.HedgingDisclaimer
+- name: 175 hedging-disclaimer
+  rule: ../../../styles/DNBAIPatterns/HedgingDisclaimer.yml
+  input: "In the provided sources, no author is named."
+  contains: DNBAIPatterns.HedgingDisclaimer
+- name: 176 hedging-disclaimer
+  rule: ../../../styles/DNBAIPatterns/HedgingDisclaimer.yml
+  input: "The figure should be treated as an estimate rather than a fact."
+  contains: DNBAIPatterns.HedgingDisclaimer
+- name: 177 hedging-disclaimer
+  rule: ../../../styles/DNBAIPatterns/HedgingDisclaimer.yml
+  input: "The API is not publicly available yet."
+  absent: DNBAIPatterns.HedgingDisclaimer
+- name: 178 hedging-disclaimer
+  rule: ../../../styles/DNBAIPatterns/HedgingDisclaimer.yml
+  input: "The value should be treated as a string rather than a number."
+  absent: DNBAIPatterns.HedgingDisclaimer
+- name: 179 hedging-disclaimer
+  rule: ../../../styles/DNBAIPatterns/HedgingDisclaimer.yml
+  input: "The parser should not be confused with the linter."
+  absent: DNBAIPatterns.HedgingDisclaimer
+- name: 180 hedging-disclaimer
+  rule: ../../../styles/DNBAIPatterns/HedgingDisclaimer.yml
+  input: "> Based on available information, the project started in 2019."
+  absent: DNBAIPatterns.HedgingDisclaimer
+- name: 181 broader-significance
+  rule: ../../../styles/DNBAIPatterns/BroaderSignificance.yml
+  input: "The release marked a pivotal moment for the project."
+  contains: DNBAIPatterns.BroaderSignificance
+- name: 182 broader-significance
+  rule: ../../../styles/DNBAIPatterns/BroaderSignificance.yml
+  input: "The change left an indelible mark on the codebase."
+  contains: DNBAIPatterns.BroaderSignificance
+- name: 183 broader-significance
+  rule: ../../../styles/DNBAIPatterns/BroaderSignificance.yml
+  input: "The patch set the stage for the next release."
+  contains: DNBAIPatterns.BroaderSignificance
+- name: 184 broader-significance
+  rule: ../../../styles/DNBAIPatterns/BroaderSignificance.yml
+  input: "The change reflects broader trends in tooling."
+  contains: DNBAIPatterns.BroaderSignificance
+- name: 185 broader-significance
+  rule: ../../../styles/DNBAIPatterns/BroaderSignificance.yml
+  input: "The rewrite represents a major shift in strategy."
+  contains: DNBAIPatterns.BroaderSignificance
+- name: 186 broader-significance
+  rule: ../../../styles/DNBAIPatterns/BroaderSignificance.yml
+  input: "The paper has shaped discussions about open data."
+  contains: DNBAIPatterns.BroaderSignificance
+- name: 187 broader-significance
+  rule: ../../../styles/DNBAIPatterns/BroaderSignificance.yml
+  input: "The script uses a bit shift to pack the flags."
+  absent: DNBAIPatterns.BroaderSignificance
+- name: 188 broader-significance
+  rule: ../../../styles/DNBAIPatterns/BroaderSignificance.yml
+  input: "This is a key moment in the tutorial."
+  absent: DNBAIPatterns.BroaderSignificance
+- name: 189 broader-significance
+  rule: ../../../styles/DNBAIPatterns/BroaderSignificance.yml
+  input: "The figures reflect the broader dataset."
+  absent: DNBAIPatterns.BroaderSignificance
+- name: 190 broader-significance
+  rule: ../../../styles/DNBAIPatterns/BroaderSignificance.yml
+  input: "The team set the stage lighting for the show."
+  absent: DNBAIPatterns.BroaderSignificance
+- name: 191 online-presence
+  rule: ../../../styles/DNBAIPatterns/OnlinePresence.yml
+  input: "The studio maintains an active social media presence."
+  contains: DNBAIPatterns.OnlinePresence
+- name: 192 online-presence
+  rule: ../../../styles/DNBAIPatterns/OnlinePresence.yml
+  input: "The band has a strong digital presence."
+  contains: DNBAIPatterns.OnlinePresence
+- name: 193 online-presence
+  rule: ../../../styles/DNBAIPatterns/OnlinePresence.yml
+  input: "Our product has a strong presence in Europe."
+  absent: DNBAIPatterns.OnlinePresence
+- name: 194 online-presence
+  rule: ../../../styles/DNBAIPatterns/OnlinePresence.yml
+  input: "The page lists the studio's social media accounts."
+  absent: DNBAIPatterns.OnlinePresence
+- name: 195 ai-vocab
+  rule: ../../../styles/DNBAIPatterns/AIVocabulary.yml
+  input: "We took a deep dive into the logs."
+  contains: DNBAIPatterns.AIVocabulary
+- name: 196 ai-vocab
+  rule: ../../../styles/DNBAIPatterns/AIVocabulary.yml
+  input: "The demo showcases the new parser."
+  contains: DNBAIPatterns.AIVocabulary
+- name: 197 ai-vocab
+  rule: ../../../styles/DNBAIPatterns/AIVocabulary.yml
+  input: "The team fosters a culture of review."
+  contains: DNBAIPatterns.AIVocabulary
+- name: 198 ai-vocab
+  rule: ../../../styles/DNBAIPatterns/AIVocabulary.yml
+  input: "The enduring appeal of plain text is clear."
+  contains: DNBAIPatterns.AIVocabulary
+- name: 199 ai-vocab
+  rule: ../../../styles/DNBAIPatterns/AIVocabulary.yml
+  input: "The diver went deep into the cave."
+  absent: DNBAIPatterns.AIVocabulary
+- name: 200 density-multiword
+  rule: ../../../styles/DNBAIPatterns/VocabularyDensityWarning.yml
+  input: "The deep-dive showcases an enduring idea."
+  contains: DNBAIPatterns.VocabularyDensityWarning
+- name: 201 density-multiword
+  rule: ../../../styles/DNBAIPatterns/VocabularyDensityWarning.yml
+  input: "The deep dive showcases an enduring idea."
+  absent: DNBAIPatterns.VocabularyDensityWarning
 - name: RepeatedPhrase positive 0
   rule: ../../../styles/DNBAIPatterns/RepeatedPhrase.yml
   input: Careful edits improve readability. Careful edits improve readability. Careful edits improve readability.

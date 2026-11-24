@@ -6,5 +6,5 @@ level: error
 ignorecase: true
 scope: raw
 tokens:
-  - \bas\s+an\s+ai(?:\s+language)?\s+model\b|\bas\s+of\s+my\s+last\s+(?:update|training)\b|\bknowledge\s+cutoff\b|\bI\s+(?:cannot|can['’]t|do\s+not|don['’]t)\s+(?:browse\s+the\s+internet|access\s+real-?time)\b|contentReference|oaicite|turn[0-9]+(?:search|news|image)[0-9]*|attributableIndex|utm_source=
+  - \bas\s+an\s+ai(?:\s+language)?\s+model\b|\bas\s+of\s+my\s+last\s+(?:update|training)\b|\bknowledge\s+cutoff\b|\bI\s+(?:cannot|can['’]t|do\s+not|don['’]t)\s+(?:browse\s+the\s+internet|access\s+real-?time)\b|contentReference|oaicite|oai_citation|turn[0-9]+(?:search|news|image|file)[0-9]*|attributableIndex|utm_source=(?:openai|chatgpt\.com|copilot\.com)|referrer=grok\.com|\((?:start|end)_span\)|\[cite:\s*[0-9]|grok[_-]card|grok_render_citation_card_json|【[0-9]+†|ppl-ai-file-upload|\[(?:attached_file|web):[0-9]+\]|:::writing\{
 nonword: true

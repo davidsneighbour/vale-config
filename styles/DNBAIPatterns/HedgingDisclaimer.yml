@@ -1,0 +1,10 @@
+# Observable writing pattern, not a claim of AI authorship.
+# Source variants are covered by native Vale regression cases.
+extends: existence
+message: '"%s" is a hedging disclaimer about sources; consider stating what the sources say.'
+level: warning
+ignorecase: true
+scope: ~blockquote
+tokens:
+  - \bwhile\s+(?:specific|detailed|precise|exact)\s+(?:details|information|figures|data)\s+(?:are|is|remain|remains)\s+(?:limited|scarce|unavailable)\b|\bnot\s+widely\s+(?:available|documented|disclosed|reported)\b|\bnot\s+publicly\s+(?:documented|disclosed)\b|\b(?:in|from)\s+the\s+(?:provided|available)\s+(?:sources|search\s+results|materials)\b|\bbased\s+on\s+(?:the\s+)?available\s+(?:information|sources|data|evidence)\b|\bdoes\s+not\s+(?:by\s+itself|on\s+its\s+own|alone)\s+establish\b|\bshould\s+be\s+(?:treated|presented|read|understood|seen|viewed|regarded)\s+as\s+(?:an?\s+)?(?:\w+\s+)?(?:speculative|subjective|symbolic|tentative|anecdotal|illustrative|approximate|estimate|claim|interpretation|opinion)\b[^.!?\n]{0,60}?\brather\s+than\b
+nonword: true

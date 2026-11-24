@@ -1,8 +1,9 @@
+# Deprecated 2026-11-25: Plain tokens flag legitimate uses such as "syntax highlighting"; ParticipleTail finds the participle construction (Wikipedia revision 1387041075, WP:SUPERFICIAL).
 ---
 extends: existence
 message: "'%s' is a section summary."
 ignorecase: true
-level: warning
+level: suggestion
 tokens:
   - ensuring
   - highlighting

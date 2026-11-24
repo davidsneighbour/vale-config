@@ -1,8 +1,9 @@
+# Deprecated 2026-11-25: Promotional language is listed under Historical indicators (2023–2025) (Wikipedia revision 1387041075, WP:AIPUFFERY).
 # Observable writing pattern, not a claim of AI authorship.
 # Source variants are covered by native Vale regression cases.
 extends: existence
 message: '"%s" is promotional boilerplate; consider replacing it with specific detail.'
-level: warning
+level: suggestion
 ignorecase: true
 scope: ~blockquote
 tokens:

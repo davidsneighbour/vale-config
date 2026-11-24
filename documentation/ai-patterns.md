@@ -26,26 +26,29 @@ Suggestions flag weak individual signals. Warnings flag constructions worth revi
 
 ## Complete rule reference
 
-The first table covers the 26 planned rules. Each has positive, negative, and applicable false-positive regression cases against the real Vale executable.
+The first table covers 29 rules. Each has positive, negative, and applicable false-positive regression cases against the real Vale executable. Rules marked as deprecated are listed in [Deprecated rules](#deprecated-rules).
 
 | Rule | Default level | Purpose |
 | --- | --- | --- |
 | [`AIVocabulary`](../styles/DNBAIPatterns/AIVocabulary.yml) | suggestion | "%s" is AI-associated vocabulary; consider whether a more precise word fits. |
 | [`AlreadyKnow`](../styles/DNBAIPatterns/AlreadyKnow.yml) | suggestion | "%s" is an AI-associated reflective writing pattern; consider making the claim more concrete. |
+| [`BroaderSignificance`](../styles/DNBAIPatterns/BroaderSignificance.yml) | warning | "%s" is inflated significance phrasing; consider naming the concrete effect. |
 | [`ChatbotLeftovers`](../styles/DNBAIPatterns/ChatbotLeftovers.yml) | error | Found chatbot artefact "%s"; remove pasted AI interface metadata or boilerplate. |
 | [`CrucialRole`](../styles/DNBAIPatterns/CrucialRole.yml) | warning | "%s" is an AI-writing cliche; name the role more specifically. |
 | [`DespiteChallenges`](../styles/DNBAIPatterns/DespiteChallenges.yml) | warning | "%s" is generic challenges/outlook boilerplate; consider adding specific context. |
 | [`DidNotChain`](../styles/DNBAIPatterns/DidNotChain.yml) | warning | Repeated "did not …" construction; review whether the chain is intentional. |
 | [`DontVerbIt`](../styles/DNBAIPatterns/DontVerbIt.yml) | warning | Repeated negated verb construction; consider whether the contrast can be stated more directly. |
 | [`Entire`](../styles/DNBAIPatterns/Entire.yml) | suggestion | "%s" is a broad rhetorical construction; consider a more specific claim. |
+| [`HedgingDisclaimer`](../styles/DNBAIPatterns/HedgingDisclaimer.yml) | warning | "%s" is a hedging disclaimer about sources; consider stating what the sources say. |
 | [`IsReal`](../styles/DNBAIPatterns/IsReal.yml) | suggestion | "%s" is a rhetorical AI-associated writing pattern; consider concrete evidence instead. |
 | [`Landscape`](../styles/DNBAIPatterns/Landscape.yml) | warning | "%s" is AI-associated scene-setting boilerplate; consider naming the specific context. |
 | [`NoChain`](../styles/DNBAIPatterns/NoChain.yml) | warning | Repeated "no …" construction; review whether the chain is doing real work. |
 | [`NotJust`](../styles/DNBAIPatterns/NotJust.yml) | suggestion | "%s" is a familiar rhetorical contrast; consider stating the contrast directly. |
 | [`NotNothing`](../styles/DNBAIPatterns/NotNothing.yml) | suggestion | "%s" is a stock understatement; consider naming the concrete significance. |
 | [`NoteThat`](../styles/DNBAIPatterns/NoteThat.yml) | warning | "%s" is didactic hedging; consider making the point directly. |
+| [`OnlinePresence`](../styles/DNBAIPatterns/OnlinePresence.yml) | warning | "%s" is generic online-presence phrasing; consider naming the channel or the evidence. |
 | [`ParticipleTail`](../styles/DNBAIPatterns/ParticipleTail.yml) | warning | "%s" is a formulaic participle tail; consider explaining the relationship more directly. |
-| [`PromotionalBoilerplate`](../styles/DNBAIPatterns/PromotionalBoilerplate.yml) | warning | "%s" is promotional boilerplate; consider replacing it with specific detail. |
+| [`PromotionalBoilerplate`](../styles/DNBAIPatterns/PromotionalBoilerplate.yml) | suggestion (deprecated) | "%s" is promotional boilerplate; consider replacing it with specific detail. |
 | [`Punchline`](../styles/DNBAIPatterns/Punchline.yml) | suggestion | "%s" is a stock reveal phrase; consider stating the conclusion directly. |
 | [`RepeatedPhrase`](../styles/DNBAIPatterns/RepeatedPhrase.yml) | warning | A phrase appears repeatedly; review whether the prose sounds templated. |
 | [`RepeatedSentenceOpener`](../styles/DNBAIPatterns/RepeatedSentenceOpener.yml) | warning | A sentence opener appears repeatedly; vary the structure if the repetition is accidental. |
@@ -72,6 +75,19 @@ The namespace also retains the following legacy rules. They are tested separatel
 | `DNBAIPatterns.LegUndue` | [LegUndue.Emphasis.yml](../styles/DNBAIPatterns/LegUndue.Emphasis.yml) | '%s' is putting undue emphasis on symbolism and importance. |
 | `DNBAIPatterns.LegVague` | [LegVague.Attribution.yml](../styles/DNBAIPatterns/LegVague.Attribution.yml) | '%s' is putting undue emphasis on symbolism and importance. |
 
+## Deprecated rules
+
+A deprecated rule stays in the package at a lower level, and its file starts with a dated `# Deprecated` comment. A later review can propose to delete it. These rules were deprecated on 2026-11-25 after the review of [Wikipedia:Signs of AI writing revision 1387041075](https://en.wikipedia.org/w/index.php?oldid=1387041075):
+
+| Rule | Level | Reason |
+| --- | --- | --- |
+| `PromotionalBoilerplate` | warning to suggestion | Promotional language is listed under "Historical indicators" (2023–2025). |
+| `LegPromotional` | warning to suggestion | Same section as `PromotionalBoilerplate`. |
+| `LegSection` | warning to suggestion | Section summaries are listed under "Historical indicators". |
+| `LegPromptCopyPaste` | warning to suggestion | Prompt refusals are listed under "Historical indicators". `ChatbotLeftovers` finds the artefact tokens. |
+| `LegOverused` | warning to suggestion | Transition words in isolation are listed under "Ineffective indicators". |
+| `LegSuperficial` | warning to suggestion | The plain tokens also flag legitimate uses, such as "syntax highlighting". `ParticipleTail` finds the participle construction. |
+
 ## Aggregate algorithms
 
 Aggregate rules run on parsed body paragraphs. They do not combine counts across separate paragraphs, headings, list items, or table cells. This conservative unit keeps markup parsing in Vale and avoids counting code or blockquotes. On the installed 3.28.1 release, script rules scoped to `summary` do not run; the package therefore uses the supported paragraph scope rather than inspecting raw Markdown.
@@ -80,7 +96,7 @@ Aggregate rules run on parsed body paragraphs. They do not combine counts across
 
 [`scripts/data/ai-vocabulary.json`](../scripts/data/ai-vocabulary.json) is the single vocabulary source. `npm run generate:ai` generates the individual existence rule and the two Tengo threshold scripts. `npm run generate:ai:check` and the unit suite reject stale generated files. This is build-time generation; consumers need only Vale.
 
-Each whole-word vocabulary match is counted once. Longer forms such as `garnered` do not also count as `garner`; arbitrary substrings do not count. For each paragraph, rate is occurrences × 1,000 ÷ word count.
+Each whole-word vocabulary match is counted once. A multi-word entry, such as "deep dive", counts only in its hyphenated form ("deep-dive"); `AIVocabulary` reports both forms. Longer forms such as `garnered` do not also count as `garner`; arbitrary substrings do not count. For each paragraph, rate is occurrences × 1,000 ÷ word count.
 
 | Count and rate | Aggregate result |
 | --- | --- |

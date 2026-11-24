@@ -1,8 +1,9 @@
+# Deprecated 2026-11-25: Prompt refusals are listed under Historical indicators; ChatbotLeftovers covers the artefact tokens (Wikipedia revision 1387041075, Historical indicators > Prompt refusal).
 ---
 extends: existence
 message: "'%s' is something an AI chat assistant might say or add to their answer."
 ignorecase: true
-level: warning
+level: suggestion
 tokens:
   - as an AI language model
   - as a large language model

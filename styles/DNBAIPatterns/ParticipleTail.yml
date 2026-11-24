@@ -6,5 +6,5 @@ level: warning
 ignorecase: true
 scope: ~blockquote
 tokens:
-  - ',\s+(?:highlighting|underscoring|emphasizing|showcasing|reflecting|demonstrating|illustrating|signaling|solidifying|cementing|reinforcing|underlining)\s+(?:its|his|her|their|our|the|a|an|how|that|what|both)\b[^.!?\n]*'
+  - ',\s+(?:(?:highlighting|underscoring|emphasi[sz]ing|showcasing|reflecting|demonstrating|illustrating|signaling|solidifying|cementing|reinforcing|underlining|symboli[sz]ing|ensuring|fostering|cultivating|enhancing|encompassing)\s+(?:its|his|her|their|our|the|a|an|how|that|what|both)|contributing\s+to\s+(?:its|his|her|their|our|the|a|an))\b[^.!?\n]*'
 nonword: true

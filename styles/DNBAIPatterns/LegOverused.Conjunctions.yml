@@ -1,8 +1,9 @@
+# Deprecated 2026-11-25: Transition words in isolation are listed as an ineffective indicator (Wikipedia revision 1387041075, Ineffective indicators).
 ---
 extends: existence
 message: "'%s' is editorializing."
 ignorecase: true
-level: warning
+level: suggestion
 tokens:
   - on the other hand
   - moreover

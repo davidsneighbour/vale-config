@@ -1,8 +1,9 @@
+# Deprecated 2026-11-25: Promotional language is listed under Historical indicators (2023–2025) (Wikipedia revision 1387041075, WP:AIPUFFERY).
 ---
 extends: existence
 message: "'%s' is promotional language."
 ignorecase: true
-level: warning
+level: suggestion
 tokens:
   - rich cultural heritage
   - rich history

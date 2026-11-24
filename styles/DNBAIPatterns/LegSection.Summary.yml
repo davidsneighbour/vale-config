@@ -1,8 +1,9 @@
+# Deprecated 2026-11-25: Section summaries are listed under Historical indicators (Wikipedia revision 1387041075, WP:CONCLUSION).
 ---
 extends: existence
 message: "'%s' is a section summary."
 ignorecase: true
-level: warning
+level: suggestion
 tokens:
   - In summary
   - In conclusion

@@ -1,0 +1,10 @@
+# Observable writing pattern, not a claim of AI authorship.
+# Source variants are covered by native Vale regression cases.
+extends: existence
+message: '"%s" is generic online-presence phrasing; consider naming the channel or the evidence.'
+level: warning
+ignorecase: true
+scope: ~blockquote
+tokens:
+  - \bmaintain(?:s|ed|ing)?\s+(?:an?\s+)?(?:active|strong|robust|vibrant|consistent)\s+(?:(?:social\s+media|digital|online)\s+)?presence\b|\b(?:social\s+media|digital)\s+presence\b
+nonword: true
