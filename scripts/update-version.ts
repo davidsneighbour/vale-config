@@ -12,7 +12,7 @@ function updateVersionHeader(filePath: string, newVersion: string): void {
 
   const content = fs.readFileSync(filePath, "utf-8");
   const updated = content.replace(
-    /#\s*Version:\s*\d+\.\d+\.\d+(-test)?/,
+    /^#\s*Version:[^\r\n]*/m,
     `# Version: ${newVersion}`,
   );
   fs.writeFileSync(filePath, updated);

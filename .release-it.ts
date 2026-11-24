@@ -13,7 +13,7 @@ const config: Config = createReleaseConfig({
     },
     hooks: {
       // biome-ignore lint/suspicious/noTemplateCurlyInString: release-it expands this placeholder.
-      "before:git:release": ["node scripts/update-version.ts ${version}"],
+      "after:bump": ["node scripts/update-version.ts ${version}"],
       "before:github:release": ["./scripts/build-release-zip.sh"],
     },
   },

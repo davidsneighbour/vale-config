@@ -83,6 +83,8 @@ This repository follows **semantic versioning** (`MAJOR.MINOR.PATCH`) for all re
    * The `# Version: ...` header in `.vale.ini` and the DNB vocabulary files.
    * `CHANGELOG.md` (conventional changelog) and `CITATION.cff`.
 
+   The `after:bump` hook updates the Vale version headers before release-it stages the release files, so the release commit includes them.
+
    `README.md`'s install instructions point at `releases/latest`, so they aren't rewritten on release - see [Pinning a version](#pinning-a-version-optional) above for the one static, illustrative version example.
 
 3. **Clean git tree required**: the release process ensures there are no uncommitted changes before it starts.
