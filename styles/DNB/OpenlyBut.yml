@@ -2,7 +2,6 @@
 # via https://github.com/ChrisChinchilla/Openly
 # License: https://github.com/ChrisChinchilla/Openly/blob/main/LICENSE
 
-
 extends: existence
 message: "Do not start a paragraph with a 'but'."
 level: error
@@ -11,6 +10,6 @@ action:
   name: remove
   params:
     - remove
-    - '.?!'
+    - ".?!"
 tokens:
   - ^But

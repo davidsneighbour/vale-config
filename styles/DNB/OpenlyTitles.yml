@@ -2,7 +2,6 @@
 # via https://github.com/ChrisChinchilla/Openly
 # License: https://github.com/ChrisChinchilla/Openly/blob/main/LICENSE
 
-
 extends: capitalization
 message: "'%s' should be in sentence case"
 level: warning

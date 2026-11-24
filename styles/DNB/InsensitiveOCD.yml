@@ -2,7 +2,6 @@
 # via https://github.com/errata-ai/alex/
 # License: https://github.com/errata-ai/alex/blob/master/LICENSE
 
-
 extends: substitution
 message: When referring to a person, consider using '%s' instead of '%s'.
 ignorecase: true

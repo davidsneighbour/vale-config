@@ -2,7 +2,6 @@
 # via https://github.com/ChrisChinchilla/Openly
 # License: https://github.com/ChrisChinchilla/Openly/blob/main/LICENSE
 
-
 extends: existence
 message: "'%s' is an unclear antecedent"
 ignorecase: true

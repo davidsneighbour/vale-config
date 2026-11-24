@@ -2,7 +2,6 @@
 # via https://github.com/errata-ai/alex/
 # License: https://github.com/errata-ai/alex/blob/master/LICENSE
 
-
 extends: substitution
 message: Consider using '%s' instead of '%s'.
 ignorecase: true
@@ -10,6 +9,7 @@ level: warning
 action:
   name: replace
 swap:
-  islamist: muslim|person of Islamic faith|fanatic|zealot|follower of islam|follower
+  islamist:
+    muslim|person of Islamic faith|fanatic|zealot|follower of islam|follower
     of the islamic faith
   islamists: muslims|people of Islamic faith|fanatics|zealots

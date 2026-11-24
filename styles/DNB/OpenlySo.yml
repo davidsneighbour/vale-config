@@ -2,7 +2,6 @@
 # via https://github.com/ChrisChinchilla/Openly
 # License: https://github.com/ChrisChinchilla/Openly/blob/main/LICENSE
 
-
 extends: existence
 message: "Don't start a sentence with '%s'"
 ignorecase: true
@@ -11,6 +10,6 @@ action:
   name: edit
   params:
     - remove
-    - '.?!'
+    - ".?!"
 raw:
   - '(?<=[.;?!]\s)(?:[.-]?\s*)so\b'
