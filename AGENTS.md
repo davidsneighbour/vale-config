@@ -1,67 +1,27 @@
 # Agent instructions
 
-This file provides instructions for agents that work in this repository.
-
-## What this repository is
-
-This repository is the source for the DNB [Vale](https://vale.sh) style package: a set of Vale rules and vocabularies, distributed as a downloadable `.zip` file. It is not an npm package to install.
-
-`.vale.ini` and `styles/` at the repository root are the actual style package, matching [Vale's documented package layout](https://docs.vale.sh/keys/packages/). Their contents become the root of the released zip, wrapped in a `config/` folder at build time by `scripts/build-release-zip.sh`. The Node tooling in the repository root (`scripts/`, `.release-it.ts`, `tests/`) exists only to version, package, test, and publish that zip. It is not part of the linting product itself.
-
-This repository follows the same tooling shape as its sibling style packages, [vale-aidetection](https://github.com/davidsneighbour/vale-aidetection) and [vale-millennialisms](https://github.com/davidsneighbour/vale-millennialisms): Biome, markdownlint, TypeScript, vitest, and `release-it` via `@dnbhq/release-config`. All three now share the same repository-root `.vale.ini` + `styles/` layout too.
+This repository builds the DNB Vale style package as `dist/config.zip`. The root `.vale.ini` and maintained `styles/` content are the product. Node tooling exists to validate, version, package, and publish that zip; this repository is not an npm package for consumers to install.
 
 ## Working rules
 
-* Work only on the `main` branch. Do not create sub-branches for tasks.
-* Inspect existing conventions before changing files.
-* Keep changes small, maintainable, and scoped to the requested task.
-* Preserve unrelated work in the working tree.
-* Commit all task changes.
-* Use labels for all GitHub issues.
-* Commit with a reference to an existing issue, or with a closing reference to an issue.
-* When work starts from a written instruction rather than an existing issue, create a GitHub issue for that work before committing, apply suitable labels, and reference or close that issue in the commit message.
-* When work starts from an existing issue, reference that issue in the commit message. Use a closing reference only when the commit completes the issue.
+* Work only on `main`. Do not create task branches.
+* Preserve unrelated working-tree changes.
+* Commit all task changes, subject to any explicit approval requirements for the current task.
+* Apply suitable labels to every GitHub issue.
+* Reference an existing issue in each task commit. Use a closing reference only when the commit completes the issue.
+* When work starts from a written instruction without an existing issue, create a labelled issue before committing.
 
-## Commands
+## Scoped instructions
 
-* `npm run check` runs `format:check`, `lint` (Biome + markdownlint), `validate` (`tsc --noEmit`), and `test` in sequence. This is the top-level quality gate.
-* `npm test` (or `npm run test`) runs three things in order:
-  * `test:unit` (`vitest --run`) exercises `tests/scaffold.test.js` (required-files check) and `tests/release.test.js`, which runs `scripts/update-version.ts` and `scripts/build-release-zip.sh` end-to-end against a `1.2.3-test` version and asserts on their side effects (`.vale.ini` and the generated zip), plus a check that `README.md` still points at `releases/latest` rather than a pinned version. It then restores the repo with `git restore`. Run it against a clean working tree; it throws if there are uncommitted changes.
-  * `test:vale` (`scripts/test-vale.sh`) runs Vale directly against `tests/fixtures/*.md`, and asserts specific DNB rules do/don't fire via `tests/verify-vale-output.js`. This is the **feature test**: it validates the actual DNB rule content, not just the release plumbing.
-  * `test:package` (`scripts/test-package.sh`) builds `dist/config.zip`, installs it into a throwaway Vale project via `Packages = dist/config.zip`, and asserts real rules from all three namespaces fire from the packaged zip — this is the "installable via GitHub" guarantee, made concrete. It also verifies that `DNB.Spelling` can resolve its bundled `en_GB` dictionary, that all six vendored sources run under DNB, and that the package does not install external style namespaces.
-* `npm run release`, or a `release:patch`/`release:minor`/`release:major`/`release:force`/`release:dry` variant, runs `release-it` (config in `.release-it.ts`, built on `@dnbhq/release-config`). Its `after:bump` hook runs `scripts/update-version.ts ${version}` (rewrites the `# Version:` header in `.vale.ini` and the DNB vocabulary files), and its `before:github:release` hook runs `scripts/build-release-zip.sh` to build `dist/config.zip` before it's attached to the GitHub release. `release-it` handles the conventional changelog, git commit/tag/push, `CITATION.cff` update, and GitHub release creation. `README.md`'s install instructions point at `releases/latest` and are never rewritten by a release; its one pinned-version example is static and illustrative only.
-* `npm run build:zip` (`scripts/build-release-zip.sh`) builds `dist/config.zip` on its own, without touching versions or git.
+Read the matching instruction files before editing their paths. Their rules have the same authority as this file within their declared scope.
 
-## Package contents
+| Files being changed | Instructions |
+| --- | --- |
+| `.vale.ini`, `styles/**` | [Style rules](.agents/instructions/style-package.instructions.md) |
+| `scripts/**`, `tests/**`, `.release-it.ts`, package manifests, TypeScript configuration, or Biome configuration | [Repository tooling](.agents/instructions/tooling.instructions.md) |
+| `.github/renovate.json5`, `.github/dependabot.yml` | [Dependency automation](.agents/instructions/dependencies.instructions.md) |
 
-* `config.zip` contains `.vale.ini`, `README.md`, `LICENSE.md`, and the maintained `styles/` package content.
-* The package ships `styles/DNB/`, `styles/AIDetection/`, and `styles/Millennialisms/` as separate Vale namespaces. Consumers can enable or disable these rule sets individually with `BasedOnStyles`.
-* `styles/config/dictionaries/` is part of the package so `DNB.Spelling` works from the installed zip.
+## Task references
 
-## Documentation references
-
-* Use the official [Vale documentation](https://docs.vale.sh/) as the reference address for Vale configuration, styles, packages, rules, and vocabularies.
-
-## Style package layout
-
-* `.vale.ini` is the actual Vale config shipped to consumers. It sets `StylesPath = styles` and has no external `Packages` dependency. Selected upstream rules are maintained inside `styles/DNB/` with source package prefixes; the inventory and selection decisions are in `documentation/upstream-rules.md` and `styles/config/upstream-rules.json`. It enables `DNB`, `AIDetection`, and `Millennialisms` by default while preserving each as a separate namespace. When adding or adjusting a rule, edit the `BasedOnStyles` and per-rule overrides here instead of introducing a new top-level config.
-* `styles/DNB/`, `styles/AIDetection/`, and `styles/Millennialisms/` hold the maintained rules. `styles/config/vocabularies/<Name>/{accept,reject}.txt` contains Vale vocabulary files (`.vale.ini` references `Vocab = DNB, Tech, Thailand, AIDetectionExceptions, MillennialismsExceptions`); each vocabulary is a directory with `accept.txt`, and optionally `reject.txt`, containing regex-style word or phrase patterns. The `DNB` vocabulary files carry a `# Version: x.y.z` header kept in sync with `package.json` by `scripts/update-version.ts`. New vocabulary directories should follow the same directory and file convention.
-* Repository setup does not run `vale sync`. Consumers use it to install the release zip. Old upstream downloads and `styles/.vale-config/` can remain in existing checkouts; they are ignored and excluded from the release zip. Test the package in a clean temporary project to verify that no external styles are needed.
-
-## Release pipeline
-
-`release-it` (config in `.release-it.ts`, built on `@dnbhq/release-config`) drives releases:
-
-1. Bumps `package.json` version from conventional commits (or an explicit increment).
-2. `after:bump` hook runs `node scripts/update-version.ts ${version}`, which rewrites the `# Version: ...` header in `.vale.ini` and the DNB vocabulary `accept.txt`/`reject.txt` files. `README.md` is not touched - its install instructions point at `releases/latest`.
-3. Generates a conventional changelog entry in `CHANGELOG.md`, and updates `CITATION.cff` (both handled by `@dnbhq/release-config`).
-4. `before:github:release` hook runs `scripts/build-release-zip.sh`, which zips `.vale.ini`, root `README.md`, root `LICENSE.md`, `styles/DNB/`, `styles/AIDetection/`, `styles/Millennialisms/`, and `styles/config/` into `dist/config.zip`.
-5. Commits, tags `v<version>`, pushes, and creates a GitHub release with `dist/config.zip` attached.
-
-`scripts/test-package.sh` (used by `npm test`) exercises steps 2 and 4 directly, without git/GitHub side effects, against an explicit `-test` version.
-
-## Repository conventions
-
-* Prefer TypeScript for repository tooling scripts and other maintainable automation.
-* Renovate config (`.github/renovate.json5`) extends `github>dnbhq/renovate-config`.
-* Dependabot (`.github/dependabot.yml`) is configured for npm, monthly on Fridays.
+* When planning or running validation, read [validation commands and precautions](.agents/references/validation.md). `npm run check` is the top-level quality gate.
+* When preparing, testing, publishing, or changing a release, read [release procedures](.agents/references/releases.md).
