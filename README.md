@@ -1,6 +1,21 @@
 <!-- markdownlint-disable MD041 -->
 This repository contains a custom Vale configuration, style rules, and dictionary files for writing and linting text.
 
+## Installation
+
+We recommend [Homebrew](https://formulae.brew.sh/formula/vale) to install and update Vale on Linux and macOS.
+
+```bash
+brew install vale
+```
+
+To upgrade an existing installation and check the installed version:
+
+```bash
+brew upgrade vale
+vale --version
+```
+
 ## Usage
 
 The DNB Vale Configuration package is hosted as an externally downloadable `.zip` file. You can include it in your Vale setup by adding its URL to the `Packages` key in your `.vale.ini` file.
