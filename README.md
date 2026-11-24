@@ -3,6 +3,8 @@ This repository contains a custom Vale configuration, style rules, and dictionar
 
 ## Installation
 
+Version 1.0.0 begins a production trial to review, document, and calibrate the rules on real projects. Version 2.0.0 will be the stable baseline after that review.
+
 This configuration requires Vale 3.28.1 or later. The release archive declares its minimum version in `meta.json`. When syncing from a URL, Vale can select an older compatible release or warn if the requested archive requires a newer version.
 
 We recommend [Homebrew](https://formulae.brew.sh/formula/vale) to install and update Vale on Linux and macOS.

@@ -14,7 +14,7 @@ Packages = https://github.com/davidsneighbour/vale-config/releases/latest/downlo
 BasedOnStyles = Vale, DNBWriting, DNBAIPatterns, DNBMillennialisms
 ```
 
-Run `vale sync` after adding the package, then `vale article.md`. Replace `releases/latest/download` with `releases/download/v0.4.0` to pin a released version; that example is the previous release and does not include these un-released changes. The new namespace names require a release containing the namespace migration.
+Run `vale sync` after adding the package, then `vale article.md`. To pin the production trial release, replace `releases/latest/download` with `releases/download/v1.0.0`. Use this trial to review the rules on real projects and gather examples for documentation and calibration before v2.0.0.
 
 Markdown (`md`, `markdown`), MDX, plain text, HTML, AsciiDoc, and reStructuredText are configured. Vale 3.28.1 reads AsciiDoc and reStructuredText in process. The regression suite exercises all seven extensions.
 
