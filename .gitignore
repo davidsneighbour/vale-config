@@ -3,7 +3,7 @@ dist/*.zip
 .vale/
 
 # Base packages synced into styles/ via `vale sync` (Packages = Microsoft,
-# Google, Hugo, alex, proselint, Readability, write-good in .vale.ini)
+# Google, alex, proselint, Readability, write-good in .vale.ini)
 styles/*
 !styles/DNB/
 !styles/AIDetection/
