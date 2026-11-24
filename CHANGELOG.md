@@ -1,5 +1,33 @@
 # Changelog
 
+## [1.0.0](https://github.com/davidsneighbour/vale-config/compare/v0.4.0...v1.0.0) (2026-11-24)
+
+### ⚠ BREAKING CHANGES
+
+* **namespaces:** replace DNB, AIDetection, and Millennialisms in BasedOnStyles and rule overrides with DNBWriting, DNBAIPatterns, and DNBMillennialisms respectively.
+
+### Feat
+
+* **ai-patterns:** complete detection and regression coverage ([f1a4fd2](https://github.com/davidsneighbour/vale-config/commit/f1a4fd241dc07ee35d4e699b8de5433bf7bf0b54)), closes [#58](https://github.com/davidsneighbour/vale-config/issues/58)
+* declare the minimum supported Vale version ([0304a71](https://github.com/davidsneighbour/vale-config/commit/0304a71531f5b64b41b4e3216b1029a4dfd7e9fd)), closes [#62](https://github.com/davidsneighbour/vale-config/issues/62)
+* **namespaces:** add consistent DNB namespace names ([0cae011](https://github.com/davidsneighbour/vale-config/commit/0cae01139240870c063004d6fae896e68226948d)), closes [#57](https://github.com/davidsneighbour/vale-config/issues/57)
+
+### Docs
+
+* **agents:** align scoped instructions and references ([3cd372b](https://github.com/davidsneighbour/vale-config/commit/3cd372b482b94cc26158dec678a76962b2f9ba1b)), closes [#54](https://github.com/davidsneighbour/vale-config/issues/54)
+* **agents:** remove the obsolete Claude adapter ([7f7e44d](https://github.com/davidsneighbour/vale-config/commit/7f7e44d0d6662fd44617b5112acab0098864d7ba)), closes [#56](https://github.com/davidsneighbour/vale-config/issues/56)
+* **aidetection:** record highlighter coverage gaps ([508357e](https://github.com/davidsneighbour/vale-config/commit/508357e21b2acc26b4939036589bde1135c9b818)), closes [#52](https://github.com/davidsneighbour/vale-config/issues/52)
+* describe the v1.0.0 production trial ([c94d59c](https://github.com/davidsneighbour/vale-config/commit/c94d59c7930e79fc6b688510b6a816b0a2c22c53)), references [#59](https://github.com/davidsneighbour/vale-config/issues/59)
+
+### Build
+
+* **deps:** Bump undici from 7.30.0 to 7.30.2 ([#49](https://github.com/davidsneighbour/vale-config/issues/49)) ([98e2767](https://github.com/davidsneighbour/vale-config/commit/98e276712e069a8e33d4d76df598e169ef184bdd))
+
+### Chore
+
+* remove the custom Vale output template ([b99db0e](https://github.com/davidsneighbour/vale-config/commit/b99db0e96adf559ff1f3a5d10e8165d1913dd6e1)), closes [#53](https://github.com/davidsneighbour/vale-config/issues/53)
+* use the dedicated GitHub author email ([035d791](https://github.com/davidsneighbour/vale-config/commit/035d791226c91fc988cdf8e99fd016ad4e28e771)), closes [#55](https://github.com/davidsneighbour/vale-config/issues/55)
+
 ## [0.4.0](https://github.com/davidsneighbour/vale-config/compare/v0.3.2-test.1...v0.4.0) (2026-11-24)
 
 ### ⚠ BREAKING CHANGES
