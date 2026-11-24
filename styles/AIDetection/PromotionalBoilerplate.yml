@@ -1,3 +1,8 @@
+# Highlighter audit (2026-11-24): reference pattern(s) promo.
+# Coverage and missing specifics are documented below; detection behaviour is unchanged.
+# The reference also matches "nestled at", singular "boast", and "rich cultural/historical history/tapestry". These alternatives are missing here.
+# The remaining listed promotional alternatives are represented. Legacy LegPromotional.Language catches some phrases but does not supply complete coverage of this pattern.
+# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
 extends: existence
 message: '"%s" is promotional boilerplate; consider replacing it with specific detail.'
 level: warning

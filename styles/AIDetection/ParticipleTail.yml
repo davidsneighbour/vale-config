@@ -1,3 +1,8 @@
+# Highlighter audit (2026-11-24): reference pattern(s) participle-tail.
+# Coverage and missing specifics are documented below; detection behaviour is unchanged.
+# The reference detector and this rule recognise the same comma, participle, and following-word alternatives.
+# Match-span difference: the reference highlights the rest of the clause up to sentence punctuation or newline; this rule matches only the opening phrase.
+# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
 extends: existence
 message: '"%s" is a formulaic participle tail; consider explaining the relationship more directly.'
 level: warning

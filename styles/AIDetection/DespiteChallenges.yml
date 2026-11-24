@@ -1,3 +1,8 @@
+# Highlighter audit (2026-11-24): reference pattern(s) despite-challenges.
+# Coverage and missing specifics are documented below; detection behaviour is unchanged.
+# The reference permits these/those/such/its/their/the/numerous/significant/ongoing plus an optional word before "challenges".
+# This rule only includes these/such/significant with no intervening word and only "faces", missing face/faced/facing. The "challenges remain" and "remains to be seen" alternatives are represented.
+# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
 extends: existence
 message: '"%s" is generic challenges/outlook boilerplate; consider adding specific context.'
 level: warning

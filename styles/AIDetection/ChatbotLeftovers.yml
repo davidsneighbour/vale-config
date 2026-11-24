@@ -1,3 +1,8 @@
+# Highlighter audit (2026-11-24): reference pattern(s) ai-leftovers.
+# Coverage and missing specifics are documented below; detection behaviour is unchanged.
+# The reference combines cannot/can't/do not/don't (straight or curly) with either browse the internet or access real-time/realtime. This rule implements only a subset and requires the hyphen in real-time.
+# The reference accepts turn0search/news/image without a trailing digit and metadata substrings inside larger tokens. This rule requires a trailing digit and adds word boundaries, while broadening the turn number beyond zero.
+# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
 extends: existence
 message: 'Found chatbot artefact "%s"; remove pasted AI interface metadata or boilerplate.'
 level: error

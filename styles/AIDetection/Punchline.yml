@@ -1,3 +1,8 @@
+# Highlighter audit (2026-11-24): reference pattern(s) punchline.
+# Coverage and missing specifics are documented below; detection behaviour is unchanged.
+# The reference accepts is/was/being after "the punchline" and accepts a colon or question mark without an intervening space.
+# This rule only accepts "is" as a verb and requires whitespace before the punctuation alternatives, missing ordinary "The punchline:" and "The punchline?".
+# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
 extends: existence
 message: '"%s" is a stock reveal phrase; consider stating the conclusion directly.'
 level: suggestion

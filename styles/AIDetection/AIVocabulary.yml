@@ -1,3 +1,7 @@
+# Highlighter audit (2026-11-24): reference pattern(s) ai-vocab.
+# Coverage and missing specifics are documented below; detection behaviour is unchanged.
+# The highlighter includes "intricacies". The current "intricat(?:e|ely|acies)" alternative instead accepts the misspelling "intricatacies" and misses "intricacies". Other vocabulary alternatives are represented.
+# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
 extends: existence
 message: '"%s" is AI-associated vocabulary; consider whether a more precise word fits.'
 level: suggestion

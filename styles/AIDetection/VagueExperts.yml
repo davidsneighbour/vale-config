@@ -1,3 +1,8 @@
+# Highlighter audit (2026-11-24): reference pattern(s) vague-experts.
+# Coverage and missing specifics are documented below; detection behaviour is unchanged.
+# The reference combines every listed authority with a broad verb set, optional many/some/several/most/numerous, optional have/often/widely, and past-tense variants.
+# This rule has separate, narrower subject/verb combinations and omits agree/contend/observe/caution/cite plus many tense/adverb variants. It also requires plural "industry reports" and omits inflected report verbs.
+# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
 extends: existence
 message: '"%s" uses unnamed authority; name the source or make the attribution specific.'
 level: warning

@@ -1,3 +1,9 @@
+# Highlighter audit (2026-11-24): reference pattern(s) worth-naming.
+# Coverage and missing specifics are documented below; detection behaviour is unchanged.
+# The reference accepts is/are/was/were/feel(s)/felt/seem(s)/seemed or a contraction, zero to two intervening words, and "worth naming:" with optional whitespace before the colon.
+# This rule restricts the subjects and forms, requires "that" after "it's/it is worth naming", and omits curly apostrophes.
+# Its trailing word boundary after the colon prevents a normal "Worth naming: ..." match. The general reference exclusion for "naming names" is not reproduced.
+# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
 extends: existence
 message: '"%s" is reflective AI-associated phrasing; consider naming the point plainly.'
 level: suggestion

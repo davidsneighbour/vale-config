@@ -1,3 +1,9 @@
+# Highlighter audit (2026-11-24): reference pattern(s) dont-verb-it.
+# Coverage and missing specifics are documented below; detection behaviour is unchanged.
+# The script handles only the first two dot-separated segments of a line beginning with straight-apostrophe "don't" or "do not".
+# Curly apostrophes, just/simply/merely modifiers, em/en dashes, semicolons, colons, other reference separators, and quoted sentence endings are not preserved.
+# It only compares the repeated verb prefix and never requires "it" on both sides; "Don't open the door. Open a window." is a false positive.
+# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
 extends: script
 message: "Repeated negated verb construction; consider whether the contrast can be stated more directly."
 level: warning

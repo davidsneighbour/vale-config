@@ -1,3 +1,8 @@
+# Highlighter audit (2026-11-24): reference pattern(s) whole.
+# Coverage and missing specifics are documented below; detection behaviour is unchanged.
+# The reference accepts that/this with straight or curly apostrophes, is/was, and an optional arbitrary noun after "the whole".
+# This rule restricts the noun to point/game/pitch, requires that noun, omits "this's", and does not accept curly apostrophes.
+# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
 extends: existence
 message: '"%s" is a broad rhetorical claim; consider naming the specific point.'
 level: suggestion

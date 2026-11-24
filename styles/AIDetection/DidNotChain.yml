@@ -1,3 +1,8 @@
+# Highlighter audit (2026-11-24): reference pattern(s) did-not-chain.
+# Coverage and missing specifics are documented below; detection behaviour is unchanged.
+# Curly-apostrophe "didn’t" and flexible whitespace are not recognised by the literal substring counter.
+# The script counts a whole line rather than a contiguous chain, so separate sentences can produce a false positive and multiple chains merge. The reference item count is not reported.
+# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
 extends: script
 message: 'Repeated "did not ..." construction; review whether the chain is intentional.'
 level: warning

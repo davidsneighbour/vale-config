@@ -1,3 +1,8 @@
+# Highlighter audit (2026-11-24): reference pattern(s) already-know.
+# Coverage and missing specifics are documented below; detection behaviour is unchanged.
+# The reference permits "you already knows", mid-sentence matches before its recognised complements, and bare "you already know" only when no following word remains.
+# This rule is sentence-initial (with optional "deep down,") and supports fewer complements. Its optional complement also allows false positives such as sentence-initial "You already know Python".
+# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
 extends: existence
 message: '"%s" is an AI-associated reflective writing pattern; consider making the claim more concrete.'
 level: suggestion

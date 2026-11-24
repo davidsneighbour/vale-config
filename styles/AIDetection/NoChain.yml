@@ -1,3 +1,8 @@
+# Highlighter audit (2026-11-24): reference pattern(s) no-chain.
+# Coverage and missing specifics are documented below; detection behaviour is unchanged.
+# The Tengo script counts literal "no " and "no-" substrings per line instead of recognising the reference chain grammar and separators.
+# Separate sentences can produce a false positive, and multiple chains on one line merge into one alert. Word boundaries and flexible whitespace are not preserved. The reference item-count badge is not implemented.
+# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
 extends: script
 message: 'Repeated "no ..." construction; review whether the chain is doing real work.'
 level: warning

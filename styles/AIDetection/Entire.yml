@@ -1,3 +1,8 @@
+# Highlighter audit (2026-11-24): reference pattern(s) is-the-entire, the-entire-is.
+# Coverage and missing specifics are documented below; detection behaviour is unchanged.
+# The is-the-entire reference accepts is/was/are/were and straight/curly contractions followed by an optional arbitrary word. This rule restricts the verb and noun lists.
+# The the-entire-is reference accepts one to five words before is/was/are/were. This rule only accepts point/business model/exercise/pitch followed directly by is/was.
+# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
 extends: existence
 message: '"%s" is a broad rhetorical construction; consider a more specific claim.'
 level: suggestion

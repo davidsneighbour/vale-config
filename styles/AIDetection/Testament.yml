@@ -1,3 +1,8 @@
+# Highlighter audit (2026-11-24): reference pattern(s) testament.
+# Coverage and missing specifics are documented below; detection behaviour is unchanged.
+# The reference includes stand/stands/stood/standing and serve/serves/served/serving, a/an, and an optional modifier before testament/reminder.
+# This rule only uses stands/serves with "a" and no modifier. Its other branch omits was/are/were/remain and modifiers before "testament to".
+# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
 extends: existence
 message: '"%s" is inflated significance phrasing; consider naming the evidence directly.'
 level: warning

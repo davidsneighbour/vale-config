@@ -1,0 +1,1871 @@
+{
+  "source": "scratch/highlighter.html",
+  "sourceSha256": "f9fc0c79946b0e658ab82e5274997be1b05e62864340b5d8e40feaa276af49fc",
+  "auditedOn": "2026-11-24",
+  "repositoryCommit": "807ec462e5f66043162019c46af00a31c2ff30ea",
+  "valeVersion": "vale version 3.28.1",
+  "sourceSelfTestsPassed": 126,
+  "sourceSelfTestCount": 126,
+  "sourceExampleCount": 116,
+  "additionalProbeCount": 27,
+  "patterns": [
+    {
+      "id": "no-chain",
+      "name": "“No X, no Y” chains",
+      "description": "Two or more “no …” items in a row, e.g. “No fluff, no filler, no jargon.” The badge counts the “no” items.",
+      "regex": "/\\bno[-\\s][^,.;:!?\\n\\u2013\\u2014\\u2026]*(?:(?:\\s*,\\s*(?:and\\s+|or\\s+)?|\\s+(?:and|or)\\s+|\\s*[;&\\u2013\\u2014]\\s*(?:and\\s+|or\\s+)?|\\s+-{1,2}\\s+)no[-\\s][^,.;:!?\\n\\u2013\\u2014\\u2026]*)+/gi",
+      "itemHead": "no[-\\s]",
+      "itemHeadTest": "/^no[-\\s]/i",
+      "rule": "AIDetection.NoChain",
+      "file": "styles/AIDetection/NoChain.yml",
+      "notes": [
+        "The Tengo script counts literal \"no \" and \"no-\" substrings per line instead of recognising the reference chain grammar and separators.",
+        "Separate sentences can produce a false positive, and multiple chains on one line merge into one alert. Word boundaries and flexible whitespace are not preserved. The reference item-count badge is not implemented."
+      ],
+      "caseCount": 15,
+      "differingCaseCount": 1
+    },
+    {
+      "id": "whole",
+      "name": "“That’s the whole …”",
+      "description": "“That / this is the whole point, game, thing …”",
+      "regex": "/\\b(?:that|this)(?:['\\u2019]s|\\s+(?:is|was))\\s+the\\s+whole\\b(?:\\s+\\w+)?/gi",
+      "rule": "AIDetection.Whole",
+      "file": "styles/AIDetection/Whole.yml",
+      "notes": [
+        "The reference accepts that/this with straight or curly apostrophes, is/was, and an optional arbitrary noun after \"the whole\".",
+        "This rule restricts the noun to point/game/pitch, requires that noun, omits \"this's\", and does not accept curly apostrophes."
+      ],
+      "caseCount": 5,
+      "differingCaseCount": 1
+    },
+    {
+      "id": "did-not-chain",
+      "name": "“Did not X, did not Y” chains",
+      "description": "Two or more “did not …” or “didn’t …” items in a row. The badge counts the items.",
+      "regex": "/\\b(?:did\\s+not|didn['\\u2019]t)\\s[^,.;:!?\\n\\u2013\\u2014\\u2026]*(?:(?:\\s*,\\s*(?:and\\s+|or\\s+)?|\\s+(?:and|or)\\s+|\\s*[;&\\u2013\\u2014]\\s*(?:and\\s+|or\\s+)?|\\s+-{1,2}\\s+)(?:did\\s+not|didn['\\u2019]t)\\s[^,.;:!?\\n\\u2013\\u2014\\u2026]*)+/gi",
+      "itemHead": "(?:did\\s+not|didn['\\u2019]t)\\s",
+      "itemHeadTest": "/^(?:did\\s+not|didn['\\u2019]t)\\s/i",
+      "rule": "AIDetection.DidNotChain",
+      "file": "styles/AIDetection/DidNotChain.yml",
+      "notes": [
+        "Curly-apostrophe \"didn’t\" and flexible whitespace are not recognised by the literal substring counter.",
+        "The script counts a whole line rather than a contiguous chain, so separate sentences can produce a false positive and multiple chains merge. The reference item count is not reported."
+      ],
+      "caseCount": 6,
+      "differingCaseCount": 2
+    },
+    {
+      "id": "dont-verb-it",
+      "name": "“Don’t VERB it … VERB it”",
+      "description": "“Don’t call it X. Call it Y.” — a negated verb + “it”, then the same verb + “it” again.",
+      "regex": "/\\b(?:do\\s+not|don['\\u2019]t)\\s+(?:just\\s+|simply\\s+|merely\\s+)?(\\w+)(?:\\s+(?:of|about|at|on|for|with|to))?\\s+it\\b[^.!?\\n]*?[.!?;,:\\u2013\\u2014]['\"\\u201d\\u2019]*\\s*(?:just\\s+|simply\\s+|merely\\s+)?\\1(?:\\s+(?:of|about|at|on|for|with|to))?\\s+it\\b/gi",
+      "rule": "AIDetection.DontVerbIt",
+      "file": "styles/AIDetection/DontVerbIt.yml",
+      "notes": [
+        "The script handles only the first two dot-separated segments of a line beginning with straight-apostrophe \"don't\" or \"do not\".",
+        "Curly apostrophes, just/simply/merely modifiers, em/en dashes, semicolons, colons, other reference separators, and quoted sentence endings are not preserved.",
+        "It only compares the repeated verb prefix and never requires \"it\" on both sides; \"Don't open the door. Open a window.\" is a false positive."
+      ],
+      "caseCount": 7,
+      "differingCaseCount": 3
+    },
+    {
+      "id": "sit-with",
+      "name": "“Sit with that”",
+      "description": "The reflective “sit with that / this / it (for a moment)”, plus “sit with the discomfort” and friends.",
+      "regex": "/\\bsit(?:s|ting)?\\s+with\\s+(?:that|this|it|(?:the|your)\\s+(?:discomfort|feelings?|tension|weight|uncertainty|ambiguity|grief|silence|unease))\\b(?:\\s+for\\s+a\\s+\\w+)?/gi",
+      "rule": "AIDetection.SitWith",
+      "file": "styles/AIDetection/SitWith.yml",
+      "notes": [
+        "The reference also matches \"sits\" and \"sitting\", either \"the\" or \"your\" before every listed feeling, and singular/plural \"feeling(s)\".",
+        "This rule only matches \"sit\", permits \"your\" only with plural \"feelings\", and omits \"the feelings\". The optional \"for a WORD\" suffix is not part of its match."
+      ],
+      "caseCount": 5,
+      "differingCaseCount": 2
+    },
+    {
+      "id": "already-know",
+      "name": "“You already know”",
+      "description": "“You already know” — the answer, what to do, or standing alone before a full stop.",
+      "regex": "/\\byou\\s+already\\s+knows?\\s+(?:the\\s+answer|what|how|why|this|that|it|who|where)\\b|\\byou\\s+already\\s+knows?\\b(?![ \\t]+\\w)/gi",
+      "rule": "AIDetection.AlreadyKnow",
+      "file": "styles/AIDetection/AlreadyKnow.yml",
+      "notes": [
+        "The reference permits \"you already knows\", mid-sentence matches before its recognised complements, and bare \"you already know\" only when no following word remains.",
+        "This rule is sentence-initial (with optional \"deep down,\") and supports fewer complements. Its optional complement also allows false positives such as sentence-initial \"You already know Python\"."
+      ],
+      "caseCount": 6,
+      "differingCaseCount": 1
+    },
+    {
+      "id": "is-the-entire",
+      "name": "“Is the entire …”",
+      "description": "“X is the entire point / game / business model.”",
+      "regex": "/(?:\\b(?:is|was|are|were)|['\\u2019]s)\\s+the\\s+entire\\b(?:\\s+\\w+)?/gi",
+      "rule": "AIDetection.Entire",
+      "file": "styles/AIDetection/Entire.yml",
+      "notes": [
+        "The is-the-entire reference accepts is/was/are/were and straight/curly contractions followed by an optional arbitrary word. This rule restricts the verb and noun lists.",
+        "The the-entire-is reference accepts one to five words before is/was/are/were. This rule only accepts point/business model/exercise/pitch followed directly by is/was."
+      ],
+      "caseCount": 4,
+      "differingCaseCount": 1
+    },
+    {
+      "id": "the-entire-is",
+      "name": "“The entire … is”",
+      "description": "“The entire point / game / business model is …” — the flipped twin of “is the entire”.",
+      "regex": "/\\bthe\\s+entire\\s+[\\w'\\u2019-]+(?:\\s+[\\w'\\u2019-]+){0,4}?\\s+(?:is|was|are|were)\\b/gi",
+      "rule": "AIDetection.Entire",
+      "file": "styles/AIDetection/Entire.yml",
+      "notes": [
+        "The is-the-entire reference accepts is/was/are/were and straight/curly contractions followed by an optional arbitrary word. This rule restricts the verb and noun lists.",
+        "The the-entire-is reference accepts one to five words before is/was/are/were. This rule only accepts point/business model/exercise/pitch followed directly by is/was."
+      ],
+      "caseCount": 6,
+      "differingCaseCount": 2
+    },
+    {
+      "id": "is-real",
+      "name": "“Is real … and / not”",
+      "description": "“The X is real, and / not …”, including “is the real … and it”. Skips “real estate”, “real time”, and similar.",
+      "regex": "/\\bis\\s+(?:(?:the|a)\\s+real\\b(?![\\s-]+(?:estate|time|life|world|quick)\\b)[^.!?\\n]*?\\b(?:and|not)\\s+it\\b|real\\b(?![\\s-]+(?:estate|time|life|world|quick)\\b)[^.!?\\n]*?\\b(?:and|not)\\b)/gi",
+      "rule": "AIDetection.IsReal",
+      "file": "styles/AIDetection/IsReal.yml",
+      "notes": [
+        "The reference accepts arbitrary subjects but requires a later \"and\" or \"not\"; the \"is the/a real ...\" branch additionally requires \"it\". It excludes real estate/time/life/world/quick.",
+        "This rule uses a subject whitelist and a separate \"this is the real work\" phrase. It misses subjects such as loss and also flags standalone \"The improvement is real.\", which the reference does not."
+      ],
+      "caseCount": 8,
+      "differingCaseCount": 2
+    },
+    {
+      "id": "punchline",
+      "name": "“The punchline is”",
+      "description": "“The punchline is …”, “the punchline:”, or “the punchline?”.",
+      "regex": "/\\bthe\\s+punchline(?:\\s+(?:is|was|being)\\b|\\s*[:?])/gi",
+      "rule": "AIDetection.Punchline",
+      "file": "styles/AIDetection/Punchline.yml",
+      "notes": [
+        "The reference accepts is/was/being after \"the punchline\" and accepts a colon or question mark without an intervening space.",
+        "This rule only accepts \"is\" as a verb and requires whitespace before the punctuation alternatives, missing ordinary \"The punchline:\" and \"The punchline?\"."
+      ],
+      "caseCount": 5,
+      "differingCaseCount": 3
+    },
+    {
+      "id": "worth-naming",
+      "name": "“Worth naming”",
+      "description": "The therapist-voiced “that loss is real and it’s worth naming”, “it’s worth naming that …”, or a “Worth naming:” opener. Skips “naming names”.",
+      "regex": "/(?:\\b(?:is|are|was|were|feels?|felt|seems?|seemed)|['\\u2019]s)\\s+(?:\\w+\\s+){0,2}?worth\\s+naming\\b(?!\\s+names\\b)|\\bworth\\s+naming\\s*:/gi",
+      "rule": "AIDetection.WorthNaming",
+      "file": "styles/AIDetection/WorthNaming.yml",
+      "notes": [
+        "The reference accepts is/are/was/were/feel(s)/felt/seem(s)/seemed or a contraction, zero to two intervening words, and \"worth naming:\" with optional whitespace before the colon.",
+        "This rule restricts the subjects and forms, requires \"that\" after \"it's/it is worth naming\", and omits curly apostrophes.",
+        "Its trailing word boundary after the colon prevents a normal \"Worth naming: ...\" match. The general reference exclusion for \"naming names\" is not reproduced."
+      ],
+      "caseCount": 9,
+      "differingCaseCount": 4
+    },
+    {
+      "id": "not-nothing",
+      "name": "“That’s not nothing”",
+      "description": "“That is not nothing” / “that’s not nothing”, plus the “this / it / which is not nothing” variants.",
+      "regex": "/\\b(?:that|this|it|which)(?:['\\u2019]s|\\s+(?:is|was))\\s+not\\s+nothing\\b/gi",
+      "rule": "AIDetection.NotNothing",
+      "file": "styles/AIDetection/NotNothing.yml",
+      "notes": [
+        "The reference accepts that/this/it/which with is/was or straight/curly contractions.",
+        "This rule only lists that's/that is/this is/it is/which is. It misses \"it's\", \"this's\", \"which's\", all was forms, and curly apostrophes."
+      ],
+      "caseCount": 7,
+      "differingCaseCount": 3
+    },
+    {
+      "id": "ai-vocab",
+      "name": "AI vocabulary words",
+      "description": "Words LLMs lean on far more than people do: “delve”, “tapestry”, “meticulous”, “pivotal”, “intricate”, “interplay”, “underscore”, “garner”, “bolster”, “vibrant”, “bustling”, “multifaceted”, “seamless”, “ever-evolving”. One hit can be coincidence — several is a tell.",
+      "regex": "/\\b(?:delv(?:e|es|ed|ing)|tapestr(?:y|ies)|meticulous(?:ly)?|pivotal|intricate(?:ly)?|intricacies|interplay|underscor(?:e|es|ed|ing)|garner(?:s|ed|ing)?|bolster(?:s|ed|ing)?|vibrant|bustling|multifaceted|seamless(?:ly)?|commendable|ever-evolving)\\b/gi",
+      "rule": "AIDetection.AIVocabulary",
+      "file": "styles/AIDetection/AIVocabulary.yml",
+      "notes": [
+        "The highlighter includes \"intricacies\". The current \"intricat(?:e|ely|acies)\" alternative instead accepts the misspelling \"intricatacies\" and misses \"intricacies\". Other vocabulary alternatives are represented."
+      ],
+      "caseCount": 4,
+      "differingCaseCount": 1
+    },
+    {
+      "id": "not-just",
+      "name": "“Not just X, but Y”",
+      "description": "Negative parallelisms: “not just X, but (also) Y”, “not only … but …”, and the “it’s not X — it’s Y” contrast.",
+      "regex": "/\\bnot\\s+(?:just|only|merely|simply)\\s+[^.!?\\n;]*?\\bbut(?:\\s+also)?\\b|\\b(?:it|this|that)(?:['\\u2019]s|\\s+(?:is|was))\\s+not\\s+[^.!?\\n,;\\u2014\\u2013]{1,60}[,;\\u2014\\u2013]\\s*(?:it|this|that)(?:['\\u2019]s|\\s+(?:is|was))\\b/gi",
+      "rule": "AIDetection.NotJust",
+      "file": "styles/AIDetection/NotJust.yml",
+      "notes": [
+        "The reference accepts curly contractions and was forms, with comma, en/em dash, or semicolon contrast separators. This rule omits curly contractions, was forms, commas, and en dashes.",
+        "The reference first branch stops at sentence punctuation, newline, or semicolon. The current first branch has a 120-character limit and can span sentence punctuation; the second branch uses an 80-character limit rather than the reference 60."
+      ],
+      "caseCount": 6,
+      "differingCaseCount": 2
+    },
+    {
+      "id": "note-that",
+      "name": "“It’s important to note”",
+      "description": "Didactic hedging: “it is important to note that”, “it’s worth noting”, “it should be noted”.",
+      "regex": "/\\bit(?:['\\u2019]s|\\s+(?:is|was))\\s+(?:also\\s+)?(?:important|worth|crucial|essential|vital)\\s+(?:to\\s+(?:note|remember|understand|recognize|mention)|noting|mentioning|remembering)\\b(?:\\s+that\\b)?|\\bit\\s+should\\s+be\\s+noted\\b/gi",
+      "rule": "AIDetection.NoteThat",
+      "file": "styles/AIDetection/NoteThat.yml",
+      "notes": [
+        "The reference accepts straight/curly contractions, is/was, optional \"also\", and noting/mentioning/remembering forms.",
+        "The current whitespace before the contraction alternative prevents normal \"it's/it’s\" from matching. Was forms, \"also\", \"worth mentioning\", and \"worth remembering\" are also absent."
+      ],
+      "caseCount": 5,
+      "differingCaseCount": 2
+    },
+    {
+      "id": "testament",
+      "name": "“Stands as a testament”",
+      "description": "“Stands / serves as a testament (or reminder)”, “is a testament to” — inflating significance instead of saying what happened.",
+      "regex": "/\\b(?:stand|stands|stood|serve|serves|served|standing|serving)\\s+as\\s+(?:a|an)\\s+(?:\\w+\\s+)?(?:testament|reminder)\\b|\\b(?:is|was|are|were|remain|remains)\\s+a\\s+(?:\\w+\\s+)?testament\\s+to\\b/gi",
+      "rule": "AIDetection.Testament",
+      "file": "styles/AIDetection/Testament.yml",
+      "notes": [
+        "The reference includes stand/stands/stood/standing and serve/serves/served/serving, a/an, and an optional modifier before testament/reminder.",
+        "This rule only uses stands/serves with \"a\" and no modifier. Its other branch omits was/are/were/remain and modifiers before \"testament to\"."
+      ],
+      "caseCount": 5,
+      "differingCaseCount": 2
+    },
+    {
+      "id": "crucial-role",
+      "name": "“Plays a crucial role”",
+      "description": "“Plays a crucial / pivotal / vital / key / significant role in …”.",
+      "regex": "/\\bplay(?:s|ed|ing)?\\s+(?:a|an)\\s+(?:\\w+\\s+)?(?:crucial|pivotal|vital|key|significant|central|critical|important)\\s+role\\b/gi",
+      "rule": "AIDetection.CrucialRole",
+      "file": "styles/AIDetection/CrucialRole.yml",
+      "notes": [
+        "The reference accepts a/an and an optional modifier before crucial/pivotal/vital/key/significant/central/critical/important.",
+        "This rule requires \"a\" directly before the adjective, missing \"an important role\" and \"a truly pivotal role\"."
+      ],
+      "caseCount": 4,
+      "differingCaseCount": 2
+    },
+    {
+      "id": "landscape",
+      "name": "“Ever-evolving landscape”",
+      "description": "Scene-setting boilerplate: “the ever-evolving / changing / shifting landscape”, “in today’s fast-paced world”.",
+      "regex": "/\\b(?:ever-)?(?:evolving|changing|shifting)\\s+landscape\\b|\\bin\\s+today['\\u2019]s\\s+(?:fast-paced|ever-changing|ever-evolving|digital|modern|competitive)\\s+\\w+/gi",
+      "rule": "AIDetection.Landscape",
+      "file": "styles/AIDetection/Landscape.yml",
+      "notes": [
+        "The reference accepts ever-evolving/ever-changing/ever-shifting landscape and any following word in its \"in today's/today’s ...\" branch.",
+        "This rule omits ever-changing/ever-shifting and curly apostrophes, and requires the final word \"world\" instead of accepting economy/industry or another word."
+      ],
+      "caseCount": 5,
+      "differingCaseCount": 2
+    },
+    {
+      "id": "vague-experts",
+      "name": "“Experts argue”",
+      "description": "Vague attribution to unnamed authorities: “experts argue”, “some critics have noted”, “observers suggest”, “industry reports indicate”.",
+      "regex": "/\\b(?:many|some|several|most|numerous)?\\s*(?:experts|critics|observers|scholars|analysts|commentators)\\s+(?:have\\s+|often\\s+|widely\\s+)?(?:argu(?:e|es|ed)|not(?:e|es|ed)|suggest(?:s|ed)?|believ(?:e|es|ed)|agree[ds]?|contend(?:s|ed)?|observ(?:e|es|ed)|caution(?:s|ed)?|claim(?:s|ed)?|cit(?:e|es|ed)|point(?:s|ed)?\\s+out)\\b|\\bindustry\\s+reports?\\s+(?:suggest|indicate|show)\\w*\\b/gi",
+      "rule": "AIDetection.VagueExperts",
+      "file": "styles/AIDetection/VagueExperts.yml",
+      "notes": [
+        "The reference combines every listed authority with a broad verb set, optional many/some/several/most/numerous, optional have/often/widely, and past-tense variants.",
+        "This rule has separate, narrower subject/verb combinations and omits agree/contend/observe/caution/cite plus many tense/adverb variants. It also requires plural \"industry reports\" and omits inflected report verbs."
+      ],
+      "caseCount": 6,
+      "differingCaseCount": 2
+    },
+    {
+      "id": "despite-challenges",
+      "name": "“Despite these challenges”",
+      "description": "The boilerplate challenges-and-outlook formula: “despite these challenges”, “faces several challenges”, “challenges remain”, “remains to be seen”.",
+      "regex": "/\\bdespite\\s+(?:these|those|such|its|their|the|numerous|significant|ongoing)\\s+(?:\\w+\\s+)?challenges\\b|\\bfac(?:e|es|ed|ing)\\s+(?:several|numerous|many|significant|various|a\\s+number\\s+of)\\s+challenges\\b|\\bchallenges\\s+remain\\b|\\bremains\\s+to\\s+be\\s+seen\\b/gi",
+      "rule": "AIDetection.DespiteChallenges",
+      "file": "styles/AIDetection/DespiteChallenges.yml",
+      "notes": [
+        "The reference permits these/those/such/its/their/the/numerous/significant/ongoing plus an optional word before \"challenges\".",
+        "This rule only includes these/such/significant with no intervening word and only \"faces\", missing face/faced/facing. The \"challenges remain\" and \"remains to be seen\" alternatives are represented."
+      ],
+      "caseCount": 6,
+      "differingCaseCount": 2
+    },
+    {
+      "id": "participle-tail",
+      "name": "Participle sentence tails",
+      "description": "Superficial analysis bolted onto a sentence end: “…, highlighting / underscoring / showcasing / reflecting the …”.",
+      "regex": "/,\\s+(?:highlighting|underscoring|emphasizing|showcasing|reflecting|demonstrating|illustrating|signaling|solidifying|cementing|reinforcing|underlining)\\s+(?:its|his|her|their|our|the|a|an|how|that|what|both)\\b[^.!?\\n]*/gi",
+      "rule": "AIDetection.ParticipleTail",
+      "file": "styles/AIDetection/ParticipleTail.yml",
+      "notes": [
+        "The reference detector and this rule recognise the same comma, participle, and following-word alternatives.",
+        "Match-span difference: the reference highlights the rest of the clause up to sentence punctuation or newline; this rule matches only the opening phrase."
+      ],
+      "caseCount": 4,
+      "differingCaseCount": 0
+    },
+    {
+      "id": "promo",
+      "name": "Promotional boilerplate",
+      "description": "Travel-brochure tone: “nestled in”, “in the heart of”, “rich tapestry / heritage”, “hidden gem”, “boasts a”, “breathtaking”, “stunning views”.",
+      "regex": "/\\bnestled\\s+(?:in|on|among|between|along|at)\\b|\\bin\\s+the\\s+heart\\s+of\\b|\\brich\\s+(?:cultural\\s+|historical\\s+)?(?:heritage|history|tapestry)\\b|\\bhidden\\s+gem\\b|\\bmust-(?:visit|see|try)\\b|\\bbreathtaking\\b|\\bboasts?\\s+(?:a|an|the)\\b|\\bstunning\\s+(?:views?|scenery|architecture|backdrop)\\b/gi",
+      "rule": "AIDetection.PromotionalBoilerplate",
+      "file": "styles/AIDetection/PromotionalBoilerplate.yml",
+      "notes": [
+        "The reference also matches \"nestled at\", singular \"boast\", and \"rich cultural/historical history/tapestry\". These alternatives are missing here.",
+        "The remaining listed promotional alternatives are represented. Legacy LegPromotional.Language catches some phrases but does not supply complete coverage of this pattern."
+      ],
+      "caseCount": 7,
+      "differingCaseCount": 2
+    },
+    {
+      "id": "ai-leftovers",
+      "name": "Chatbot leftovers",
+      "description": "Artifacts pasted straight from a chatbot: “as an AI language model”, “as of my last update”, “knowledge cutoff”, plus markup debris like “oaicite”, “contentReference”, “turn0search” and “utm_source=” tracking parameters.",
+      "regex": "/\\bas\\s+an\\s+ai(?:\\s+language)?\\s+model\\b|\\bas\\s+of\\s+my\\s+last\\s+(?:update|training)\\b|\\bknowledge\\s+cutoff\\b|\\bI\\s+(?:cannot|can['\\u2019]t|do\\s+not|don['\\u2019]t)\\s+(?:browse\\s+the\\s+internet|access\\s+real-?time)\\b|contentReference|oaicite|turn0(?:search|news|image)\\d*|attributableIndex|utm_source=/gi",
+      "rule": "AIDetection.ChatbotLeftovers",
+      "file": "styles/AIDetection/ChatbotLeftovers.yml",
+      "notes": [
+        "The reference combines cannot/can't/do not/don't (straight or curly) with either browse the internet or access real-time/realtime. This rule implements only a subset and requires the hyphen in real-time.",
+        "The reference accepts turn0search/news/image without a trailing digit and metadata substrings inside larger tokens. This rule requires a trailing digit and adds word boundaries, while broadening the turn number beyond zero."
+      ],
+      "caseCount": 8,
+      "differingCaseCount": 3
+    }
+  ],
+  "cases": [
+    {
+      "pattern": "no-chain",
+      "rule": "AIDetection.NoChain",
+      "sample": "No sign-ups, no downloads, no hassle — just paste and go.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["No sign-ups, no downloads, no hassle — just paste and go."],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "no-chain",
+      "rule": "AIDetection.NoChain",
+      "sample": "The plan has no hidden fees and no long-term contracts.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["The plan has no hidden fees and no long-term contracts."],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "no-chain",
+      "rule": "AIDetection.NoChain",
+      "sample": "No fluff, no filler, no jargon, no corporate buzzwords.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["No fluff, no filler, no jargon, no corporate buzzwords."],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "no-chain",
+      "rule": "AIDetection.NoChain",
+      "sample": "There is no catch here, honestly.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "no-chain",
+      "rule": "AIDetection.NoChain",
+      "sample": "It ships with no bells and whistles, no fluff.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["It ships with no bells and whistles, no fluff."],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "no-chain",
+      "rule": "AIDetection.NoChain",
+      "sample": "No, no, I insist.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "no-chain",
+      "rule": "AIDetection.NoChain",
+      "sample": "no no no",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "no-chain",
+      "rule": "AIDetection.NoChain",
+      "sample": "with no list patterns at all, so nothing lights up.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "no-chain",
+      "rule": "AIDetection.NoChain",
+      "sample": "NO FEES, NO CONTRACTS, NO SURPRISES",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["NO FEES, NO CONTRACTS, NO SURPRISES"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "no-chain",
+      "rule": "AIDetection.NoChain",
+      "sample": "no fluff; no filler",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["no fluff; no filler"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "no-chain",
+      "rule": "AIDetection.NoChain",
+      "sample": "no time, no money, no way to say no thanks",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["no time, no money, no way to say no thanks"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "no-chain",
+      "rule": "AIDetection.NoChain",
+      "sample": "no-code, no-fuss setup",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["no-code, no-fuss setup"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "no-chain",
+      "rule": "AIDetection.NoChain",
+      "sample": "I know nothing, notice nothing.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "no-chain",
+      "rule": "AIDetection.NoChain",
+      "sample": "No fluff, no filler.\nNo ads here.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["No fluff, no filler."],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "whole",
+      "rule": "AIDetection.Whole",
+      "sample": "That's the whole point.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["That's the whole point"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "whole",
+      "rule": "AIDetection.Whole",
+      "sample": "This is the whole game, really.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["This is the whole game"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "whole",
+      "rule": "AIDetection.Whole",
+      "sample": "That was the whole pitch.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["That was the whole pitch"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "whole",
+      "rule": "AIDetection.Whole",
+      "sample": "The whole team showed up.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "did-not-chain",
+      "rule": "AIDetection.DidNotChain",
+      "sample": "Did not flinch, did not blink, did not apologize.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["Did not flinch, did not blink, did not apologize."],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "did-not-chain",
+      "rule": "AIDetection.DidNotChain",
+      "sample": "He didn't call and didn't write.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["He didn't call and didn't write."],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "did-not-chain",
+      "rule": "AIDetection.DidNotChain",
+      "sample": "She did not go.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "did-not-chain",
+      "rule": "AIDetection.DidNotChain",
+      "sample": "Did not know why, did not care.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["Did not know why, did not care."],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "dont-verb-it",
+      "rule": "AIDetection.DontVerbIt",
+      "sample": "Don't call it a comeback. Call it a return.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["Don't call it a comeback. Call it a return."],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "dont-verb-it",
+      "rule": "AIDetection.DontVerbIt",
+      "sample": "Do not think of it as a burden. Think of it as fuel.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["Do not think of it as a burden. Think of it as fuel."],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "dont-verb-it",
+      "rule": "AIDetection.DontVerbIt",
+      "sample": "Don't fear it. Name it.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "dont-verb-it",
+      "rule": "AIDetection.DontVerbIt",
+      "sample": "Don’t call it \"luck.\" Call it preparation.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "dont-verb-it",
+      "rule": "AIDetection.DontVerbIt",
+      "sample": "Don't just read it — read it aloud.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "dont-verb-it",
+      "rule": "AIDetection.DontVerbIt",
+      "sample": "Don't overthink it.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "sit-with",
+      "rule": "AIDetection.SitWith",
+      "sample": "Sit with that for a moment.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["Sit with that"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "sit-with",
+      "rule": "AIDetection.SitWith",
+      "sample": "Just sit with it.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["sit with it"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "sit-with",
+      "rule": "AIDetection.SitWith",
+      "sample": "She was sitting with the discomfort.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "sit-with",
+      "rule": "AIDetection.SitWith",
+      "sample": "Come sit with us at lunch.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "already-know",
+      "rule": "AIDetection.AlreadyKnow",
+      "sample": "You already know the answer.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["You already know the answer"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "already-know",
+      "rule": "AIDetection.AlreadyKnow",
+      "sample": "Deep down, you already know.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["Deep down, you already know"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "already-know",
+      "rule": "AIDetection.AlreadyKnow",
+      "sample": "If you already know Python, skip ahead.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "already-know",
+      "rule": "AIDetection.AlreadyKnow",
+      "sample": "You already know what to do.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["You already know what to do"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "already-know",
+      "rule": "AIDetection.AlreadyKnow",
+      "sample": "Part of you already knows it.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "is-the-entire",
+      "rule": "AIDetection.Entire",
+      "sample": "Consistency is the entire game.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["is the entire game"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "is-the-entire",
+      "rule": "AIDetection.Entire",
+      "sample": "That's the entire business model.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["'s the entire business model"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "is-the-entire",
+      "rule": "AIDetection.Entire",
+      "sample": "He toured the entire factory.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "the-entire-is",
+      "rule": "AIDetection.Entire",
+      "sample": "The entire point is that nobody reads.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["The entire point is"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "the-entire-is",
+      "rule": "AIDetection.Entire",
+      "sample": "The entire business model is built on churn.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["The entire business model is"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "the-entire-is",
+      "rule": "AIDetection.Entire",
+      "sample": "The entire point of the exercise is repetition.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "the-entire-is",
+      "rule": "AIDetection.Entire",
+      "sample": "He ate the entire pizza.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "the-entire-is",
+      "rule": "AIDetection.Entire",
+      "sample": "The entire team was exhausted.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "the-entire-is",
+      "rule": "AIDetection.Entire",
+      "sample": "The entire history of the modern industrial world economy is complex.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "is-real",
+      "rule": "AIDetection.IsReal",
+      "sample": "The improvement is real, and it's not subtle.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["improvement is real, and it's not subtle"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "is-real",
+      "rule": "AIDetection.IsReal",
+      "sample": "This is the real work, and it never ends.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["This is the real work"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "is-real",
+      "rule": "AIDetection.IsReal",
+      "sample": "The demand is real and growing.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["demand is real"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "is-real",
+      "rule": "AIDetection.IsReal",
+      "sample": "He is a real estate agent and it shows.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "is-real",
+      "rule": "AIDetection.IsReal",
+      "sample": "Is it real? And does it matter?",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "is-real",
+      "rule": "AIDetection.IsReal",
+      "sample": "The painting is real, but stolen.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "punchline",
+      "rule": "AIDetection.Punchline",
+      "sample": "The punchline is that nobody laughed.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["The punchline is"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "punchline",
+      "rule": "AIDetection.Punchline",
+      "sample": "The punchline: nothing changed.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "punchline",
+      "rule": "AIDetection.Punchline",
+      "sample": "And the punchline? You knew.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "punchline",
+      "rule": "AIDetection.Punchline",
+      "sample": "He forgot the punchline entirely.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "worth-naming",
+      "rule": "AIDetection.WorthNaming",
+      "sample": "That loss is real and it's worth naming.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "worth-naming",
+      "rule": "AIDetection.WorthNaming",
+      "sample": "It’s worth naming that this hurts.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "worth-naming",
+      "rule": "AIDetection.WorthNaming",
+      "sample": "The grief here is worth naming.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["grief here is worth naming"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "worth-naming",
+      "rule": "AIDetection.WorthNaming",
+      "sample": "That anger feels worth naming out loud.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["anger feels worth naming"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "worth-naming",
+      "rule": "AIDetection.WorthNaming",
+      "sample": "Worth naming: nobody asked for this.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "worth-naming",
+      "rule": "AIDetection.WorthNaming",
+      "sample": "It's not worth naming names here.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "worth-naming",
+      "rule": "AIDetection.WorthNaming",
+      "sample": "They spent the meeting naming the new mascot.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "worth-naming",
+      "rule": "AIDetection.WorthNaming",
+      "sample": "The naming convention is worth documenting.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "not-nothing",
+      "rule": "AIDetection.NotNothing",
+      "sample": "That's not nothing.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["That's not nothing"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "not-nothing",
+      "rule": "AIDetection.NotNothing",
+      "sample": "Ten sign-ups in a week — that is not nothing.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["that is not nothing"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "not-nothing",
+      "rule": "AIDetection.NotNothing",
+      "sample": "It's not nothing, even if it's not everything.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "not-nothing",
+      "rule": "AIDetection.NotNothing",
+      "sample": "The launch drew a small crowd, which was not nothing.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "not-nothing",
+      "rule": "AIDetection.NotNothing",
+      "sample": "She insisted that nothing was wrong.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "not-nothing",
+      "rule": "AIDetection.NotNothing",
+      "sample": "There is nothing left to say.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "ai-vocab",
+      "rule": "AIDetection.AIVocabulary",
+      "sample": "We delve into the intricacies of the interplay.",
+      "referenceCount": 3,
+      "valeCount": 2,
+      "matches": ["delve", "interplay"],
+      "origin": "source example",
+      "otherAIDetectionMatches": [
+        {
+          "rule": "AIDetection.VocabularyDensityWarning",
+          "match": "We delve into the intricacies of the interplay.\n"
+        }
+      ]
+    },
+    {
+      "pattern": "ai-vocab",
+      "rule": "AIDetection.AIVocabulary",
+      "sample": "Her vibrant tapestry hung in the bustling hall.",
+      "referenceCount": 3,
+      "valeCount": 3,
+      "matches": ["vibrant", "tapestry", "bustling"],
+      "origin": "source example",
+      "otherAIDetectionMatches": [
+        {
+          "rule": "AIDetection.VocabularyDensityWarning",
+          "match": "Her vibrant tapestry hung in the bustling hall.\n"
+        }
+      ]
+    },
+    {
+      "pattern": "ai-vocab",
+      "rule": "AIDetection.AIVocabulary",
+      "sample": "A meticulously curated, seamless experience.",
+      "referenceCount": 2,
+      "valeCount": 2,
+      "matches": ["meticulously", "seamless"],
+      "origin": "source example",
+      "otherAIDetectionMatches": [
+        {
+          "rule": "AIDetection.VocabularyDensityWarning",
+          "match": "A meticulously curated, seamless experience.\n"
+        }
+      ]
+    },
+    {
+      "pattern": "ai-vocab",
+      "rule": "AIDetection.AIVocabulary",
+      "sample": "The report was thorough and well organized.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "not-just",
+      "rule": "AIDetection.NotJust",
+      "sample": "This is not just a tool, but a philosophy.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["not just a tool, but"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "not-just",
+      "rule": "AIDetection.NotJust",
+      "sample": "Not only fast but also reliable.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["Not only fast but also"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "not-just",
+      "rule": "AIDetection.NotJust",
+      "sample": "It’s not a bug — it’s a feature.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "not-just",
+      "rule": "AIDetection.NotJust",
+      "sample": "He did not buy it.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "not-just",
+      "rule": "AIDetection.NotJust",
+      "sample": "She was not sure about the plan.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "note-that",
+      "rule": "AIDetection.NoteThat",
+      "sample": "It is important to note that timing matters.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["It is important to note"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "note-that",
+      "rule": "AIDetection.NoteThat",
+      "sample": "It’s worth noting the fees are separate.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "note-that",
+      "rule": "AIDetection.NoteThat",
+      "sample": "It should be noted that this changed in 2020.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["It should be noted"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "note-that",
+      "rule": "AIDetection.NoteThat",
+      "sample": "Please note the door code.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "testament",
+      "rule": "AIDetection.Testament",
+      "sample": "The building stands as a testament to postwar optimism.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["stands as a testament"],
+      "origin": "source example",
+      "otherAIDetectionMatches": [
+        {
+          "rule": "AIDetection.LegUndue",
+          "match": "stands as a testament"
+        }
+      ]
+    },
+    {
+      "pattern": "testament",
+      "rule": "AIDetection.Testament",
+      "sample": "Her career is a testament to persistence.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["is a testament to"],
+      "origin": "source example",
+      "otherAIDetectionMatches": [
+        {
+          "rule": "AIDetection.LegUndue",
+          "match": "is a testament"
+        }
+      ]
+    },
+    {
+      "pattern": "testament",
+      "rule": "AIDetection.Testament",
+      "sample": "It serves as a stark reminder that nothing lasts.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "testament",
+      "rule": "AIDetection.Testament",
+      "sample": "He read from the Old Testament.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "crucial-role",
+      "rule": "AIDetection.CrucialRole",
+      "sample": "Volunteers play a crucial role in the program.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["play a crucial role"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "crucial-role",
+      "rule": "AIDetection.CrucialRole",
+      "sample": "She played a truly pivotal role in the merger.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": [
+        {
+          "rule": "AIDetection.AIVocabulary",
+          "match": "pivotal"
+        }
+      ]
+    },
+    {
+      "pattern": "crucial-role",
+      "rule": "AIDetection.CrucialRole",
+      "sample": "He plays the role of the villain.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "landscape",
+      "rule": "AIDetection.Landscape",
+      "sample": "Adapting to an ever-evolving landscape.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["ever-evolving landscape"],
+      "origin": "source example",
+      "otherAIDetectionMatches": [
+        {
+          "rule": "AIDetection.AIVocabulary",
+          "match": "ever-evolving"
+        }
+      ]
+    },
+    {
+      "pattern": "landscape",
+      "rule": "AIDetection.Landscape",
+      "sample": "The rapidly changing landscape of retail.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["changing landscape"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "landscape",
+      "rule": "AIDetection.Landscape",
+      "sample": "In today’s fast-paced world, attention is scarce.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "landscape",
+      "rule": "AIDetection.Landscape",
+      "sample": "The landscape outside the window was gray.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "vague-experts",
+      "rule": "AIDetection.VagueExperts",
+      "sample": "Experts argue that the policy failed.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["Experts argue"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "vague-experts",
+      "rule": "AIDetection.VagueExperts",
+      "sample": "Some critics have noted a decline in quality.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["critics have noted"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "vague-experts",
+      "rule": "AIDetection.VagueExperts",
+      "sample": "Industry reports suggest strong demand.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["Industry reports suggest"],
+      "origin": "source example",
+      "otherAIDetectionMatches": [
+        {
+          "rule": "AIDetection.LegVague",
+          "match": "Industry reports"
+        }
+      ]
+    },
+    {
+      "pattern": "vague-experts",
+      "rule": "AIDetection.VagueExperts",
+      "sample": "Dr. Chen argued the opposite in her paper.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "despite-challenges",
+      "rule": "AIDetection.DespiteChallenges",
+      "sample": "Despite these challenges, growth continued.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["Despite these challenges"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "despite-challenges",
+      "rule": "AIDetection.DespiteChallenges",
+      "sample": "The sector faces several challenges.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["faces several challenges"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "despite-challenges",
+      "rule": "AIDetection.DespiteChallenges",
+      "sample": "Whether it works remains to be seen.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["remains to be seen"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "despite-challenges",
+      "rule": "AIDetection.DespiteChallenges",
+      "sample": "The climb was a challenge.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "participle-tail",
+      "rule": "AIDetection.ParticipleTail",
+      "sample": "The bridge reopened in June, highlighting the city’s investment in infrastructure.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": [", highlighting the"],
+      "origin": "source example",
+      "otherAIDetectionMatches": [
+        {
+          "rule": "AIDetection.LegSuperficial",
+          "match": "highlighting"
+        }
+      ]
+    },
+    {
+      "pattern": "participle-tail",
+      "rule": "AIDetection.ParticipleTail",
+      "sample": "Sales doubled, underscoring the strength of the brand.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": [", underscoring the"],
+      "origin": "source example",
+      "otherAIDetectionMatches": [
+        {
+          "rule": "AIDetection.AIVocabulary",
+          "match": "underscoring"
+        }
+      ]
+    },
+    {
+      "pattern": "participle-tail",
+      "rule": "AIDetection.ParticipleTail",
+      "sample": "She kept highlighting passages in yellow.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": [
+        {
+          "rule": "AIDetection.LegSuperficial",
+          "match": "highlighting"
+        }
+      ]
+    },
+    {
+      "pattern": "participle-tail",
+      "rule": "AIDetection.ParticipleTail",
+      "sample": "The team, reflecting on the loss, regrouped.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": [
+        {
+          "rule": "AIDetection.LegSuperficial",
+          "match": "reflecting"
+        }
+      ]
+    },
+    {
+      "pattern": "promo",
+      "rule": "AIDetection.PromotionalBoilerplate",
+      "sample": "The inn is nestled in a quiet valley.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["nestled in"],
+      "origin": "source example",
+      "otherAIDetectionMatches": [
+        {
+          "rule": "AIDetection.LegPromotional",
+          "match": "nestled"
+        }
+      ]
+    },
+    {
+      "pattern": "promo",
+      "rule": "AIDetection.PromotionalBoilerplate",
+      "sample": "The museum boasts a rich tapestry of exhibits.",
+      "referenceCount": 2,
+      "valeCount": 2,
+      "matches": ["boasts a", "rich tapestry"],
+      "origin": "source example",
+      "otherAIDetectionMatches": [
+        {
+          "rule": "AIDetection.AIVocabulary",
+          "match": "tapestry"
+        }
+      ]
+    },
+    {
+      "pattern": "promo",
+      "rule": "AIDetection.PromotionalBoilerplate",
+      "sample": "Located in the heart of downtown.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["in the heart of"],
+      "origin": "source example",
+      "otherAIDetectionMatches": [
+        {
+          "rule": "AIDetection.LegPromotional",
+          "match": "in the heart of"
+        }
+      ]
+    },
+    {
+      "pattern": "promo",
+      "rule": "AIDetection.PromotionalBoilerplate",
+      "sample": "A hidden gem with breathtaking views.",
+      "referenceCount": 2,
+      "valeCount": 2,
+      "matches": ["hidden gem", "breathtaking"],
+      "origin": "source example",
+      "otherAIDetectionMatches": [
+        {
+          "rule": "AIDetection.LegPromotional",
+          "match": "breathtaking"
+        }
+      ]
+    },
+    {
+      "pattern": "promo",
+      "rule": "AIDetection.PromotionalBoilerplate",
+      "sample": "The soup was rich and hearty.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "ai-leftovers",
+      "rule": "AIDetection.ChatbotLeftovers",
+      "sample": "As of my last update, the API was in beta.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["As of my last update"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "ai-leftovers",
+      "rule": "AIDetection.ChatbotLeftovers",
+      "sample": "As an AI language model, I cannot form opinions.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["As an AI language model"],
+      "origin": "source example",
+      "otherAIDetectionMatches": [
+        {
+          "rule": "AIDetection.LegPromptCopyPaste",
+          "match": "As an AI language model"
+        }
+      ]
+    },
+    {
+      "pattern": "ai-leftovers",
+      "rule": "AIDetection.ChatbotLeftovers",
+      "sample": "See example.com/page?utm_source=chatgpt.com for details.",
+      "referenceCount": 1,
+      "valeCount": 1,
+      "matches": ["utm_source="],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "ai-leftovers",
+      "rule": "AIDetection.ChatbotLeftovers",
+      "sample": "contentReference[oaicite:0]{index=0}",
+      "referenceCount": 2,
+      "valeCount": 2,
+      "matches": ["contentReference", "oaicite"],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "ai-leftovers",
+      "rule": "AIDetection.ChatbotLeftovers",
+      "sample": "The last update shipped on Tuesday.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "source example",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "no-chain",
+      "rule": "AIDetection.NoChain",
+      "sample": "There is no catch. There is no fee.",
+      "referenceCount": 0,
+      "valeCount": 1,
+      "matches": ["There is no catch. There is no fee."],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "did-not-chain",
+      "rule": "AIDetection.DidNotChain",
+      "sample": "They didn’t call, didn’t write.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "did-not-chain",
+      "rule": "AIDetection.DidNotChain",
+      "sample": "She did not go. He did not stay.",
+      "referenceCount": 0,
+      "valeCount": 1,
+      "matches": ["She did not go. He did not stay."],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "dont-verb-it",
+      "rule": "AIDetection.DontVerbIt",
+      "sample": "Don't open the door. Open a window.",
+      "referenceCount": 0,
+      "valeCount": 1,
+      "matches": ["Don't open the door. Open a window."],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "whole",
+      "rule": "AIDetection.Whole",
+      "sample": "This’s the whole thing.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "sit-with",
+      "rule": "AIDetection.SitWith",
+      "sample": "She sits with your discomfort.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "already-know",
+      "rule": "AIDetection.AlreadyKnow",
+      "sample": "If you already know Python, skip ahead.",
+      "referenceCount": 0,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "is-the-entire",
+      "rule": "AIDetection.Entire",
+      "sample": "These are the entire thing.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "is-real",
+      "rule": "AIDetection.IsReal",
+      "sample": "The loss is real and painful.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "is-real",
+      "rule": "AIDetection.IsReal",
+      "sample": "The improvement is real.",
+      "referenceCount": 0,
+      "valeCount": 1,
+      "matches": ["improvement is real"],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "punchline",
+      "rule": "AIDetection.Punchline",
+      "sample": "The punchline was predictable.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "worth-naming",
+      "rule": "AIDetection.WorthNaming",
+      "sample": "The loss feels deeply worth naming.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "not-nothing",
+      "rule": "AIDetection.NotNothing",
+      "sample": "This was not nothing.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "not-just",
+      "rule": "AIDetection.NotJust",
+      "sample": "It's not a bug, it's a feature.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "note-that",
+      "rule": "AIDetection.NoteThat",
+      "sample": "It's also worth remembering that timing matters.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "testament",
+      "rule": "AIDetection.Testament",
+      "sample": "They stood as an enduring testament to care.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "crucial-role",
+      "rule": "AIDetection.CrucialRole",
+      "sample": "They play an important role.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "landscape",
+      "rule": "AIDetection.Landscape",
+      "sample": "In today’s digital economy, trust matters.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "vague-experts",
+      "rule": "AIDetection.VagueExperts",
+      "sample": "Several observers often cautioned against it.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "vague-experts",
+      "rule": "AIDetection.VagueExperts",
+      "sample": "Experts cautioned against it.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "despite-challenges",
+      "rule": "AIDetection.DespiteChallenges",
+      "sample": "Despite those ongoing challenges, growth continued.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "despite-challenges",
+      "rule": "AIDetection.DespiteChallenges",
+      "sample": "They faced numerous challenges.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "promo",
+      "rule": "AIDetection.PromotionalBoilerplate",
+      "sample": "The town is nestled at the foot of a hill.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": [
+        {
+          "rule": "AIDetection.LegPromotional",
+          "match": "nestled"
+        }
+      ]
+    },
+    {
+      "pattern": "promo",
+      "rule": "AIDetection.PromotionalBoilerplate",
+      "sample": "The gallery boast a rich cultural tapestry.",
+      "referenceCount": 2,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": [
+        {
+          "rule": "AIDetection.LegPromotional",
+          "match": "rich cultural tapestry"
+        },
+        {
+          "rule": "AIDetection.AIVocabulary",
+          "match": "tapestry"
+        }
+      ]
+    },
+    {
+      "pattern": "ai-leftovers",
+      "rule": "AIDetection.ChatbotLeftovers",
+      "sample": "I do not browse the internet.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "ai-leftovers",
+      "rule": "AIDetection.ChatbotLeftovers",
+      "sample": "I cannot access realtime information.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": []
+    },
+    {
+      "pattern": "ai-leftovers",
+      "rule": "AIDetection.ChatbotLeftovers",
+      "sample": "See turn0search for details.",
+      "referenceCount": 1,
+      "valeCount": 0,
+      "matches": [],
+      "origin": "additional probe",
+      "otherAIDetectionMatches": []
+    }
+  ]
+}
