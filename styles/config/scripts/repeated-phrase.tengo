@@ -1,20 +1,42 @@
 text := import("text")
-
-phrases := [
-    "it is important to",
-    "in this article we",
-    "as a result of",
-    "at the end of the day"
-]
-
-document := text.re_replace("(?s)<!-- vale off -->.*?<!-- vale on -->", scope, "")
-lower := text.to_lower(document)
 matches := []
-
-for phrase in phrases {
-    count := len(text.split(lower, phrase)) - 1
-    if count >= 3 {
-        start := text.index(lower, phrase)
-        matches = append(matches, {begin: start, end: start + len(phrase)})
+tokens := text.re_find("[\\p{L}\\p{N}]+(?:['’-][\\p{L}\\p{N}]+)*", scope, -1)
+if !is_undefined(tokens) && len(tokens) >= 9 && len(tokens) <= 4000 {
+    words := []
+    sentence := []
+    stops := {}
+    for word in text.split("a an and are as at be been but by for from had has have he her his i in is it its of on or our she that the their them there these they this to was we were will with you your", " ") { stops[word] = true }
+    part := 0
+    for i, token in tokens {
+        if i > 0 && text.contains_any(scope[tokens[i-1][0].end:token[0].begin], ".!?;:*") { part++ }
+        words = append(words, text.to_lower(token[0].text))
+        sentence = append(sentence, part)
+    }
+    used := {}
+    for n := 8; n >= 3; n-- {
+        groups := {}
+        order := []
+        for i := 0; i+n <= len(words); i++ {
+            if sentence[i] != sentence[i+n-1] { continue }
+            meaningful := false
+            for word in words[i:i+n] { if is_undefined(stops[word]) { meaningful = true } }
+            if !meaningful { continue }
+            phrase := text.join(words[i:i+n], " ")
+            if is_undefined(groups[phrase]) { groups[phrase] = []; order = append(order, phrase) }
+            positions := groups[phrase]
+            if len(positions) == 0 || i-positions[len(positions)-1] >= n { groups[phrase] = append(positions, i) }
+        }
+        for phrase in order {
+            positions := []
+            for start in groups[phrase] {
+                overlaps := false
+                for j := start; j < start+n; j++ { if !is_undefined(used[text.itoa(j)]) { overlaps = true } }
+                if !overlaps { positions = append(positions, start) }
+            }
+            if len(positions) < 3 { continue }
+            start := positions[0]
+            matches = append(matches, {begin: tokens[start][0].begin, end: tokens[start+n-1][0].end, message: "Phrase \"" + phrase + "\" appears " + text.itoa(len(positions)) + " times in this paragraph."})
+            for start in positions { for j := start; j < start+n; j++ { used[text.itoa(j)] = true } }
+        }
     }
 }

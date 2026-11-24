@@ -1,16 +1,12 @@
 text := import("text")
-
 matches := []
-offset := 0
-
-for line in text.split(scope, "\n") {
-    lower := text.to_lower(line)
-    count := len(text.split(lower, "no ")) - 1
-    count += len(text.split(lower, "no-")) - 1
-
-    if count >= 2 && text.index(lower, "no no no") == -1 && text.index(lower, "no, no") == -1 {
-        matches = append(matches, {begin: offset, end: offset + len(line)})
+chains := text.re_find("(?i)\\bno[-\\s][^,.;:!?\\n\u2013\u2014\u2026]*(?:(?:\\s*,\\s*(?:and\\s+|or\\s+)?|\\s+(?:and|or)\\s+|\\s*[;&\u2013\u2014]\\s*(?:and\\s+|or\\s+)?|\\s+-{1,2}\\s+)no[-\\s][^,.;:!?\\n\u2013\u2014\u2026]*)+", scope, -1)
+if !is_undefined(chains) {
+    for chain in chains {
+        count := 0
+        for item in text.re_split("(?i)(?:\\s*,\\s*(?:and\\s+|or\\s+)?|\\s+(?:and|or)\\s+|\\s*[;&\u2013\u2014]\\s*(?:and\\s+|or\\s+)?|\\s+-{1,2}\\s+)", chain[0].text, -1) {
+            if !is_undefined(text.re_find("(?i)^no[-\\s]", text.trim_space(item), 1)) { count++ }
+        }
+        matches = append(matches, {begin: chain[0].begin, end: chain[0].end, message: "Repeated construction contains " + text.itoa(count) + " items."})
     }
-
-    offset += len(line) + 1
 }

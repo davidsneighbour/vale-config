@@ -1,13 +1,10 @@
-# Highlighter audit (2026-11-24): reference pattern(s) not-just.
-# Coverage and missing specifics are documented below; detection behaviour is unchanged.
-# The reference accepts curly contractions and was forms, with comma, en/em dash, or semicolon contrast separators. This rule omits curly contractions, was forms, commas, and en dashes.
-# The reference first branch stops at sentence punctuation, newline, or semicolon. The current first branch has a 120-character limit and can span sentence punctuation; the second branch uses an 80-character limit rather than the reference 60.
-# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
+# Observable writing pattern, not a claim of AI authorship.
+# Source variants are covered by native Vale regression cases.
 extends: existence
 message: '"%s" is a familiar rhetorical contrast; consider stating the contrast directly.'
 level: suggestion
 ignorecase: true
 scope: ~blockquote
 tokens:
-  - '\bnot\s+(?:just|only|merely|simply)\b.{1,120}\bbut(?:\s+also)?\b'
-  - '\b(?:it''s|it is|this is|that is|that''s)\s+not\b.{1,80}(?:—|-|;)\s*(?:it''s|it is|this is|that is|that''s)\b'
+  - \bnot\s+(?:just|only|merely|simply)\s+[^.!?\n;]*?\bbut(?:\s+also)?\b|\b(?:it|this|that)(?:['’]s|\s+(?:is|was))\s+not\s+[^.!?\n,;—–]{1,60}[,;—–]\s*(?:it|this|that)(?:['’]s|\s+(?:is|was))\b
+nonword: true

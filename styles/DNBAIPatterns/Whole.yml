@@ -1,12 +1,10 @@
-# Highlighter audit (2026-11-24): reference pattern(s) whole.
-# Coverage and missing specifics are documented below; detection behaviour is unchanged.
-# The reference accepts that/this with straight or curly apostrophes, is/was, and an optional arbitrary noun after "the whole".
-# This rule restricts the noun to point/game/pitch, requires that noun, omits "this's", and does not accept curly apostrophes.
-# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
+# Observable writing pattern, not a claim of AI authorship.
+# Source variants are covered by native Vale regression cases.
 extends: existence
 message: '"%s" is a broad rhetorical claim; consider naming the specific point.'
 level: suggestion
 ignorecase: true
 scope: ~blockquote
 tokens:
-  - '\b(?:that''s|that is|this is|that was|this was)\s+the\s+whole\s+(?:point|game|pitch)\b'
+  - \b(?:that|this)(?:['’]s|\s+(?:is|was))\s+the\s+whole\b(?:\s+\w+)?
+nonword: true

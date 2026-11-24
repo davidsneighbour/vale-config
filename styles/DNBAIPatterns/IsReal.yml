@@ -1,13 +1,10 @@
-# Highlighter audit (2026-11-24): reference pattern(s) is-real.
-# Coverage and missing specifics are documented below; detection behaviour is unchanged.
-# The reference accepts arbitrary subjects but requires a later "and" or "not"; the "is the/a real ..." branch additionally requires "it". It excludes real estate/time/life/world/quick.
-# This rule uses a subject whitelist and a separate "this is the real work" phrase. It misses subjects such as loss and also flags standalone "The improvement is real.", which the reference does not.
-# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
+# Observable writing pattern, not a claim of AI authorship.
+# Source variants are covered by native Vale regression cases.
 extends: existence
 message: '"%s" is a rhetorical AI-associated writing pattern; consider concrete evidence instead.'
 level: suggestion
 ignorecase: true
 scope: ~blockquote
 tokens:
-  - '\b(?:improvement|demand|work|risk|problem|shift|pressure|momentum)\s+is\s+real(?:,\s*(?:and|but)\s+(?:it''s\s+)?(?:not subtle|growing|accelerating|hard to ignore))?\b'
-  - '\bthis\s+is\s+the\s+real\s+work\b'
+  - \bis\s+(?:(?:the|a)\s+real\b(?![\s-]+(?:estate|time|life|world|quick)\b)[^.!?\n]*?\b(?:and|not)\s+it\b|real\b(?![\s-]+(?:estate|time|life|world|quick)\b)[^.!?\n]*?\b(?:and|not)\b)
+nonword: true

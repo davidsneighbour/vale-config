@@ -1,21 +1,10 @@
-# Highlighter audit (2026-11-24): reference pattern(s) ai-leftovers.
-# Coverage and missing specifics are documented below; detection behaviour is unchanged.
-# The reference combines cannot/can't/do not/don't (straight or curly) with either browse the internet or access real-time/realtime. This rule implements only a subset and requires the hyphen in real-time.
-# The reference accepts turn0search/news/image without a trailing digit and metadata substrings inside larger tokens. This rule requires a trailing digit and adds word boundaries, while broadening the turn number beyond zero.
-# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
+# Observable writing pattern, not a claim of AI authorship.
+# Source variants are covered by native Vale regression cases.
 extends: existence
-message: 'Found chatbot artefact "%s"; remove pasted AI interface metadata or boilerplate.'
+message: Found chatbot artefact "%s"; remove pasted AI interface metadata or boilerplate.
 level: error
 ignorecase: true
 scope: raw
 tokens:
-  - '\bas an AI (?:language )?model\b'
-  - '\bas of my last (?:update|training)\b'
-  - '\bknowledge cutoff\b'
-  - '\bI (?:cannot|can''t) browse the internet\b'
-  - '\bI (?:do not|don''t) access real-time\b'
-  - '\bcontentReference\b'
-  - '\boaicite\b'
-  - '\bturn[0-9]+(?:search|news|image)[0-9]+\b'
-  - '\battributableIndex\b'
-  - '\butm_source='
+  - \bas\s+an\s+ai(?:\s+language)?\s+model\b|\bas\s+of\s+my\s+last\s+(?:update|training)\b|\bknowledge\s+cutoff\b|\bI\s+(?:cannot|can['’]t|do\s+not|don['’]t)\s+(?:browse\s+the\s+internet|access\s+real-?time)\b|contentReference|oaicite|turn[0-9]+(?:search|news|image)[0-9]*|attributableIndex|utm_source=
+nonword: true

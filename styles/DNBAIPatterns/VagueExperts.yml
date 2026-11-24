@@ -1,18 +1,10 @@
-# Highlighter audit (2026-11-24): reference pattern(s) vague-experts.
-# Coverage and missing specifics are documented below; detection behaviour is unchanged.
-# The reference combines every listed authority with a broad verb set, optional many/some/several/most/numerous, optional have/often/widely, and past-tense variants.
-# This rule has separate, narrower subject/verb combinations and omits agree/contend/observe/caution/cite plus many tense/adverb variants. It also requires plural "industry reports" and omits inflected report verbs.
-# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
+# Observable writing pattern, not a claim of AI authorship.
+# Source variants are covered by native Vale regression cases.
 extends: existence
 message: '"%s" uses unnamed authority; name the source or make the attribution specific.'
 level: warning
 ignorecase: true
 scope: ~blockquote
 tokens:
-  - '\b(?:some\s+)?experts\s+(?:argue|claim|suggest|believe|note)\b'
-  - '\bcritics\s+(?:have\s+)?noted\b'
-  - '\bobservers\s+suggest\b'
-  - '\bscholars\s+believe\b'
-  - '\banalysts\s+claim\b'
-  - '\bcommentators\s+point\s+out\b'
-  - '\bindustry\s+reports\s+(?:indicate|suggest|show)\b'
+  - \b(?:many|some|several|most|numerous)?\s*(?:experts|critics|observers|scholars|analysts|commentators)\s+(?:have\s+|often\s+|widely\s+)?(?:argu(?:e|es|ed)|not(?:e|es|ed)|suggest(?:s|ed)?|believ(?:e|es|ed)|agree[ds]?|contend(?:s|ed)?|observ(?:e|es|ed)|caution(?:s|ed)?|claim(?:s|ed)?|cit(?:e|es|ed)|point(?:s|ed)?\s+out)\b|\bindustry\s+reports?\s+(?:suggest|indicate|show)\w*\b
+nonword: true

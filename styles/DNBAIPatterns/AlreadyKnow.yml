@@ -1,12 +1,10 @@
-# Highlighter audit (2026-11-24): reference pattern(s) already-know.
-# Coverage and missing specifics are documented below; detection behaviour is unchanged.
-# The reference permits "you already knows", mid-sentence matches before its recognised complements, and bare "you already know" only when no following word remains.
-# This rule is sentence-initial (with optional "deep down,") and supports fewer complements. Its optional complement also allows false positives such as sentence-initial "You already know Python".
-# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
+# Observable writing pattern, not a claim of AI authorship.
+# Source variants are covered by native Vale regression cases.
 extends: existence
 message: '"%s" is an AI-associated reflective writing pattern; consider making the claim more concrete.'
 level: suggestion
 ignorecase: true
 scope: ~blockquote
 tokens:
-  - '(?:^|[.!?]\s+)(?:deep down,\s*)?you already know(?:\s+(?:the answer|what to do|why))?\b'
+  - \byou\s+already\s+knows?\s+(?:the\s+answer|what|how|why|this|that|it|who|where)\b|\byou\s+already\s+knows?\b(?![ \t]+\w)
+nonword: true

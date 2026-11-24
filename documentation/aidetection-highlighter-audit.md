@@ -1,5 +1,7 @@
 # Highlighter coverage audit
 
+This is a historical pre-fix audit. The current implementation passes all 143 preserved reference comparisons and the expanded native Vale regression suite. See [the current algorithms and limits](ai-patterns.md); the tables below retain the original findings for provenance.
+
 Links and table labels use the current `DNBAIPatterns` namespace. The audit JSON preserves the original observed rule identifiers and paths, with `currentRule`, `currentFile`, and `namespaceRenames` fields for the namespace migration. The rename does not change the audited rule behaviour.
 
 Audited on 24 November 2026 against Vale 3.28.1. The original `scratch/highlighter.html` has 23 patterns, represented by 22 DNBAIPatterns rule files (`Entire.yml` covers both entire patterns). No complete pattern category is absent. The original UI file can be removed because the reference expressions, all examples, verified comparison results, and missing specifics are retained.
@@ -42,4 +44,4 @@ The highlighter scans plain text. Most Vale rules here exclude blockquotes and r
 
 ## Follow-up
 
-The comments and audit data identify remaining implementation work. The missing variants have not been added, and broader matches have not been narrowed by this audit.
+The original findings above are preserved. The missing variants and broader matches are now covered by executable regression tests. Current behaviour, intentional paragraph scoping, and workload limits are documented in the AI-writing rule guide.

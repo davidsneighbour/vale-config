@@ -1,19 +1,10 @@
-# Highlighter audit (2026-11-24): reference pattern(s) promo.
-# Coverage and missing specifics are documented below; detection behaviour is unchanged.
-# The reference also matches "nestled at", singular "boast", and "rich cultural/historical history/tapestry". These alternatives are missing here.
-# The remaining listed promotional alternatives are represented. Legacy LegPromotional.Language catches some phrases but does not supply complete coverage of this pattern.
-# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
+# Observable writing pattern, not a claim of AI authorship.
+# Source variants are covered by native Vale regression cases.
 extends: existence
 message: '"%s" is promotional boilerplate; consider replacing it with specific detail.'
 level: warning
 ignorecase: true
 scope: ~blockquote
 tokens:
-  - '\bnestled\s+(?:in|on|among|between|along)\b'
-  - '\bin\s+the\s+heart\s+of\b'
-  - '\brich\s+(?:heritage|history|tapestry|cultural heritage|historical heritage)\b'
-  - '\bhidden\s+gem\b'
-  - '\bmust-(?:visit|see|try)\b'
-  - '\bbreathtaking\b'
-  - '\bboasts\s+(?:a|an|the)\b'
-  - '\bstunning\s+(?:view|views|scenery|architecture|backdrop)\b'
+  - \bnestled\s+(?:in|on|among|between|along|at)\b|\bin\s+the\s+heart\s+of\b|\brich\s+(?:cultural\s+|historical\s+)?(?:heritage|history|tapestry)\b|\bhidden\s+gem\b|\bmust-(?:visit|see|try)\b|\bbreathtaking\b|\bboasts?\s+(?:a|an|the)\b|\bstunning\s+(?:views?|scenery|architecture|backdrop)\b
+nonword: true

@@ -1,15 +1,10 @@
-# Highlighter audit (2026-11-24): reference pattern(s) despite-challenges.
-# Coverage and missing specifics are documented below; detection behaviour is unchanged.
-# The reference permits these/those/such/its/their/the/numerous/significant/ongoing plus an optional word before "challenges".
-# This rule only includes these/such/significant with no intervening word and only "faces", missing face/faced/facing. The "challenges remain" and "remains to be seen" alternatives are represented.
-# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
+# Observable writing pattern, not a claim of AI authorship.
+# Source variants are covered by native Vale regression cases.
 extends: existence
 message: '"%s" is generic challenges/outlook boilerplate; consider adding specific context.'
 level: warning
 ignorecase: true
 scope: ~blockquote
 tokens:
-  - '\bdespite\s+(?:these|such|significant)\s+challenges\b'
-  - '\bfaces\s+(?:several|numerous|many|significant|various|a number of)\s+challenges\b'
-  - '\bchallenges\s+remain\b'
-  - '\bremains\s+to\s+be\s+seen\b'
+  - \bdespite\s+(?:these|those|such|its|their|the|numerous|significant|ongoing)\s+(?:\w+\s+)?challenges\b|\bfac(?:e|es|ed|ing)\s+(?:several|numerous|many|significant|various|a\s+number\s+of)\s+challenges\b|\bchallenges\s+remain\b|\bremains\s+to\s+be\s+seen\b
+nonword: true

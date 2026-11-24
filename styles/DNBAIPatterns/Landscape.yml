@@ -1,13 +1,10 @@
-# Highlighter audit (2026-11-24): reference pattern(s) landscape.
-# Coverage and missing specifics are documented below; detection behaviour is unchanged.
-# The reference accepts ever-evolving/ever-changing/ever-shifting landscape and any following word in its "in today's/today’s ..." branch.
-# This rule omits ever-changing/ever-shifting and curly apostrophes, and requires the final word "world" instead of accepting economy/industry or another word.
-# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
+# Observable writing pattern, not a claim of AI authorship.
+# Source variants are covered by native Vale regression cases.
 extends: existence
 message: '"%s" is AI-associated scene-setting boilerplate; consider naming the specific context.'
 level: warning
 ignorecase: true
 scope: ~blockquote
 tokens:
-  - '\b(?:ever-evolving|evolving|changing|shifting)\s+landscape\b'
-  - '\bin today''s\s+(?:fast-paced|ever-changing|ever-evolving|digital|modern|competitive)\s+world\b'
+  - \b(?:ever-)?(?:evolving|changing|shifting)\s+landscape\b|\bin\s+today['’]s\s+(?:fast-paced|ever-changing|ever-evolving|digital|modern|competitive)\s+\w+
+nonword: true

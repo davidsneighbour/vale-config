@@ -48,12 +48,15 @@
     "release:minor": "release-it --config .release-it.ts --ci --increment=minor",
     "release:patch": "release-it --config .release-it.ts --ci --increment=patch",
     "renovate:validate": "renovate-config-validator .github/renovate.json5",
-    "test": "npm run test:unit && npm run test:vale && npm run test:package",
+    "test": "npm run test:unit && npm run test:vale && npm run test:ai && npm run test:package",
     "test:package": "./scripts/test-package.sh",
     "test:unit": "vitest --run",
     "test:vale": "./scripts/test-vale.sh",
     "validate": "npm run validate:types",
-    "validate:types": "tsc --noEmit"
+    "validate:types": "tsc --noEmit",
+    "generate:ai": "node scripts/generate-ai-vocabulary.ts",
+    "generate:ai:check": "node scripts/generate-ai-vocabulary.ts --check",
+    "test:ai": "vale test --coverage styles/DNBAIPatterns tests/fixtures/aidetection/behaviour.test.yml"
   },
   "main": "index.js",
   "type": "module",

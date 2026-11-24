@@ -1,14 +1,10 @@
-# Highlighter audit (2026-11-24): reference pattern(s) note-that.
-# Coverage and missing specifics are documented below; detection behaviour is unchanged.
-# The reference accepts straight/curly contractions, is/was, optional "also", and noting/mentioning/remembering forms.
-# The current whitespace before the contraction alternative prevents normal "it's/it’s" from matching. Was forms, "also", "worth mentioning", and "worth remembering" are also absent.
-# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
+# Observable writing pattern, not a claim of AI authorship.
+# Source variants are covered by native Vale regression cases.
 extends: existence
 message: '"%s" is didactic hedging; consider making the point directly.'
 level: warning
 ignorecase: true
 scope: ~blockquote
 tokens:
-  - '\bit\s+(?:is|''s)\s+(?:important|crucial|essential|vital)\s+to\s+(?:note|remember|understand|recognize|mention)\b'
-  - '\bit\s+(?:is|''s)\s+worth\s+noting\b'
-  - '\bit\s+should\s+be\s+noted\b'
+  - \bit(?:['’]s|\s+(?:is|was))\s+(?:also\s+)?(?:important|worth|crucial|essential|vital)\s+(?:to\s+(?:note|remember|understand|recognize|mention)|noting|mentioning|remembering)\b(?:\s+that\b)?|\bit\s+should\s+be\s+noted\b
+nonword: true

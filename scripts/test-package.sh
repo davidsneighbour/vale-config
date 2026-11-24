@@ -58,6 +58,12 @@ An ablebodied person arrived.
 Copyright (c) 2026.
 
 A number of configuration options exist.
+
+Careful edits improve readability. Careful edits improve readability. Careful edits improve readability.
+
+Clear sources help readers find the answer. Clear sources help readers check the evidence. Clear sources help readers trust the result.
+
+The vibrant release will delve into a meticulous and pivotal tapestry with intricate interplay and a seamless finish.
 EOF
 
   (
@@ -94,7 +100,8 @@ EOF
     fi
 
     for rule in DNBWriting.Microsoft-Negative DNBWriting.Google-Periods DNBWriting.alex-Ablist \
-      DNBWriting.proselint-Copyright DNBWriting.Readability-Polysyllables DNBWriting.write-good-TooWordy; do
+      DNBWriting.proselint-Copyright DNBWriting.Readability-Polysyllables DNBWriting.write-good-TooWordy \
+      DNBAIPatterns.RepeatedPhrase DNBAIPatterns.RepeatedSentenceOpener DNBAIPatterns.VocabularyDensityError; do
       if [[ "${output}" != *"${rule}"* ]]; then
         echo "[error] Synced package did not trigger ${rule}" >&2
         echo "${output}" >&2

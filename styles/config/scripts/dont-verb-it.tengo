@@ -1,33 +1,10 @@
 text := import("text")
-
 matches := []
-offset := 0
-
-for line in text.split(scope, "\n") {
-    lower := text.to_lower(line)
-    sentences := text.split(lower, ".")
-
-    if len(sentences) >= 2 {
-        first := text.trim_space(sentences[0])
-        second := text.trim_space(sentences[1])
-
-        if text.has_prefix(first, "don't ") || text.has_prefix(first, "do not ") {
-            words := text.split(first, " ")
-            verb_index := 1
-
-            if text.has_prefix(first, "do not ") {
-                verb_index = 2
-            }
-
-            if len(words) > verb_index {
-                verb := words[verb_index]
-
-                if text.has_prefix(second, verb + " ") {
-                    matches = append(matches, {begin: offset, end: offset + len(line)})
-                }
-            }
+contrasts := text.re_find("(?i)\\b(?:do\\s+not|don['\u2019]t)\\s+(?:(?:just|simply|merely)\\s+)?(\\w+)(?:\\s+(?:of|about|at|on|for|with|to))?\\s+it\\b[^.!?\\n]*?[.!?;,:\u2013\u2014]['\"\u201d\u2019]*\\s*(?:(?:just|simply|merely)\\s+)?(\\w+)(?:\\s+(?:of|about|at|on|for|with|to))?\\s+it\\b", scope, -1)
+if !is_undefined(contrasts) {
+    for contrast in contrasts {
+        if text.to_lower(contrast[1].text) == text.to_lower(contrast[2].text) {
+            matches = append(matches, {begin: contrast[0].begin, end: contrast[0].end})
         }
     }
-
-    offset += len(line) + 1
 }

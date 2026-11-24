@@ -1,20 +1,31 @@
 text := import("text")
-
-openers := [
-    "in this article we",
-    "this guide will",
-    "the project is",
-    "we can see"
-]
-
-document := text.re_replace("(?s)<!-- vale off -->.*?<!-- vale on -->", scope, "")
-lower := text.to_lower(document)
 matches := []
-
-for opener in openers {
-    count := len(text.split(lower, opener)) - 1
-    if count >= 3 {
-        start := text.index(lower, opener)
-        matches = append(matches, {begin: start, end: start + len(opener)})
+sentences := text.re_find("(?:^|[.!?]+[\\s]+)([^.!?]+)", scope, -1)
+if !is_undefined(sentences) && len(sentences) >= 3 && len(sentences) <= 1000 {
+    entries := []
+    for sentence in sentences {
+        words := text.re_find("[\\p{L}\\p{N}]+(?:['’-][\\p{L}\\p{N}]+)*", sentence[1].text, -1)
+        if is_undefined(words) || len(words) < 6 { continue }
+        opener := []
+        for i := 0; i < 5; i++ { opener = append(opener, text.to_lower(words[i][0].text)) }
+        entries = append(entries, {words: opener, begin: sentence[1].begin+words[0][0].begin, tokens: words, offset: sentence[1].begin})
+    }
+    used := {}
+    for n := 5; n >= 3; n-- {
+        groups := {}
+        order := []
+        for i, entry in entries {
+            if !is_undefined(used[text.itoa(i)]) { continue }
+            opener := text.join(entry.words[:n], " ")
+            if is_undefined(groups[opener]) { groups[opener] = []; order = append(order, opener) }
+            groups[opener] = append(groups[opener], i)
+        }
+        for opener in order {
+            positions := groups[opener]
+            if len(positions) < 3 { continue }
+            first := entries[positions[0]]
+            matches = append(matches, {begin: first.begin, end: first.offset+first.tokens[n-1][0].end, message: "Sentence opener \"" + opener + "\" appears " + text.itoa(len(positions)) + " times in this paragraph."})
+            for i in positions { used[text.itoa(i)] = true }
+        }
     }
 }

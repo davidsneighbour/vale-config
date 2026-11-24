@@ -1,0 +1,1154 @@
+- name: 000 no-chain
+  rule: ../../../styles/DNBAIPatterns/NoChain.yml
+  input: No sign-ups, no downloads, no hassle — just paste and go.
+  contains: DNBAIPatterns.NoChain
+- name: 001 no-chain
+  rule: ../../../styles/DNBAIPatterns/NoChain.yml
+  input: The plan has no hidden fees and no long-term contracts.
+  contains: DNBAIPatterns.NoChain
+- name: 002 no-chain
+  rule: ../../../styles/DNBAIPatterns/NoChain.yml
+  input: No fluff, no filler, no jargon, no corporate buzzwords.
+  contains: DNBAIPatterns.NoChain
+- name: 003 no-chain
+  rule: ../../../styles/DNBAIPatterns/NoChain.yml
+  input: There is no catch here, honestly.
+  absent: DNBAIPatterns.NoChain
+- name: 004 no-chain
+  rule: ../../../styles/DNBAIPatterns/NoChain.yml
+  input: It ships with no bells and whistles, no fluff.
+  contains: DNBAIPatterns.NoChain
+- name: 005 no-chain
+  rule: ../../../styles/DNBAIPatterns/NoChain.yml
+  input: No, no, I insist.
+  absent: DNBAIPatterns.NoChain
+- name: 006 no-chain
+  rule: ../../../styles/DNBAIPatterns/NoChain.yml
+  input: no no no
+  absent: DNBAIPatterns.NoChain
+- name: 007 no-chain
+  rule: ../../../styles/DNBAIPatterns/NoChain.yml
+  input: with no list patterns at all, so nothing lights up.
+  absent: DNBAIPatterns.NoChain
+- name: 008 no-chain
+  rule: ../../../styles/DNBAIPatterns/NoChain.yml
+  input: NO FEES, NO CONTRACTS, NO SURPRISES
+  contains: DNBAIPatterns.NoChain
+- name: 009 no-chain
+  rule: ../../../styles/DNBAIPatterns/NoChain.yml
+  input: no fluff; no filler
+  contains: DNBAIPatterns.NoChain
+- name: 010 no-chain
+  rule: ../../../styles/DNBAIPatterns/NoChain.yml
+  input: no time, no money, no way to say no thanks
+  contains: DNBAIPatterns.NoChain
+- name: 011 no-chain
+  rule: ../../../styles/DNBAIPatterns/NoChain.yml
+  input: no-code, no-fuss setup
+  contains: DNBAIPatterns.NoChain
+- name: 012 no-chain
+  rule: ../../../styles/DNBAIPatterns/NoChain.yml
+  input: I know nothing, notice nothing.
+  absent: DNBAIPatterns.NoChain
+- name: 013 no-chain
+  rule: ../../../styles/DNBAIPatterns/NoChain.yml
+  input: "No fluff, no filler.
+
+    No ads here."
+  contains: DNBAIPatterns.NoChain
+- name: 014 whole
+  rule: ../../../styles/DNBAIPatterns/Whole.yml
+  input: That's the whole point.
+  contains: DNBAIPatterns.Whole
+- name: 015 whole
+  rule: ../../../styles/DNBAIPatterns/Whole.yml
+  input: This is the whole game, really.
+  contains: DNBAIPatterns.Whole
+- name: 016 whole
+  rule: ../../../styles/DNBAIPatterns/Whole.yml
+  input: That was the whole pitch.
+  contains: DNBAIPatterns.Whole
+- name: 017 whole
+  rule: ../../../styles/DNBAIPatterns/Whole.yml
+  input: The whole team showed up.
+  absent: DNBAIPatterns.Whole
+- name: 018 did-not-chain
+  rule: ../../../styles/DNBAIPatterns/DidNotChain.yml
+  input: Did not flinch, did not blink, did not apologize.
+  contains: DNBAIPatterns.DidNotChain
+- name: 019 did-not-chain
+  rule: ../../../styles/DNBAIPatterns/DidNotChain.yml
+  input: He didn't call and didn't write.
+  contains: DNBAIPatterns.DidNotChain
+- name: 020 did-not-chain
+  rule: ../../../styles/DNBAIPatterns/DidNotChain.yml
+  input: She did not go.
+  absent: DNBAIPatterns.DidNotChain
+- name: 021 did-not-chain
+  rule: ../../../styles/DNBAIPatterns/DidNotChain.yml
+  input: Did not know why, did not care.
+  contains: DNBAIPatterns.DidNotChain
+- name: 022 dont-verb-it
+  rule: ../../../styles/DNBAIPatterns/DontVerbIt.yml
+  input: Don't call it a comeback. Call it a return.
+  contains: DNBAIPatterns.DontVerbIt
+- name: 023 dont-verb-it
+  rule: ../../../styles/DNBAIPatterns/DontVerbIt.yml
+  input: Do not think of it as a burden. Think of it as fuel.
+  contains: DNBAIPatterns.DontVerbIt
+- name: 024 dont-verb-it
+  rule: ../../../styles/DNBAIPatterns/DontVerbIt.yml
+  input: Don't fear it. Name it.
+  absent: DNBAIPatterns.DontVerbIt
+- name: 025 dont-verb-it
+  rule: ../../../styles/DNBAIPatterns/DontVerbIt.yml
+  input: Don’t call it "luck." Call it preparation.
+  contains: DNBAIPatterns.DontVerbIt
+- name: 026 dont-verb-it
+  rule: ../../../styles/DNBAIPatterns/DontVerbIt.yml
+  input: Don't just read it — read it aloud.
+  contains: DNBAIPatterns.DontVerbIt
+- name: 027 dont-verb-it
+  rule: ../../../styles/DNBAIPatterns/DontVerbIt.yml
+  input: Don't overthink it.
+  absent: DNBAIPatterns.DontVerbIt
+- name: 028 sit-with
+  rule: ../../../styles/DNBAIPatterns/SitWith.yml
+  input: Sit with that for a moment.
+  contains: DNBAIPatterns.SitWith
+- name: 029 sit-with
+  rule: ../../../styles/DNBAIPatterns/SitWith.yml
+  input: Just sit with it.
+  contains: DNBAIPatterns.SitWith
+- name: 030 sit-with
+  rule: ../../../styles/DNBAIPatterns/SitWith.yml
+  input: She was sitting with the discomfort.
+  contains: DNBAIPatterns.SitWith
+- name: 031 sit-with
+  rule: ../../../styles/DNBAIPatterns/SitWith.yml
+  input: Come sit with us at lunch.
+  absent: DNBAIPatterns.SitWith
+- name: 032 already-know
+  rule: ../../../styles/DNBAIPatterns/AlreadyKnow.yml
+  input: You already know the answer.
+  contains: DNBAIPatterns.AlreadyKnow
+- name: 033 already-know
+  rule: ../../../styles/DNBAIPatterns/AlreadyKnow.yml
+  input: Deep down, you already know.
+  contains: DNBAIPatterns.AlreadyKnow
+- name: 034 already-know
+  rule: ../../../styles/DNBAIPatterns/AlreadyKnow.yml
+  input: If you already know Python, skip ahead.
+  absent: DNBAIPatterns.AlreadyKnow
+- name: 035 already-know
+  rule: ../../../styles/DNBAIPatterns/AlreadyKnow.yml
+  input: You already know what to do.
+  contains: DNBAIPatterns.AlreadyKnow
+- name: 036 already-know
+  rule: ../../../styles/DNBAIPatterns/AlreadyKnow.yml
+  input: Part of you already knows it.
+  contains: DNBAIPatterns.AlreadyKnow
+- name: 037 is-the-entire
+  rule: ../../../styles/DNBAIPatterns/Entire.yml
+  input: Consistency is the entire game.
+  contains: DNBAIPatterns.Entire
+- name: 038 is-the-entire
+  rule: ../../../styles/DNBAIPatterns/Entire.yml
+  input: That's the entire business model.
+  contains: DNBAIPatterns.Entire
+- name: 039 is-the-entire
+  rule: ../../../styles/DNBAIPatterns/Entire.yml
+  input: He toured the entire factory.
+  absent: DNBAIPatterns.Entire
+- name: 040 the-entire-is
+  rule: ../../../styles/DNBAIPatterns/Entire.yml
+  input: The entire point is that nobody reads.
+  contains: DNBAIPatterns.Entire
+- name: 041 the-entire-is
+  rule: ../../../styles/DNBAIPatterns/Entire.yml
+  input: The entire business model is built on churn.
+  contains: DNBAIPatterns.Entire
+- name: 042 the-entire-is
+  rule: ../../../styles/DNBAIPatterns/Entire.yml
+  input: The entire point of the exercise is repetition.
+  contains: DNBAIPatterns.Entire
+- name: 043 the-entire-is
+  rule: ../../../styles/DNBAIPatterns/Entire.yml
+  input: He ate the entire pizza.
+  absent: DNBAIPatterns.Entire
+- name: 044 the-entire-is
+  rule: ../../../styles/DNBAIPatterns/Entire.yml
+  input: The entire team was exhausted.
+  contains: DNBAIPatterns.Entire
+- name: 045 the-entire-is
+  rule: ../../../styles/DNBAIPatterns/Entire.yml
+  input: The entire history of the modern industrial world economy is complex.
+  absent: DNBAIPatterns.Entire
+- name: 046 is-real
+  rule: ../../../styles/DNBAIPatterns/IsReal.yml
+  input: The improvement is real, and it's not subtle.
+  contains: DNBAIPatterns.IsReal
+- name: 047 is-real
+  rule: ../../../styles/DNBAIPatterns/IsReal.yml
+  input: This is the real work, and it never ends.
+  contains: DNBAIPatterns.IsReal
+- name: 048 is-real
+  rule: ../../../styles/DNBAIPatterns/IsReal.yml
+  input: The demand is real and growing.
+  contains: DNBAIPatterns.IsReal
+- name: 049 is-real
+  rule: ../../../styles/DNBAIPatterns/IsReal.yml
+  input: He is a real estate agent and it shows.
+  absent: DNBAIPatterns.IsReal
+- name: 050 is-real
+  rule: ../../../styles/DNBAIPatterns/IsReal.yml
+  input: Is it real? And does it matter?
+  absent: DNBAIPatterns.IsReal
+- name: 051 is-real
+  rule: ../../../styles/DNBAIPatterns/IsReal.yml
+  input: The painting is real, but stolen.
+  absent: DNBAIPatterns.IsReal
+- name: 052 punchline
+  rule: ../../../styles/DNBAIPatterns/Punchline.yml
+  input: The punchline is that nobody laughed.
+  contains: DNBAIPatterns.Punchline
+- name: 053 punchline
+  rule: ../../../styles/DNBAIPatterns/Punchline.yml
+  input: "The punchline: nothing changed."
+  contains: DNBAIPatterns.Punchline
+- name: 054 punchline
+  rule: ../../../styles/DNBAIPatterns/Punchline.yml
+  input: And the punchline? You knew.
+  contains: DNBAIPatterns.Punchline
+- name: 055 punchline
+  rule: ../../../styles/DNBAIPatterns/Punchline.yml
+  input: He forgot the punchline entirely.
+  absent: DNBAIPatterns.Punchline
+- name: 056 worth-naming
+  rule: ../../../styles/DNBAIPatterns/WorthNaming.yml
+  input: That loss is real and it's worth naming.
+  contains: DNBAIPatterns.WorthNaming
+- name: 057 worth-naming
+  rule: ../../../styles/DNBAIPatterns/WorthNaming.yml
+  input: It’s worth naming that this hurts.
+  contains: DNBAIPatterns.WorthNaming
+- name: 058 worth-naming
+  rule: ../../../styles/DNBAIPatterns/WorthNaming.yml
+  input: The grief here is worth naming.
+  contains: DNBAIPatterns.WorthNaming
+- name: 059 worth-naming
+  rule: ../../../styles/DNBAIPatterns/WorthNaming.yml
+  input: That anger feels worth naming out loud.
+  contains: DNBAIPatterns.WorthNaming
+- name: 060 worth-naming
+  rule: ../../../styles/DNBAIPatterns/WorthNaming.yml
+  input: "Worth naming: nobody asked for this."
+  contains: DNBAIPatterns.WorthNaming
+- name: 061 worth-naming
+  rule: ../../../styles/DNBAIPatterns/WorthNaming.yml
+  input: It's not worth naming names here.
+  absent: DNBAIPatterns.WorthNaming
+- name: 062 worth-naming
+  rule: ../../../styles/DNBAIPatterns/WorthNaming.yml
+  input: They spent the meeting naming the new mascot.
+  absent: DNBAIPatterns.WorthNaming
+- name: 063 worth-naming
+  rule: ../../../styles/DNBAIPatterns/WorthNaming.yml
+  input: The naming convention is worth documenting.
+  absent: DNBAIPatterns.WorthNaming
+- name: 064 not-nothing
+  rule: ../../../styles/DNBAIPatterns/NotNothing.yml
+  input: That's not nothing.
+  contains: DNBAIPatterns.NotNothing
+- name: 065 not-nothing
+  rule: ../../../styles/DNBAIPatterns/NotNothing.yml
+  input: Ten sign-ups in a week — that is not nothing.
+  contains: DNBAIPatterns.NotNothing
+- name: 066 not-nothing
+  rule: ../../../styles/DNBAIPatterns/NotNothing.yml
+  input: It's not nothing, even if it's not everything.
+  contains: DNBAIPatterns.NotNothing
+- name: 067 not-nothing
+  rule: ../../../styles/DNBAIPatterns/NotNothing.yml
+  input: The launch drew a small crowd, which was not nothing.
+  contains: DNBAIPatterns.NotNothing
+- name: 068 not-nothing
+  rule: ../../../styles/DNBAIPatterns/NotNothing.yml
+  input: She insisted that nothing was wrong.
+  absent: DNBAIPatterns.NotNothing
+- name: 069 not-nothing
+  rule: ../../../styles/DNBAIPatterns/NotNothing.yml
+  input: There is nothing left to say.
+  absent: DNBAIPatterns.NotNothing
+- name: 070 ai-vocab
+  rule: ../../../styles/DNBAIPatterns/AIVocabulary.yml
+  input: We delve into the intricacies of the interplay.
+  contains: DNBAIPatterns.AIVocabulary
+- name: 071 ai-vocab
+  rule: ../../../styles/DNBAIPatterns/AIVocabulary.yml
+  input: Her vibrant tapestry hung in the bustling hall.
+  contains: DNBAIPatterns.AIVocabulary
+- name: 072 ai-vocab
+  rule: ../../../styles/DNBAIPatterns/AIVocabulary.yml
+  input: A meticulously curated, seamless experience.
+  contains: DNBAIPatterns.AIVocabulary
+- name: 073 ai-vocab
+  rule: ../../../styles/DNBAIPatterns/AIVocabulary.yml
+  input: The report was thorough and well organized.
+  absent: DNBAIPatterns.AIVocabulary
+- name: 074 not-just
+  rule: ../../../styles/DNBAIPatterns/NotJust.yml
+  input: This is not just a tool, but a philosophy.
+  contains: DNBAIPatterns.NotJust
+- name: 075 not-just
+  rule: ../../../styles/DNBAIPatterns/NotJust.yml
+  input: Not only fast but also reliable.
+  contains: DNBAIPatterns.NotJust
+- name: 076 not-just
+  rule: ../../../styles/DNBAIPatterns/NotJust.yml
+  input: It’s not a bug — it’s a feature.
+  contains: DNBAIPatterns.NotJust
+- name: 077 not-just
+  rule: ../../../styles/DNBAIPatterns/NotJust.yml
+  input: He did not buy it.
+  absent: DNBAIPatterns.NotJust
+- name: 078 not-just
+  rule: ../../../styles/DNBAIPatterns/NotJust.yml
+  input: She was not sure about the plan.
+  absent: DNBAIPatterns.NotJust
+- name: 079 note-that
+  rule: ../../../styles/DNBAIPatterns/NoteThat.yml
+  input: It is important to note that timing matters.
+  contains: DNBAIPatterns.NoteThat
+- name: 080 note-that
+  rule: ../../../styles/DNBAIPatterns/NoteThat.yml
+  input: It’s worth noting the fees are separate.
+  contains: DNBAIPatterns.NoteThat
+- name: 081 note-that
+  rule: ../../../styles/DNBAIPatterns/NoteThat.yml
+  input: It should be noted that this changed in 2020.
+  contains: DNBAIPatterns.NoteThat
+- name: 082 note-that
+  rule: ../../../styles/DNBAIPatterns/NoteThat.yml
+  input: Please note the door code.
+  absent: DNBAIPatterns.NoteThat
+- name: 083 testament
+  rule: ../../../styles/DNBAIPatterns/Testament.yml
+  input: The building stands as a testament to postwar optimism.
+  contains: DNBAIPatterns.Testament
+- name: 084 testament
+  rule: ../../../styles/DNBAIPatterns/Testament.yml
+  input: Her career is a testament to persistence.
+  contains: DNBAIPatterns.Testament
+- name: 085 testament
+  rule: ../../../styles/DNBAIPatterns/Testament.yml
+  input: It serves as a stark reminder that nothing lasts.
+  contains: DNBAIPatterns.Testament
+- name: 086 testament
+  rule: ../../../styles/DNBAIPatterns/Testament.yml
+  input: He read from the Old Testament.
+  absent: DNBAIPatterns.Testament
+- name: 087 crucial-role
+  rule: ../../../styles/DNBAIPatterns/CrucialRole.yml
+  input: Volunteers play a crucial role in the program.
+  contains: DNBAIPatterns.CrucialRole
+- name: 088 crucial-role
+  rule: ../../../styles/DNBAIPatterns/CrucialRole.yml
+  input: She played a truly pivotal role in the merger.
+  contains: DNBAIPatterns.CrucialRole
+- name: 089 crucial-role
+  rule: ../../../styles/DNBAIPatterns/CrucialRole.yml
+  input: He plays the role of the villain.
+  absent: DNBAIPatterns.CrucialRole
+- name: 090 landscape
+  rule: ../../../styles/DNBAIPatterns/Landscape.yml
+  input: Adapting to an ever-evolving landscape.
+  contains: DNBAIPatterns.Landscape
+- name: 091 landscape
+  rule: ../../../styles/DNBAIPatterns/Landscape.yml
+  input: The rapidly changing landscape of retail.
+  contains: DNBAIPatterns.Landscape
+- name: 092 landscape
+  rule: ../../../styles/DNBAIPatterns/Landscape.yml
+  input: In today’s fast-paced world, attention is scarce.
+  contains: DNBAIPatterns.Landscape
+- name: 093 landscape
+  rule: ../../../styles/DNBAIPatterns/Landscape.yml
+  input: The landscape outside the window was gray.
+  absent: DNBAIPatterns.Landscape
+- name: 094 vague-experts
+  rule: ../../../styles/DNBAIPatterns/VagueExperts.yml
+  input: Experts argue that the policy failed.
+  contains: DNBAIPatterns.VagueExperts
+- name: 095 vague-experts
+  rule: ../../../styles/DNBAIPatterns/VagueExperts.yml
+  input: Some critics have noted a decline in quality.
+  contains: DNBAIPatterns.VagueExperts
+- name: 096 vague-experts
+  rule: ../../../styles/DNBAIPatterns/VagueExperts.yml
+  input: Industry reports suggest strong demand.
+  contains: DNBAIPatterns.VagueExperts
+- name: 097 vague-experts
+  rule: ../../../styles/DNBAIPatterns/VagueExperts.yml
+  input: Dr. Chen argued the opposite in her paper.
+  absent: DNBAIPatterns.VagueExperts
+- name: 098 despite-challenges
+  rule: ../../../styles/DNBAIPatterns/DespiteChallenges.yml
+  input: Despite these challenges, growth continued.
+  contains: DNBAIPatterns.DespiteChallenges
+- name: 099 despite-challenges
+  rule: ../../../styles/DNBAIPatterns/DespiteChallenges.yml
+  input: The sector faces several challenges.
+  contains: DNBAIPatterns.DespiteChallenges
+- name: 100 despite-challenges
+  rule: ../../../styles/DNBAIPatterns/DespiteChallenges.yml
+  input: Whether it works remains to be seen.
+  contains: DNBAIPatterns.DespiteChallenges
+- name: 101 despite-challenges
+  rule: ../../../styles/DNBAIPatterns/DespiteChallenges.yml
+  input: The climb was a challenge.
+  absent: DNBAIPatterns.DespiteChallenges
+- name: 102 participle-tail
+  rule: ../../../styles/DNBAIPatterns/ParticipleTail.yml
+  input: The bridge reopened in June, highlighting the city’s investment in infrastructure.
+  contains: DNBAIPatterns.ParticipleTail
+- name: 103 participle-tail
+  rule: ../../../styles/DNBAIPatterns/ParticipleTail.yml
+  input: Sales doubled, underscoring the strength of the brand.
+  contains: DNBAIPatterns.ParticipleTail
+- name: 104 participle-tail
+  rule: ../../../styles/DNBAIPatterns/ParticipleTail.yml
+  input: She kept highlighting passages in yellow.
+  absent: DNBAIPatterns.ParticipleTail
+- name: 105 participle-tail
+  rule: ../../../styles/DNBAIPatterns/ParticipleTail.yml
+  input: The team, reflecting on the loss, regrouped.
+  absent: DNBAIPatterns.ParticipleTail
+- name: 106 promo
+  rule: ../../../styles/DNBAIPatterns/PromotionalBoilerplate.yml
+  input: The inn is nestled in a quiet valley.
+  contains: DNBAIPatterns.PromotionalBoilerplate
+- name: 107 promo
+  rule: ../../../styles/DNBAIPatterns/PromotionalBoilerplate.yml
+  input: The museum boasts a rich tapestry of exhibits.
+  contains: DNBAIPatterns.PromotionalBoilerplate
+- name: 108 promo
+  rule: ../../../styles/DNBAIPatterns/PromotionalBoilerplate.yml
+  input: Located in the heart of downtown.
+  contains: DNBAIPatterns.PromotionalBoilerplate
+- name: 109 promo
+  rule: ../../../styles/DNBAIPatterns/PromotionalBoilerplate.yml
+  input: A hidden gem with breathtaking views.
+  contains: DNBAIPatterns.PromotionalBoilerplate
+- name: 110 promo
+  rule: ../../../styles/DNBAIPatterns/PromotionalBoilerplate.yml
+  input: The soup was rich and hearty.
+  absent: DNBAIPatterns.PromotionalBoilerplate
+- name: 111 ai-leftovers
+  rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
+  input: As of my last update, the API was in beta.
+  contains: DNBAIPatterns.ChatbotLeftovers
+- name: 112 ai-leftovers
+  rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
+  input: As an AI language model, I cannot form opinions.
+  contains: DNBAIPatterns.ChatbotLeftovers
+- name: 113 ai-leftovers
+  rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
+  input: See example.com/page?utm_source=chatgpt.com for details.
+  contains: DNBAIPatterns.ChatbotLeftovers
+- name: 114 ai-leftovers
+  rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
+  input: contentReference[oaicite:0]{index=0}
+  contains: DNBAIPatterns.ChatbotLeftovers
+- name: 115 ai-leftovers
+  rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
+  input: The last update shipped on Tuesday.
+  absent: DNBAIPatterns.ChatbotLeftovers
+- name: 116 no-chain
+  rule: ../../../styles/DNBAIPatterns/NoChain.yml
+  input: There is no catch. There is no fee.
+  absent: DNBAIPatterns.NoChain
+- name: 117 did-not-chain
+  rule: ../../../styles/DNBAIPatterns/DidNotChain.yml
+  input: They didn’t call, didn’t write.
+  contains: DNBAIPatterns.DidNotChain
+- name: 118 did-not-chain
+  rule: ../../../styles/DNBAIPatterns/DidNotChain.yml
+  input: She did not go. He did not stay.
+  absent: DNBAIPatterns.DidNotChain
+- name: 119 dont-verb-it
+  rule: ../../../styles/DNBAIPatterns/DontVerbIt.yml
+  input: Don't open the door. Open a window.
+  absent: DNBAIPatterns.DontVerbIt
+- name: 120 whole
+  rule: ../../../styles/DNBAIPatterns/Whole.yml
+  input: This’s the whole thing.
+  contains: DNBAIPatterns.Whole
+- name: 121 sit-with
+  rule: ../../../styles/DNBAIPatterns/SitWith.yml
+  input: She sits with your discomfort.
+  contains: DNBAIPatterns.SitWith
+- name: 122 already-know
+  rule: ../../../styles/DNBAIPatterns/AlreadyKnow.yml
+  input: If you already know Python, skip ahead.
+  absent: DNBAIPatterns.AlreadyKnow
+- name: 123 is-the-entire
+  rule: ../../../styles/DNBAIPatterns/Entire.yml
+  input: These are the entire thing.
+  contains: DNBAIPatterns.Entire
+- name: 124 is-real
+  rule: ../../../styles/DNBAIPatterns/IsReal.yml
+  input: The loss is real and painful.
+  contains: DNBAIPatterns.IsReal
+- name: 125 is-real
+  rule: ../../../styles/DNBAIPatterns/IsReal.yml
+  input: The improvement is real.
+  absent: DNBAIPatterns.IsReal
+- name: 126 punchline
+  rule: ../../../styles/DNBAIPatterns/Punchline.yml
+  input: The punchline was predictable.
+  contains: DNBAIPatterns.Punchline
+- name: 127 worth-naming
+  rule: ../../../styles/DNBAIPatterns/WorthNaming.yml
+  input: The loss feels deeply worth naming.
+  contains: DNBAIPatterns.WorthNaming
+- name: 128 not-nothing
+  rule: ../../../styles/DNBAIPatterns/NotNothing.yml
+  input: This was not nothing.
+  contains: DNBAIPatterns.NotNothing
+- name: 129 not-just
+  rule: ../../../styles/DNBAIPatterns/NotJust.yml
+  input: It's not a bug, it's a feature.
+  contains: DNBAIPatterns.NotJust
+- name: 130 note-that
+  rule: ../../../styles/DNBAIPatterns/NoteThat.yml
+  input: It's also worth remembering that timing matters.
+  contains: DNBAIPatterns.NoteThat
+- name: 131 testament
+  rule: ../../../styles/DNBAIPatterns/Testament.yml
+  input: They stood as an enduring testament to care.
+  contains: DNBAIPatterns.Testament
+- name: 132 crucial-role
+  rule: ../../../styles/DNBAIPatterns/CrucialRole.yml
+  input: They play an important role.
+  contains: DNBAIPatterns.CrucialRole
+- name: 133 landscape
+  rule: ../../../styles/DNBAIPatterns/Landscape.yml
+  input: In today’s digital economy, trust matters.
+  contains: DNBAIPatterns.Landscape
+- name: 134 vague-experts
+  rule: ../../../styles/DNBAIPatterns/VagueExperts.yml
+  input: Several observers often cautioned against it.
+  contains: DNBAIPatterns.VagueExperts
+- name: 135 vague-experts
+  rule: ../../../styles/DNBAIPatterns/VagueExperts.yml
+  input: Experts cautioned against it.
+  contains: DNBAIPatterns.VagueExperts
+- name: 136 despite-challenges
+  rule: ../../../styles/DNBAIPatterns/DespiteChallenges.yml
+  input: Despite those ongoing challenges, growth continued.
+  contains: DNBAIPatterns.DespiteChallenges
+- name: 137 despite-challenges
+  rule: ../../../styles/DNBAIPatterns/DespiteChallenges.yml
+  input: They faced numerous challenges.
+  contains: DNBAIPatterns.DespiteChallenges
+- name: 138 promo
+  rule: ../../../styles/DNBAIPatterns/PromotionalBoilerplate.yml
+  input: The town is nestled at the foot of a hill.
+  contains: DNBAIPatterns.PromotionalBoilerplate
+- name: 139 promo
+  rule: ../../../styles/DNBAIPatterns/PromotionalBoilerplate.yml
+  input: The gallery boast a rich cultural tapestry.
+  contains: DNBAIPatterns.PromotionalBoilerplate
+- name: 140 ai-leftovers
+  rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
+  input: I do not browse the internet.
+  contains: DNBAIPatterns.ChatbotLeftovers
+- name: 141 ai-leftovers
+  rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
+  input: I cannot access realtime information.
+  contains: DNBAIPatterns.ChatbotLeftovers
+- name: 142 ai-leftovers
+  rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
+  input: See turn0search for details.
+  contains: DNBAIPatterns.ChatbotLeftovers
+- name: RepeatedPhrase positive 0
+  rule: ../../../styles/DNBAIPatterns/RepeatedPhrase.yml
+  input: Careful edits improve readability. Careful edits improve readability. Careful edits improve readability.
+  contains: DNBAIPatterns.RepeatedPhrase
+- name: RepeatedPhrase positive 1
+  rule: ../../../styles/DNBAIPatterns/RepeatedPhrase.yml
+  input: Patient readers check every source. Patient readers check every source. Patient readers check every source.
+  contains: DNBAIPatterns.RepeatedPhrase
+- name: RepeatedPhrase negative 0
+  rule: ../../../styles/DNBAIPatterns/RepeatedPhrase.yml
+  input: Careful edits improve readability. Careful edits improve readability.
+  want: ""
+- name: RepeatedPhrase negative 1
+  rule: ../../../styles/DNBAIPatterns/RepeatedPhrase.yml
+  input: And in the and in the and in the.
+  want: ""
+- name: RepeatedSentenceOpener positive 0
+  rule: ../../../styles/DNBAIPatterns/RepeatedSentenceOpener.yml
+  input: Clear sources help readers find the answer. Clear sources help readers check the evidence. Clear sources help readers trust the result.
+  contains: DNBAIPatterns.RepeatedSentenceOpener
+- name: RepeatedSentenceOpener positive 1
+  rule: ../../../styles/DNBAIPatterns/RepeatedSentenceOpener.yml
+  input: Patient reviewers check every source before publishing. Patient reviewers check every detail before release. Patient reviewers check every claim before delivery.
+  contains: DNBAIPatterns.RepeatedSentenceOpener
+- name: RepeatedSentenceOpener negative 0
+  rule: ../../../styles/DNBAIPatterns/RepeatedSentenceOpener.yml
+  input: Clear sources help readers find the answer. Clear sources help readers check the evidence.
+  want: ""
+- name: RepeatedSentenceOpener negative 1
+  rule: ../../../styles/DNBAIPatterns/RepeatedSentenceOpener.yml
+  input: One small note. Other short note. Third short note.
+  want: ""
+- name: VocabularyDensityWarning positive 0
+  rule: ../../../styles/DNBAIPatterns/VocabularyDensityWarning.yml
+  input: vibrant pivotal tapestry
+  contains: DNBAIPatterns.VocabularyDensityWarning
+- name: VocabularyDensityWarning positive 1
+  rule: ../../../styles/DNBAIPatterns/VocabularyDensityWarning.yml
+  input: delve seamless interplay
+  contains: DNBAIPatterns.VocabularyDensityWarning
+- name: VocabularyDensityWarning negative 0
+  rule: ../../../styles/DNBAIPatterns/VocabularyDensityWarning.yml
+  input: garnered bolstering
+  want: ""
+- name: VocabularyDensityWarning negative 1
+  rule: ../../../styles/DNBAIPatterns/VocabularyDensityWarning.yml
+  input: Normal prose with one pivotal word.
+  want: ""
+- name: VocabularyDensityError positive 0
+  rule: ../../../styles/DNBAIPatterns/VocabularyDensityError.yml
+  input: vibrant pivotal tapestry meticulous seamless interplay
+  contains: DNBAIPatterns.VocabularyDensityError
+- name: VocabularyDensityError positive 1
+  rule: ../../../styles/DNBAIPatterns/VocabularyDensityError.yml
+  input: delve bolster garner underscore commendable bustling
+  contains: DNBAIPatterns.VocabularyDensityError
+- name: VocabularyDensityError negative 0
+  rule: ../../../styles/DNBAIPatterns/VocabularyDensityError.yml
+  input: vibrant pivotal tapestry
+  want: ""
+- name: VocabularyDensityError negative 1
+  rule: ../../../styles/DNBAIPatterns/VocabularyDensityError.yml
+  input: garnered bolstering
+  want: ""
+- name: AIVocabulary plain negative 1
+  rule: ../../../styles/DNBAIPatterns/AIVocabulary.yml
+  input: A named author explains the evidence.
+  want: ""
+- name: ChatbotLeftovers plain negative 1
+  rule: ../../../styles/DNBAIPatterns/ChatbotLeftovers.yml
+  input: A named author explains the evidence.
+  want: ""
+- name: CrucialRole plain negative 1
+  rule: ../../../styles/DNBAIPatterns/CrucialRole.yml
+  input: A named author explains the evidence.
+  want: ""
+- name: DespiteChallenges plain negative 1
+  rule: ../../../styles/DNBAIPatterns/DespiteChallenges.yml
+  input: A named author explains the evidence.
+  want: ""
+- name: Landscape plain negative 1
+  rule: ../../../styles/DNBAIPatterns/Landscape.yml
+  input: A named author explains the evidence.
+  want: ""
+- name: NoteThat plain negative 1
+  rule: ../../../styles/DNBAIPatterns/NoteThat.yml
+  input: A named author explains the evidence.
+  want: ""
+- name: PromotionalBoilerplate plain negative 1
+  rule: ../../../styles/DNBAIPatterns/PromotionalBoilerplate.yml
+  input: A named author explains the evidence.
+  want: ""
+- name: Punchline plain negative 1
+  rule: ../../../styles/DNBAIPatterns/Punchline.yml
+  input: A named author explains the evidence.
+  want: ""
+- name: SitWith plain negative 1
+  rule: ../../../styles/DNBAIPatterns/SitWith.yml
+  input: A named author explains the evidence.
+  want: ""
+- name: Testament plain negative 1
+  rule: ../../../styles/DNBAIPatterns/Testament.yml
+  input: A named author explains the evidence.
+  want: ""
+- name: VagueExperts plain negative 1
+  rule: ../../../styles/DNBAIPatterns/VagueExperts.yml
+  input: A named author explains the evidence.
+  want: ""
+- name: Whole plain negative 1
+  rule: ../../../styles/DNBAIPatterns/Whole.yml
+  input: A named author explains the evidence.
+  want: ""
+- name: focused 0 AIVocabulary
+  rule: ../../../styles/DNBAIPatterns/AIVocabulary.yml
+  input: intricacies
+  contains: '"intricacies"'
+- name: focused 1 AIVocabulary
+  rule: ../../../styles/DNBAIPatterns/AIVocabulary.yml
+  input: intricatacies
+  want: ""
+- name: focused 2 Punchline
+  rule: ../../../styles/DNBAIPatterns/Punchline.yml
+  input: "The punchline: nothing changed."
+  contains: DNBAIPatterns.Punchline
+- name: focused 3 CrucialRole
+  rule: ../../../styles/DNBAIPatterns/CrucialRole.yml
+  input: They play an important role.
+  contains: DNBAIPatterns.CrucialRole
+- name: focused 4 NoChain
+  rule: ../../../styles/DNBAIPatterns/NoChain.yml
+  input: No fluff, no filler, no jargon.
+  contains: contains 3 items
+- name: focused 5 DidNotChain
+  rule: ../../../styles/DNBAIPatterns/DidNotChain.yml
+  input: They didn’t call, didn’t write.
+  contains: contains 2 items
+- name: focused 6 DontVerbIt
+  rule: ../../../styles/DNBAIPatterns/DontVerbIt.yml
+  input: "Do not think of it as a burden.
+
+    Think of it as fuel."
+  contains: DNBAIPatterns.DontVerbIt
+- name: focused 7 RepeatedSentenceOpener
+  rule: ../../../styles/DNBAIPatterns/RepeatedSentenceOpener.yml
+  input: We saw clear sources help readers here. They find clear sources help readers useful. I know clear sources help readers work.
+  want: ""
+- name: focused 8 RepeatedPhrase
+  rule: ../../../styles/DNBAIPatterns/RepeatedPhrase.yml
+  input: Café readers check sources. Café readers check sources. Café readers check sources.
+  contains: appears 3 times
+- name: focused 9 VocabularyDensityWarning
+  rule: ../../../styles/DNBAIPatterns/VocabularyDensityWarning.yml
+  input: vibrant pivotal tapestry
+  contains: appears 3 times
+- name: focused 10 VocabularyDensityError
+  rule: ../../../styles/DNBAIPatterns/VocabularyDensityError.yml
+  input: vibrant pivotal tapestry meticulous seamless interplay
+  contains: appears 6 times
+- name: AIVocabulary excludes fenced
+  rule: ../../../styles/DNBAIPatterns/AIVocabulary.yml
+  input: "```text
+
+    We delve into the intricacies of the interplay.
+
+    ```"
+  want: ""
+- name: AIVocabulary excludes inline
+  rule: ../../../styles/DNBAIPatterns/AIVocabulary.yml
+  input: "`We delve into the intricacies of the interplay.`"
+  want: ""
+- name: AIVocabulary excludes blockquote
+  rule: ../../../styles/DNBAIPatterns/AIVocabulary.yml
+  input: "> We delve into the intricacies of the interplay."
+  want: ""
+- name: AIVocabulary excludes suppressed
+  rule: ../../../styles/DNBAIPatterns/AIVocabulary.yml
+  input: "<!-- vale off -->
+
+
+    We delve into the intricacies of the interplay.
+
+
+    <!-- vale on -->"
+  want: ""
+- name: NoChain excludes fenced
+  rule: ../../../styles/DNBAIPatterns/NoChain.yml
+  input: "```text
+
+    No sign-ups, no downloads, no hassle — just paste and go.
+
+    ```"
+  want: ""
+- name: NoChain excludes inline
+  rule: ../../../styles/DNBAIPatterns/NoChain.yml
+  input: "`No sign-ups, no downloads, no hassle — just paste and go.`"
+  want: ""
+- name: NoChain excludes blockquote
+  rule: ../../../styles/DNBAIPatterns/NoChain.yml
+  input: "> No sign-ups, no downloads, no hassle — just paste and go."
+  want: ""
+- name: NoChain excludes suppressed
+  rule: ../../../styles/DNBAIPatterns/NoChain.yml
+  input: "<!-- vale off -->
+
+
+    No sign-ups, no downloads, no hassle — just paste and go.
+
+
+    <!-- vale on -->"
+  want: ""
+- name: DidNotChain excludes fenced
+  rule: ../../../styles/DNBAIPatterns/DidNotChain.yml
+  input: "```text
+
+    Did not flinch, did not blink, did not apologize.
+
+    ```"
+  want: ""
+- name: DidNotChain excludes inline
+  rule: ../../../styles/DNBAIPatterns/DidNotChain.yml
+  input: "`Did not flinch, did not blink, did not apologize.`"
+  want: ""
+- name: DidNotChain excludes blockquote
+  rule: ../../../styles/DNBAIPatterns/DidNotChain.yml
+  input: "> Did not flinch, did not blink, did not apologize."
+  want: ""
+- name: DidNotChain excludes suppressed
+  rule: ../../../styles/DNBAIPatterns/DidNotChain.yml
+  input: "<!-- vale off -->
+
+
+    Did not flinch, did not blink, did not apologize.
+
+
+    <!-- vale on -->"
+  want: ""
+- name: DontVerbIt excludes fenced
+  rule: ../../../styles/DNBAIPatterns/DontVerbIt.yml
+  input: "```text
+
+    Don't call it a comeback. Call it a return.
+
+    ```"
+  want: ""
+- name: DontVerbIt excludes inline
+  rule: ../../../styles/DNBAIPatterns/DontVerbIt.yml
+  input: "`Don't call it a comeback. Call it a return.`"
+  want: ""
+- name: DontVerbIt excludes blockquote
+  rule: ../../../styles/DNBAIPatterns/DontVerbIt.yml
+  input: "> Don't call it a comeback. Call it a return."
+  want: ""
+- name: DontVerbIt excludes suppressed
+  rule: ../../../styles/DNBAIPatterns/DontVerbIt.yml
+  input: "<!-- vale off -->
+
+
+    Don't call it a comeback. Call it a return.
+
+
+    <!-- vale on -->"
+  want: ""
+- name: RepeatedPhrase excludes fenced
+  rule: ../../../styles/DNBAIPatterns/RepeatedPhrase.yml
+  input: "```text
+
+    Careful edits improve readability. Careful edits improve readability. Careful edits improve readability.
+
+    ```"
+  want: ""
+- name: RepeatedPhrase excludes inline
+  rule: ../../../styles/DNBAIPatterns/RepeatedPhrase.yml
+  input: "`Careful edits improve readability. Careful edits improve readability. Careful edits improve readability.`"
+  want: ""
+- name: RepeatedPhrase excludes blockquote
+  rule: ../../../styles/DNBAIPatterns/RepeatedPhrase.yml
+  input: "> Careful edits improve readability. Careful edits improve readability. Careful edits improve readability."
+  want: ""
+- name: RepeatedPhrase excludes suppressed
+  rule: ../../../styles/DNBAIPatterns/RepeatedPhrase.yml
+  input: "<!-- vale off -->
+
+
+    Careful edits improve readability. Careful edits improve readability. Careful edits improve readability.
+
+
+    <!-- vale on -->"
+  want: ""
+- name: RepeatedSentenceOpener excludes fenced
+  rule: ../../../styles/DNBAIPatterns/RepeatedSentenceOpener.yml
+  input: "```text
+
+    Clear sources help readers find the answer. Clear sources help readers check the evidence. Clear sources help readers trust the result.
+
+    ```"
+  want: ""
+- name: RepeatedSentenceOpener excludes inline
+  rule: ../../../styles/DNBAIPatterns/RepeatedSentenceOpener.yml
+  input: "`Clear sources help readers find the answer. Clear sources help readers check the evidence. Clear sources help readers trust the result.`"
+  want: ""
+- name: RepeatedSentenceOpener excludes blockquote
+  rule: ../../../styles/DNBAIPatterns/RepeatedSentenceOpener.yml
+  input: "> Clear sources help readers find the answer. Clear sources help readers check the evidence. Clear sources help readers trust the result."
+  want: ""
+- name: RepeatedSentenceOpener excludes suppressed
+  rule: ../../../styles/DNBAIPatterns/RepeatedSentenceOpener.yml
+  input: "<!-- vale off -->
+
+
+    Clear sources help readers find the answer. Clear sources help readers check the evidence. Clear sources help readers trust the result.
+
+
+    <!-- vale on -->"
+  want: ""
+- name: VocabularyDensityWarning excludes fenced
+  rule: ../../../styles/DNBAIPatterns/VocabularyDensityWarning.yml
+  input: "```text
+
+    vibrant pivotal tapestry
+
+    ```"
+  want: ""
+- name: VocabularyDensityWarning excludes inline
+  rule: ../../../styles/DNBAIPatterns/VocabularyDensityWarning.yml
+  input: "`vibrant pivotal tapestry`"
+  want: ""
+- name: VocabularyDensityWarning excludes blockquote
+  rule: ../../../styles/DNBAIPatterns/VocabularyDensityWarning.yml
+  input: "> vibrant pivotal tapestry"
+  want: ""
+- name: VocabularyDensityWarning excludes suppressed
+  rule: ../../../styles/DNBAIPatterns/VocabularyDensityWarning.yml
+  input: "<!-- vale off -->
+
+
+    vibrant pivotal tapestry
+
+
+    <!-- vale on -->"
+  want: ""
+- name: VocabularyDensityError excludes fenced
+  rule: ../../../styles/DNBAIPatterns/VocabularyDensityError.yml
+  input: "```text
+
+    vibrant pivotal tapestry meticulous seamless interplay
+
+    ```"
+  want: ""
+- name: VocabularyDensityError excludes inline
+  rule: ../../../styles/DNBAIPatterns/VocabularyDensityError.yml
+  input: "`vibrant pivotal tapestry meticulous seamless interplay`"
+  want: ""
+- name: VocabularyDensityError excludes blockquote
+  rule: ../../../styles/DNBAIPatterns/VocabularyDensityError.yml
+  input: "> vibrant pivotal tapestry meticulous seamless interplay"
+  want: ""
+- name: VocabularyDensityError excludes suppressed
+  rule: ../../../styles/DNBAIPatterns/VocabularyDensityError.yml
+  input: "<!-- vale off -->
+
+
+    vibrant pivotal tapestry meticulous seamless interplay
+
+
+    <!-- vale on -->"
+  want: ""
+- name: format md
+  rule: ../../../styles/DNBAIPatterns/Punchline.yml
+  format: md
+  input: "# Heading
+
+
+    The punchline: nothing changed."
+  contains: DNBAIPatterns.Punchline
+- name: format markdown
+  rule: ../../../styles/DNBAIPatterns/Punchline.yml
+  format: markdown
+  input: "The punchline: nothing changed."
+  contains: DNBAIPatterns.Punchline
+- name: format mdx
+  rule: ../../../styles/DNBAIPatterns/Punchline.yml
+  format: mdx
+  input: "The punchline: nothing changed."
+  contains: DNBAIPatterns.Punchline
+- name: format txt
+  rule: ../../../styles/DNBAIPatterns/Punchline.yml
+  format: txt
+  input: "The punchline: nothing changed."
+  contains: DNBAIPatterns.Punchline
+- name: format html
+  rule: ../../../styles/DNBAIPatterns/Punchline.yml
+  format: html
+  input: "<p>The punchline: nothing changed.</p>"
+  contains: DNBAIPatterns.Punchline
+- name: format adoc
+  rule: ../../../styles/DNBAIPatterns/Punchline.yml
+  format: adoc
+  input: "= Heading
+
+
+    The punchline: nothing changed."
+  contains: DNBAIPatterns.Punchline
+- name: format rst
+  rule: ../../../styles/DNBAIPatterns/Punchline.yml
+  format: rst
+  input: "Heading
+
+    =======
+
+
+    The punchline: nothing changed."
+  contains: DNBAIPatterns.Punchline
+- name: counts chain heads rather than an inner no
+  rule: ../../../styles/DNBAIPatterns/NoChain.yml
+  input: no time, no money, no way to say no thanks
+  contains: contains 3 items
+- name: LegCollaborative.Communication positive 0
+  rule: ../../../styles/DNBAIPatterns/LegCollaborative.Communication.yml
+  input: I hope this helps
+  contains: DNBAIPatterns.LegCollaborative
+- name: LegCollaborative.Communication positive 1
+  rule: ../../../styles/DNBAIPatterns/LegCollaborative.Communication.yml
+  input: Let me know
+  contains: DNBAIPatterns.LegCollaborative
+- name: LegCollaborative.Communication negative 0
+  rule: ../../../styles/DNBAIPatterns/LegCollaborative.Communication.yml
+  input: The release changes one file.
+  want: ""
+- name: LegCollaborative.Communication negative 1
+  rule: ../../../styles/DNBAIPatterns/LegCollaborative.Communication.yml
+  input: A named author explains the evidence.
+  want: ""
+- name: LegEditorializing positive 0
+  rule: ../../../styles/DNBAIPatterns/LegEditorializing.yml
+  input: it's important to note
+  contains: DNBAIPatterns.LegEditorializing
+- name: LegEditorializing positive 1
+  rule: ../../../styles/DNBAIPatterns/LegEditorializing.yml
+  input: it is worth reviewing
+  contains: DNBAIPatterns.LegEditorializing
+- name: LegEditorializing negative 0
+  rule: ../../../styles/DNBAIPatterns/LegEditorializing.yml
+  input: The release changes one file.
+  want: ""
+- name: LegEditorializing negative 1
+  rule: ../../../styles/DNBAIPatterns/LegEditorializing.yml
+  input: A named author explains the evidence.
+  want: ""
+- name: LegFalse.Range positive 0
+  rule: ../../../styles/DNBAIPatterns/LegFalse.Range.yml
+  input: from  to now
+  contains: DNBAIPatterns.LegFalse
+- name: LegFalse.Range positive 1
+  rule: ../../../styles/DNBAIPatterns/LegFalse.Range.yml
+  input: from to now
+  contains: DNBAIPatterns.LegFalse
+- name: LegFalse.Range negative 0
+  rule: ../../../styles/DNBAIPatterns/LegFalse.Range.yml
+  input: The release changes one file.
+  want: ""
+- name: LegFalse.Range negative 1
+  rule: ../../../styles/DNBAIPatterns/LegFalse.Range.yml
+  input: A named author explains the evidence.
+  want: ""
+- name: LegOverused.Conjunctions positive 0
+  rule: ../../../styles/DNBAIPatterns/LegOverused.Conjunctions.yml
+  input: on the other hand
+  contains: DNBAIPatterns.LegOverused
+- name: LegOverused.Conjunctions positive 1
+  rule: ../../../styles/DNBAIPatterns/LegOverused.Conjunctions.yml
+  input: in addition
+  contains: DNBAIPatterns.LegOverused
+- name: LegOverused.Conjunctions negative 0
+  rule: ../../../styles/DNBAIPatterns/LegOverused.Conjunctions.yml
+  input: The release changes one file.
+  want: ""
+- name: LegOverused.Conjunctions negative 1
+  rule: ../../../styles/DNBAIPatterns/LegOverused.Conjunctions.yml
+  input: A named author explains the evidence.
+  want: ""
+- name: LegPromotional.Language positive 0
+  rule: ../../../styles/DNBAIPatterns/LegPromotional.Language.yml
+  input: rich cultural heritage
+  contains: DNBAIPatterns.LegPromotional
+- name: LegPromotional.Language positive 1
+  rule: ../../../styles/DNBAIPatterns/LegPromotional.Language.yml
+  input: in the heart of town
+  contains: DNBAIPatterns.LegPromotional
+- name: LegPromotional.Language negative 0
+  rule: ../../../styles/DNBAIPatterns/LegPromotional.Language.yml
+  input: The release changes one file.
+  want: ""
+- name: LegPromotional.Language negative 1
+  rule: ../../../styles/DNBAIPatterns/LegPromotional.Language.yml
+  input: A named author explains the evidence.
+  want: ""
+- name: LegSection.Summary positive 0
+  rule: ../../../styles/DNBAIPatterns/LegSection.Summary.yml
+  input: In summary
+  contains: DNBAIPatterns.LegSection
+- name: LegSection.Summary positive 1
+  rule: ../../../styles/DNBAIPatterns/LegSection.Summary.yml
+  input: In conclusion
+  contains: DNBAIPatterns.LegSection
+- name: LegSection.Summary negative 0
+  rule: ../../../styles/DNBAIPatterns/LegSection.Summary.yml
+  input: The release changes one file.
+  want: ""
+- name: LegSection.Summary negative 1
+  rule: ../../../styles/DNBAIPatterns/LegSection.Summary.yml
+  input: A named author explains the evidence.
+  want: ""
+- name: LegSuperficial.Analysis positive 0
+  rule: ../../../styles/DNBAIPatterns/LegSuperficial.Analysis.yml
+  input: highlighting the result
+  contains: DNBAIPatterns.LegSuperficial
+- name: LegSuperficial.Analysis positive 1
+  rule: ../../../styles/DNBAIPatterns/LegSuperficial.Analysis.yml
+  input: reflecting the change
+  contains: DNBAIPatterns.LegSuperficial
+- name: LegSuperficial.Analysis negative 0
+  rule: ../../../styles/DNBAIPatterns/LegSuperficial.Analysis.yml
+  input: The release changes one file.
+  want: ""
+- name: LegSuperficial.Analysis negative 1
+  rule: ../../../styles/DNBAIPatterns/LegSuperficial.Analysis.yml
+  input: A named author explains the evidence.
+  want: ""
+- name: LegUndue.Emphasis positive 0
+  rule: ../../../styles/DNBAIPatterns/LegUndue.Emphasis.yml
+  input: plays a vital role
+  contains: DNBAIPatterns.LegUndue
+- name: LegUndue.Emphasis positive 1
+  rule: ../../../styles/DNBAIPatterns/LegUndue.Emphasis.yml
+  input: leaves a lasting impact
+  contains: DNBAIPatterns.LegUndue
+- name: LegUndue.Emphasis negative 0
+  rule: ../../../styles/DNBAIPatterns/LegUndue.Emphasis.yml
+  input: The release changes one file.
+  want: ""
+- name: LegUndue.Emphasis negative 1
+  rule: ../../../styles/DNBAIPatterns/LegUndue.Emphasis.yml
+  input: A named author explains the evidence.
+  want: ""
+- name: LegVague.Attribution positive 0
+  rule: ../../../styles/DNBAIPatterns/LegVague.Attribution.yml
+  input: Industry reports
+  contains: DNBAIPatterns.LegVague
+- name: LegVague.Attribution positive 1
+  rule: ../../../styles/DNBAIPatterns/LegVague.Attribution.yml
+  input: Some critics argue
+  contains: DNBAIPatterns.LegVague
+- name: LegVague.Attribution negative 0
+  rule: ../../../styles/DNBAIPatterns/LegVague.Attribution.yml
+  input: The release changes one file.
+  want: ""
+- name: LegVague.Attribution negative 1
+  rule: ../../../styles/DNBAIPatterns/LegVague.Attribution.yml
+  input: A named author explains the evidence.
+  want: ""
+- name: LegPromptCopyPaste positive 0
+  rule: ../../../styles/DNBAIPatterns/LegPromptCopyPaste.yml
+  input: as an AI language model
+  contains: DNBAIPatterns.LegPromptCopyPaste
+- name: LegPromptCopyPaste positive 1
+  rule: ../../../styles/DNBAIPatterns/LegPromptCopyPaste.yml
+  input: as a large language model
+  contains: DNBAIPatterns.LegPromptCopyPaste
+- name: LegPromptCopyPaste negative 0
+  rule: ../../../styles/DNBAIPatterns/LegPromptCopyPaste.yml
+  input: The release changes one file.
+  want: ""
+- name: LegPromptCopyPaste negative 1
+  rule: ../../../styles/DNBAIPatterns/LegPromptCopyPaste.yml
+  input: A named author explains the evidence.
+  want: ""
+- name: density does not match inside Unicode words
+  rule: ../../../styles/DNBAIPatterns/VocabularyDensityWarning.yml
+  input: évibrant épivotal étapestry
+  want: ""

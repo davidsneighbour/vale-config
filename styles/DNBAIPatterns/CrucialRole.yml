@@ -1,12 +1,10 @@
-# Highlighter audit (2026-11-24): reference pattern(s) crucial-role.
-# Coverage and missing specifics are documented below; detection behaviour is unchanged.
-# The reference accepts a/an and an optional modifier before crucial/pivotal/vital/key/significant/central/critical/important.
-# This rule requires "a" directly before the adjective, missing "an important role" and "a truly pivotal role".
-# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
+# Observable writing pattern, not a claim of AI authorship.
+# Source variants are covered by native Vale regression cases.
 extends: existence
 message: '"%s" is an AI-writing cliche; name the role more specifically.'
 level: warning
 ignorecase: true
 scope: ~blockquote
 tokens:
-  - '\bplay(?:s|ed|ing)?\s+a\s+(?:crucial|pivotal|vital|key|significant|central|critical|important)\s+role\b'
+  - \bplay(?:s|ed|ing)?\s+(?:a|an)\s+(?:\w+\s+)?(?:crucial|pivotal|vital|key|significant|central|critical|important)\s+role\b
+nonword: true

@@ -13,4 +13,4 @@ applyTo: ".vale.ini,styles/**"
 
 When investigating package contents, changing vendored rules, or changing vocabulary structure, read [the package layout reference](../references/style-package.md).
 
-When changing DNBAIPatterns patterns, read the [highlighter coverage audit](../../documentation/aidetection-highlighter-audit.md) and the comments in the affected rules; the audit records incomplete coverage and does not claim full equivalence.
+When changing DNBAIPatterns rules, read [the AI-writing rule guide](../../documentation/ai-patterns.md) for current algorithms, scope limits, vocabulary generation, and native regression tests. The [highlighter audit](../../documentation/aidetection-highlighter-audit.md) records historical observations rather than the current test results.

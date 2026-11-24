@@ -1,5 +1,5 @@
 {
   "extends": "@dnbhq/tsconfig/cli",
-  "include": [".release-it.ts", "scripts/update-version.ts"],
+  "include": [".release-it.ts", "scripts/**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }

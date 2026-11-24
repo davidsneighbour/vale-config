@@ -26,7 +26,7 @@ The DNB Vale Configuration package is hosted as an externally downloadable `.zip
 MinAlertLevel = suggestion # suggestion, warning, error
 Packages = https://github.com/davidsneighbour/vale-config/releases/latest/download/config.zip
 
-[*.{md,txt}]
+[*.{md,markdown,mdx,adoc,txt,rst,html}]
 BasedOnStyles = Vale, DNBWriting, DNBAIPatterns, DNBMillennialisms
 ```
 
@@ -41,10 +41,16 @@ The package ships three rule namespaces:
 All three namespaces are enabled by the package configuration. To use the writing namespace without the two optional namespaces, add explicit overrides:
 
 ```ini
-[*.{md,txt}]
+[*.{md,markdown,mdx,adoc,txt,rst,html}]
 DNBAIPatterns = NO
 DNBMillennialisms = NO
 ```
+
+### AI-writing signals
+
+`DNBAIPatterns` flags observable wording, repetition, and chatbot artefacts. It does not determine AI authorship or calculate an AI probability. Its catalogue combines general rhetorical tics with signals adapted from [Wikipedia’s Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing).
+
+The [AI-writing rule guide](https://github.com/davidsneighbour/vale-config/blob/main/documentation/ai-patterns.md) lists every rule, its severity, supported formats, paragraph-based aggregate algorithms, exceptions, suppression, regression tests, and remaining false-positive risks.
 
 ### Namespace migration
 
@@ -112,6 +118,8 @@ This repository follows **semantic versioning** (`MAJOR.MINOR.PATCH`) for all re
 5. **Zip and GitHub release**: builds `dist/config.zip` from `.vale.ini`, `README.md`, `LICENSE.md`, and `styles/`, then uploads it as part of the GitHub release.
 
 Use Vale 3.28.1 or later for repository checks. Some vendored rules require this version. Repository setup does not download external style packages.
+
+Run `npm run test:ai` for the native Vale rule cases and `npm run generate:ai:check` to verify the shared vocabulary outputs. The GitHub Actions quality workflow runs the full check on pushes and pull requests.
 
 Run `npm test` to exercise the version-bump, packaging, and package-install steps locally without any git/GitHub side effects.
 

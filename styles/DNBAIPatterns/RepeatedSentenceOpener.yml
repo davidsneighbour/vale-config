@@ -1,5 +1,5 @@
 extends: script
-message: "A sentence opener appears repeatedly; vary the structure if the repetition is accidental."
+message: A sentence opener appears repeatedly; vary the structure if the repetition is accidental.
 level: warning
-scope: raw
+scope: paragraph & ~blockquote
 script: repeated-sentence-opener.tengo

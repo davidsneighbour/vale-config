@@ -1,12 +1,10 @@
-# Highlighter audit (2026-11-24): reference pattern(s) sit-with.
-# Coverage and missing specifics are documented below; detection behaviour is unchanged.
-# The reference also matches "sits" and "sitting", either "the" or "your" before every listed feeling, and singular/plural "feeling(s)".
-# This rule only matches "sit", permits "your" only with plural "feelings", and omits "the feelings". The optional "for a WORD" suffix is not part of its match.
-# Reference expressions and verified cases: documentation/aidetection-highlighter-audit.json.
+# Observable writing pattern, not a claim of AI authorship.
+# Source variants are covered by native Vale regression cases.
 extends: existence
 message: '"%s" is reflective AI-associated phrasing; consider a more precise instruction.'
 level: suggestion
 ignorecase: true
 scope: ~blockquote
 tokens:
-  - '\bsit\s+with\s+(?:that|this|it(?:\s+for\s+a\s+moment)?|the\s+(?:discomfort|tension|weight|uncertainty|ambiguity|grief|silence|unease)|your\s+feelings)\b'
+  - \bsit(?:s|ting)?\s+with\s+(?:that|this|it|(?:the|your)\s+(?:discomfort|feelings?|tension|weight|uncertainty|ambiguity|grief|silence|unease))\b(?:\s+for\s+a\s+\w+)?
+nonword: true
