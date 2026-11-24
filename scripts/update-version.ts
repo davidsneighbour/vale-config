@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "node:fs";
 
 const VALE_INI_PATH = ".vale.ini";
 const ACCEPT_PATH = "styles/config/vocabularies/DNB/accept.txt";
