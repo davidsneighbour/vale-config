@@ -4,7 +4,7 @@ This file provides instructions for agents that work in this repository.
 
 ## What this repository is
 
-This repository is the source for the DNB [Vale](https://vale.sh) style package: a set of Vale rules, vocabularies, and a console output template, distributed as a downloadable `.zip` file. It is not an npm package to install.
+This repository is the source for the DNB [Vale](https://vale.sh) style package: a set of Vale rules and vocabularies, distributed as a downloadable `.zip` file. It is not an npm package to install.
 
 `.vale.ini` and `styles/` at the repository root are the actual style package, matching [Vale's documented package layout](https://docs.vale.sh/keys/packages/). Their contents become the root of the released zip, wrapped in a `config/` folder at build time by `scripts/build-release-zip.sh`. The Node tooling in the repository root (`scripts/`, `.release-it.ts`, `tests/`) exists only to version, package, test, and publish that zip. It is not part of the linting product itself.
 
@@ -40,12 +40,12 @@ This repository follows the same tooling shape as its sibling style packages, [v
 
 ## Documentation references
 
-* Use the official [Vale documentation](https://docs.vale.sh/) as the reference address for Vale configuration, styles, packages, rules, vocabularies, and output templates.
+* Use the official [Vale documentation](https://docs.vale.sh/) as the reference address for Vale configuration, styles, packages, rules, and vocabularies.
 
 ## Style package layout
 
 * `.vale.ini` is the actual Vale config shipped to consumers. It sets `StylesPath = styles` and has no external `Packages` dependency. Selected upstream rules are maintained inside `styles/DNB/` with source package prefixes; the inventory and selection decisions are in `documentation/upstream-rules.md` and `styles/config/upstream-rules.json`. It enables `DNB`, `AIDetection`, and `Millennialisms` by default while preserving each as a separate namespace. When adding or adjusting a rule, edit the `BasedOnStyles` and per-rule overrides here instead of introducing a new top-level config.
-* `styles/DNB/`, `styles/AIDetection/`, and `styles/Millennialisms/` hold the maintained rules. `styles/config/templates/dnb.tmpl` is a Vale [output template](https://vale.sh/manual/output/) used for CLI `--output` reporting, rendering a colourised errors, warnings, suggestions table plus a summary line. `styles/config/vocabularies/<Name>/{accept,reject}.txt` contains Vale vocabulary files (`.vale.ini` references `Vocab = DNB, Tech, Thailand, AIDetectionExceptions, MillennialismsExceptions`); each vocabulary is a directory with `accept.txt`, and optionally `reject.txt`, containing regex-style word or phrase patterns. The `DNB` vocabulary files carry a `# Version: x.y.z` header kept in sync with `package.json` by `scripts/update-version.ts`. New vocabulary directories should follow the same directory and file convention.
+* `styles/DNB/`, `styles/AIDetection/`, and `styles/Millennialisms/` hold the maintained rules. `styles/config/vocabularies/<Name>/{accept,reject}.txt` contains Vale vocabulary files (`.vale.ini` references `Vocab = DNB, Tech, Thailand, AIDetectionExceptions, MillennialismsExceptions`); each vocabulary is a directory with `accept.txt`, and optionally `reject.txt`, containing regex-style word or phrase patterns. The `DNB` vocabulary files carry a `# Version: x.y.z` header kept in sync with `package.json` by `scripts/update-version.ts`. New vocabulary directories should follow the same directory and file convention.
 * Repository setup does not run `vale sync`. Consumers use it to install the release zip. Old upstream downloads and `styles/.vale-config/` can remain in existing checkouts; they are ignored and excluded from the release zip. Test the package in a clean temporary project to verify that no external styles are needed.
 
 ## Release pipeline
