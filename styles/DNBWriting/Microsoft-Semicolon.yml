@@ -1,0 +1,10 @@
+# Source: https://github.com/vale-cli/Microsoft/releases/download/v0.15.2/Microsoft.zip (Semicolon.yml)
+# Licence: styles/DNBWriting/licenses/Microsoft/LICENSE
+extends: existence
+message: "Try to simplify this sentence."
+link: https://learn.microsoft.com/en-us/style-guide/punctuation/semicolons
+nonword: true
+scope: sentence
+level: suggestion
+tokens:
+  - ";"

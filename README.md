@@ -27,18 +27,36 @@ MinAlertLevel = suggestion # suggestion, warning, error
 Packages = https://github.com/davidsneighbour/vale-config/releases/latest/download/config.zip
 
 [*.{md,txt}]
-BasedOnStyles = DNB, AIDetection, Millennialisms
+BasedOnStyles = Vale, DNBWriting, DNBAIPatterns, DNBMillennialisms
 ```
 
-The package is self-contained. Selected Microsoft, Google, alex, proselint, Readability, and write-good rules are included under `DNB`, with source package prefixes. See [upstream rule selection](https://github.com/davidsneighbour/vale-config/blob/main/documentation/upstream-rules.md) for source versions, duplicate decisions, excluded rules, and renamed rule identifiers.
+The package is self-contained. Selected Microsoft, Google, alex, proselint, Readability, and write-good rules are included under `DNBWriting`, with source package prefixes. See [upstream rule selection](https://github.com/davidsneighbour/vale-config/blob/main/documentation/upstream-rules.md) for source versions, duplicate decisions, excluded rules, and renamed rule identifiers.
 
 The package ships three rule namespaces:
 
-* `DNB` for the core writing, readability, inclusive language, and spelling rules.
-* `AIDetection` for observable AI-writing signals.
-* `Millennialisms` for millennial-style slang, meme phrasing, and emotional hyperbole.
+* `DNBWriting` for the core writing, readability, inclusive language, and spelling rules.
+* `DNBAIPatterns` for observable AI-writing signals.
+* `DNBMillennialisms` for millennial-style slang, meme phrasing, and emotional hyperbole.
 
-Enable only the rule sets you need in `BasedOnStyles`. For example, use `BasedOnStyles = DNB` for the core rules only, or `BasedOnStyles = AIDetection, Millennialisms` for the two optional rule sets without the core DNB rules.
+All three namespaces are enabled by the package configuration. To use the writing namespace without the two optional namespaces, add explicit overrides:
+
+```ini
+[*.{md,txt}]
+DNBAIPatterns = NO
+DNBMillennialisms = NO
+```
+
+### Namespace migration
+
+The namespaces have new names. Update `BasedOnStyles` and any rule overrides when upgrading from the previous names:
+
+| Previous namespace | Current namespace |
+| --- | --- |
+| `DNB` | `DNBWriting` |
+| `AIDetection` | `DNBAIPatterns` |
+| `Millennialisms` | `DNBMillennialisms` |
+
+For example, `DNB.Google-OxfordComma` becomes `DNBWriting.Google-OxfordComma`. The package remains one `config.zip` archive from this repository. Vocabulary names, including `DNB`, `AIDetectionExceptions`, and `MillennialismsExceptions`, are unchanged; vocabularies are separate from namespaces.
 
 ### Pinning a version (optional)
 
@@ -60,8 +78,8 @@ For example, lower the Oxford comma rule to a suggestion:
 Packages = https://github.com/davidsneighbour/vale-config/releases/latest/download/config.zip
 
 [*.md]
-BasedOnStyles = DNB
-DNB.Google-OxfordComma = suggestion
+BasedOnStyles = DNBWriting
+DNBWriting.Google-OxfordComma = suggestion
 ```
 
 ## Release process
@@ -99,7 +117,7 @@ Run `npm test` to exercise the version-bump, packaging, and package-install step
 
 ## Spelling dictionary
 
-The package includes the `en_GB` Hunspell dictionary files used by `DNB.Spelling`. The package test installs `config.zip` into a throwaway Vale project and verifies that the spelling rule works from the downloaded package layout.
+The package includes the `en_GB` Hunspell dictionary files used by `DNBWriting.Spelling`. The package test installs `config.zip` into a throwaway Vale project and verifies that the spelling rule works from the downloaded package layout.
 
 ## License
 

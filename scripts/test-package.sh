@@ -33,9 +33,9 @@ MinAlertLevel = suggestion
 Packages = ${package_zip}
 
 [*.md]
-BasedOnStyles = DNB, AIDetection, Millennialisms
-DNB.AgenticCommunal = warning
-DNB.Spelling = error
+BasedOnStyles = Vale, DNBWriting, DNBAIPatterns, DNBMillennialisms
+DNBWriting.AgenticCommunal = warning
+DNBWriting.Spelling = error
 EOF
 
   cat > "${temp_dir}/article.md" <<EOF
@@ -69,32 +69,32 @@ EOF
     vale sync
     output="$(vale --output=JSON article.md 2>&1 || true)"
 
-    if [[ "${output}" != *"DNB.AgenticCommunal"* ]]; then
-      echo "[error] Synced package did not trigger DNB.AgenticCommunal" >&2
+    if [[ "${output}" != *"DNBWriting.AgenticCommunal"* ]]; then
+      echo "[error] Synced package did not trigger DNBWriting.AgenticCommunal" >&2
       echo "${output}" >&2
       exit 1
     fi
 
-    if [[ "${output}" != *"AIDetection.ChatbotLeftovers"* ]]; then
-      echo "[error] Synced package did not trigger AIDetection.ChatbotLeftovers" >&2
+    if [[ "${output}" != *"DNBAIPatterns.ChatbotLeftovers"* ]]; then
+      echo "[error] Synced package did not trigger DNBAIPatterns.ChatbotLeftovers" >&2
       echo "${output}" >&2
       exit 1
     fi
 
-    if [[ "${output}" != *"Millennialisms.AnimalSlang"* ]]; then
-      echo "[error] Synced package did not trigger Millennialisms.AnimalSlang" >&2
+    if [[ "${output}" != *"DNBMillennialisms.AnimalSlang"* ]]; then
+      echo "[error] Synced package did not trigger DNBMillennialisms.AnimalSlang" >&2
       echo "${output}" >&2
       exit 1
     fi
 
-    if [[ "${output}" != *"DNB.Spelling"* ]]; then
-      echo "[error] Synced package did not trigger DNB.Spelling" >&2
+    if [[ "${output}" != *"DNBWriting.Spelling"* ]]; then
+      echo "[error] Synced package did not trigger DNBWriting.Spelling" >&2
       echo "${output}" >&2
       exit 1
     fi
 
-    for rule in DNB.Microsoft-Negative DNB.Google-Periods DNB.alex-Ablist \
-      DNB.proselint-Copyright DNB.Readability-Polysyllables DNB.write-good-TooWordy; do
+    for rule in DNBWriting.Microsoft-Negative DNBWriting.Google-Periods DNBWriting.alex-Ablist \
+      DNBWriting.proselint-Copyright DNBWriting.Readability-Polysyllables DNBWriting.write-good-TooWordy; do
       if [[ "${output}" != *"${rule}"* ]]; then
         echo "[error] Synced package did not trigger ${rule}" >&2
         echo "${output}" >&2
@@ -107,11 +107,29 @@ EOF
         echo "[error] Synced package downloaded external namespace ${namespace}" >&2
         exit 1
       fi
-      if [[ ! -f ".vale/DNB/licenses/${namespace}/LICENSE" && ! -f ".vale/DNB/licenses/${namespace}/README.md" ]]; then
+      if [[ ! -f ".vale/DNBWriting/licenses/${namespace}/LICENSE" && ! -f ".vale/DNBWriting/licenses/${namespace}/README.md" ]]; then
         echo "[error] Synced package is missing the ${namespace} licence notice" >&2
         exit 1
       fi
     done
+
+    for namespace in DNB AIDetection Millennialisms; do
+      if [[ -d ".vale/${namespace}" ]]; then
+        echo "[error] Synced package contains legacy namespace ${namespace}" >&2
+        exit 1
+      fi
+    done
+
+    cat >> .vale.ini <<EOF
+DNBAIPatterns = NO
+DNBMillennialisms = NO
+EOF
+    output="$(vale --output=JSON article.md 2>&1 || true)"
+    if [[ "${output}" != *"DNBWriting.AgenticCommunal"* || "${output}" == *"DNBAIPatterns."* || "${output}" == *"DNBMillennialisms."* ]]; then
+      echo "[error] Optional namespaces could not be disabled independently" >&2
+      echo "${output}" >&2
+      exit 1
+    fi
 
     echo "[info] Synced package triggered all namespaces, six vendored sources, and spelling without external style downloads."
   )

@@ -1,0 +1,9 @@
+# Source: https://github.com/vale-cli/Microsoft/releases/download/v0.15.2/Microsoft.zip (ExclamationPoints.yml)
+# Licence: styles/DNBWriting/licenses/Microsoft/LICENSE
+extends: existence
+message: "Use exclamation points sparingly."
+link: https://learn.microsoft.com/en-us/style-guide/punctuation/exclamation-points
+level: suggestion
+nonword: true
+tokens:
+  - '\w!(?:\s|$)'

@@ -23,7 +23,9 @@
         "Separate sentences can produce a false positive, and multiple chains on one line merge into one alert. Word boundaries and flexible whitespace are not preserved. The reference item-count badge is not implemented."
       ],
       "caseCount": 15,
-      "differingCaseCount": 1
+      "differingCaseCount": 1,
+      "currentRule": "DNBAIPatterns.NoChain",
+      "currentFile": "styles/DNBAIPatterns/NoChain.yml"
     },
     {
       "id": "whole",
@@ -37,7 +39,9 @@
         "This rule restricts the noun to point/game/pitch, requires that noun, omits \"this's\", and does not accept curly apostrophes."
       ],
       "caseCount": 5,
-      "differingCaseCount": 1
+      "differingCaseCount": 1,
+      "currentRule": "DNBAIPatterns.Whole",
+      "currentFile": "styles/DNBAIPatterns/Whole.yml"
     },
     {
       "id": "did-not-chain",
@@ -53,7 +57,9 @@
         "The script counts a whole line rather than a contiguous chain, so separate sentences can produce a false positive and multiple chains merge. The reference item count is not reported."
       ],
       "caseCount": 6,
-      "differingCaseCount": 2
+      "differingCaseCount": 2,
+      "currentRule": "DNBAIPatterns.DidNotChain",
+      "currentFile": "styles/DNBAIPatterns/DidNotChain.yml"
     },
     {
       "id": "dont-verb-it",
@@ -68,7 +74,9 @@
         "It only compares the repeated verb prefix and never requires \"it\" on both sides; \"Don't open the door. Open a window.\" is a false positive."
       ],
       "caseCount": 7,
-      "differingCaseCount": 3
+      "differingCaseCount": 3,
+      "currentRule": "DNBAIPatterns.DontVerbIt",
+      "currentFile": "styles/DNBAIPatterns/DontVerbIt.yml"
     },
     {
       "id": "sit-with",
@@ -82,7 +90,9 @@
         "This rule only matches \"sit\", permits \"your\" only with plural \"feelings\", and omits \"the feelings\". The optional \"for a WORD\" suffix is not part of its match."
       ],
       "caseCount": 5,
-      "differingCaseCount": 2
+      "differingCaseCount": 2,
+      "currentRule": "DNBAIPatterns.SitWith",
+      "currentFile": "styles/DNBAIPatterns/SitWith.yml"
     },
     {
       "id": "already-know",
@@ -96,7 +106,9 @@
         "This rule is sentence-initial (with optional \"deep down,\") and supports fewer complements. Its optional complement also allows false positives such as sentence-initial \"You already know Python\"."
       ],
       "caseCount": 6,
-      "differingCaseCount": 1
+      "differingCaseCount": 1,
+      "currentRule": "DNBAIPatterns.AlreadyKnow",
+      "currentFile": "styles/DNBAIPatterns/AlreadyKnow.yml"
     },
     {
       "id": "is-the-entire",
@@ -110,7 +122,9 @@
         "The the-entire-is reference accepts one to five words before is/was/are/were. This rule only accepts point/business model/exercise/pitch followed directly by is/was."
       ],
       "caseCount": 4,
-      "differingCaseCount": 1
+      "differingCaseCount": 1,
+      "currentRule": "DNBAIPatterns.Entire",
+      "currentFile": "styles/DNBAIPatterns/Entire.yml"
     },
     {
       "id": "the-entire-is",
@@ -124,7 +138,9 @@
         "The the-entire-is reference accepts one to five words before is/was/are/were. This rule only accepts point/business model/exercise/pitch followed directly by is/was."
       ],
       "caseCount": 6,
-      "differingCaseCount": 2
+      "differingCaseCount": 2,
+      "currentRule": "DNBAIPatterns.Entire",
+      "currentFile": "styles/DNBAIPatterns/Entire.yml"
     },
     {
       "id": "is-real",
@@ -138,7 +154,9 @@
         "This rule uses a subject whitelist and a separate \"this is the real work\" phrase. It misses subjects such as loss and also flags standalone \"The improvement is real.\", which the reference does not."
       ],
       "caseCount": 8,
-      "differingCaseCount": 2
+      "differingCaseCount": 2,
+      "currentRule": "DNBAIPatterns.IsReal",
+      "currentFile": "styles/DNBAIPatterns/IsReal.yml"
     },
     {
       "id": "punchline",
@@ -152,7 +170,9 @@
         "This rule only accepts \"is\" as a verb and requires whitespace before the punctuation alternatives, missing ordinary \"The punchline:\" and \"The punchline?\"."
       ],
       "caseCount": 5,
-      "differingCaseCount": 3
+      "differingCaseCount": 3,
+      "currentRule": "DNBAIPatterns.Punchline",
+      "currentFile": "styles/DNBAIPatterns/Punchline.yml"
     },
     {
       "id": "worth-naming",
@@ -167,7 +187,9 @@
         "Its trailing word boundary after the colon prevents a normal \"Worth naming: ...\" match. The general reference exclusion for \"naming names\" is not reproduced."
       ],
       "caseCount": 9,
-      "differingCaseCount": 4
+      "differingCaseCount": 4,
+      "currentRule": "DNBAIPatterns.WorthNaming",
+      "currentFile": "styles/DNBAIPatterns/WorthNaming.yml"
     },
     {
       "id": "not-nothing",
@@ -181,7 +203,9 @@
         "This rule only lists that's/that is/this is/it is/which is. It misses \"it's\", \"this's\", \"which's\", all was forms, and curly apostrophes."
       ],
       "caseCount": 7,
-      "differingCaseCount": 3
+      "differingCaseCount": 3,
+      "currentRule": "DNBAIPatterns.NotNothing",
+      "currentFile": "styles/DNBAIPatterns/NotNothing.yml"
     },
     {
       "id": "ai-vocab",
@@ -194,7 +218,9 @@
         "The highlighter includes \"intricacies\". The current \"intricat(?:e|ely|acies)\" alternative instead accepts the misspelling \"intricatacies\" and misses \"intricacies\". Other vocabulary alternatives are represented."
       ],
       "caseCount": 4,
-      "differingCaseCount": 1
+      "differingCaseCount": 1,
+      "currentRule": "DNBAIPatterns.AIVocabulary",
+      "currentFile": "styles/DNBAIPatterns/AIVocabulary.yml"
     },
     {
       "id": "not-just",
@@ -208,7 +234,9 @@
         "The reference first branch stops at sentence punctuation, newline, or semicolon. The current first branch has a 120-character limit and can span sentence punctuation; the second branch uses an 80-character limit rather than the reference 60."
       ],
       "caseCount": 6,
-      "differingCaseCount": 2
+      "differingCaseCount": 2,
+      "currentRule": "DNBAIPatterns.NotJust",
+      "currentFile": "styles/DNBAIPatterns/NotJust.yml"
     },
     {
       "id": "note-that",
@@ -222,7 +250,9 @@
         "The current whitespace before the contraction alternative prevents normal \"it's/it’s\" from matching. Was forms, \"also\", \"worth mentioning\", and \"worth remembering\" are also absent."
       ],
       "caseCount": 5,
-      "differingCaseCount": 2
+      "differingCaseCount": 2,
+      "currentRule": "DNBAIPatterns.NoteThat",
+      "currentFile": "styles/DNBAIPatterns/NoteThat.yml"
     },
     {
       "id": "testament",
@@ -236,7 +266,9 @@
         "This rule only uses stands/serves with \"a\" and no modifier. Its other branch omits was/are/were/remain and modifiers before \"testament to\"."
       ],
       "caseCount": 5,
-      "differingCaseCount": 2
+      "differingCaseCount": 2,
+      "currentRule": "DNBAIPatterns.Testament",
+      "currentFile": "styles/DNBAIPatterns/Testament.yml"
     },
     {
       "id": "crucial-role",
@@ -250,7 +282,9 @@
         "This rule requires \"a\" directly before the adjective, missing \"an important role\" and \"a truly pivotal role\"."
       ],
       "caseCount": 4,
-      "differingCaseCount": 2
+      "differingCaseCount": 2,
+      "currentRule": "DNBAIPatterns.CrucialRole",
+      "currentFile": "styles/DNBAIPatterns/CrucialRole.yml"
     },
     {
       "id": "landscape",
@@ -264,7 +298,9 @@
         "This rule omits ever-changing/ever-shifting and curly apostrophes, and requires the final word \"world\" instead of accepting economy/industry or another word."
       ],
       "caseCount": 5,
-      "differingCaseCount": 2
+      "differingCaseCount": 2,
+      "currentRule": "DNBAIPatterns.Landscape",
+      "currentFile": "styles/DNBAIPatterns/Landscape.yml"
     },
     {
       "id": "vague-experts",
@@ -278,7 +314,9 @@
         "This rule has separate, narrower subject/verb combinations and omits agree/contend/observe/caution/cite plus many tense/adverb variants. It also requires plural \"industry reports\" and omits inflected report verbs."
       ],
       "caseCount": 6,
-      "differingCaseCount": 2
+      "differingCaseCount": 2,
+      "currentRule": "DNBAIPatterns.VagueExperts",
+      "currentFile": "styles/DNBAIPatterns/VagueExperts.yml"
     },
     {
       "id": "despite-challenges",
@@ -292,7 +330,9 @@
         "This rule only includes these/such/significant with no intervening word and only \"faces\", missing face/faced/facing. The \"challenges remain\" and \"remains to be seen\" alternatives are represented."
       ],
       "caseCount": 6,
-      "differingCaseCount": 2
+      "differingCaseCount": 2,
+      "currentRule": "DNBAIPatterns.DespiteChallenges",
+      "currentFile": "styles/DNBAIPatterns/DespiteChallenges.yml"
     },
     {
       "id": "participle-tail",
@@ -306,7 +346,9 @@
         "Match-span difference: the reference highlights the rest of the clause up to sentence punctuation or newline; this rule matches only the opening phrase."
       ],
       "caseCount": 4,
-      "differingCaseCount": 0
+      "differingCaseCount": 0,
+      "currentRule": "DNBAIPatterns.ParticipleTail",
+      "currentFile": "styles/DNBAIPatterns/ParticipleTail.yml"
     },
     {
       "id": "promo",
@@ -320,7 +362,9 @@
         "The remaining listed promotional alternatives are represented. Legacy LegPromotional.Language catches some phrases but does not supply complete coverage of this pattern."
       ],
       "caseCount": 7,
-      "differingCaseCount": 2
+      "differingCaseCount": 2,
+      "currentRule": "DNBAIPatterns.PromotionalBoilerplate",
+      "currentFile": "styles/DNBAIPatterns/PromotionalBoilerplate.yml"
     },
     {
       "id": "ai-leftovers",
@@ -334,7 +378,9 @@
         "The reference accepts turn0search/news/image without a trailing digit and metadata substrings inside larger tokens. This rule requires a trailing digit and adds word boundaries, while broadening the turn number beyond zero."
       ],
       "caseCount": 8,
-      "differingCaseCount": 3
+      "differingCaseCount": 3,
+      "currentRule": "DNBAIPatterns.ChatbotLeftovers",
+      "currentFile": "styles/DNBAIPatterns/ChatbotLeftovers.yml"
     }
   ],
   "cases": [
@@ -1867,5 +1913,10 @@
       "origin": "additional probe",
       "otherAIDetectionMatches": []
     }
-  ]
+  ],
+  "namespaceRenames": {
+    "DNB": "DNBWriting",
+    "AIDetection": "DNBAIPatterns",
+    "Millennialisms": "DNBMillennialisms"
+  }
 }

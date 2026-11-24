@@ -1,0 +1,9 @@
+# Source: https://github.com/vale-cli/Microsoft/releases/download/v0.15.2/Microsoft.zip (QuestionMarks.yml)
+# Licence: styles/DNBWriting/licenses/Microsoft/LICENSE
+extends: existence
+message: "Use questions sparingly."
+link: https://learn.microsoft.com/en-us/style-guide/punctuation/question-marks
+level: suggestion
+nonword: true
+tokens:
+  - '\w\?(?:\s|$)'

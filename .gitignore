@@ -4,9 +4,9 @@ dist/*.zip
 
 # Keep old upstream downloads and generated Vale configuration untracked.
 styles/*
-!styles/DNB/
-!styles/AIDetection/
-!styles/Millennialisms/
+!styles/DNBWriting/
+!styles/DNBAIPatterns/
+!styles/DNBMillennialisms/
 !styles/config/
 
 # agent related project files

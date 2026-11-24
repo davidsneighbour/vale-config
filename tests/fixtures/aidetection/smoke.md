@@ -1,3 +1,3 @@
 # Smoke fixture
 
-This plain fixture lets Vale load the AIDetection style during scaffold tests.
+This plain fixture lets Vale load the DNBAIPatterns namespace during scaffold tests.

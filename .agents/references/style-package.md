@@ -4,11 +4,11 @@ Read this reference when investigating the package layout, changing vendored rul
 
 ## Maintained source
 
-The root `.vale.ini` sets `StylesPath = styles` and enables DNB, AIDetection, and Millennialisms. It has no external `Packages` dependency. The maintained namespaces are `styles/DNB/`, `styles/AIDetection/`, and `styles/Millennialisms/`.
+The root `.vale.ini` sets `StylesPath = styles` and enables DNBWriting, DNBAIPatterns, and DNBMillennialisms. It has no external `Packages` dependency. The maintained namespaces are `styles/DNBWriting/`, `styles/DNBAIPatterns/`, and `styles/DNBMillennialisms/`.
 
-Selected Microsoft, Google, alex, proselint, Readability, and write-good rules live inside DNB. Selection decisions and renamed rule identifiers are documented in [upstream rule selection](../../documentation/upstream-rules.md). The machine-readable inventory is [upstream-rules.json](../../styles/config/upstream-rules.json), and licence notices live in `styles/DNB/licenses/`.
+Selected Microsoft, Google, alex, proselint, Readability, and write-good rules live inside DNBWriting. Selection decisions and renamed rule identifiers are documented in [upstream rule selection](../../documentation/upstream-rules.md). The machine-readable inventory is [upstream-rules.json](../../styles/config/upstream-rules.json), and licence notices live in `styles/DNBWriting/licenses/`.
 
-Support files live below `styles/config/`, including Tengo scripts, dictionaries, and vocabularies. Each vocabulary has an `accept.txt` and may have a `reject.txt`. The configuration selects DNB, Tech, Thailand, AIDetectionExceptions, and MillennialismsExceptions. The bundled `en_GB` dictionary supports `DNB.Spelling`.
+Support files live below `styles/config/`, including Tengo scripts, dictionaries, and vocabularies. Each vocabulary has an `accept.txt` and may have a `reject.txt`. The configuration selects DNB, Tech, Thailand, AIDetectionExceptions, and MillennialismsExceptions. The bundled `en_GB` dictionary supports `DNBWriting.Spelling`.
 
 ## Archive construction
 

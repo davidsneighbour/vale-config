@@ -13,7 +13,7 @@ it("retains the source notices and resolves every selected upstream rule", () =>
     expect(fs.existsSync(source.licence), source.licence).toBe(true);
     for (const rule of source.rules) {
       if (!rule.destination) continue;
-      const file = `styles/DNB/${rule.destination.slice(4)}.yml`;
+      const file = `styles/${rule.destination.replace(".", "/")}.yml`;
       expect(fs.existsSync(file), rule.rule).toBe(true);
     }
   }
@@ -23,7 +23,12 @@ it("runs rules from all six sources without downloaded style packages", () => {
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), "vale-vendored-"));
   try {
     fs.mkdirSync(path.join(directory, "styles"));
-    for (const name of ["DNB", "AIDetection", "Millennialisms", "config"]) {
+    for (const name of [
+      "DNBWriting",
+      "DNBAIPatterns",
+      "DNBMillennialisms",
+      "config",
+    ]) {
       fs.symlinkSync(
         path.resolve("styles", name),
         path.join(directory, "styles", name),
@@ -50,18 +55,18 @@ it("runs rules from all six sources without downloaded style packages", () => {
       .flat()
       .map((alert) => alert.Check);
     for (const rule of [
-      "DNB.Microsoft-Negative",
-      "DNB.Google-Periods",
-      "DNB.alex-Ablist",
-      "DNB.proselint-Copyright",
-      "DNB.Readability-Polysyllables",
-      "DNB.write-good-TooWordy",
+      "DNBWriting.Microsoft-Negative",
+      "DNBWriting.Google-Periods",
+      "DNBWriting.alex-Ablist",
+      "DNBWriting.proselint-Copyright",
+      "DNBWriting.Readability-Polysyllables",
+      "DNBWriting.write-good-TooWordy",
     ]) {
       expect(checks, rule).toContain(rule);
     }
     expect(
       checks.every((check) =>
-        /^(DNB|AIDetection|Millennialisms)\./.test(check),
+        /^(DNBWriting|DNBAIPatterns|DNBMillennialisms)\./.test(check),
       ),
     ).toBe(true);
     expect(fs.existsSync(path.join(directory, "styles/.vale-config"))).toBe(
@@ -79,7 +84,7 @@ it("runs rules from all six sources without downloaded style packages", () => {
     const britishChecks = Object.values(JSON.parse(british.stdout))
       .flat()
       .map((alert) => alert.Check);
-    expect(britishChecks).not.toContain("DNB.Spelling");
+    expect(britishChecks).not.toContain("DNBWriting.Spelling");
   } finally {
     fs.rmSync(directory, { recursive: true, force: true });
   }

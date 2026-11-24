@@ -1,0 +1,9 @@
+# Source: https://github.com/vale-cli/Microsoft/releases/download/v0.15.2/Microsoft.zip (HeadingAcronyms.yml)
+# Licence: styles/DNBWriting/licenses/Microsoft/LICENSE
+extends: existence
+message: "Avoid using acronyms in a title or heading."
+link: https://learn.microsoft.com/en-us/style-guide/acronyms#be-careful-with-acronyms-in-titles-and-headings
+level: warning
+scope: heading
+tokens:
+  - "[A-Z]{2,4}"

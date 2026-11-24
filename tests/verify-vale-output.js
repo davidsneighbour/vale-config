@@ -1,52 +1,55 @@
 import assert from "node:assert/strict";
 
-const expectedRules = ["DNB.AgenticCommunal", "DNB.OpenlyThereIs"];
+const expectedRules = [
+  "DNBWriting.AgenticCommunal",
+  "DNBWriting.OpenlyThereIs",
+];
 
 const expectedAIDetectionRules = [
-  "AIDetection.AlreadyKnow",
-  "AIDetection.AIVocabulary",
-  "AIDetection.ChatbotLeftovers",
-  "AIDetection.CrucialRole",
-  "AIDetection.DespiteChallenges",
-  "AIDetection.Entire",
-  "AIDetection.IsReal",
-  "AIDetection.Landscape",
-  "AIDetection.NotJust",
-  "AIDetection.NotNothing",
-  "AIDetection.NoteThat",
-  "AIDetection.ParticipleTail",
-  "AIDetection.PromotionalBoilerplate",
-  "AIDetection.Punchline",
-  "AIDetection.SitWith",
-  "AIDetection.Testament",
-  "AIDetection.VagueExperts",
-  "AIDetection.Whole",
-  "AIDetection.WorthNaming",
+  "DNBAIPatterns.AlreadyKnow",
+  "DNBAIPatterns.AIVocabulary",
+  "DNBAIPatterns.ChatbotLeftovers",
+  "DNBAIPatterns.CrucialRole",
+  "DNBAIPatterns.DespiteChallenges",
+  "DNBAIPatterns.Entire",
+  "DNBAIPatterns.IsReal",
+  "DNBAIPatterns.Landscape",
+  "DNBAIPatterns.NotJust",
+  "DNBAIPatterns.NotNothing",
+  "DNBAIPatterns.NoteThat",
+  "DNBAIPatterns.ParticipleTail",
+  "DNBAIPatterns.PromotionalBoilerplate",
+  "DNBAIPatterns.Punchline",
+  "DNBAIPatterns.SitWith",
+  "DNBAIPatterns.Testament",
+  "DNBAIPatterns.VagueExperts",
+  "DNBAIPatterns.Whole",
+  "DNBAIPatterns.WorthNaming",
 ];
 
 const expectedAIDetectionScriptRules = [
-  "AIDetection.DidNotChain",
-  "AIDetection.DontVerbIt",
-  "AIDetection.NoChain",
+  "DNBAIPatterns.DidNotChain",
+  "DNBAIPatterns.DontVerbIt",
+  "DNBAIPatterns.NoChain",
 ];
 
 const expectedAIDetectionAggregateRules = [
-  "AIDetection.RepeatedPhrase",
-  "AIDetection.RepeatedSentenceOpener",
-  "AIDetection.VocabularyDensityError",
+  "DNBAIPatterns.RepeatedPhrase",
+  "DNBAIPatterns.RepeatedSentenceOpener",
+  "DNBAIPatterns.VocabularyDensityError",
 ];
 
 const expectedMillennialismsRules = [
-  "Millennialisms.AnimalSlang",
-  "Millennialisms.EmotionalHyperbole",
-  "Millennialisms.InternetLifestyleSlang",
+  "DNBMillennialisms.AnimalSlang",
+  "DNBMillennialisms.EmotionalHyperbole",
+  "DNBMillennialisms.InternetLifestyleSlang",
 ];
 
 const watchedRules = [
-  "DNB.AgenticCommunal",
-  "DNB.AgenticCommunalAlternative",
-  "DNB.Hedging",
-  "DNB.OpenlyThereIs",
+  "DNBWriting.AgenticCommunal",
+  "DNBWriting.AgenticCommunalAlternative",
+  "DNBWriting.Hedging",
+  "DNBWriting.OpenlyThereIs",
 ];
 
 function collectRules(raw) {
@@ -122,10 +125,10 @@ for (const rule of expectedAIDetectionAggregateRules) {
 
 assert.equal(
   aidetectionAggregateWarningPositiveRules.has(
-    "AIDetection.VocabularyDensityWarning",
+    "DNBAIPatterns.VocabularyDensityWarning",
   ),
   true,
-  "AIDetection.VocabularyDensityWarning should trigger",
+  "DNBAIPatterns.VocabularyDensityWarning should trigger",
 );
 
 for (const rule of expectedMillennialismsRules) {
@@ -139,42 +142,42 @@ for (const rule of expectedMillennialismsRules) {
 assert.deepEqual(
   [...negativeRules].filter((rule) => watchedRules.includes(rule)),
   [],
-  "negative fixture should not trigger watched DNB rules",
+  "negative fixture should not trigger watched DNBWriting rules",
 );
 
 assert.deepEqual(
   [...aidetectionNegativeRules].filter((rule) =>
-    rule.startsWith("AIDetection."),
+    rule.startsWith("DNBAIPatterns."),
   ),
   [],
-  "negative fixture should not trigger AIDetection rules",
+  "negative fixture should not trigger DNBAIPatterns rules",
 );
 
 assert.deepEqual(
   [...aidetectionScriptedNegativeRules].filter((rule) =>
-    rule.startsWith("AIDetection."),
+    rule.startsWith("DNBAIPatterns."),
   ),
   [],
-  "scripted negative fixture should not trigger AIDetection rules",
+  "scripted negative fixture should not trigger DNBAIPatterns rules",
 );
 
 assert.deepEqual(
   [...aidetectionAggregateNegativeRules].filter((rule) =>
     [
-      "AIDetection.RepeatedPhrase",
-      "AIDetection.RepeatedSentenceOpener",
-      "AIDetection.VocabularyDensityWarning",
-      "AIDetection.VocabularyDensityError",
+      "DNBAIPatterns.RepeatedPhrase",
+      "DNBAIPatterns.RepeatedSentenceOpener",
+      "DNBAIPatterns.VocabularyDensityWarning",
+      "DNBAIPatterns.VocabularyDensityError",
     ].includes(rule),
   ),
   [],
-  "aggregate negative fixture should not trigger aggregate AIDetection rules",
+  "aggregate negative fixture should not trigger aggregate DNBAIPatterns rules",
 );
 
 assert.deepEqual(
   [...millennialismsNegativeRules].filter((rule) =>
-    rule.startsWith("Millennialisms."),
+    rule.startsWith("DNBMillennialisms."),
   ),
   [],
-  "negative fixture should not trigger Millennialisms rules",
+  "negative fixture should not trigger DNBMillennialisms rules",
 );

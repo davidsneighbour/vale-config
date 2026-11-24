@@ -87,9 +87,9 @@ main() {
   # Bundle maintained namespaces and support files only. Old checkouts can
   # still contain ignored upstream downloads alongside these directories.
   mkdir -p "${TEMP_DIR}/${package_root}/styles"
-  cp -R "styles/DNB" "${TEMP_DIR}/${package_root}/styles/DNB"
-  cp -R "styles/AIDetection" "${TEMP_DIR}/${package_root}/styles/AIDetection"
-  cp -R "styles/Millennialisms" "${TEMP_DIR}/${package_root}/styles/Millennialisms"
+  cp -R "styles/DNBWriting" "${TEMP_DIR}/${package_root}/styles/DNBWriting"
+  cp -R "styles/DNBAIPatterns" "${TEMP_DIR}/${package_root}/styles/DNBAIPatterns"
+  cp -R "styles/DNBMillennialisms" "${TEMP_DIR}/${package_root}/styles/DNBMillennialisms"
   cp -R "styles/config" "${TEMP_DIR}/${package_root}/styles/config"
 
   rm -f "${output_file}"

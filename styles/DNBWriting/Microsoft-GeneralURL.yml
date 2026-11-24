@@ -1,0 +1,13 @@
+# Source: https://github.com/vale-cli/Microsoft/releases/download/v0.15.2/Microsoft.zip (GeneralURL.yml)
+# Licence: styles/DNBWriting/licenses/Microsoft/LICENSE
+extends: existence
+message: "For a general audience, use 'address' rather than 'URL'."
+link: https://learn.microsoft.com/en-us/style-guide/urls-web-addresses
+level: warning
+action:
+  name: replace
+  params:
+    - URL
+    - address
+tokens:
+  - URL

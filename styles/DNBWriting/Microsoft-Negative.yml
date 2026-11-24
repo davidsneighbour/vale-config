@@ -1,0 +1,15 @@
+# Source: https://github.com/vale-cli/Microsoft/releases/download/v0.15.2/Microsoft.zip (Negative.yml)
+# Licence: styles/DNBWriting/licenses/Microsoft/LICENSE
+extends: existence
+message: "Form a negative number with an en dash, not a hyphen."
+link: https://learn.microsoft.com/en-us/style-guide/numbers
+nonword: true
+level: error
+action:
+  name: edit
+  params:
+    - regex
+    - "-"
+    - "–"
+tokens:
+  - '(?<=\s)-\d+(?:\.\d+)?\b'

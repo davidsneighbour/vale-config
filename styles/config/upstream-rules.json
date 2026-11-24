@@ -4,33 +4,33 @@
       "version": "v0.15.2",
       "url": "https://github.com/vale-cli/Microsoft/releases/download/v0.15.2/Microsoft.zip",
       "sha256": "c696d462128a4440b66d0ca1e8f2de38660209a3134d1ba7ea55ac1a75b7a2b6",
-      "licence": "styles/DNB/licenses/Microsoft/LICENSE",
+      "licence": "styles/DNBWriting/licenses/Microsoft/LICENSE",
       "rules": [
         {
           "rule": "Microsoft.AMPM",
           "status": "covered",
-          "destination": "DNB.Google-AMPM",
+          "destination": "DNBWriting.Google-AMPM",
           "reason": "One selected check for this convention; overlapping source rule omitted."
         },
         {
           "rule": "Microsoft.Accessibility",
           "status": "vendored",
-          "destination": "DNB.Microsoft-Accessibility"
+          "destination": "DNBWriting.Microsoft-Accessibility"
         },
         {
           "rule": "Microsoft.Acronyms",
           "status": "vendored",
-          "destination": "DNB.Microsoft-Acronyms"
+          "destination": "DNBWriting.Microsoft-Acronyms"
         },
         {
           "rule": "Microsoft.Adverbs",
           "status": "vendored",
-          "destination": "DNB.Microsoft-Adverbs"
+          "destination": "DNBWriting.Microsoft-Adverbs"
         },
         {
           "rule": "Microsoft.Auto",
           "status": "vendored",
-          "destination": "DNB.Microsoft-Auto"
+          "destination": "DNBWriting.Microsoft-Auto"
         },
         {
           "rule": "Microsoft.Avoid",
@@ -40,7 +40,7 @@
         {
           "rule": "Microsoft.BiasFree",
           "status": "vendored",
-          "destination": "DNB.Microsoft-BiasFree"
+          "destination": "DNBWriting.Microsoft-BiasFree"
         },
         {
           "rule": "Microsoft.Contractions",
@@ -50,7 +50,7 @@
         {
           "rule": "Microsoft.Dashes",
           "status": "vendored",
-          "destination": "DNB.Microsoft-Dashes"
+          "destination": "DNBWriting.Microsoft-Dashes"
         },
         {
           "rule": "Microsoft.DateFormat",
@@ -60,22 +60,22 @@
         {
           "rule": "Microsoft.DateNumbers",
           "status": "vendored",
-          "destination": "DNB.Microsoft-DateNumbers"
+          "destination": "DNBWriting.Microsoft-DateNumbers"
         },
         {
           "rule": "Microsoft.DateOrder",
           "status": "vendored",
-          "destination": "DNB.Microsoft-DateOrder"
+          "destination": "DNBWriting.Microsoft-DateOrder"
         },
         {
           "rule": "Microsoft.Ellipses",
           "status": "vendored",
-          "destination": "DNB.Microsoft-Ellipses"
+          "destination": "DNBWriting.Microsoft-Ellipses"
         },
         {
           "rule": "Microsoft.ExclamationPoints",
           "status": "vendored",
-          "destination": "DNB.Microsoft-ExclamationPoints"
+          "destination": "DNBWriting.Microsoft-ExclamationPoints"
         },
         {
           "rule": "Microsoft.FirstPerson",
@@ -85,77 +85,77 @@
         {
           "rule": "Microsoft.Foreign",
           "status": "vendored",
-          "destination": "DNB.Microsoft-Foreign"
+          "destination": "DNBWriting.Microsoft-Foreign"
         },
         {
           "rule": "Microsoft.Gender",
           "status": "covered",
-          "destination": "DNB.Google-Gender",
+          "destination": "DNBWriting.Google-Gender",
           "reason": "One selected check for this convention; overlapping source rule omitted."
         },
         {
           "rule": "Microsoft.GenderBias",
           "status": "covered",
-          "destination": "DNB.OpenlyGenderBias",
+          "destination": "DNBWriting.OpenlyGenderBias",
           "reason": "One selected check for this convention; overlapping source rule omitted."
         },
         {
           "rule": "Microsoft.GeneralURL",
           "status": "vendored",
-          "destination": "DNB.Microsoft-GeneralURL"
+          "destination": "DNBWriting.Microsoft-GeneralURL"
         },
         {
           "rule": "Microsoft.HeadingAcronyms",
           "status": "vendored",
-          "destination": "DNB.Microsoft-HeadingAcronyms"
+          "destination": "DNBWriting.Microsoft-HeadingAcronyms"
         },
         {
           "rule": "Microsoft.HeadingColons",
           "status": "covered",
-          "destination": "DNB.Google-Colons",
+          "destination": "DNBWriting.Google-Colons",
           "reason": "One selected check for this convention; overlapping source rule omitted."
         },
         {
           "rule": "Microsoft.HeadingPunctuation",
           "status": "covered",
-          "destination": "DNB.OpenlyHeadingsPunctuation",
+          "destination": "DNBWriting.OpenlyHeadingsPunctuation",
           "reason": "One selected check for this convention; overlapping source rule omitted."
         },
         {
           "rule": "Microsoft.Headings",
           "status": "covered",
-          "destination": "DNB.Google-Headings",
+          "destination": "DNBWriting.Google-Headings",
           "reason": "One selected check for this convention; overlapping source rule omitted."
         },
         {
           "rule": "Microsoft.Hyphens",
           "status": "vendored",
-          "destination": "DNB.Microsoft-Hyphens"
+          "destination": "DNBWriting.Microsoft-Hyphens"
         },
         {
           "rule": "Microsoft.Jargon",
           "status": "vendored",
-          "destination": "DNB.Microsoft-Jargon"
+          "destination": "DNBWriting.Microsoft-Jargon"
         },
         {
           "rule": "Microsoft.Militaristic",
           "status": "vendored",
-          "destination": "DNB.Microsoft-Militaristic"
+          "destination": "DNBWriting.Microsoft-Militaristic"
         },
         {
           "rule": "Microsoft.Negative",
           "status": "vendored",
-          "destination": "DNB.Microsoft-Negative"
+          "destination": "DNBWriting.Microsoft-Negative"
         },
         {
           "rule": "Microsoft.Ordinal",
           "status": "vendored",
-          "destination": "DNB.Microsoft-Ordinal"
+          "destination": "DNBWriting.Microsoft-Ordinal"
         },
         {
           "rule": "Microsoft.OxfordComma",
           "status": "covered",
-          "destination": "DNB.Google-OxfordComma",
+          "destination": "DNBWriting.Google-OxfordComma",
           "reason": "One selected check for this convention; overlapping source rule omitted."
         },
         {
@@ -166,17 +166,17 @@
         {
           "rule": "Microsoft.Percentages",
           "status": "vendored",
-          "destination": "DNB.Microsoft-Percentages"
+          "destination": "DNBWriting.Microsoft-Percentages"
         },
         {
           "rule": "Microsoft.Plurals",
           "status": "vendored",
-          "destination": "DNB.Microsoft-Plurals"
+          "destination": "DNBWriting.Microsoft-Plurals"
         },
         {
           "rule": "Microsoft.QuestionMarks",
           "status": "vendored",
-          "destination": "DNB.Microsoft-QuestionMarks"
+          "destination": "DNBWriting.Microsoft-QuestionMarks"
         },
         {
           "rule": "Microsoft.Quotes",
@@ -186,53 +186,53 @@
         {
           "rule": "Microsoft.RangeTime",
           "status": "vendored",
-          "destination": "DNB.Microsoft-RangeTime"
+          "destination": "DNBWriting.Microsoft-RangeTime"
         },
         {
           "rule": "Microsoft.Semicolon",
           "status": "vendored",
-          "destination": "DNB.Microsoft-Semicolon"
+          "destination": "DNBWriting.Microsoft-Semicolon"
         },
         {
           "rule": "Microsoft.SentenceLength",
           "status": "covered",
-          "destination": "DNB.OpenlySentenceLength",
+          "destination": "DNBWriting.OpenlySentenceLength",
           "reason": "One selected check for this convention; overlapping source rule omitted."
         },
         {
           "rule": "Microsoft.Spacing",
           "status": "vendored",
-          "destination": "DNB.Microsoft-Spacing"
+          "destination": "DNBWriting.Microsoft-Spacing"
         },
         {
           "rule": "Microsoft.Suspended",
           "status": "vendored",
-          "destination": "DNB.Microsoft-Suspended"
+          "destination": "DNBWriting.Microsoft-Suspended"
         },
         {
           "rule": "Microsoft.Terms",
           "status": "vendored",
-          "destination": "DNB.Microsoft-Terms"
+          "destination": "DNBWriting.Microsoft-Terms"
         },
         {
           "rule": "Microsoft.UIVerbs",
           "status": "vendored",
-          "destination": "DNB.Microsoft-UIVerbs"
+          "destination": "DNBWriting.Microsoft-UIVerbs"
         },
         {
           "rule": "Microsoft.URLFormat",
           "status": "vendored",
-          "destination": "DNB.Microsoft-URLFormat"
+          "destination": "DNBWriting.Microsoft-URLFormat"
         },
         {
           "rule": "Microsoft.Units",
           "status": "vendored",
-          "destination": "DNB.Microsoft-Units"
+          "destination": "DNBWriting.Microsoft-Units"
         },
         {
           "rule": "Microsoft.Uppercase",
           "status": "vendored",
-          "destination": "DNB.Microsoft-Uppercase"
+          "destination": "DNBWriting.Microsoft-Uppercase"
         },
         {
           "rule": "Microsoft.Vocab",
@@ -247,7 +247,7 @@
         {
           "rule": "Microsoft.Wordiness",
           "status": "vendored",
-          "destination": "DNB.Microsoft-Wordiness"
+          "destination": "DNBWriting.Microsoft-Wordiness"
         }
       ]
     },
@@ -255,29 +255,29 @@
       "version": "v0.7.2",
       "url": "https://github.com/vale-cli/Google/releases/download/v0.7.2/Google.zip",
       "sha256": "c1f61ae1c4cee3f2c2ffb2912fbbdff48a02c0e47e114dfd6435b15438171d97",
-      "licence": "styles/DNB/licenses/Google/LICENSE",
+      "licence": "styles/DNBWriting/licenses/Google/LICENSE",
       "rules": [
         {
           "rule": "Google.AMPM",
           "status": "vendored",
-          "destination": "DNB.Google-AMPM"
+          "destination": "DNBWriting.Google-AMPM"
         },
         {
           "rule": "Google.Acronyms",
           "status": "covered",
-          "destination": "DNB.Microsoft-Acronyms",
+          "destination": "DNBWriting.Microsoft-Acronyms",
           "reason": "One selected check for this convention; overlapping source rule omitted."
         },
         {
           "rule": "Google.Anthropomorphism",
           "status": "covered",
-          "destination": "DNB.OpenlyAnthropomorphism",
+          "destination": "DNBWriting.OpenlyAnthropomorphism",
           "reason": "One selected check for this convention; overlapping source rule omitted."
         },
         {
           "rule": "Google.Colons",
           "status": "vendored",
-          "destination": "DNB.Google-Colons"
+          "destination": "DNBWriting.Google-Colons"
         },
         {
           "rule": "Google.Contractions",
@@ -292,19 +292,19 @@
         {
           "rule": "Google.Ellipses",
           "status": "covered",
-          "destination": "DNB.Microsoft-Ellipses",
+          "destination": "DNBWriting.Microsoft-Ellipses",
           "reason": "One selected check for this convention; overlapping source rule omitted."
         },
         {
           "rule": "Google.EmDash",
           "status": "covered",
-          "destination": "DNB.Microsoft-Dashes",
+          "destination": "DNBWriting.Microsoft-Dashes",
           "reason": "One selected check for this convention; overlapping source rule omitted."
         },
         {
           "rule": "Google.ExcessiveClaims",
           "status": "vendored",
-          "destination": "DNB.Google-ExcessiveClaims"
+          "destination": "DNBWriting.Google-ExcessiveClaims"
         },
         {
           "rule": "Google.Exclamation",
@@ -319,39 +319,39 @@
         {
           "rule": "Google.Gender",
           "status": "vendored",
-          "destination": "DNB.Google-Gender"
+          "destination": "DNBWriting.Google-Gender"
         },
         {
           "rule": "Google.GenderBias",
           "status": "covered",
-          "destination": "DNB.OpenlyGenderBias",
+          "destination": "DNBWriting.OpenlyGenderBias",
           "reason": "One selected check for this convention; overlapping source rule omitted."
         },
         {
           "rule": "Google.HeadingPunctuation",
           "status": "covered",
-          "destination": "DNB.OpenlyHeadingsPunctuation",
+          "destination": "DNBWriting.OpenlyHeadingsPunctuation",
           "reason": "One selected check for this convention; overlapping source rule omitted."
         },
         {
           "rule": "Google.Headings",
           "status": "vendored",
-          "destination": "DNB.Google-Headings"
+          "destination": "DNBWriting.Google-Headings"
         },
         {
           "rule": "Google.Jargon",
           "status": "vendored",
-          "destination": "DNB.Google-Jargon"
+          "destination": "DNBWriting.Google-Jargon"
         },
         {
           "rule": "Google.Latin",
           "status": "vendored",
-          "destination": "DNB.Google-Latin"
+          "destination": "DNBWriting.Google-Latin"
         },
         {
           "rule": "Google.LyHyphens",
           "status": "covered",
-          "destination": "DNB.Microsoft-Hyphens",
+          "destination": "DNBWriting.Microsoft-Hyphens",
           "reason": "One selected check for this convention; overlapping source rule omitted."
         },
         {
@@ -367,7 +367,7 @@
         {
           "rule": "Google.OxfordComma",
           "status": "vendored",
-          "destination": "DNB.Google-OxfordComma"
+          "destination": "DNBWriting.Google-OxfordComma"
         },
         {
           "rule": "Google.Parens",
@@ -382,7 +382,7 @@
         {
           "rule": "Google.Periods",
           "status": "vendored",
-          "destination": "DNB.Google-Periods"
+          "destination": "DNBWriting.Google-Periods"
         },
         {
           "rule": "Google.Quotes",
@@ -392,23 +392,23 @@
         {
           "rule": "Google.Ranges",
           "status": "vendored",
-          "destination": "DNB.Google-Ranges"
+          "destination": "DNBWriting.Google-Ranges"
         },
         {
           "rule": "Google.Semicolons",
           "status": "covered",
-          "destination": "DNB.Microsoft-Semicolon",
+          "destination": "DNBWriting.Microsoft-Semicolon",
           "reason": "One selected check for this convention; overlapping source rule omitted."
         },
         {
           "rule": "Google.Slang",
           "status": "vendored",
-          "destination": "DNB.Google-Slang"
+          "destination": "DNBWriting.Google-Slang"
         },
         {
           "rule": "Google.Spacing",
           "status": "covered",
-          "destination": "DNB.Microsoft-Spacing",
+          "destination": "DNBWriting.Microsoft-Spacing",
           "reason": "One selected check for this convention; overlapping source rule omitted."
         },
         {
@@ -419,7 +419,7 @@
         {
           "rule": "Google.Timeless",
           "status": "vendored",
-          "destination": "DNB.Google-Timeless"
+          "destination": "DNBWriting.Google-Timeless"
         },
         {
           "rule": "Google.Units",
@@ -434,17 +434,17 @@
         {
           "rule": "Google.Will",
           "status": "vendored",
-          "destination": "DNB.Google-Will"
+          "destination": "DNBWriting.Google-Will"
         },
         {
           "rule": "Google.WordList",
           "status": "vendored",
-          "destination": "DNB.Google-WordList"
+          "destination": "DNBWriting.Google-WordList"
         },
         {
           "rule": "Google.WordListCase",
           "status": "vendored",
-          "destination": "DNB.Google-WordListCase"
+          "destination": "DNBWriting.Google-WordListCase"
         }
       ]
     },
@@ -452,25 +452,25 @@
       "version": "v0.3.0",
       "url": "https://github.com/vale-cli/alex/releases/download/v0.3.0/alex.zip",
       "sha256": "3a45aafdb867964d7282a8c1f425d0b58e20f905d0e177f347c0e0c0712a6c7c",
-      "licence": "styles/DNB/licenses/alex/README.md",
+      "licence": "styles/DNBWriting/licenses/alex/README.md",
       "rules": [
         {
           "rule": "alex.Ablist",
           "status": "adapted",
-          "destination": "DNB.alex-Ablist",
-          "reason": "Retain the existing DNB adaptation instead of importing a second implementation."
+          "destination": "DNBWriting.alex-Ablist",
+          "reason": "Retain the existing DNBWriting adaptation instead of importing a second implementation."
         },
         {
           "rule": "alex.AblistNested",
           "status": "adapted",
-          "destination": "DNB.alex-Ablist",
-          "reason": "Retain the existing DNB adaptation instead of importing a second implementation."
+          "destination": "DNBWriting.alex-Ablist",
+          "reason": "Retain the existing DNBWriting adaptation instead of importing a second implementation."
         },
         {
           "rule": "alex.AblistPhrases",
           "status": "adapted",
-          "destination": "DNB.alex-Ablist",
-          "reason": "Retain the existing DNB adaptation instead of importing a second implementation."
+          "destination": "DNBWriting.alex-Ablist",
+          "reason": "Retain the existing DNBWriting adaptation instead of importing a second implementation."
         },
         {
           "rule": "alex.Condescending",
@@ -480,62 +480,62 @@
         {
           "rule": "alex.Gendered",
           "status": "adapted",
-          "destination": "DNB.alex-Gendered",
-          "reason": "Retain the existing DNB adaptation instead of importing a second implementation."
+          "destination": "DNBWriting.alex-Gendered",
+          "reason": "Retain the existing DNBWriting adaptation instead of importing a second implementation."
         },
         {
           "rule": "alex.GenderedNested",
           "status": "adapted",
-          "destination": "DNB.alex-Gendered",
-          "reason": "Retain the existing DNB adaptation instead of importing a second implementation."
+          "destination": "DNBWriting.alex-Gendered",
+          "reason": "Retain the existing DNBWriting adaptation instead of importing a second implementation."
         },
         {
           "rule": "alex.GenderedPerson",
           "status": "adapted",
-          "destination": "DNB.alex-Gendered",
-          "reason": "Retain the existing DNB adaptation instead of importing a second implementation."
+          "destination": "DNBWriting.alex-Gendered",
+          "reason": "Retain the existing DNBWriting adaptation instead of importing a second implementation."
         },
         {
           "rule": "alex.GenderedPhrases",
           "status": "adapted",
-          "destination": "DNB.alex-Gendered",
-          "reason": "Retain the existing DNB adaptation instead of importing a second implementation."
+          "destination": "DNBWriting.alex-Gendered",
+          "reason": "Retain the existing DNBWriting adaptation instead of importing a second implementation."
         },
         {
           "rule": "alex.LGBTQ",
           "status": "adapted",
-          "destination": "DNB.alex-LGBTQ",
-          "reason": "Retain the existing DNB adaptation instead of importing a second implementation."
+          "destination": "DNBWriting.alex-LGBTQ",
+          "reason": "Retain the existing DNBWriting adaptation instead of importing a second implementation."
         },
         {
           "rule": "alex.LGBTQPhrases",
           "status": "adapted",
-          "destination": "DNB.alex-LGBTQ",
-          "reason": "Retain the existing DNB adaptation instead of importing a second implementation."
+          "destination": "DNBWriting.alex-LGBTQ",
+          "reason": "Retain the existing DNBWriting adaptation instead of importing a second implementation."
         },
         {
           "rule": "alex.Press",
           "status": "adapted",
-          "destination": "DNB.alex-Press",
-          "reason": "Retain the existing DNB adaptation instead of importing a second implementation."
+          "destination": "DNBWriting.alex-Press",
+          "reason": "Retain the existing DNBWriting adaptation instead of importing a second implementation."
         },
         {
           "rule": "alex.ProfanityLikely",
           "status": "adapted",
-          "destination": "DNB.alex-ProfanityLikely",
-          "reason": "Retain the existing DNB adaptation instead of importing a second implementation."
+          "destination": "DNBWriting.alex-ProfanityLikely",
+          "reason": "Retain the existing DNBWriting adaptation instead of importing a second implementation."
         },
         {
           "rule": "alex.ProfanityLikelyPhrases",
           "status": "adapted",
-          "destination": "DNB.alex-ProfanityLikely",
-          "reason": "Retain the existing DNB adaptation instead of importing a second implementation."
+          "destination": "DNBWriting.alex-ProfanityLikely",
+          "reason": "Retain the existing DNBWriting adaptation instead of importing a second implementation."
         },
         {
           "rule": "alex.ProfanityMaybe",
           "status": "adapted",
-          "destination": "DNB.alex-ProfanityMaybe",
-          "reason": "Retain the existing DNB adaptation instead of importing a second implementation."
+          "destination": "DNBWriting.alex-ProfanityMaybe",
+          "reason": "Retain the existing DNBWriting adaptation instead of importing a second implementation."
         },
         {
           "rule": "alex.ProfanityUnlikely",
@@ -545,19 +545,19 @@
         {
           "rule": "alex.Race",
           "status": "adapted",
-          "destination": "DNB.alex-Race",
-          "reason": "Retain the existing DNB adaptation instead of importing a second implementation."
+          "destination": "DNBWriting.alex-Race",
+          "reason": "Retain the existing DNBWriting adaptation instead of importing a second implementation."
         },
         {
           "rule": "alex.Slogans",
           "status": "vendored",
-          "destination": "DNB.alex-Slogans"
+          "destination": "DNBWriting.alex-Slogans"
         },
         {
           "rule": "alex.Suicide",
           "status": "adapted",
-          "destination": "DNB.alex-Suicide",
-          "reason": "Retain the existing DNB adaptation instead of importing a second implementation."
+          "destination": "DNBWriting.alex-Suicide",
+          "reason": "Retain the existing DNBWriting adaptation instead of importing a second implementation."
         }
       ]
     },
@@ -565,78 +565,78 @@
       "version": "v0.4.0",
       "url": "https://github.com/vale-cli/proselint/releases/download/v0.4.0/proselint.zip",
       "sha256": "e09f637e4a7beab802c3fb7c9259ec2b2f383fdd4b24b329e3fe50a715a45e67",
-      "licence": "styles/DNB/licenses/proselint/README.md",
+      "licence": "styles/DNBWriting/licenses/proselint/README.md",
       "rules": [
         {
           "rule": "proselint.Airlinese",
           "status": "vendored",
-          "destination": "DNB.proselint-Airlinese"
+          "destination": "DNBWriting.proselint-Airlinese"
         },
         {
           "rule": "proselint.AnimalLabels",
           "status": "vendored",
-          "destination": "DNB.proselint-AnimalLabels"
+          "destination": "DNBWriting.proselint-AnimalLabels"
         },
         {
           "rule": "proselint.Annotations",
           "status": "vendored",
-          "destination": "DNB.proselint-Annotations"
+          "destination": "DNBWriting.proselint-Annotations"
         },
         {
           "rule": "proselint.Apologizing",
           "status": "vendored",
-          "destination": "DNB.proselint-Apologizing"
+          "destination": "DNBWriting.proselint-Apologizing"
         },
         {
           "rule": "proselint.Archaisms",
           "status": "vendored",
-          "destination": "DNB.proselint-Archaisms"
+          "destination": "DNBWriting.proselint-Archaisms"
         },
         {
           "rule": "proselint.BackFormations",
           "status": "vendored",
-          "destination": "DNB.proselint-BackFormations"
+          "destination": "DNBWriting.proselint-BackFormations"
         },
         {
           "rule": "proselint.Bureaucratese",
           "status": "vendored",
-          "destination": "DNB.proselint-Bureaucratese"
+          "destination": "DNBWriting.proselint-Bureaucratese"
         },
         {
           "rule": "proselint.But",
           "status": "covered",
-          "destination": "DNB.OpenlyBut",
+          "destination": "DNBWriting.OpenlyBut",
           "reason": "One selected check for this convention; overlapping source rule omitted."
         },
         {
           "rule": "proselint.Capitalization",
           "status": "vendored",
-          "destination": "DNB.proselint-Capitalization"
+          "destination": "DNBWriting.proselint-Capitalization"
         },
         {
           "rule": "proselint.CapitalizationDays",
           "status": "vendored",
-          "destination": "DNB.proselint-CapitalizationDays"
+          "destination": "DNBWriting.proselint-CapitalizationDays"
         },
         {
           "rule": "proselint.CapitalizationMonths",
           "status": "vendored",
-          "destination": "DNB.proselint-CapitalizationMonths"
+          "destination": "DNBWriting.proselint-CapitalizationMonths"
         },
         {
           "rule": "proselint.CapitalizationSeasons",
           "status": "vendored",
-          "destination": "DNB.proselint-CapitalizationSeasons"
+          "destination": "DNBWriting.proselint-CapitalizationSeasons"
         },
         {
           "rule": "proselint.Chatspeak",
           "status": "vendored",
-          "destination": "DNB.proselint-Chatspeak"
+          "destination": "DNBWriting.proselint-Chatspeak"
         },
         {
           "rule": "proselint.ChatspeakNested",
           "status": "vendored",
-          "destination": "DNB.proselint-ChatspeakNested"
+          "destination": "DNBWriting.proselint-ChatspeakNested"
         },
         {
           "rule": "proselint.Cliches",
@@ -666,37 +666,37 @@
         {
           "rule": "proselint.Commercialese",
           "status": "vendored",
-          "destination": "DNB.proselint-Commercialese"
+          "destination": "DNBWriting.proselint-Commercialese"
         },
         {
           "rule": "proselint.CommercialeseNested",
           "status": "vendored",
-          "destination": "DNB.proselint-CommercialeseNested"
+          "destination": "DNBWriting.proselint-CommercialeseNested"
         },
         {
           "rule": "proselint.Composition",
           "status": "vendored",
-          "destination": "DNB.proselint-Composition"
+          "destination": "DNBWriting.proselint-Composition"
         },
         {
           "rule": "proselint.CompositionNested",
           "status": "vendored",
-          "destination": "DNB.proselint-CompositionNested"
+          "destination": "DNBWriting.proselint-CompositionNested"
         },
         {
           "rule": "proselint.CompositionPatterns",
           "status": "vendored",
-          "destination": "DNB.proselint-CompositionPatterns"
+          "destination": "DNBWriting.proselint-CompositionPatterns"
         },
         {
           "rule": "proselint.Copyright",
           "status": "vendored",
-          "destination": "DNB.proselint-Copyright"
+          "destination": "DNBWriting.proselint-Copyright"
         },
         {
           "rule": "proselint.CorporateSpeak",
           "status": "vendored",
-          "destination": "DNB.proselint-CorporateSpeak"
+          "destination": "DNBWriting.proselint-CorporateSpeak"
         },
         {
           "rule": "proselint.CurlyQuotes",
@@ -706,7 +706,7 @@
         {
           "rule": "proselint.Currency",
           "status": "vendored",
-          "destination": "DNB.proselint-Currency"
+          "destination": "DNBWriting.proselint-Currency"
         },
         {
           "rule": "proselint.DateCase",
@@ -716,350 +716,350 @@
         {
           "rule": "proselint.DateDecades",
           "status": "vendored",
-          "destination": "DNB.proselint-DateDecades"
+          "destination": "DNBWriting.proselint-DateDecades"
         },
         {
           "rule": "proselint.DateDecadesFull",
           "status": "vendored",
-          "destination": "DNB.proselint-DateDecadesFull"
+          "destination": "DNBWriting.proselint-DateDecadesFull"
         },
         {
           "rule": "proselint.DateMidnight",
           "status": "vendored",
-          "destination": "DNB.proselint-DateMidnight"
+          "destination": "DNBWriting.proselint-DateMidnight"
         },
         {
           "rule": "proselint.DateMonthComma",
           "status": "vendored",
-          "destination": "DNB.proselint-DateMonthComma"
+          "destination": "DNBWriting.proselint-DateMonthComma"
         },
         {
           "rule": "proselint.DateMonthOf",
           "status": "vendored",
-          "destination": "DNB.proselint-DateMonthOf"
+          "destination": "DNBWriting.proselint-DateMonthOf"
         },
         {
           "rule": "proselint.DateRange",
           "status": "vendored",
-          "destination": "DNB.proselint-DateRange"
+          "destination": "DNBWriting.proselint-DateRange"
         },
         {
           "rule": "proselint.DateRedundancy",
           "status": "vendored",
-          "destination": "DNB.proselint-DateRedundancy"
+          "destination": "DNBWriting.proselint-DateRedundancy"
         },
         {
           "rule": "proselint.DateSpacing",
           "status": "vendored",
-          "destination": "DNB.proselint-DateSpacing"
+          "destination": "DNBWriting.proselint-DateSpacing"
         },
         {
           "rule": "proselint.Debased",
           "status": "vendored",
-          "destination": "DNB.proselint-Debased"
+          "destination": "DNBWriting.proselint-Debased"
         },
         {
           "rule": "proselint.DenizenLabels",
           "status": "vendored",
-          "destination": "DNB.proselint-DenizenLabels"
+          "destination": "DNBWriting.proselint-DenizenLabels"
         },
         {
           "rule": "proselint.DenizenLabelsNorris",
           "status": "vendored",
-          "destination": "DNB.proselint-DenizenLabelsNorris"
+          "destination": "DNBWriting.proselint-DenizenLabelsNorris"
         },
         {
           "rule": "proselint.Diacritical",
           "status": "vendored",
-          "destination": "DNB.proselint-Diacritical"
+          "destination": "DNBWriting.proselint-Diacritical"
         },
         {
           "rule": "proselint.Ellipsis",
           "status": "vendored",
-          "destination": "DNB.proselint-Ellipsis"
+          "destination": "DNBWriting.proselint-Ellipsis"
         },
         {
           "rule": "proselint.EponymousAdjectives",
           "status": "vendored",
-          "destination": "DNB.proselint-EponymousAdjectives"
+          "destination": "DNBWriting.proselint-EponymousAdjectives"
         },
         {
           "rule": "proselint.EtAl",
           "status": "vendored",
-          "destination": "DNB.proselint-EtAl"
+          "destination": "DNBWriting.proselint-EtAl"
         },
         {
           "rule": "proselint.EtAlNested",
           "status": "vendored",
-          "destination": "DNB.proselint-EtAlNested"
+          "destination": "DNBWriting.proselint-EtAlNested"
         },
         {
           "rule": "proselint.Exclamation",
           "status": "vendored",
-          "destination": "DNB.proselint-Exclamation"
+          "destination": "DNBWriting.proselint-Exclamation"
         },
         {
           "rule": "proselint.FalsePlurals",
           "status": "vendored",
-          "destination": "DNB.proselint-FalsePlurals"
+          "destination": "DNBWriting.proselint-FalsePlurals"
         },
         {
           "rule": "proselint.GenderBias",
           "status": "covered",
-          "destination": "DNB.OpenlyGenderBias",
+          "destination": "DNBWriting.OpenlyGenderBias",
           "reason": "One selected check for this convention; overlapping source rule omitted."
         },
         {
           "rule": "proselint.GenderBiasForms",
           "status": "covered",
-          "destination": "DNB.OpenlyGenderBias",
+          "destination": "DNBWriting.OpenlyGenderBias",
           "reason": "One selected check for this convention; overlapping source rule omitted."
         },
         {
           "rule": "proselint.Greylist",
           "status": "vendored",
-          "destination": "DNB.proselint-Greylist"
+          "destination": "DNBWriting.proselint-Greylist"
         },
         {
           "rule": "proselint.GroupTerms",
           "status": "vendored",
-          "destination": "DNB.proselint-GroupTerms"
+          "destination": "DNBWriting.proselint-GroupTerms"
         },
         {
           "rule": "proselint.Hedging",
           "status": "covered",
-          "destination": "DNB.Hedging",
+          "destination": "DNBWriting.Hedging",
           "reason": "One selected check for this convention; overlapping source rule omitted."
         },
         {
           "rule": "proselint.Hyperbole",
           "status": "vendored",
-          "destination": "DNB.proselint-Hyperbole"
+          "destination": "DNBWriting.proselint-Hyperbole"
         },
         {
           "rule": "proselint.Illogic",
           "status": "vendored",
-          "destination": "DNB.proselint-Illogic"
+          "destination": "DNBWriting.proselint-Illogic"
         },
         {
           "rule": "proselint.IllogicCoin",
           "status": "vendored",
-          "destination": "DNB.proselint-IllogicCoin"
+          "destination": "DNBWriting.proselint-IllogicCoin"
         },
         {
           "rule": "proselint.IllogicCollusion",
           "status": "vendored",
-          "destination": "DNB.proselint-IllogicCollusion"
+          "destination": "DNBWriting.proselint-IllogicCollusion"
         },
         {
           "rule": "proselint.InferiorSuperior",
           "status": "vendored",
-          "destination": "DNB.proselint-InferiorSuperior"
+          "destination": "DNBWriting.proselint-InferiorSuperior"
         },
         {
           "rule": "proselint.InstitutionName",
           "status": "vendored",
-          "destination": "DNB.proselint-InstitutionName"
+          "destination": "DNBWriting.proselint-InstitutionName"
         },
         {
           "rule": "proselint.Jargon",
           "status": "vendored",
-          "destination": "DNB.proselint-Jargon"
+          "destination": "DNBWriting.proselint-Jargon"
         },
         {
           "rule": "proselint.Kudos",
           "status": "vendored",
-          "destination": "DNB.proselint-Kudos"
+          "destination": "DNBWriting.proselint-Kudos"
         },
         {
           "rule": "proselint.LGBTOffensive",
           "status": "vendored",
-          "destination": "DNB.proselint-LGBTOffensive"
+          "destination": "DNBWriting.proselint-LGBTOffensive"
         },
         {
           "rule": "proselint.LGBTTerms",
           "status": "vendored",
-          "destination": "DNB.proselint-LGBTTerms"
+          "destination": "DNBWriting.proselint-LGBTTerms"
         },
         {
           "rule": "proselint.Latin",
           "status": "vendored",
-          "destination": "DNB.proselint-Latin"
+          "destination": "DNBWriting.proselint-Latin"
         },
         {
           "rule": "proselint.LexicalIllusions",
           "status": "vendored",
-          "destination": "DNB.proselint-LexicalIllusions"
+          "destination": "DNBWriting.proselint-LexicalIllusions"
         },
         {
           "rule": "proselint.LieDetector",
           "status": "vendored",
-          "destination": "DNB.proselint-LieDetector"
+          "destination": "DNBWriting.proselint-LieDetector"
         },
         {
           "rule": "proselint.Malapropisms",
           "status": "vendored",
-          "destination": "DNB.proselint-Malapropisms"
+          "destination": "DNBWriting.proselint-Malapropisms"
         },
         {
           "rule": "proselint.ManyA",
           "status": "vendored",
-          "destination": "DNB.proselint-ManyA"
+          "destination": "DNBWriting.proselint-ManyA"
         },
         {
           "rule": "proselint.MentalTelepathy",
           "status": "vendored",
-          "destination": "DNB.proselint-MentalTelepathy"
+          "destination": "DNBWriting.proselint-MentalTelepathy"
         },
         {
           "rule": "proselint.Metadiscourse",
           "status": "vendored",
-          "destination": "DNB.proselint-Metadiscourse"
+          "destination": "DNBWriting.proselint-Metadiscourse"
         },
         {
           "rule": "proselint.MixedMetaphors",
           "status": "vendored",
-          "destination": "DNB.proselint-MixedMetaphors"
+          "destination": "DNBWriting.proselint-MixedMetaphors"
         },
         {
           "rule": "proselint.MixedMetaphorsBottleneck",
           "status": "vendored",
-          "destination": "DNB.proselint-MixedMetaphorsBottleneck"
+          "destination": "DNBWriting.proselint-MixedMetaphorsBottleneck"
         },
         {
           "rule": "proselint.Mondegreens",
           "status": "vendored",
-          "destination": "DNB.proselint-Mondegreens"
+          "destination": "DNBWriting.proselint-Mondegreens"
         },
         {
           "rule": "proselint.Multiplication",
           "status": "vendored",
-          "destination": "DNB.proselint-Multiplication"
+          "destination": "DNBWriting.proselint-Multiplication"
         },
         {
           "rule": "proselint.NWord",
           "status": "vendored",
-          "destination": "DNB.proselint-NWord"
+          "destination": "DNBWriting.proselint-NWord"
         },
         {
           "rule": "proselint.Narcissism",
           "status": "vendored",
-          "destination": "DNB.proselint-Narcissism"
+          "destination": "DNBWriting.proselint-Narcissism"
         },
         {
           "rule": "proselint.Needless",
           "status": "vendored",
-          "destination": "DNB.proselint-Needless"
+          "destination": "DNBWriting.proselint-Needless"
         },
         {
           "rule": "proselint.Nonwords",
           "status": "vendored",
-          "destination": "DNB.proselint-Nonwords"
+          "destination": "DNBWriting.proselint-Nonwords"
         },
         {
           "rule": "proselint.NotGuilty",
           "status": "vendored",
-          "destination": "DNB.proselint-NotGuilty"
+          "destination": "DNBWriting.proselint-NotGuilty"
         },
         {
           "rule": "proselint.Oxymorons",
           "status": "vendored",
-          "destination": "DNB.proselint-Oxymorons"
+          "destination": "DNBWriting.proselint-Oxymorons"
         },
         {
           "rule": "proselint.P-Value",
           "status": "vendored",
-          "destination": "DNB.proselint-P-Value"
+          "destination": "DNBWriting.proselint-P-Value"
         },
         {
           "rule": "proselint.PhrasalAdjectives",
           "status": "vendored",
-          "destination": "DNB.proselint-PhrasalAdjectives"
+          "destination": "DNBWriting.proselint-PhrasalAdjectives"
         },
         {
           "rule": "proselint.PhrasalAdjectivesLy",
           "status": "vendored",
-          "destination": "DNB.proselint-PhrasalAdjectivesLy"
+          "destination": "DNBWriting.proselint-PhrasalAdjectivesLy"
         },
         {
           "rule": "proselint.PreferredForms",
           "status": "vendored",
-          "destination": "DNB.proselint-PreferredForms"
+          "destination": "DNBWriting.proselint-PreferredForms"
         },
         {
           "rule": "proselint.PreferredFormsMeantime",
           "status": "vendored",
-          "destination": "DNB.proselint-PreferredFormsMeantime"
+          "destination": "DNBWriting.proselint-PreferredFormsMeantime"
         },
         {
           "rule": "proselint.PreferredFormsMeantimeInner",
           "status": "vendored",
-          "destination": "DNB.proselint-PreferredFormsMeantimeInner"
+          "destination": "DNBWriting.proselint-PreferredFormsMeantimeInner"
         },
         {
           "rule": "proselint.Pretension",
           "status": "vendored",
-          "destination": "DNB.proselint-Pretension"
+          "destination": "DNBWriting.proselint-Pretension"
         },
         {
           "rule": "proselint.Professions",
           "status": "vendored",
-          "destination": "DNB.proselint-Professions"
+          "destination": "DNBWriting.proselint-Professions"
         },
         {
           "rule": "proselint.RASSyndrome",
           "status": "vendored",
-          "destination": "DNB.proselint-RASSyndrome"
+          "destination": "DNBWriting.proselint-RASSyndrome"
         },
         {
           "rule": "proselint.Redundancy",
           "status": "vendored",
-          "destination": "DNB.proselint-Redundancy"
+          "destination": "DNBWriting.proselint-Redundancy"
         },
         {
           "rule": "proselint.RedundancyGarner",
           "status": "vendored",
-          "destination": "DNB.proselint-RedundancyGarner"
+          "destination": "DNBWriting.proselint-RedundancyGarner"
         },
         {
           "rule": "proselint.RedundancyGarnerPatterns",
           "status": "vendored",
-          "destination": "DNB.proselint-RedundancyGarnerPatterns"
+          "destination": "DNBWriting.proselint-RedundancyGarnerPatterns"
         },
         {
           "rule": "proselint.RedundancyNested",
           "status": "vendored",
-          "destination": "DNB.proselint-RedundancyNested"
+          "destination": "DNBWriting.proselint-RedundancyNested"
         },
         {
           "rule": "proselint.RedundancyNordquist",
           "status": "vendored",
-          "destination": "DNB.proselint-RedundancyNordquist"
+          "destination": "DNBWriting.proselint-RedundancyNordquist"
         },
         {
           "rule": "proselint.RedundancyWallace",
           "status": "vendored",
-          "destination": "DNB.proselint-RedundancyWallace"
+          "destination": "DNBWriting.proselint-RedundancyWallace"
         },
         {
           "rule": "proselint.RegisteredTrademark",
           "status": "vendored",
-          "destination": "DNB.proselint-RegisteredTrademark"
+          "destination": "DNBWriting.proselint-RegisteredTrademark"
         },
         {
           "rule": "proselint.ScareQuotes",
           "status": "vendored",
-          "destination": "DNB.proselint-ScareQuotes"
+          "destination": "DNBWriting.proselint-ScareQuotes"
         },
         {
           "rule": "proselint.SentenceSpacing",
           "status": "vendored",
-          "destination": "DNB.proselint-SentenceSpacing"
+          "destination": "DNBWriting.proselint-SentenceSpacing"
         },
         {
           "rule": "proselint.SentenceSpacingMixed",
           "status": "vendored",
-          "destination": "DNB.proselint-SentenceSpacingMixed"
+          "destination": "DNBWriting.proselint-SentenceSpacingMixed"
         },
         {
           "rule": "proselint.Skunked",
@@ -1069,92 +1069,92 @@
         {
           "rule": "proselint.Spelling",
           "status": "vendored",
-          "destination": "DNB.proselint-Spelling"
+          "destination": "DNBWriting.proselint-Spelling"
         },
         {
           "rule": "proselint.SpellingAbleAtable",
           "status": "vendored",
-          "destination": "DNB.proselint-SpellingAbleAtable"
+          "destination": "DNBWriting.proselint-SpellingAbleAtable"
         },
         {
           "rule": "proselint.SpellingAbleIble",
           "status": "vendored",
-          "destination": "DNB.proselint-SpellingAbleIble"
+          "destination": "DNBWriting.proselint-SpellingAbleIble"
         },
         {
           "rule": "proselint.SpellingAllyLy",
           "status": "vendored",
-          "destination": "DNB.proselint-SpellingAllyLy"
+          "destination": "DNBWriting.proselint-SpellingAllyLy"
         },
         {
           "rule": "proselint.SpellingAnceEnce",
           "status": "vendored",
-          "destination": "DNB.proselint-SpellingAnceEnce"
+          "destination": "DNBWriting.proselint-SpellingAnceEnce"
         },
         {
           "rule": "proselint.SpellingAthletes",
           "status": "vendored",
-          "destination": "DNB.proselint-SpellingAthletes"
+          "destination": "DNBWriting.proselint-SpellingAthletes"
         },
         {
           "rule": "proselint.SpellingElyLy",
           "status": "vendored",
-          "destination": "DNB.proselint-SpellingElyLy"
+          "destination": "DNBWriting.proselint-SpellingElyLy"
         },
         {
           "rule": "proselint.SpellingEmIm",
           "status": "vendored",
-          "destination": "DNB.proselint-SpellingEmIm"
+          "destination": "DNBWriting.proselint-SpellingEmIm"
         },
         {
           "rule": "proselint.SpellingErOr",
           "status": "vendored",
-          "destination": "DNB.proselint-SpellingErOr"
+          "destination": "DNBWriting.proselint-SpellingErOr"
         },
         {
           "rule": "proselint.SpellingInUn",
           "status": "vendored",
-          "destination": "DNB.proselint-SpellingInUn"
+          "destination": "DNBWriting.proselint-SpellingInUn"
         },
         {
           "rule": "proselint.SpellingMisc",
           "status": "vendored",
-          "destination": "DNB.proselint-SpellingMisc"
+          "destination": "DNBWriting.proselint-SpellingMisc"
         },
         {
           "rule": "proselint.SpellingTill",
           "status": "vendored",
-          "destination": "DNB.proselint-SpellingTill"
+          "destination": "DNBWriting.proselint-SpellingTill"
         },
         {
           "rule": "proselint.SpellingVeOf",
           "status": "vendored",
-          "destination": "DNB.proselint-SpellingVeOf"
+          "destination": "DNBWriting.proselint-SpellingVeOf"
         },
         {
           "rule": "proselint.Suddenly",
           "status": "vendored",
-          "destination": "DNB.proselint-Suddenly"
+          "destination": "DNBWriting.proselint-Suddenly"
         },
         {
           "rule": "proselint.TensePresent",
           "status": "vendored",
-          "destination": "DNB.proselint-TensePresent"
+          "destination": "DNBWriting.proselint-TensePresent"
         },
         {
           "rule": "proselint.Trademark",
           "status": "vendored",
-          "destination": "DNB.proselint-Trademark"
+          "destination": "DNBWriting.proselint-Trademark"
         },
         {
           "rule": "proselint.Uncomparables",
           "status": "vendored",
-          "destination": "DNB.proselint-Uncomparables"
+          "destination": "DNBWriting.proselint-Uncomparables"
         },
         {
           "rule": "proselint.UncomparablesMost",
           "status": "vendored",
-          "destination": "DNB.proselint-UncomparablesMost"
+          "destination": "DNBWriting.proselint-UncomparablesMost"
         },
         {
           "rule": "proselint.Very",
@@ -1164,12 +1164,12 @@
         {
           "rule": "proselint.Waxed",
           "status": "vendored",
-          "destination": "DNB.proselint-Waxed"
+          "destination": "DNBWriting.proselint-Waxed"
         },
         {
           "rule": "proselint.Whence",
           "status": "vendored",
-          "destination": "DNB.proselint-Whence"
+          "destination": "DNBWriting.proselint-Whence"
         }
       ]
     },
@@ -1177,54 +1177,54 @@
       "version": "v0.2.0",
       "url": "https://github.com/vale-cli/Readability/releases/download/v0.2.0/Readability.zip",
       "sha256": "cf8790677bb2ef86458c1d1dbd6e646fd8063c0e9621f81141e5cd85e5e41f81",
-      "licence": "styles/DNB/licenses/Readability/LICENSE",
+      "licence": "styles/DNBWriting/licenses/Readability/LICENSE",
       "rules": [
         {
           "rule": "Readability.AutomatedReadability",
           "status": "adapted",
-          "destination": "DNB.Readability-AutomatedReadability",
-          "reason": "Retain the existing DNB adaptation instead of importing a second implementation."
+          "destination": "DNBWriting.Readability-AutomatedReadability",
+          "reason": "Retain the existing DNBWriting adaptation instead of importing a second implementation."
         },
         {
           "rule": "Readability.ColemanLiau",
           "status": "adapted",
-          "destination": "DNB.Readability-ColemanLiau",
-          "reason": "Retain the existing DNB adaptation instead of importing a second implementation."
+          "destination": "DNBWriting.Readability-ColemanLiau",
+          "reason": "Retain the existing DNBWriting adaptation instead of importing a second implementation."
         },
         {
           "rule": "Readability.FleschKincaid",
           "status": "adapted",
-          "destination": "DNB.Readability-FleschKincaid",
-          "reason": "Retain the existing DNB adaptation instead of importing a second implementation."
+          "destination": "DNBWriting.Readability-FleschKincaid",
+          "reason": "Retain the existing DNBWriting adaptation instead of importing a second implementation."
         },
         {
           "rule": "Readability.FleschReadingEase",
           "status": "adapted",
-          "destination": "DNB.Readability-FleschReadingEase",
-          "reason": "Retain the existing DNB adaptation instead of importing a second implementation."
+          "destination": "DNBWriting.Readability-FleschReadingEase",
+          "reason": "Retain the existing DNBWriting adaptation instead of importing a second implementation."
         },
         {
           "rule": "Readability.GunningFog",
           "status": "adapted",
-          "destination": "DNB.Readability-GunningFog",
-          "reason": "Retain the existing DNB adaptation instead of importing a second implementation."
+          "destination": "DNBWriting.Readability-GunningFog",
+          "reason": "Retain the existing DNBWriting adaptation instead of importing a second implementation."
         },
         {
           "rule": "Readability.LIX",
           "status": "adapted",
-          "destination": "DNB.Readability-LIX",
-          "reason": "Retain the existing DNB adaptation instead of importing a second implementation."
+          "destination": "DNBWriting.Readability-LIX",
+          "reason": "Retain the existing DNBWriting adaptation instead of importing a second implementation."
         },
         {
           "rule": "Readability.Polysyllables",
           "status": "vendored",
-          "destination": "DNB.Readability-Polysyllables"
+          "destination": "DNBWriting.Readability-Polysyllables"
         },
         {
           "rule": "Readability.SMOG",
           "status": "adapted",
-          "destination": "DNB.Readability-SMOG",
-          "reason": "Retain the existing DNB adaptation instead of importing a second implementation."
+          "destination": "DNBWriting.Readability-SMOG",
+          "reason": "Retain the existing DNBWriting adaptation instead of importing a second implementation."
         }
       ]
     },
@@ -1232,17 +1232,17 @@
       "version": "v0.5.0",
       "url": "https://github.com/vale-cli/write-good/releases/download/v0.5.0/write-good.zip",
       "sha256": "1736c0b61aed16170d5af65f602d776a06dc1a563bc6552abfe5db6940190e22",
-      "licence": "styles/DNB/licenses/write-good/README.md",
+      "licence": "styles/DNBWriting/licenses/write-good/README.md",
       "rules": [
         {
           "rule": "write-good.Adverbs",
           "status": "vendored",
-          "destination": "DNB.write-good-Adverbs"
+          "destination": "DNBWriting.write-good-Adverbs"
         },
         {
           "rule": "write-good.Cliches",
           "status": "vendored",
-          "destination": "DNB.write-good-Cliches"
+          "destination": "DNBWriting.write-good-Cliches"
         },
         {
           "rule": "write-good.E-Prime",
@@ -1252,7 +1252,7 @@
         {
           "rule": "write-good.Illusions",
           "status": "covered",
-          "destination": "DNB.proselint-LexicalIllusions",
+          "destination": "DNBWriting.proselint-LexicalIllusions",
           "reason": "One selected check for this convention; overlapping source rule omitted."
         },
         {
@@ -1273,38 +1273,38 @@
         {
           "rule": "write-good.TooWordy",
           "status": "vendored",
-          "destination": "DNB.write-good-TooWordy"
+          "destination": "DNBWriting.write-good-TooWordy"
         },
         {
           "rule": "write-good.Weasel",
           "status": "covered",
-          "destination": "DNB.Hedging",
+          "destination": "DNBWriting.Hedging",
           "reason": "One selected check for this convention; overlapping source rule omitted."
         }
       ]
     }
   },
   "renamedRules": {
-    "DNB.ReadabilityGunningFog": "DNB.Readability-GunningFog",
-    "DNB.ReadabilityLIX": "DNB.Readability-LIX",
-    "DNB.ReadabilityFleschKincaid": "DNB.Readability-FleschKincaid",
-    "DNB.ReadabilityColemanLiau": "DNB.Readability-ColemanLiau",
-    "DNB.ReadabilityFleschReadingEase": "DNB.Readability-FleschReadingEase",
-    "DNB.ReadabilityAutomatedReadability": "DNB.Readability-AutomatedReadability",
-    "DNB.ReadabilitySMOG": "DNB.Readability-SMOG",
-    "DNB.InsensitivePress": "DNB.alex-Press",
-    "DNB.InsensitiveSuicide": "DNB.alex-Suicide",
-    "DNB.InsensitiveLGBTQ": "DNB.alex-LGBTQ",
-    "DNB.InsensitiveOCD": "DNB.alex-OCD",
-    "DNB.InsensitiveAblist": "DNB.alex-Ablist",
-    "DNB.InsensitiveProfanityMaybe": "DNB.alex-ProfanityMaybe",
-    "DNB.InsensitiveProfanityLikely": "DNB.alex-ProfanityLikely",
-    "DNB.InsensitiveRace": "DNB.alex-Race",
-    "DNB.InsensitiveGendered": "DNB.alex-Gendered"
+    "DNB.ReadabilityGunningFog": "DNBWriting.Readability-GunningFog",
+    "DNB.ReadabilityLIX": "DNBWriting.Readability-LIX",
+    "DNB.ReadabilityFleschKincaid": "DNBWriting.Readability-FleschKincaid",
+    "DNB.ReadabilityColemanLiau": "DNBWriting.Readability-ColemanLiau",
+    "DNB.ReadabilityFleschReadingEase": "DNBWriting.Readability-FleschReadingEase",
+    "DNB.ReadabilityAutomatedReadability": "DNBWriting.Readability-AutomatedReadability",
+    "DNB.ReadabilitySMOG": "DNBWriting.Readability-SMOG",
+    "DNB.InsensitivePress": "DNBWriting.alex-Press",
+    "DNB.InsensitiveSuicide": "DNBWriting.alex-Suicide",
+    "DNB.InsensitiveLGBTQ": "DNBWriting.alex-LGBTQ",
+    "DNB.InsensitiveOCD": "DNBWriting.alex-OCD",
+    "DNB.InsensitiveAblist": "DNBWriting.alex-Ablist",
+    "DNB.InsensitiveProfanityMaybe": "DNBWriting.alex-ProfanityMaybe",
+    "DNB.InsensitiveProfanityLikely": "DNBWriting.alex-ProfanityLikely",
+    "DNB.InsensitiveRace": "DNBWriting.alex-Race",
+    "DNB.InsensitiveGendered": "DNBWriting.alex-Gendered"
   },
   "removedRules": {
     "DNB.OpenlyReadability": {
-      "replacement": "DNB.Readability-FleschReadingEase",
+      "replacement": "DNBWriting.Readability-FleschReadingEase",
       "reason": "Same metric formula and threshold."
     },
     "DNB.InsensitiveCondescending": {
@@ -1313,5 +1313,10 @@
     "DNB.InsensitiveProfanityUnlikely": {
       "reason": "Corresponding source rule alex.ProfanityUnlikely was disabled."
     }
+  },
+  "namespaceRenames": {
+    "DNB": "DNBWriting",
+    "AIDetection": "DNBAIPatterns",
+    "Millennialisms": "DNBMillennialisms"
   }
 }
