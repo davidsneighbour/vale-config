@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.4.0](https://github.com/davidsneighbour/vale-config/compare/v0.3.2-test.1...v0.4.0) (2026-11-24)
+
+### ⚠ BREAKING CHANGES
+
+* **dnb:** DNB readability and Insensitive rule identifiers now use source package prefixes. See documentation/upstream-rules.md and styles/config/upstream-rules.json for replacements and omitted rules.
+
+### Feat
+
+* **dnb:** vendor selected upstream Vale rules ([8fb1619](https://github.com/davidsneighbour/vale-config/commit/8fb1619da1a5b513935e3039210fcb7904599ad1)), closes [#51](https://github.com/davidsneighbour/vale-config/issues/51)
+
+### Fix
+
+* remove hugo setup ([14de32c](https://github.com/davidsneighbour/vale-config/commit/14de32c25d78599c760ad28de3c48bc37d8aef84))
+
 ## [0.3.2-test.1](https://github.com/davidsneighbour/vale-config/compare/v0.3.1...v0.3.2-test.1) (2026-11-24)
 
 ### Fix
