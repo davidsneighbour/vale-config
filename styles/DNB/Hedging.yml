@@ -1,9 +1,11 @@
 ---
 extends: existence
-message: "'%s' hedges the point. A hedge happens when the writing is overly cautious, hesitant, or polite, to the detriment of the point of the writing."
+message: "Remove or rephrase `%s`: hedging weakens ideas."
+link: https://typely.com/blog/hedging/
 ignorecase: true
 level: warning
 tokens:
+  - ", so to speak"
   - "!!!"
   - a bit
   - a little
@@ -30,6 +32,8 @@ tokens:
   - arguably
   - around
   - as far as I know
+  - as i understand
+  - as we understand
   - assume
   - assumed
   - assumes
@@ -88,14 +92,25 @@ tokens:
   - hopefully
   - I am about
   - I believe
+  - i consider
+  - i don't believe
+  - i don't consider
+  - i don't feel
+  - i don't suggest
+  - i don't think
   - I doubt
   - I feel
   - I guess
+  - i hope to
   - I may be wrong
+  - i might
   - I might be wrong
   - I should
+  - i suggest
   - I think
+  - i was wondering
   - I will try
+  - i wonder
   - I would argue that
   - I'll try
   - I'm about
@@ -114,11 +129,12 @@ tokens:
   - in general
   - in my mind
   - in my opinion
-  - In my opinion
   - in my understanding
   - in my view
   - inconclusive
   - indicate
+  - is kind of
+  - is sort of
   - just
   - just about
   - kind of
@@ -138,7 +154,6 @@ tokens:
   - most
   - mostly
   - much
-  - must
   - my bad
   - my impression
   - my thinking is
@@ -166,7 +181,9 @@ tokens:
   - quite clearly
   - rare
   - rarely
-  - rather
+  # "rather than" is comparative, not hedging: it names a choice between two
+  # things. Only the intensifier sense ("rather large", "would rather") hedges.
+  - rather(?! than)
   - really
   - really quite
   - regret
@@ -178,7 +195,6 @@ tokens:
   - seems
   - seldom
   - several
-  - should
   - so far
   - so to speak
   - some
@@ -216,16 +232,26 @@ tokens:
   - to my knowledge
   - try
   - trying
-  - understand
   - understands
   - understood
   - unlikely
   - unsure
   - usually
-  - very
   - virtually
+  - we believe
+  - we consider
+  - we don't believe
+  - we don't consider
+  - we don't feel
+  - we don't suggest
+  - we don't think
+  - we feel
+  - we hope to
+  - we might
+  - we suggest
   - We think
+  - we were wondering
+  - we will try
+  - we wonder
   - We're no expert
-  - will
-  - would
   - yes, but
