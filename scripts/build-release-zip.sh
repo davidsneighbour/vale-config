@@ -14,6 +14,7 @@ Creates:
 Archive layout:
   config/
     .vale.ini
+    meta.json
     styles/
     README.md
     LICENSE.md
@@ -69,6 +70,7 @@ main() {
   cd "${project_root}"
 
   require_file ".vale.ini"
+  require_file "meta.json"
   require_file "README.md"
   require_file "LICENSE.md"
   require_dir "styles"
@@ -81,6 +83,7 @@ main() {
   mkdir -p "${TEMP_DIR}/${package_root}"
 
   write_package_config "${TEMP_DIR}/${package_root}/.vale.ini"
+  cp "meta.json" "${TEMP_DIR}/${package_root}/meta.json"
   cp "README.md" "${TEMP_DIR}/${package_root}/README.md"
   cp "LICENSE.md" "${TEMP_DIR}/${package_root}/LICENSE.md"
 

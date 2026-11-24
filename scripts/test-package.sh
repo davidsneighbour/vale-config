@@ -22,6 +22,11 @@ main() {
     exit 1
   fi
 
+  if ! unzip -p "${package_zip}" config/meta.json | cmp -s meta.json -; then
+    echo "[error] Package is missing its Vale compatibility metadata" >&2
+    exit 1
+  fi
+
   temp_dir="$(mktemp -d)"
   trap cleanup EXIT
 
