@@ -76,6 +76,8 @@ This repository follows **semantic versioning** (`MAJOR.MINOR.PATCH`) for all re
 
 5. **Zip and GitHub release**: builds `dist/config.zip` from `.vale.ini`, `README.md`, `LICENSE.md`, and `styles/`, then uploads it as part of the GitHub release.
 
+Use Vale 3.28.1 or later for repository checks. The upstream `alex`, `proselint`, and `write-good` packages selected by the root `.vale.ini` require this version. Run `npm run sync:vale` after upgrading Vale to refresh the downloaded styles.
+
 Run `npm test` to exercise the version-bump, packaging, and package-install steps locally without any git/GitHub side effects.
 
 ## Spelling dictionary
