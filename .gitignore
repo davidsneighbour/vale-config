@@ -13,3 +13,6 @@ styles/*
 /RESUME.md
 /TODO.md
 /PROJECT.md
+
+# Local Wikipedia snapshots for the aipattern-update skill (CC BY-SA content, never commit)
+/.agents/skills/aipattern-update/references/snapshots/
