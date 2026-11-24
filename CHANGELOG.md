@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/davidsneighbour/vale-config/compare/v1.0.0...v1.1.0) (2026-11-24)
+
+### Feat
+
+* **ai-patterns:** add the aipattern-update skill ([6d4a090](https://github.com/davidsneighbour/vale-config/commit/6d4a09057c7042d284b55e3dbcd1f9dec5202fab)), closes [#63](https://github.com/davidsneighbour/vale-config/issues/63)
+* **ai-patterns:** sync rules with Signs of AI writing revision 1387041075 ([c8553a9](https://github.com/davidsneighbour/vale-config/commit/c8553a91fc4e269c4fb7b2814d2b178425ccc287)), closes [#64](https://github.com/davidsneighbour/vale-config/issues/64)
+
 ## [1.0.0](https://github.com/davidsneighbour/vale-config/compare/v0.4.0...v1.0.0) (2026-11-24)
 
 ### ⚠ BREAKING CHANGES
