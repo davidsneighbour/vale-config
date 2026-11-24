@@ -1,0 +1,11 @@
+# Source: https://github.com/vale-cli/Google/releases/download/v0.7.2/Google.zip (Gender.yml)
+# Licence: styles/DNB/licenses/Google/LICENSE
+extends: existence
+message: "Don't use '%s' as a gender-neutral pronoun."
+link: "https://developers.google.com/style/pronouns#gender-neutral-pronouns"
+level: error
+ignorecase: true
+tokens:
+  - he/she
+  - s/he
+  - \(s\)he

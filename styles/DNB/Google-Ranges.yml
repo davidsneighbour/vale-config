@@ -1,0 +1,9 @@
+# Source: https://github.com/vale-cli/Google/releases/download/v0.7.2/Google.zip (Ranges.yml)
+# Licence: styles/DNB/licenses/Google/LICENSE
+extends: existence
+message: "Don't add words such as 'from' or 'between' to describe a range of numbers."
+link: "https://developers.google.com/style/hyphens"
+nonword: true
+level: warning
+tokens:
+  - '(?:from|between)\s\d+\s?-\s?\d+'

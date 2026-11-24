@@ -49,8 +49,6 @@ write_package_config() {
 
   sed \
     -e 's/^StylesPath = styles$/StylesPath = ../' \
-    -e '/^Packages = /d' \
-    -e 's/^BasedOnStyles = Vale, Microsoft, Google, alex, proselint, Readability, write-good, DNB, AIDetection, Millennialisms$/BasedOnStyles = Vale, DNB, AIDetection, Millennialisms/' \
     ".vale.ini" > "${target}"
 }
 
@@ -86,9 +84,8 @@ main() {
   cp "README.md" "${TEMP_DIR}/${package_root}/README.md"
   cp "LICENSE.md" "${TEMP_DIR}/${package_root}/LICENSE.md"
 
-  # Only these local styles and config/ are hand-authored; styles/ may also hold
-  # base packages synced locally via `vale sync` (Packages = Microsoft, Google,
-  # ... in .vale.ini) that must not end up bundled inside the release zip.
+  # Bundle maintained namespaces and support files only. Old checkouts can
+  # still contain ignored upstream downloads alongside these directories.
   mkdir -p "${TEMP_DIR}/${package_root}/styles"
   cp -R "styles/DNB" "${TEMP_DIR}/${package_root}/styles/DNB"
   cp -R "styles/AIDetection" "${TEMP_DIR}/${package_root}/styles/AIDetection"

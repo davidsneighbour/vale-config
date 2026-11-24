@@ -30,6 +30,8 @@ Packages = https://github.com/davidsneighbour/vale-config/releases/latest/downlo
 BasedOnStyles = DNB, AIDetection, Millennialisms
 ```
 
+The package is self-contained. Selected Microsoft, Google, alex, proselint, Readability, and write-good rules are included under `DNB`, with source package prefixes. See [upstream rule selection](https://github.com/davidsneighbour/vale-config/blob/main/documentation/upstream-rules.md) for source versions, duplicate decisions, excluded rules, and renamed rule identifiers.
+
 The package ships three rule namespaces:
 
 * `DNB` for the core writing, readability, inclusive language, and spelling rules.
@@ -48,21 +50,19 @@ Packages = https://github.com/davidsneighbour/vale-config/releases/download/v0.1
 
 Replace `v0.1.0` with the desired version. This example is illustrative only and isn't kept in sync with the current release - check the [releases page](https://github.com/davidsneighbour/vale-config/releases) for available versions.
 
-### Understanding vale configuration merging
+### Customise the configuration
 
-Vale merges configurations **from right to left** when multiple packages are specified in the `Packages` key. This means that packages listed **later in the sequence override and merge** their settings into those listed earlier.
+Vale reads the package configuration before your project's own `.vale.ini`. Set local overrides in your project configuration. The source packages do not need separate entries in `Packages` or `BasedOnStyles`.
 
-For example, consider the following configuration:
+For example, lower the Oxford comma rule to a suggestion:
 
 ```ini
-Packages = Microsoft,
-https://github.com/davidsneighbour/vale-config/releases/latest/download/config.zip
+Packages = https://github.com/davidsneighbour/vale-config/releases/latest/download/config.zip
+
+[*.md]
+BasedOnStyles = DNB
+DNB.Google-OxfordComma = suggestion
 ```
-
-In this setup:
-
-1. **`Microsoft`**: Provides a base set of configurations and rules.
-2. **`vale-config`**: Our custom package, listed last, **overrides settings** from `Microsoft`.
 
 ## Release process
 
@@ -93,7 +93,7 @@ This repository follows **semantic versioning** (`MAJOR.MINOR.PATCH`) for all re
 
 5. **Zip and GitHub release**: builds `dist/config.zip` from `.vale.ini`, `README.md`, `LICENSE.md`, and `styles/`, then uploads it as part of the GitHub release.
 
-Use Vale 3.28.1 or later for repository checks. The upstream `alex`, `proselint`, and `write-good` packages selected by the root `.vale.ini` require this version. Run `npm run sync:vale` after upgrading Vale to refresh the downloaded styles.
+Use Vale 3.28.1 or later for repository checks. Some vendored rules require this version. Repository setup does not download external style packages.
 
 Run `npm test` to exercise the version-bump, packaging, and package-install steps locally without any git/GitHub side effects.
 

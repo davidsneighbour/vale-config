@@ -1,0 +1,16 @@
+# Source: https://github.com/vale-cli/Microsoft/releases/download/v0.15.2/Microsoft.zip (Hyphens.yml)
+# Licence: styles/DNB/licenses/Microsoft/LICENSE
+extends: existence
+message: "'%s' doesn't need a hyphen."
+link: https://learn.microsoft.com/en-us/style-guide/punctuation/dashes-hyphens/hyphens
+level: warning
+ignorecase: false
+nonword: true
+action:
+  name: edit
+  params:
+    - regex
+    - "-"
+    - " "
+tokens:
+  - '\b[^\s-]+ly-\w+\b'

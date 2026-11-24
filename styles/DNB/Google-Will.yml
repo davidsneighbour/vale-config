@@ -1,0 +1,9 @@
+# Source: https://github.com/vale-cli/Google/releases/download/v0.7.2/Google.zip (Will.yml)
+# Licence: styles/DNB/licenses/Google/LICENSE
+extends: existence
+message: "Avoid using '%s'."
+link: "https://developers.google.com/style/tense"
+ignorecase: true
+level: warning
+tokens:
+  - will

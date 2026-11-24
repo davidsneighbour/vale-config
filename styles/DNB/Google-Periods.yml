@@ -1,0 +1,9 @@
+# Source: https://github.com/vale-cli/Google/releases/download/v0.7.2/Google.zip (Periods.yml)
+# Licence: styles/DNB/licenses/Google/LICENSE
+extends: existence
+message: "Don't use periods with acronyms or initialisms such as '%s'."
+link: "https://developers.google.com/style/abbreviations"
+level: error
+nonword: true
+tokens:
+  - '\b(?:[A-Z]\.){3,}'

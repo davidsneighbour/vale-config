@@ -48,6 +48,16 @@ As an AI language model, I cannot browse the internet.
 Henlo fren.
 
 This sentense includes a typo.
+
+The temperature is -5 degrees.
+
+The U.S.A. is large.
+
+An ablebodied person arrived.
+
+Copyright (c) 2026.
+
+A number of configuration options exist.
 EOF
 
   (
@@ -83,7 +93,27 @@ EOF
       exit 1
     fi
 
-    echo "[info] Synced package triggered DNB, AIDetection, Millennialisms, and spelling rules as expected."
+    for rule in DNB.Microsoft-Negative DNB.Google-Periods DNB.alex-Ablist \
+      DNB.proselint-Copyright DNB.Readability-Polysyllables DNB.write-good-TooWordy; do
+      if [[ "${output}" != *"${rule}"* ]]; then
+        echo "[error] Synced package did not trigger ${rule}" >&2
+        echo "${output}" >&2
+        exit 1
+      fi
+    done
+
+    for namespace in Microsoft Google alex proselint Readability write-good; do
+      if [[ -d ".vale/${namespace}" ]]; then
+        echo "[error] Synced package downloaded external namespace ${namespace}" >&2
+        exit 1
+      fi
+      if [[ ! -f ".vale/DNB/licenses/${namespace}/LICENSE" && ! -f ".vale/DNB/licenses/${namespace}/README.md" ]]; then
+        echo "[error] Synced package is missing the ${namespace} licence notice" >&2
+        exit 1
+      fi
+    done
+
+    echo "[info] Synced package triggered all namespaces, six vendored sources, and spelling without external style downloads."
   )
 }
 

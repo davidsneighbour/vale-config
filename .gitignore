@@ -2,8 +2,7 @@ node_modules/
 dist/*.zip
 .vale/
 
-# Base packages synced into styles/ via `vale sync` (Packages = Microsoft,
-# Google, alex, proselint, Readability, write-good in .vale.ini)
+# Keep old upstream downloads and generated Vale configuration untracked.
 styles/*
 !styles/DNB/
 !styles/AIDetection/

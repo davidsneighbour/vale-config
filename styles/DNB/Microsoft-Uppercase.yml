@@ -1,0 +1,13 @@
+# Source: https://github.com/vale-cli/Microsoft/releases/download/v0.15.2/Microsoft.zip (Uppercase.yml)
+# Licence: styles/DNB/licenses/Microsoft/LICENSE
+extends: existence
+message: "Don't use all uppercase for emphasis."
+link: https://learn.microsoft.com/en-us/style-guide/capitalization
+level: suggestion
+nonword: true
+# Two or more consecutive all-caps words. A single one is almost always an
+# acronym, so it isn't flagged; adjacent acronym pairs ('HTTP GET') can still
+# trip this, but they're rare enough that the whole style guide source and
+# ~120 KB of technical prose produced no hits.
+tokens:
+  - '\b[A-Z]{2,}(?: [A-Z]{2,})+\b'
